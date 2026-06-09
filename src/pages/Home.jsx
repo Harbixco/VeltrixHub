@@ -39,11 +39,11 @@ import {
 import PageTransition from "../components/PageTransition";
 import { useCounter } from "../components/useCounter";
 
-// ─── IMAGE ASSET IMPORTS FROM SRC/ASSETS/ ────────────────────────────────────
-import heroTeamImg from "../asset/hero-team.png";
-import ecommerceDevImg from "../asset/ecommerce-dev.png";
-import trainingSessionImg from "../asset/training-session.png";
-import corporateSolutionsImg from "../asset/corporate-solutions.png";
+// ─── CORRECTED IMAGE ASSET IMPORTS (FIXED FOR VERCEL DEPLOYMENT) ────────────────
+import heroTeamImg from "../assets/hero-team.png";
+import ecommerceDevImg from "../assets/ecommerce-dev.png";
+import trainingSessionImg from "../assets/training-session.png";
+import corporateSolutionsImg from "../assets/corporate-solutions.png";
 
 // Centralized configurations for easier updates and maintenance
 const COMPANY_CONFIG = {
@@ -204,8 +204,8 @@ function Hero() {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Link
-                to="/contact"
+              <a
+                href={COMPANY_CONFIG.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-orange group justify-center text-center px-8 py-4"
@@ -215,7 +215,7 @@ function Hero() {
                   size={18}
                   className="transition-transform group-hover:translate-x-1"
                 />
-              </Link>
+              </a>
               <Link
                 to="/services"
                 className="btn-ghost text-white border-white/30 hover:bg-white/10 hover:border-white/50 text-center px-8 py-4"
@@ -246,7 +246,7 @@ function Hero() {
             </motion.div>
           </div>
 
-          {/* Right Column - Attractive Floating Tech Centerpiece */}
+          {/* Right Column - Tech Centerpiece */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -294,7 +294,6 @@ function StatCard({ value, suffix, label, color }) {
   );
 }
 
-// Stats component wrapper layout handling hooks bounds
 function Stats() {
   return (
     <section className="py-12 sm:py-20 bg-white relative overflow-hidden">
@@ -952,7 +951,6 @@ const testimonials = [
 function Testimonials() {
   const [active, setActive] = useState(0);
 
-  // Auto play sliding logic
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
@@ -984,7 +982,7 @@ function Testimonials() {
 
         {/* Carousel Container Wrapper Frame */}
         <div className="relative items-center grid grid-cols-1">
-          {/* Main Card Content Container Panel with Slide Layout Framer Animate */}
+          {/* Main Card Content Container Panel */}
           <div className="relative min-h-[260px] sm:min-h-[220px] overflow-hidden rounded-2xl bg-white border border-gray-100 shadow-xl p-6 sm:p-10">
             <AnimatePresence mode="wait">
               <motion.div
@@ -1025,7 +1023,7 @@ function Testimonials() {
             </AnimatePresence>
           </div>
 
-          {/* Left & Right Interactive Manual Navigation Triggers */}
+          {/* Manual Navigation Triggers */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-16">
             <button
               onClick={handlePrev}

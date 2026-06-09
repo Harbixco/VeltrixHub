@@ -9,7 +9,7 @@ import {
   Linkedin,
   ChevronRight,
 } from "lucide-react";
-import logo from "../Asset/logo.png";
+import logo from "../assets/logo.png";
 
 const services = [
   "Website Development",
