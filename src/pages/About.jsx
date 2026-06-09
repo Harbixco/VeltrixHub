@@ -69,9 +69,9 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { num: '120+', label: 'Businesses Helped', color: '#1a3ebd' },
-                  { num: '95+', label: 'Projects Done', color: '#e85d04' },
+                  { num: '95+', label: 'Projects Done', color: '#FF7A00' },
                   { num: '200+', label: 'Students Trained', color: '#e85d04' },
-                  { num: '3+', label: 'Years Active', color: '#1a3ebd' },
+                  { num: '3+', label: 'Years Active', color: '#FF7A00' },
                 ].map((s, i) => (
                   <div key={i} className="p-6 rounded-2xl text-center bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow">
                     <div className="text-3xl font-black mb-1" style={{ color: s.color }}>{s.num}</div>

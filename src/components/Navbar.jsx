@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "../Asset/logo.png";
+
+// Centralized configurations matching shared contact properties
+const COMPANY_CONFIG = {
+  whatsappUrl: "https://wa.me/2349039415354",
+};
+
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
@@ -74,7 +80,7 @@ export default function Navbar() {
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="https://wa.me/2349039415354"
+              href={COMPANY_CONFIG.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-orange text-sm py-2.5 px-5"
@@ -83,11 +89,15 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile Toggle Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled || !isHome ? "text-brand-navy" : "text-white"
+            className={`md:hidden p-5 rounded-lg transition-colors z-50 ${
+              mobileOpen
+                ? "text-white" // Keep toggle white when menu is open over dark background
+                : scrolled || !isHome
+                  ? "text-brand-navy"
+                  : "text-white"
             }`}
             aria-label="Toggle menu"
           >
@@ -96,7 +106,7 @@ export default function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown Menu Container */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -104,31 +114,31 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[68px] z-40 bg-white/98 backdrop-blur-xl border-b border-gray-100 shadow-2xl md:hidden"
+            className="fixed inset-x-0 top-[68px] z-40 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 shadow-2xl md:hidden"
           >
-            <nav className="px-4 py-4 flex flex-col gap-1">
+            <nav className="px-4 py-6 flex flex-col gap-1.5">
               {navLinks.map((link) => {
                 const active = location.pathname === link.path;
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                    className={`px-5 py-3 rounded-xl text-base font-semibold transition-all ${
                       active
-                        ? "bg-blue-50 text-brand-blue"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-brand-blue"
+                        ? "bg-blue-600 text-white shadow-lg shadow-blue-600/20"
+                        : "text-slate-300 hover:bg-slate-800/80 hover:text-white"
                     }`}
                   >
                     {link.label}
                   </Link>
                 );
               })}
-              <div className="pt-3 pb-1">
+              <div className="pt-4 px-1">
                 <a
-                  href="https://wa.me/2349039415354"
+                  href={COMPANY_CONFIG.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-orange w-full justify-center"
+                  className="btn-orange w-full justify-center py-3 text-base shadow-lg shadow-orange-600/10"
                 >
                   Get Started
                 </a>
