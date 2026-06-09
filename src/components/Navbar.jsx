@@ -4,18 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "../Asset/logo.png";
 
-// Centralized configurations matching shared contact properties
-const COMPANY_CONFIG = {
-  whatsappUrl: "https://wa.me/2349039415354",
-};
-
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "Services", path: "/services" },
   { label: "Projects", path: "/projects" },
   { label: "Training", path: "/training" },
-  { label: "About", path: "/about" },
-  { label: "Contact", path: "/contact" },
+  { label: "About Us", path: "/about" },
 ];
 
 export default function Navbar() {
@@ -77,16 +71,14 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA Button linked to internal Contact page */}
           <div className="hidden md:flex items-center gap-3">
-            <a
-              href={COMPANY_CONFIG.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-orange text-sm py-2.5 px-5"
+            <Link
+              to="/contact"
+              className="btn-orange text-sm py-2.5 px-5 animate-pulse-subtle"
             >
-              Get Started
-            </a>
+              Contact Us
+            </Link>
           </div>
 
           {/* Mobile Toggle Button */}
@@ -94,7 +86,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden p-5 rounded-lg transition-colors z-50 ${
               mobileOpen
-                ? "text-white" // Keep toggle white when menu is open over dark background
+                ? "text-white"
                 : scrolled || !isHome
                   ? "text-brand-navy"
                   : "text-white"
@@ -134,14 +126,12 @@ export default function Navbar() {
                 );
               })}
               <div className="pt-4 px-1">
-                <a
-                  href={COMPANY_CONFIG.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/contact"
                   className="btn-orange w-full justify-center py-3 text-base shadow-lg shadow-orange-600/10"
                 >
-                  Get Started
-                </a>
+                  Contact Us
+                </Link>
               </div>
             </nav>
           </motion.div>

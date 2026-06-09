@@ -1,4 +1,5 @@
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
+// 1. Switched HashRouter to BrowserRouter here
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
@@ -15,8 +16,8 @@ function ScrollToTopAndSection() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // If there is an anchor link section hash (e.g., /#/about#team or just /#contact-form)
     if (hash) {
+      // Handles landing on a section anchor link (e.g., /about#our-team)
       const scrollToElement = () => {
         const element = document.getElementById(hash.replace("#", ""));
         if (element) {
@@ -26,10 +27,10 @@ function ScrollToTopAndSection() {
       const timer = setTimeout(scrollToElement, 100);
       return () => clearTimeout(timer);
     } else {
-      // Automatically snap to the top when navigating to a fresh page route
+      // Automatically snap to the top cleanly when navigating to a fresh page route
       window.scrollTo(0, 0);
     }
-  }, [pathname, hash]); // Listen to both route changes and anchor jumps
+  }, [pathname, hash]);
 
   return null;
 }
@@ -54,8 +55,8 @@ function AnimatedRoutes() {
 // ─── MAIN APP COMPONENT ──────────────────────────────────────────────
 export default function App() {
   return (
-    <HashRouter>
-      {/* Placed inside HashRouter so useLocation can track page changes */}
+    // 2. Switched from <HashRouter> to <BrowserRouter>
+    <BrowserRouter>
       <ScrollToTopAndSection />
 
       <div className="min-h-screen flex flex-col">
@@ -65,6 +66,6 @@ export default function App() {
         </main>
         <Footer />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
