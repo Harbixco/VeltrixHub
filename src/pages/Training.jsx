@@ -77,7 +77,7 @@ export default function Training() {
                 <p className="text-white/50 text-sm mb-6">Online & Physical options available</p>
                 <div className="flex items-baseline gap-2 mb-6">
                   <span className="text-white font-black text-5xl">₦</span>
-                  <span className="text-white font-black text-5xl">50,000</span>
+                  <span className="text-white font-black text-5xl">100,000</span>
                   <span className="text-white/40 text-sm">/program</span>
                 </div>
                 <ul className="space-y-3 mb-8">
@@ -98,7 +98,7 @@ export default function Training() {
       </section>
 
       {/* Features */}
-      <section className="py-20 bg-white">
+      <section className="py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-black text-brand-navy mb-4">Why Our Program Works</h2>
@@ -121,7 +121,7 @@ export default function Training() {
       </section>
 
       {/* Curriculum */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-black text-brand-navy mb-4">What You'll Learn</h2>
@@ -155,7 +155,7 @@ export default function Training() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-brand-navy relative overflow-hidden">
+      <section className="py-8 bg-brand-navy relative overflow-hidden">
         <div className="absolute inset-0 mesh-bg pointer-events-none" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

@@ -139,7 +139,7 @@ export default function Services() {
       </section>
 
       {/* Services grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {services.map((s, i) => (
@@ -150,7 +150,7 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-white">
+      <section className="py-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-3xl sm:text-4xl font-black text-brand-navy mb-4">Not Sure Which Service You Need?</h2>

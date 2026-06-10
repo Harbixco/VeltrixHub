@@ -44,6 +44,9 @@ import heroTeamImg from "../assets/hero-team.png";
 import ecommerceDevImg from "../assets/ecommerce-dev.png";
 import trainingSessionImg from "../assets/training-session.png";
 import corporateSolutionsImg from "../assets/corporate-solutions.png";
+import dove from "../assets/dove.png";
+import affordable from "../assets/affordable.png";
+import trashcycle from "../assets/trashcycle.png";
 
 // Centralized configurations for easier updates and maintenance
 const COMPANY_CONFIG = {
@@ -296,7 +299,7 @@ function StatCard({ value, suffix, label, color }) {
 
 function Stats() {
   return (
-    <section className="py-12 sm:py-20 bg-white relative overflow-hidden">
+    <section className="py-4 sm:py-8 bg-white relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -402,7 +405,7 @@ const servicesList = [
 
 function Services() {
   return (
-    <section className="py-16 bg-gray-50/50 relative overflow-hidden">
+    <section className="py-6 bg-gray-50/50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -485,7 +488,7 @@ function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-16 pt-10 border-t border-gray-200/60"
+          className="mt-6 pt-4 border-t border-gray-200/60"
         >
           <div className="text-center mb-8">
             <span className="text-xs uppercase font-bold tracking-widest text-brand-orange">
@@ -565,7 +568,7 @@ const strengths = [
 
 function WhyChooseUs() {
   return (
-    <section className="py-16 sm:py-20 bg-white relative overflow-hidden">
+    <section className="py-6 sm:py-8 bg-white relative overflow-hidden">
       <div className="absolute right-0 top-0 w-1/2 h-full pointer-events-none">
         <div
           className="absolute inset-0"
@@ -649,17 +652,17 @@ const projects = [
   {
     title: "E-Commerce Retail Showcase",
     category: "Web Development & E-Commerce",
-    image: ecommerceDevImg,
+    image: dove,
   },
   {
     title: "Corporate Operations Portal",
     category: "Branding & Portfolios",
-    image: heroTeamImg,
+    image: affordable,
   },
   {
     title: "SaaS Application Sandbox",
     category: "UI/UX & Web Development",
-    image: trainingSessionImg,
+    image: trashcycle,
   },
 ];
 
@@ -766,7 +769,7 @@ const courseHighlights = [
 
 function TrainingSection() {
   return (
-    <section className="py-16 sm:py-24 bg-gray-50/60 relative overflow-hidden">
+    <section className="py-6 sm:py-8 bg-gray-50/60 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
           <motion.div
@@ -850,7 +853,7 @@ const cacSteps = [
 
 function CACSection() {
   return (
-    <section className="py-16 sm:py-24 bg-white relative overflow-hidden">
+    <section className="py-6 sm:py-8 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 sm:gap-16 items-center">
           <motion.div
@@ -967,7 +970,7 @@ function Testimonials() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
+    <section className="py-6 sm:py-8 bg-gradient-to-b from-white to-gray-50/50 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
@@ -1065,7 +1068,7 @@ function Testimonials() {
 // ─── CALL TO ACTION SECTION ──────────────────────────────────────────────────
 function CTA() {
   return (
-    <section className="py-16 sm:py-24 bg-brand-navy relative overflow-hidden">
+    <section className="py-6 sm:py-8 bg-brand-navy relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div
           className="absolute inset-0"
