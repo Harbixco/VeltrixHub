@@ -46,7 +46,7 @@ import trainingSessionImg from "../assets/training-session.png";
 import corporateSolutionsImg from "../assets/corporate-solutions.png";
 import dove from "../assets/dove.png";
 import affordable from "../assets/affordable.png";
-import trashcycle from "../assets/trashcycle.png";
+import walexfarms from "../assets/walexfarms.png";
 
 // Centralized configurations for easier updates and maintenance
 const COMPANY_CONFIG = {
@@ -655,14 +655,14 @@ const projects = [
     image: dove,
   },
   {
-    title: "Corporate Operations Portal",
+    title: "E-Commerce For Gadgets",
     category: "Branding & Portfolios",
     image: affordable,
   },
   {
-    title: "SaaS Application Sandbox",
+    title: "An Agro Farms Services",
     category: "UI/UX & Web Development",
-    image: trashcycle,
+    image: walexfarms,
   },
 ];
 

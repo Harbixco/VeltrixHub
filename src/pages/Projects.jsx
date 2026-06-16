@@ -6,7 +6,7 @@ import PageTransition from "../components/PageTransition";
 // ─── REAL IMAGE ASSET IMPORTS ────────────────────────────────────────────────
 import dove from "../assets/dove.png";
 import translator from "../assets/translator.png";
-import korpea from "../assets/korpea.jpg";
+import walexfarms from "../assets/walexfarms.png";
 import numace from "../assets/numace.png";
 import affordable from "../assets/affordable.png";
 import trashcycle from "../assets/trashcycle.png";
@@ -29,31 +29,31 @@ const projects = [
   {
     title: "Language Translator System",
     category: "Website",
-    desc: "Web app for translating text between multiple languages in real-time",
+    desc: "Web app for translating text between multiple languages in real-time.",
     image: translator,
     tags: ["React", "Framer Motion", "CMS"],
     link: "https://language-translators-zeta.vercel.app/",
   },
   {
-    title: "Korpea Technologies",
+    title: "Walex Farms And Agro-Services",
     category: "Website",
-    desc: "Corporate website for showcasing tech services and solutions.",
-    image: korpea,
+    desc: "Walex Farms functions as a multi-tier commercial agricultural developer.",
+    image: walexfarms,
     tags: ["HTML/CSS", "JavaScript", "Forms"],
-    link: "https://korpeatech.com/",
+    link: "https://walexfarms.vercel.app/",
   },
   {
     title: "Numace Coding Academy",
     category: "Training",
-    desc: "A specialized clinical coding training and workforce-development institute .",
+    desc: "A specialized clinical coding training and workforce-development institute.",
     image: numace,
     tags: ["HTML/CSS", "JavaScript", "Forms"],
-    link: "https://numaceproject.vercel.app/", // Can point to Behance/Drive/Portfolio links
+    link: "https://numaceproject.vercel.app/",
   },
   {
     title: "Affordable Hub",
     category: "E-Commerce",
-    desc: "E-commerce platform for browsing and purchasing affordable gadgets",
+    desc: "E-commerce platform for browsing and purchasing affordable gadgets.",
     image: affordable,
     tags: ["React", "Node.js", "Payments"],
     link: "https://affordablegadgetshub.vercel.app/",
@@ -251,7 +251,7 @@ export default function Projects() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-white">
+      <section className="py-6 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
