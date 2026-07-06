@@ -4,15 +4,15 @@ import { ArrowRight, ExternalLink, Briefcase } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 
 // ─── REAL IMAGE ASSET IMPORTS ────────────────────────────────────────────────
-import dove from "../assets/dove.png";
+import dove from "../assets/dove.webp";
 import translator from "../assets/translator.png";
-import walexfarms from "../assets/walexfarms.png";
-import numace from "../assets/numace.png";
-import affordable from "../assets/affordable.png";
+import walexfarms from "../assets/walexfarms.webp";
+import numace from "../assets/numace.webp";
+import affordable from "../assets/affordable.webp";
 import trashcycle from "../assets/trashcycle.png";
 import nimble from "../assets/nimble.jpg";
 import nimblebasa from "../assets/nimblebasa.jpg";
-import portfolio from "../assets/portfolio.png";
+import portfolio from "../assets/portfolio.webp";
 
 const categories = ["All", "Website", "E-Commerce", "Branding", "Training"];
 

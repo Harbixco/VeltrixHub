@@ -13,10 +13,10 @@ import {
 import PageTransition from "../components/PageTransition";
 
 // ─── REAL IMAGE ASSET IMPORTS ────────────────────────────────────────────────
-import agencyStoryImg from "../assets/corporate-solutions.png";
-import teamFounderImg from "../assets/hero-team.png";
-import ceo from "../assets/ceo.png"
-import ceo2 from "../assets/ceo2.png"
+import agencyStoryImg from "../assets/corporate-solutions.webp";
+import teamFounderImg from "../assets/hero-team.webp";
+import ceo from "../assets/ceo.webp"
+import ceo2 from "../assets/ceo2.webp"
 
 const values = [
   {

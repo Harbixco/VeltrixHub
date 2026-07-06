@@ -40,13 +40,13 @@ import PageTransition from "../components/PageTransition";
 import { useCounter } from "../components/useCounter";
 
 // ─── CORRECTED IMAGE ASSET IMPORTS (FIXED FOR VERCEL DEPLOYMENT) ────────────────
-import heroTeamImg from "../assets/hero-team.png";
-import ecommerceDevImg from "../assets/ecommerce-dev.png";
-import trainingSessionImg from "../assets/training-session.png";
-import corporateSolutionsImg from "../assets/corporate-solutions.png";
-import dove from "../assets/dove.png";
-import affordable from "../assets/affordable.png";
-import walexfarms from "../assets/walexfarms.png";
+import heroTeamImg from "../assets/hero-team.webp";
+import ecommerceDevImg from "../assets/ecommerce-dev.webp";
+import trainingSessionImg from "../assets/training-session.webp";
+import corporateSolutionsImg from "../assets/corporate-solutions.webp";
+import dove from "../assets/dove.webp";
+import affordable from "../assets/affordable.webp";
+import walexfarms from "../assets/walexfarms.webp";
 
 // Centralized configurations for easier updates and maintenance
 const COMPANY_CONFIG = {
