@@ -40,7 +40,7 @@ const projects = [
     desc: "Walex Farms functions as a multi-tier commercial agricultural developer.",
     image: walexfarms,
     tags: ["HTML/CSS", "JavaScript", "Forms"],
-    link: "https://walexfarms.vercel.app/",
+    link: "https://agrowalexfarms.vercel.app/",
   },
   {
     title: "Numace Coding Academy",
