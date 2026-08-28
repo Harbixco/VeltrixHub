@@ -1,190 +1,118 @@
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Target,
   Eye,
-  Heart,
-  Users,
-  Zap,
-  TrendingUp,
   Shield,
-  MessageCircle,
+  Zap,
+  Users,
+  Award,
+  CheckCircle2,
+  ArrowRight,
+  TrendingUp,
+  HeartHandshake,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 
-// ─── REAL IMAGE ASSET IMPORTS ────────────────────────────────────────────────
 import agencyStoryImg from "../assets/corporate-solutions.webp";
-import teamFounderImg from "../assets/hero-team.webp";
-import ceo from "../assets/ceo.webp"
-import ceo2 from "../assets/ceo2.webp"
 
-const values = [
-  {
-    icon: Heart,
-    title: "Client First",
-    desc: "Every decision we make is centered on delivering real value and results for our clients.",
-  },
+const CORE_VALUES = [
   {
     icon: Shield,
     title: "Integrity",
-    desc: "We're honest, transparent, and deliver on our promises — always.",
+    desc: "We are honest, transparent, and take full responsibility for delivering quality work.",
+  },
+  {
+    icon: Award,
+    title: "Excellence",
+    desc: "We build modern, reliable, and high-performing digital solutions that create real value.",
   },
   {
     icon: Zap,
     title: "Innovation",
-    desc: "We stay ahead of digital trends to give our clients competitive advantages.",
+    desc: "We continuously refine our tools and methods to keep our clients ahead in their industries.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Customer Success",
+    desc: "When our clients grow, we grow. Your business objectives guide everything we do.",
+  },
+  {
+    icon: CheckCircle2,
+    title: "Reliability",
+    desc: "We respect deadlines, communicate clearly, and remain available long after launch.",
   },
   {
     icon: TrendingUp,
-    title: "Growth Mindset",
-    desc: "We're committed to continuous improvement — ours and yours.",
-  },
-];
-
-const team = [
-  {
-    name: "Matthew Kayode",
-    role: "Founder & Lead Developer",
-    image: ceo,
-  },
-  {
-    name: "Design Lead",
-    role: "UI/UX & Brand Designer",
-    image: ceo2, // Update to specific team assets as available
-  },
-  {
-    name: "Dev Team",
-    role: "Frontend Developers",
-    image: teamFounderImg,
-  },
-  {
-    name: "Support",
-    role: "Client Relations",
-    image: teamFounderImg,
+    title: "Continuous Improvement",
+    desc: "We constantly upgrade our skills, design standards, and processes to better serve you.",
   },
 ];
 
 export default function About() {
   return (
     <PageTransition>
-      {/* Hero */}
-      <section className="pt-32 pb-8 bg-brand-navy relative overflow-hidden">
-        <div className="absolute inset-0 mesh-bg pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Hero Banner */}
+      <section className="pt-32 pb-10 bg-brand-navy text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-white/15 text-white/60"
-              style={{ background: "rgba(255,255,255,0.05)" }}
-            >
-              <Users size={14} />
-              About Us
-            </div>
-            <h1 className="text-5xl sm:text-6xl font-black text-white mb-5">
-              The Team Behind{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #2d55e0, #e85d04)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Your Growth
-              </span>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-3">
+              ABOUT VELTRIX HUB
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+              We Don't Just Build Websites.<br className="hidden sm:inline" />
+              <span className="text-brand-blue-light"> We Build Trust.</span>
             </h1>
-            <p className="text-white/50 text-lg max-w-2xl mx-auto">
-              We're a passionate team of developers, designers, and strategists
-              helping Nigerian businesses build powerful digital presences.
+            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Veltrix Hub is a digital growth partner for businesses across Nigeria and Africa. We help companies become visible online, attract customers, and build lasting credibility.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-8 bg-white">
+      {/* Why We Exist Story */}
+      <section className="py-10 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="lg:col-span-6"
             >
-              <div className="section-tag mb-4 inline-flex items-center gap-2 text-brand-orange font-bold text-sm tracking-wider uppercase">
-                <Heart size={14} />
-                Our Story
-              </div>
-              <h2 className="text-4xl font-black text-brand-navy mb-6">
-                Born from a Passion for
-                <br />
-                <span
-                  className="gradient-text"
-                  style={{
-                    background: "linear-gradient(135deg, #1a3ebd, #2d55e0)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  Digital Excellence
-                </span>
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-muted mb-2 block">
+                WHY WE EXIST
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-6 leading-tight">
+                Most Businesses Are Invisible Online.
               </h2>
-              <p className="text-gray-500 leading-relaxed mb-5">
-                Veltrix Hub was founded with one clear mission: to make premium
-                digital solutions accessible to every Nigerian business,
-                regardless of size or budget. We saw too many businesses losing
-                opportunities because they lacked an online presence, and we
-                decided to change that.
+              <p className="text-brand-text leading-relaxed mb-5">
+                Every day, millions of customers in Africa search for products and services on their smartphones. Yet, countless capable businesses remain invisible because they lack a professional digital foundation or rely solely on temporary social media posts.
               </p>
-              <p className="text-gray-500 leading-relaxed mb-5">
-                Starting as a small web development studio, we've grown into a
-                full-service digital agency. Today, we've helped over 120
-                businesses establish their online presence, trained 200+
-                aspiring developers, and completed 95+ projects across diverse
-                industries.
+              <p className="text-brand-text leading-relaxed mb-5">
+                Without a clear website and credible online presence, businesses lose high-value contracts, struggle to build trust with new buyers, and miss out on sustainable growth.
               </p>
-              <p className="text-gray-500 leading-relaxed">
-                We believe every Nigerian entrepreneur deserves a world-class
-                digital presence. That belief drives everything we do at Veltrix
-                Hub.
+              <p className="text-brand-text leading-relaxed font-semibold text-brand-navy">
+                Veltrix Hub was founded to bridge this gap—giving entrepreneurs and companies the exact digital solutions they need to be found, trusted, and chosen.
               </p>
             </motion.div>
 
-            {/* Layout Update: Combined Real Image Showcase side-by-side with Counters */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="lg:col-span-6"
             >
-              <div className="aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-100 shadow-sm border border-gray-100">
+              <div className="border border-gray-200 p-2 bg-white rounded-[2px] shadow-sm">
                 <img
                   src={agencyStoryImg}
-                  alt="Veltrix Hub Workshop workspace"
-                  className="w-full h-full object-cover"
+                  alt="Veltrix Hub Strategy Session"
+                  className="w-full h-auto object-cover rounded-[2px]"
                 />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { num: "120+", label: "Businesses Helped", color: "#1a3ebd" },
-                  { num: "95+", label: "Projects Done", color: "#FF7A00" },
-                  { num: "200+", label: "Students Trained", color: "#e85d04" },
-                  { num: "3+", label: "Years Active", color: "#FF7A00" },
-                ].map((s, i) => (
-                  <div
-                    key={i}
-                    className="p-6 rounded-2xl text-center bg-gray-50 border border-gray-100 hover:shadow-md transition-shadow"
-                  >
-                    <div
-                      className="text-3xl font-black mb-1"
-                      style={{ color: s.color }}
-                    >
-                      {s.num}
-                    </div>
-                    <div className="text-gray-500 text-sm">{s.label}</div>
-                  </div>
-                ))}
               </div>
             </motion.div>
           </div>
@@ -192,129 +120,133 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-2 bg-brand-gray border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                icon: Target,
-                title: "Our Mission",
-                text: "To empower Nigerian businesses with world-class digital tools and solutions, making premium web presence accessible to every entrepreneur regardless of their budget or technical knowledge.",
-                color: "#1a3ebd",
-              },
-              {
-                icon: Eye,
-                title: "Our Vision",
-                text: "To become Nigeria's most trusted digital solutions partner — a company synonymous with innovation, quality, and real business growth for entrepreneurs across Africa.",
-                color: "#e85d04",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-shadow"
-              >
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                  style={{
-                    background: `linear-gradient(135deg, ${item.color}22, ${item.color}11)`,
-                  }}
-                >
-                  <item.icon size={26} style={{ color: item.color }} />
-                </div>
-                <h3 className="text-2xl font-black text-brand-navy mb-4">
-                  {item.title}
-                </h3>
-                <p className="text-gray-500 leading-relaxed">{item.text}</p>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Mission */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="p-8 bg-white border border-gray-200 rounded-[2px]"
+            >
+              <div className="w-12 h-12 bg-brand-blue/10 text-brand-blue rounded-[2px] flex items-center justify-center mb-6">
+                <Target size={24} />
+              </div>
+              <h3 className="text-2xl font-extrabold text-brand-navy mb-4">
+                Our Mission
+              </h3>
+              <p className="text-brand-text leading-relaxed">
+                To help businesses become visible online, attract more customers, build trust, and increase sales through professional digital solutions.
+              </p>
+            </motion.div>
+
+            {/* Vision */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-8 bg-white border border-gray-200 rounded-[2px]"
+            >
+              <div className="w-12 h-12 bg-brand-orange/10 text-brand-orange rounded-[2px] flex items-center justify-center mb-6">
+                <Eye size={24} />
+              </div>
+              <h3 className="text-2xl font-extrabold text-brand-navy mb-4">
+                Our Vision
+              </h3>
+              <p className="text-brand-text leading-relaxed">
+                To become one of Africa's most trusted digital growth brands, helping thousands of businesses build a powerful online presence.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Team Section with Real Face/Avatar Images */}
-      <section className="py-8 bg-white">
+      {/* Philosophy */}
+      <section
+        className="py-10 border-b border-gray-100"
+        style={{ background: "linear-gradient(160deg, #f8f9ff 0%, #eef2ff 40%, #fff7ed 100%)" }}
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-muted mb-3">
+              OUR CORE PHILOSOPHY
+            </p>
+            <blockquote className="text-2xl sm:text-3xl font-black text-brand-navy leading-snug mb-10">
+              &ldquo;We don&apos;t just build websites. We build trust.&rdquo;
+            </blockquote>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { label: "Visibility", text: "We don't just increase traffic. We create visibility.", color: "#1a3ebd", bg: "#eef2ff", border: "#c7d3fa" },
+                { label: "Opportunities", text: "We don't just deliver projects. We create opportunities.", color: "#e85d04", bg: "#fff0e6", border: "#fcd3aa" },
+                { label: "Relationships", text: "We don't chase clients. We earn relationships.", color: "#7c3aed", bg: "#fdf4ff", border: "#e4b8f5" },
+                { label: "Growth", text: "When our clients grow, we grow.", color: "#059669", bg: "#f0fdf4", border: "#a7f3c3" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="p-5 rounded-[8px] text-center cursor-default transition-all duration-300"
+                  style={{ background: item.bg, border: `1.5px solid ${item.border}`, boxShadow: "0 2px 8px rgba(5,15,44,0.05)" }}
+                >
+                  <p
+                    className="text-xs font-black uppercase tracking-widest mb-2"
+                    style={{ color: item.color }}
+                  >
+                    {item.label}
+                  </p>
+                  <p className="text-sm text-brand-navy font-semibold leading-snug">{item.text}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Core Values */}
+      <section className="py-10 bg-brand-gray border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl font-black text-brand-navy mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              The experts rendering high-performance solutions for your brand.
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-muted mb-3">
+              WHAT GUIDES US
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 text-center group"
-              >
-                <div className="aspect-square w-full relative overflow-hidden bg-slate-200">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-black text-brand-navy text-lg">
-                    {member.name}
-                  </h3>
-                  <p className="text-brand-orange text-sm font-semibold mt-0.5">
-                    {member.role}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-8 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <h2 className="text-3xl sm:text-4xl font-black text-brand-navy mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy">
               Our Core Values
             </h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              The principles that guide everything we do.
-            </p>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {values.map((v, i) => (
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {CORE_VALUES.map((val, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="p-6 rounded-2xl bg-white hover:bg-white border border-transparent hover:border-gray-100 hover:shadow-lg transition-all duration-300 group text-center"
+                transition={{ delay: i * 0.06 }}
+                className="p-7 bg-white border border-gray-200 rounded-[2px]"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-blue to-blue-600 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <v.icon size={22} className="text-white" />
+                <div className="w-10 h-10 bg-brand-navy text-white rounded-[2px] flex items-center justify-center mb-4">
+                  <val.icon size={20} />
                 </div>
-                <h3 className="font-bold text-brand-navy mb-2">{v.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  {v.desc}
+                <h3 className="text-lg font-bold text-brand-navy mb-2">
+                  {val.title}
+                </h3>
+                <p className="text-sm text-brand-text leading-relaxed">
+                  {val.desc}
                 </p>
               </motion.div>
             ))}
@@ -323,30 +255,22 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 bg-brand-navy relative overflow-hidden">
-        <div className="absolute inset-0 mesh-bg pointer-events-none" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <section className="py-10 bg-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-black text-white mb-4">
-              Let's Build Together
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-4">
+              Let's Build Your Online Presence Together
             </h2>
-            <p className="text-white/50 text-lg mb-8">
-              Ready to take your business to the next level? We'd love to hear
-              your story.
+            <p className="text-brand-text text-base sm:text-lg mb-8">
+              Talk to us today to discuss your business goals and get a clear roadmap for growth.
             </p>
-            <a
-              href="https://wa.me/2349039415354"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-orange"
-            >
-              <MessageCircle size={18} />
-              Get in Touch
-            </a>
+            <Link to="/contact" className="bg-brand-navy hover:bg-brand-blue text-white font-semibold px-8 py-4 rounded-[2px] transition-colors duration-200 inline-flex items-center justify-center gap-2">
+              Get a Free Consultation <ArrowRight size={18} />
+            </Link>
           </motion.div>
         </div>
       </section>

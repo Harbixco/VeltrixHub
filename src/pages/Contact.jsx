@@ -4,16 +4,15 @@ import {
   Mail,
   Phone,
   MapPin,
-  MessageCircle,
   Send,
   CheckCircle2,
   Facebook,
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
 
-// Custom TikTok SVG Icon Component to match Lucide style
 function TikTokIcon({ size = 16 }) {
   return (
     <svg
@@ -35,10 +34,12 @@ function TikTokIcon({ size = 16 }) {
 export default function Contact() {
   const [form, setForm] = useState({
     name: "",
+    businessName: "",
     email: "",
-    phone: "",
+    whatsapp: "",
+    businessDescription: "",
     service: "",
-    message: "",
+    goals: "",
   });
   const [sent, setSent] = useState(false);
 
@@ -47,235 +48,239 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    const emailSubject = encodeURIComponent(`New Project Inquiry from ${form.name}`);
+
+    const emailSubject = encodeURIComponent(
+      `Free Consultation Request from ${form.name} (${form.businessName || "Business"})`
+    );
     const emailBody = encodeURIComponent(
-      `Hello Veltrix Hub! 👋\n\nYou have received a new message from your website contact form:\n\n` +
-      `Name: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Phone: ${form.phone || "Not Provided"}\n` +
-      `Service: ${form.service || "Not Specified"}\n\n` +
-      `Message:\n${form.message}`
+      `Hello Veltrix Hub! 👋\n\n` +
+        `I would like to request a consultation for my business:\n\n` +
+        `Name: ${form.name}\n` +
+        `Business Name: ${form.businessName || "Not Specified"}\n` +
+        `Email: ${form.email}\n` +
+        `WhatsApp Number: ${form.whatsapp}\n` +
+        `Service Needed: ${form.service || "Not Specified"}\n\n` +
+        `What my business does:\n${form.businessDescription || "N/A"}\n\n` +
+        `Goals & Objectives:\n${form.goals || "N/A"}`
     );
 
-    // Directing submission straight to your Gmail inbox
-    window.open(`mailto:Officialveltrixhub@gmail.com?subject=${emailSubject}&body=${emailBody}`, "_self");
-    
+    window.open(
+      `mailto:Officialveltrixhub@gmail.com?subject=${emailSubject}&body=${emailBody}`,
+      "_self"
+    );
+
     setSent(true);
     setTimeout(() => {
       setSent(false);
-      setForm({ name: "", email: "", phone: "", service: "", message: "" });
-    }, 5000);
+      setForm({
+        name: "",
+        businessName: "",
+        email: "",
+        whatsapp: "",
+        businessDescription: "",
+        service: "",
+        goals: "",
+      });
+    }, 6000);
   };
+
+  const WA_PREFILLED_URL =
+    "https://wa.me/2348087098270?text=Hello%20Veltrix%20Hub%2C%20I'd%20like%20to%20discuss%20getting%20my%20business%20online.";
 
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
+      label: "Email Support",
       value: "Officialveltrixhub@gmail.com",
       href: "mailto:Officialveltrixhub@gmail.com",
-      color: "#1a3ebd",
     },
     {
       icon: Phone,
       label: "Phone / WhatsApp",
-      value: "+234 903 941 5354",
-      href: "https://wa.me/2349039415354",
-      color: "#e85d04",
+      value: "+234 808 709 8270",
+      href: WA_PREFILLED_URL,
     },
     {
       icon: MapPin,
-      label: "Location",
-      value: "Nigeria",
+      label: "Base & Scope",
+      value: "Global",
       href: "#",
-      color: "#1a3ebd",
     },
   ];
 
   return (
     <PageTransition>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-brand-navy relative overflow-hidden">
-        <div className="absolute inset-0 mesh-bg pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="pt-32 pb-16 bg-brand-navy text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-white/15 text-white/60"
-              style={{ background: "rgba(255,255,255,0.05)" }}
-            >
-              <MessageCircle size={14} />
-              Contact Us
-            </div>
-            <h1 className="text-5xl sm:text-6xl font-black text-white mb-5">
-              Let's Start a{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #2d55e0, #e85d04)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Conversation
-              </span>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-3">
+              START A CONVERSATION
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+              Get a Free Consultation
             </h1>
-            <p className="text-white/50 text-lg max-w-xl mx-auto">
-              Ready to grow your business online? Tell us about your project and
-              we'll get back to you within 24 hours.
+            <p className="text-gray-300 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+              Tell us about your business, challenges, and goals. We will guide you on the exact digital solutions your business needs to grow.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-8 bg-gray-50">
+      <section className="py-20 bg-brand-gray border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-10">
-            {/* Left: contact info */}
+          <div className="grid lg:grid-cols-12 gap-12">
+            {/* Left: Contact Info & WhatsApp CTA */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-2 space-y-6"
+              className="lg:col-span-5 space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-black text-brand-navy mb-2">
-                  Get In Touch
+                <h2 className="text-2xl font-extrabold text-brand-navy mb-3">
+                  Let's Talk Growth
                 </h2>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  We respond to all messages within 24 hours. For urgent
-                  matters, WhatsApp is the fastest way to reach us.
+                <p className="text-brand-text text-sm leading-relaxed">
+                  We respond to consultation requests promptly. For direct inquiries, chatting with us on WhatsApp is fast and convenient.
                 </p>
               </div>
 
-              {contactInfo.map((info, i) => (
-                <motion.a
-                  key={i}
-                  href={info.href}
-                  target={info.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 group"
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors"
-                    style={{ background: `${info.color}15` }}
-                  >
-                    <info.icon size={20} style={{ color: info.color }} />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-400 font-medium mb-0.5">
-                      {info.label}
-                    </div>
-                    <div className="font-semibold text-brand-navy text-sm break-all">
-                      {info.value}
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-
-              {/* WhatsApp CTA */}
+              {/* WhatsApp Direct CTA */}
               <a
-                href="https://wa.me/2349039415354"
+                href={WA_PREFILLED_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-5 rounded-2xl text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-xl"
-                style={{
-                  background: "linear-gradient(135deg, #25D366, #128C7E)",
-                }}
+                className="flex items-center justify-center gap-3 p-5 rounded-[2px] bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base transition-colors duration-200 shadow-sm"
               >
-                <MessageCircle size={20} />
-                Chat on WhatsApp Now
+                <FaWhatsapp size={22} />
+                Chat With Us on WhatsApp
               </a>
 
-              {/* Social */}
+              {/* Contact Info Cards */}
+              <div className="space-y-4">
+                {contactInfo.map((info, i) => (
+                  <a
+                    key={i}
+                    href={info.href}
+                    target={info.href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-5 bg-white border border-gray-200 rounded-[2px] hover:border-brand-blue transition-colors duration-200 group"
+                  >
+                    <div className="w-10 h-10 bg-brand-gray text-brand-navy group-hover:bg-brand-blue group-hover:text-white rounded-[2px] flex items-center justify-center flex-shrink-0 transition-colors">
+                      <info.icon size={20} />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-brand-muted uppercase tracking-wider">
+                        {info.label}
+                      </div>
+                      <div className="font-bold text-brand-navy text-sm break-all">
+                        {info.value}
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              {/* Social Channels */}
               <div>
-                <p className="text-sm font-semibold text-gray-500 mb-3">
-                  Follow Us
+                <p className="text-xs font-bold text-brand-navy uppercase tracking-wider mb-3">
+                  Connect With Veltrix Hub
                 </p>
                 <div className="flex gap-3">
                   {[
-                    {
-                      icon: Facebook,
-                      href: "https://web.facebook.com/thenexoralhub",
-                    },
-                    {
-                      icon: TikTokIcon,
-                      href: "https://www.tiktok.com/@veltrix_hub",
-                    },
-                    {
-                      icon: Instagram,
-                      href: "https://www.instagram.com/official_veltrix_hub",
-                    },
-                    {
-                      icon: Linkedin,
-                      href: "https://www.linkedin.com/in/agbaje-abiodun",
-                    },
-                  ].map(({ icon: Icon, href }, i) => (
+                   { icon: Facebook, href: "https://www.facebook.com/Officialveltrixhub", label: "Facebook" },
+                                 { icon: TikTokIcon, href: "https://www.tiktok.com/@officialveltrixhub", label: "TikTok" },
+                                 { icon: Instagram, href: "https://www.instagram.com/officialveltrixhub/", label: "Instagram" },
+                                 { icon: Linkedin, href: "https://www.linkedin.com/in/agbaje-abiodun/", label: "LinkedIn" },
+                                 { icon: FaWhatsapp, href: "https://wa.me/2348087098270", label: "WhatsApp" },
+                  
+                  ].map(({ icon: Icon, href, label }, i) => (
                     <a
                       key={i}
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-xl bg-white border border-gray-100 flex items-center justify-center text-gray-400 hover:text-brand-blue hover:border-brand-blue hover:shadow-md transition-all"
+                      aria-label={label}
+                      className="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-brand-navy hover:bg-brand-navy hover:text-white rounded-[2px] transition-colors"
                     >
-                      <Icon size={16} />
+                      <Icon size={18} />
                     </a>
                   ))}
                 </div>
               </div>
             </motion.div>
 
-            {/* Right: form */}
+            {/* Right: Comprehensive Lead Form */}
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-3"
+              transition={{ delay: 0.1 }}
+              className="lg:col-span-7"
             >
-              <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                <h3 className="text-xl font-black text-brand-navy mb-6">
-                  Send Us a Message
+              <div className="bg-white border border-gray-200 p-8 sm:p-10 rounded-[2px]">
+                <h3 className="text-2xl font-extrabold text-brand-navy mb-2">
+                  Tell Us About Your Business
                 </h3>
+                <p className="text-sm text-brand-text mb-8">
+                  Fill out the form below to request a strategic consultation.
+                </p>
 
                 {sent ? (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
+                    className="text-center py-12 bg-gray-50 border border-gray-200 rounded-[2px]"
                   >
-                    <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle2 size={32} className="text-green-500" />
+                    <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle2 size={32} />
                     </div>
                     <h4 className="text-xl font-bold text-brand-navy mb-2">
-                      Message Formatted!
+                      Consultation Request Ready!
                     </h4>
-                    <p className="text-gray-500 text-sm">
-                      We've opened your mail client with your message. Please click send to dispatch it to us!
+                    <p className="text-brand-text text-sm max-w-md mx-auto">
+                      Your email application has opened with your structured consultation details. Click send to dispatch your message directly to our team!
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid sm:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                          Full Name *
+                        <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
+                          Your Name *
                         </label>
                         <input
                           name="name"
                           value={form.name}
                           onChange={handleChange}
                           required
-                          placeholder="Your full name"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 text-sm transition-all"
+                          placeholder="e.g. John Doe"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                        <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
+                          Business Name *
+                        </label>
+                        <input
+                          name="businessName"
+                          value={form.businessName}
+                          onChange={handleChange}
+                          required
+                          placeholder="e.g. Acme Enterprise"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
                           Email Address *
                         </label>
                         <input
@@ -284,68 +289,85 @@ export default function Contact() {
                           value={form.email}
                           onChange={handleChange}
                           required
-                          placeholder="your@email.com"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 text-sm transition-all"
+                          placeholder="yourname@business.com"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm"
                         />
                       </div>
-                    </div>
-                    <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                          Phone Number
+                        <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
+                          WhatsApp Number *
                         </label>
                         <input
-                          name="phone"
-                          value={form.phone}
+                          name="whatsapp"
+                          value={form.whatsapp}
                           onChange={handleChange}
-                          placeholder="+234 xxx xxx xxxx"
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 text-sm transition-all"
+                          required
+                          placeholder="+234 800 000 0000"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm"
                         />
                       </div>
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                          Service Interested In
-                        </label>
-                        <select
-                          name="service"
-                          value={form.service}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 text-sm transition-all bg-white"
-                        >
-                          <option value="">Select a service</option>
-                          <option>Website Development</option>
-                          <option>E-Commerce Development</option>
-                          <option>CAC Registration</option>
-                          <option>Web Dev Training</option>
-                          <option>Website Maintenance</option>
-                          <option>Corporate Branding</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
                     </div>
+
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                        Your Message *
+                      <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
+                        What does your business do?
                       </label>
-                      <textarea
-                        name="message"
-                        value={form.message}
+                      <input
+                        name="businessDescription"
+                        value={form.businessDescription}
                         onChange={handleChange}
-                        required
-                        rows={5}
-                        placeholder="Tell us about your project, goals, and any specific requirements..."
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/10 text-sm transition-all resize-none"
+                        placeholder="Briefly describe your industry, products or services..."
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm"
                       />
                     </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
+                        What do you need help with? *
+                      </label>
+                      <select
+                        name="service"
+                        value={form.service}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm bg-white"
+                      >
+                        <option value="">Select primary digital service</option>
+                        <option value="Website Development">Website Development</option>
+                        <option value="E-commerce Development">E-commerce Development</option>
+                        <option value="Website Maintenance">Website Maintenance</option>
+                        <option value="Business Branding">Business Branding</option>
+                        <option value="CAC Registration">CAC Registration</option>
+                        <option value="Digital Consultation">Digital Consultation</option>
+                        <option value="Website Training">Website Training</option>
+                        <option value="Other">Other / Multiple Services</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-2">
+                        Tell us a little about what you're trying to achieve
+                      </label>
+                      <textarea
+                        name="goals"
+                        value={form.goals}
+                        onChange={handleChange}
+                        rows={4}
+                        placeholder="Share your key business goals, current challenges, or specific requirements..."
+                        className="w-full px-4 py-3 border border-gray-200 rounded-[2px] focus:outline-none focus:border-brand-blue text-sm resize-none"
+                      />
+                    </div>
+
                     <button
                       type="submit"
-                      className="btn-primary w-full justify-center gap-2"
+                      className="bg-brand-navy hover:bg-brand-blue text-white font-semibold w-full py-4 rounded-[2px] transition-colors duration-200 inline-flex items-center justify-center gap-2 text-base"
                     >
                       <Send size={18} />
-                      Submit
+                      Request a Consultation
                     </button>
-                    <p className="text-xs text-gray-400 text-center">
-                      By submitting, your email application will prepare the message. We respond within 24 hours.
+
+                    <p className="text-xs text-brand-muted text-center">
+                      Submitting prepares your email request. We review every consultation request within 24 hours.
                     </p>
                   </form>
                 )}

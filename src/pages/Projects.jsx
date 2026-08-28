@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ExternalLink, Briefcase } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 
-// ─── REAL IMAGE ASSET IMPORTS ────────────────────────────────────────────────
 import dove from "../assets/dove.webp";
 import translator from "../assets/translator.png";
 import walexfarms from "../assets/walexfarms.webp";
@@ -16,78 +15,104 @@ import portfolio from "../assets/portfolio.webp";
 
 const categories = ["All", "Website", "E-Commerce", "Branding", "Training"];
 
-// Added unique destination links for each specific project item
 const projects = [
   {
     title: "FindAll Online Store",
+    industry: "Electronics Retail",
     category: "E-Commerce",
-    desc: "Electronics e-commerce store with product catalog, cart, and Paystack checkout integration.",
+    challenge: "The business relied on manual social chats, making inventory updates and transaction processing slow.",
+    solution: "We built a full-featured e-commerce portal with product catalog, cart system, and Paystack checkout.",
+    outcome: "Created a 24/7 automated sales channel that processes buyer orders nationwide.",
     image: dove,
     tags: ["React", "E-Commerce", "Paystack"],
-    link: "https://dove-five.vercel.app/", // Replace with real live URL
+    link: "https://dove-five.vercel.app/",
   },
   {
-    title: "Language Translator System",
+    title: "NimbleByte Global",
+    industry: "Enterprise Technology Solutions",
     category: "Website",
-    desc: "Web app for translating text between multiple languages in real-time.",
-    image: translator,
-    tags: ["React", "Framer Motion", "CMS"],
-    link: "https://language-translators-zeta.vercel.app/",
+    challenge: "Corporate clients questioned service offerings due to an outdated web presence.",
+    solution: "We created a modern corporate website that presents technical services with authority.",
+    outcome: "Established immediate enterprise credibility and streamlined B2B proposal discussions.",
+    image: nimble,
+    tags: ["React", "Corporate Website", "UI/UX"],
+    link: "https://nimble-byte.com/",
   },
   {
-    title: "Walex Farms And Agro-Services",
+    title: "Walex Farms & Agro-Services",
+    industry: "Commercial Agriculture",
     category: "Website",
-    desc: "Walex Farms functions as a multi-tier commercial agricultural developer.",
+    challenge: "The business needed a professional online presence to clearly communicate its commercial farming services.",
+    solution: "We created a modern website that presents the business professionally and makes it easy to understand operations.",
+    outcome: "Established online credibility and clear channels for corporate agricultural buyer enquiries.",
     image: walexfarms,
-    tags: ["HTML/CSS", "JavaScript", "Forms"],
+    tags: ["Web Development", "Responsive Design", "Forms"],
     link: "https://agrowalexfarms.vercel.app/",
   },
   {
+    title: "Language Translator System",
+    industry: "Digital Tools & Productivity",
+    category: "Website",
+    challenge: "Users needed a fast, clean interface for converting text across multiple languages in real-time.",
+    solution: "Engineered a lightweight web tool leveraging translation APIs with an intuitive UI.",
+    outcome: "Provided an easy-to-use utility for multilingual users and students.",
+    image: translator,
+    tags: ["React", "Web App", "API Integration"],
+    link: "https://language-translators-zeta.vercel.app/",
+  },
+  {
     title: "Numace Coding Academy",
+    industry: "Specialized Medical Education",
     category: "Training",
-    desc: "A specialized clinical coding training and workforce-development institute.",
+    challenge: "An institute required a structured platform to present clinical coding courses and enroll candidates.",
+    solution: "Developed an educational web platform with course outlines, schedules, and registration workflows.",
+    outcome: "Streamlined student course inquiries and online program enrollments.",
     image: numace,
-    tags: ["HTML/CSS", "JavaScript", "Forms"],
+    tags: ["Education Portal", "Course Catalog", "Forms"],
     link: "https://numaceproject.vercel.app/",
   },
   {
-    title: "Affordable Hub",
+    title: "Affordable Gadgets Hub",
+    industry: "Consumer Electronics Retail",
     category: "E-Commerce",
-    desc: "E-commerce platform for browsing and purchasing affordable gadgets.",
+    challenge: "The brand needed an online showcase to display available gadgets with price transparency.",
+    solution: "Designed an e-commerce catalog enabling buyers to inspect product specifications and order.",
+    outcome: "Boosted customer confidence and reduced routine price inquiry messages.",
     image: affordable,
-    tags: ["React", "Node.js", "Payments"],
+    tags: ["React", "E-Commerce", "Payments"],
     link: "https://affordablegadgetshub.vercel.app/",
   },
   {
     title: "Trashcycle",
+    industry: "Environmental Sustainability",
     category: "Website",
-    desc: "Recycling and waste management awareness platform.",
+    challenge: "An initiative needed to raise public awareness and accept recycling drop-off requests.",
+    solution: "Created an engaging informational platform outlining recycling benefits and drop-off points.",
+    outcome: "Increased community engagement and digitized pickup request handling.",
     image: trashcycle,
-    tags: ["React", "Animations", "Portfolio"],
+    tags: ["React", "Sustainability", "UI Design"],
     link: "https://trashcycle.vercel.app/",
   },
   {
-    title: "Nimblebyte Global",
-    category: "Website",
-    desc: "Responsive business website for a tech solutions company.",
-    image: nimble,
-    tags: ["React", "LMS", "Dashboard"],
-    link: "https://nimble-byte.com/", // Can link internally to your local route
-  },
-  {
-    title: "Nimblebash",
+    title: "Nimblebash Event Platform",
+    industry: "Event Management & Hospitality",
     category: "E-Commerce",
-    desc: "A Event platform with host & guest onboarding system.",
+    challenge: "Event hosts and guests needed an organized onboarding portal to manage invitations and access.",
+    solution: "Built a customized event onboarding system with host registration and guest tools.",
+    outcome: "Simplified event coordination and guest registration for corporate and private functions.",
     image: nimblebasa,
-    tags: ["Shopify", "Custom Theme", "Logistics"],
+    tags: ["Custom Portal", "Onboarding", "Web App"],
     link: "https://nimblebash.com/onboarding",
   },
   {
-    title: "Porfolio",
+    title: "Software Developer Portfolio",
+    industry: "Professional Services",
     category: "Branding",
-    desc: "Personal portfolio for a software developer.",
+    challenge: "A software specialist needed a brand showcase to pitch international contract work.",
+    solution: "Designed a clean portfolio website highlighting code repositories, skills, and past work.",
+    outcome: "Secured a professional showcase for remote contract opportunities.",
     image: portfolio,
-    tags: ["Rebrand", "Logo", "Stationery"],
+    tags: ["Branding", "Portfolio", "Minimal Design"],
     link: "https://hagiostech.vercel.app/",
   },
 ];
@@ -101,177 +126,164 @@ export default function Projects() {
   return (
     <PageTransition>
       {/* Hero */}
-      <section className="pt-32 pb-20 bg-brand-navy relative overflow-hidden">
-        <div className="absolute inset-0 mesh-bg pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="pt-32 pb-16 bg-brand-navy text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            <div
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-6 border border-white/15 text-white/60"
-              style={{ background: "rgba(255,255,255,0.05)" }}
-            >
-              <Briefcase size={14} />
-              Our Portfolio
-            </div>
-            <h1 className="text-5xl sm:text-6xl font-black text-white mb-5">
-              Work We're{" "}
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #2d55e0, #e85d04)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Proud Of
-              </span>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-3">
+              OUR PORTFOLIO
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+              Work That Solves<br className="hidden sm:inline" /> Real Business Problems
             </h1>
-            <p className="text-white/50 text-lg max-w-xl mx-auto">
-              Every project tells a story of transformation. Here's how we've
-              helped businesses across Nigeria grow online.
+            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Explore digital solutions we have built to help businesses build credibility, establish market trust, and generate real opportunities.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Filter & Grid */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-20 bg-brand-gray border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-2 mb-12"
-          >
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                className={`px-5 py-2.5 rounded-[2px] text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
                   active === cat
-                    ? "text-white shadow-lg scale-105"
-                    : "bg-white text-gray-600 hover:text-brand-blue hover:bg-blue-50 border border-gray-200"
+                    ? "bg-brand-navy text-white"
+                    : "bg-white text-brand-navy hover:bg-gray-100 border border-gray-200"
                 }`}
-                style={
-                  active === cat
-                    ? {
-                        background: "linear-gradient(135deg, #1a3ebd, #2d55e0)",
-                        boxShadow: "0 8px 24px rgba(26,62,189,0.3)",
-                      }
-                    : {}
-                }
               >
                 {cat}
               </button>
             ))}
-          </motion.div>
+          </div>
 
-          {/* Cards */}
+          {/* Cards Grid */}
           <motion.div
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             <AnimatePresence mode="popLayout">
-              {filtered.map((p, i) => {
-                // Determine whether to use external <a> or an internal link configuration if needed
-                const isExternal = p.link.startsWith("http");
-
-                return (
-                  <motion.div
-                    key={p.title}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: i * 0.05 }}
-                    className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-400 group cursor-pointer"
-                  >
-                    {/* Wrap the clickable image structure with the project link */}
+              {filtered.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3, delay: i * 0.04 }}
+                  className="bg-white rounded-[2px] border border-gray-200 overflow-hidden flex flex-col justify-between"
+                >
+                  <div>
                     <a
                       href={p.link}
-                      target={isExternal ? "_blank" : "_self"}
-                      rel={isExternal ? "noopener noreferrer" : ""}
-                      className="block aspect-[16/10] relative overflow-hidden bg-slate-900"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block aspect-[16/10] relative overflow-hidden bg-slate-100 border-b border-gray-100 group"
                     >
                       <img
                         src={p.image}
                         alt={p.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
-
-                      {/* Shadow overlay gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
-
-                      {/* Hover overlay with dynamic text response */}
-                      <div className="absolute inset-0 bg-brand-navy/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="flex items-center gap-2 text-white text-sm font-semibold bg-white/10 backdrop-blur px-4 py-2 rounded-full border border-white/20">
-                          <ExternalLink size={14} />
-                          View Project
-                        </div>
+                      <div className="absolute inset-0 bg-brand-navy/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="inline-flex items-center gap-2 bg-white text-brand-navy text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-[2px]">
+                          View Project <ExternalLink size={14} />
+                        </span>
                       </div>
                     </a>
 
-                    {/* Info */}
-                    <div className="p-5">
-                      <span className="text-xs font-bold uppercase tracking-widest text-brand-orange mb-1 block">
-                        {p.category}
-                      </span>
-                      <h3 className="font-black text-brand-navy mb-2 text-lg">
+                    <div className="p-6">
+                      <div className="flex items-center justify-between text-xs font-bold text-brand-muted uppercase tracking-wider mb-2">
+                        <span>{p.category}</span>
+                        <span className="text-brand-blue">{p.industry}</span>
+                      </div>
+
+                      <h3 className="font-extrabold text-brand-navy text-xl mb-4">
                         <a
                           href={p.link}
-                          target={isExternal ? "_blank" : "_self"}
-                          rel={isExternal ? "noopener noreferrer" : ""}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="hover:text-brand-blue transition-colors"
                         >
                           {p.title}
                         </a>
                       </h3>
-                      <p className="text-gray-500 text-sm leading-relaxed mb-4 h-12 line-clamp-2">
-                        {p.desc}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {p.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2.5 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+
+                      <div className="space-y-2.5 text-xs text-brand-text mb-6 bg-gray-50 p-4 border border-gray-200 rounded-[2px]">
+                        <div>
+                          <span className="font-bold text-brand-navy block">Challenge:</span>
+                          <p>{p.challenge}</p>
+                        </div>
+                        <div>
+                          <span className="font-bold text-brand-navy block">Solution:</span>
+                          <p>{p.solution}</p>
+                        </div>
+                        <div>
+                          <span className="font-bold text-brand-blue block">Outcome:</span>
+                          <p className="font-semibold text-brand-navy">{p.outcome}</p>
+                        </div>
                       </div>
                     </div>
-                  </motion.div>
-                );
-              })}
+                  </div>
+
+                  <div className="p-6 pt-0 border-t border-gray-100 mt-auto flex items-center justify-between">
+                    <div className="flex flex-wrap gap-1.5">
+                      {p.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 rounded-[2px] text-[10px] font-bold uppercase bg-gray-100 text-brand-navy"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-bold uppercase text-brand-navy hover:text-brand-blue inline-flex items-center gap-1 shrink-0 ml-2"
+                    >
+                      View <ArrowRight size={14} />
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
             </AnimatePresence>
           </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-6 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl sm:text-4xl font-black text-brand-navy mb-4">
-              Want a Project Like These?
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mb-4">
+              Ready to Solve Your Online Growth Challenge?
             </h2>
-            <p className="text-gray-500 text-lg mb-8">
-              Let's discuss your vision and build something extraordinary
-              together.
+            <p className="text-brand-text text-base sm:text-lg mb-8">
+              Let's build a professional digital solution tailored to your business goals.
             </p>
             <a
-              href="https://wa.me/2349039415354"
+              href="https://wa.me/2348087098270?text=Hello%20Veltrix%20Hub%2C%20I'd%20like%20to%20discuss%20getting%20my%20business%20online."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
+              className="bg-brand-navy hover:bg-brand-blue text-white font-semibold px-8 py-4 rounded-[2px] transition-colors duration-200 inline-flex items-center gap-2"
             >
-              Start Your Project <ArrowRight size={18} />
+              Get a Free Consultation <ArrowRight size={18} />
             </a>
           </motion.div>
         </div>
