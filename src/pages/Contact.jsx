@@ -104,7 +104,7 @@ export default function Contact() {
       icon: MapPin,
       label: "Base & Scope",
       value: "Global",
-      href: "#",
+      href: null,
     },
   ];
 
@@ -163,27 +163,42 @@ export default function Contact() {
 
               {/* Contact Info Cards */}
               <div className="space-y-4">
-                {contactInfo.map((info, i) => (
-                  <a
-                    key={i}
-                    href={info.href}
-                    target={info.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-5 bg-white border border-gray-200 rounded-[2px] hover:border-brand-blue transition-colors duration-200 group"
-                  >
-                    <div className="w-10 h-10 bg-brand-gray text-brand-navy group-hover:bg-brand-blue group-hover:text-white rounded-[2px] flex items-center justify-center flex-shrink-0 transition-colors">
-                      <info.icon size={20} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-bold text-brand-muted uppercase tracking-wider">
-                        {info.label}
+                {contactInfo.map((info, i) => {
+                  const content = (
+                    <>
+                      <div className={`w-10 h-10 bg-brand-gray text-brand-navy ${info.href ? "group-hover:bg-brand-blue group-hover:text-white" : ""} rounded-[2px] flex items-center justify-center flex-shrink-0 transition-colors`}>
+                        <info.icon size={20} />
                       </div>
-                      <div className="font-bold text-brand-navy text-sm break-all">
-                        {info.value}
+                      <div>
+                        <div className="text-xs font-bold text-brand-muted uppercase tracking-wider">
+                          {info.label}
+                        </div>
+                        <div className="font-bold text-brand-navy text-sm break-all">
+                          {info.value}
+                        </div>
                       </div>
+                    </>
+                  );
+
+                  return info.href ? (
+                    <a
+                      key={i}
+                      href={info.href}
+                      target={info.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 p-5 bg-white border border-gray-200 rounded-[2px] hover:border-brand-blue transition-colors duration-200 group"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div
+                      key={i}
+                      className="flex items-center gap-4 p-5 bg-white border border-gray-200 rounded-[2px]"
+                    >
+                      {content}
                     </div>
-                  </a>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Social Channels */}

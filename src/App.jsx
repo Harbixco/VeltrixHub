@@ -10,6 +10,7 @@ import Projects from "./pages/Projects";
 import Training from "./pages/Training";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 // ─── SCROLL MANAGEMENT UTILITY ───────────────────────────────────────
 function ScrollToTopAndSection() {
@@ -47,6 +48,7 @@ function AnimatedRoutes() {
         <Route path="/training" element={<Training />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
