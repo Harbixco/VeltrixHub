@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 
-import dove from "../assets/dove.webp";
+import lawfirm from "../assets/lawfirm.jpg";
 import translator from "../assets/translator.png";
 import walexfarms from "../assets/walexfarms.webp";
 import numace from "../assets/numace.webp";
@@ -17,14 +17,14 @@ const categories = ["All", "Website", "E-Commerce", "Branding", "Training"];
 
 const projects = [
   {
-    title: "FindAll Online Store",
-    industry: "Electronics Retail",
-    category: "E-Commerce",
-    challenge: "The business relied on manual social chats, making inventory updates and transaction processing slow.",
-    solution: "We built a full-featured e-commerce portal with product catalog, cart system, and Paystack checkout.",
-    outcome: "Created a 24/7 automated sales channel that processes buyer orders nationwide.",
-    image: dove,
-    tags: ["React", "E-Commerce", "Paystack"],
+    title: "Sterling Chambers",
+    industry: "Legal Services & Commercial Litigation",
+    category: "Website",
+    challenge: "The firm needed an authoritative digital presence to communicate specialized litigation expertise and attract commercial clients.",
+    solution: "We engineered a prestigious corporate legal platform with practice area overviews, attorney highlights, and direct consultation scheduling.",
+    outcome: "Enhanced corporate credibility and streamlined qualified client inquiries for high-stakes dispute resolution.",
+    image: lawfirm,
+    tags: ["React", "Legal Platform", "UI/UX"],
     link: "https://dove-five.vercel.app/",
   },
   {

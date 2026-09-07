@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
-
-import dove from "../../assets/dove.webp";
+import lawfirm from "../../assets/lawfirm.jpg";
 import nimble from "../../assets/nimble.jpg";
 import walexfarms from "../../assets/walexfarms.webp";
 
 const PROJECTS = [
   {
-    img: dove,
-    alt: "FindAll Online Store E-Commerce Platform",
-    industry: "Electronics & Gadgets Retail",
-    title: "FindAll Online Store",
+    img: lawfirm,
+    alt: "Sterling Chambers Legal Services & Litigation Website",
+    industry: "Legal Services & Commercial Litigation",
+    title: "Sterling Chambers",
     challenge:
-      "Needed an online storefront to process transactions beyond direct social messages.",
+      "Needed an authoritative digital presence to communicate specialized litigation practice areas and build client trust.",
     solution:
-      "Developed a fast e-commerce portal with product catalog, cart, and online payment integration.",
+      "Engineered a distinguished corporate legal website featuring structured practice overviews and seamless consultation scheduling.",
     outcome:
-      "Created a 24/7 self-service buying channel for nationwide electronics buyers.",
+      "Established strong market authority for commercial dispute resolution, driving qualified corporate client consultations.",
     href: "https://dove-five.vercel.app/",
     accent: "#1a3ebd",
     layout: "left",
