@@ -16,7 +16,7 @@ const GROWTH_STEPS = [
 export default function HeroSection() {
   return (
     <section
-      className="relative pt-10 pb-10 lg:pt-20 lg:pb-12 overflow-hidden"
+      className="relative pt-24 pb-10 lg:pt-40 lg:pb-12 overflow-hidden"
       style={{
         background: "linear-gradient(150deg, #050f2c 0%, #0a1a45 55%, #050f2c 100%)",
       }}

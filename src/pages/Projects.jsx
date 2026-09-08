@@ -2,20 +2,31 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import PageTransition from "../components/PageTransition";
-
 import lawfirm from "../assets/lawfirm.jpg";
 import translator from "../assets/translator.png";
 import walexfarms from "../assets/walexfarms.webp";
 import numace from "../assets/numace.webp";
 import affordable from "../assets/affordable.webp";
-import trashcycle from "../assets/trashcycle.png";
 import nimble from "../assets/nimble.jpg";
+import portfolio from "../assets/portfolio.jpg";
 import nimblebasa from "../assets/nimblebasa.jpg";
-import portfolio from "../assets/portfolio.webp";
+import korpea from "../assets/korpea.jpg";
 
-const categories = ["All", "Website", "E-Commerce", "Branding", "Training"];
+
+const categories = ["All", "Website", "E-Commerce", "Training"];
 
 const projects = [
+  {
+    title: "Numace Coding Academy",
+    industry: "Specialized Technical & Healthcare Training",
+    category: "Training",
+    challenge: "An institute required a structured platform to present professional coding courses and enroll candidates.",
+    solution: "Developed an educational web platform with course outlines, schedules, and registration workflows.",
+    outcome: "Streamlined student course inquiries and online program enrollments.",
+    image: numace,
+    tags: ["Education Portal", "Course Catalog", "Registration"],
+    link: "https://numaceproject.vercel.app/",
+  },
   {
     title: "Sterling Chambers",
     industry: "Legal Services & Commercial Litigation",
@@ -25,7 +36,18 @@ const projects = [
     outcome: "Enhanced corporate credibility and streamlined qualified client inquiries for high-stakes dispute resolution.",
     image: lawfirm,
     tags: ["React", "Legal Platform", "UI/UX"],
-    link: "https://dove-five.vercel.app/",
+    link: "https://law-firm-blush.vercel.app/",
+  },
+  {
+    title: "Walex Farms & Agro-Services",
+    industry: "Commercial Agriculture",
+    category: "Website",
+    challenge: "The business needed a professional online presence to clearly communicate its commercial farming services.",
+    solution: "We created a modern website that presents the business professionally and makes it easy to understand operations.",
+    outcome: "Established online credibility and clear channels for corporate agricultural buyer enquiries.",
+    image: walexfarms,
+    tags: ["Web Development", "Responsive Design", "AgriTech"],
+    link: "https://agrowalexfarms.vercel.app/",
   },
   {
     title: "NimbleByte Global",
@@ -39,15 +61,37 @@ const projects = [
     link: "https://nimble-byte.com/",
   },
   {
-    title: "Walex Farms & Agro-Services",
-    industry: "Commercial Agriculture",
+    title: "Affordable Gadgets Hub",
+    industry: "Consumer Electronics Retail",
+    category: "E-Commerce",
+    challenge: "The brand needed an online showcase to display available gadgets with price transparency.",
+    solution: "Designed an e-commerce catalog enabling buyers to inspect product specifications and order.",
+    outcome: "Boosted customer confidence and reduced routine price inquiry messages.",
+    image: affordable,
+    tags: ["React", "E-Commerce", "Product Catalog"],
+    link: "https://affordablegadgetshub.vercel.app/",
+  },
+  {
+    title: "Nimblebasa Technologies",
+    industry: "Digital Tools & Productivity",
     category: "Website",
-    challenge: "The business needed a professional online presence to clearly communicate its commercial farming services.",
-    solution: "We created a modern website that presents the business professionally and makes it easy to understand operations.",
-    outcome: "Established online credibility and clear channels for corporate agricultural buyer enquiries.",
-    image: walexfarms,
-    tags: ["Web Development", "Responsive Design", "Forms"],
-    link: "https://agrowalexfarms.vercel.app/",
+    challenge: "Users needed a fast, clean interface for converting text across multiple languages in real-time.",
+    solution: "Engineered a lightweight web tool leveraging translation APIs with an intuitive UI.",
+    outcome: "Provided an easy-to-use utility for multilingual users and students.",
+    image: nimblebasa,
+    tags: ["React", "Web App", "API Integration"],
+    link: "https://language-translators-zeta.vercel.app/",
+  },
+  {
+    title: "Portfolio Website",
+    industry: "Portfolio",
+    category: "Website",
+    challenge: "I needed a website to showcase my work and services.",
+    solution: "I created a professional portfolio website to display my projects and services.",
+    outcome: "I have a professional website to showcase my work and services.",
+    image: portfolio,
+    tags: ["React", "Web App", "Portfolio"],
+    link: "https://hagiostech.vercel.app/",
   },
   {
     title: "Language Translator System",
@@ -61,59 +105,15 @@ const projects = [
     link: "https://language-translators-zeta.vercel.app/",
   },
   {
-    title: "Numace Coding Academy",
-    industry: "Specialized Medical Education",
-    category: "Training",
-    challenge: "An institute required a structured platform to present clinical coding courses and enroll candidates.",
-    solution: "Developed an educational web platform with course outlines, schedules, and registration workflows.",
-    outcome: "Streamlined student course inquiries and online program enrollments.",
-    image: numace,
-    tags: ["Education Portal", "Course Catalog", "Forms"],
-    link: "https://numaceproject.vercel.app/",
-  },
-  {
-    title: "Affordable Gadgets Hub",
-    industry: "Consumer Electronics Retail",
-    category: "E-Commerce",
-    challenge: "The brand needed an online showcase to display available gadgets with price transparency.",
-    solution: "Designed an e-commerce catalog enabling buyers to inspect product specifications and order.",
-    outcome: "Boosted customer confidence and reduced routine price inquiry messages.",
-    image: affordable,
-    tags: ["React", "E-Commerce", "Payments"],
-    link: "https://affordablegadgetshub.vercel.app/",
-  },
-  {
-    title: "Trashcycle",
-    industry: "Environmental Sustainability",
+    title: "Korpea Technologies",
+    industry: "Company Website",
     category: "Website",
-    challenge: "An initiative needed to raise public awareness and accept recycling drop-off requests.",
-    solution: "Created an engaging informational platform outlining recycling benefits and drop-off points.",
-    outcome: "Increased community engagement and digitized pickup request handling.",
-    image: trashcycle,
-    tags: ["React", "Sustainability", "UI Design"],
-    link: "https://trashcycle.vercel.app/",
-  },
-  {
-    title: "Nimblebash Event Platform",
-    industry: "Event Management & Hospitality",
-    category: "E-Commerce",
-    challenge: "Event hosts and guests needed an organized onboarding portal to manage invitations and access.",
-    solution: "Built a customized event onboarding system with host registration and guest tools.",
-    outcome: "Simplified event coordination and guest registration for corporate and private functions.",
-    image: nimblebasa,
-    tags: ["Custom Portal", "Onboarding", "Web App"],
-    link: "https://nimblebash.com/onboarding",
-  },
-  {
-    title: "Software Developer Portfolio",
-    industry: "Professional Services",
-    category: "Branding",
-    challenge: "A software specialist needed a brand showcase to pitch international contract work.",
-    solution: "Designed a clean portfolio website highlighting code repositories, skills, and past work.",
-    outcome: "Secured a professional showcase for remote contract opportunities.",
-    image: portfolio,
-    tags: ["Branding", "Portfolio", "Minimal Design"],
-    link: "https://hagiostech.vercel.app/",
+    challenge: "Korpea an emerging beauty and skincare brand needed a modern, aesthetic-driven e-commerce platform to launch their products.",
+    solution: "We created a modern corporate website that presents technical services with authority.",
+    outcome: "Established immediate enterprise credibility and streamlined B2B proposal discussions.",
+    image: korpea,
+    tags: ["React", "Corporate Website", "UI/UX"],
+    link: "https://korpeabeauty.vercel.app/",
   },
 ];
 
@@ -126,7 +126,7 @@ export default function Projects() {
   return (
     <PageTransition>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-brand-navy text-white relative overflow-hidden">
+      <section className="pt-32 pb-10 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -147,7 +147,7 @@ export default function Projects() {
       </section>
 
       {/* Filter & Grid */}
-      <section className="py-20 bg-brand-gray border-b border-gray-200">
+      <section className="py-10 bg-brand-gray border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter tabs */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -155,11 +155,10 @@ export default function Projects() {
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
-                className={`px-5 py-2.5 rounded-[2px] text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
-                  active === cat
-                    ? "bg-brand-navy text-white"
-                    : "bg-white text-brand-navy hover:bg-gray-100 border border-gray-200"
-                }`}
+                className={`px-5 py-2.5 rounded-[2px] text-xs font-bold uppercase tracking-wider transition-all duration-200 ${active === cat
+                  ? "bg-brand-navy text-white"
+                  : "bg-white text-brand-navy hover:bg-gray-100 border border-gray-200"
+                  }`}
               >
                 {cat}
               </button>
@@ -187,12 +186,12 @@ export default function Projects() {
                       href={p.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block aspect-[16/10] relative overflow-hidden bg-slate-100 border-b border-gray-100 group"
+                      className="block aspect-[16/9] relative overflow-hidden bg-slate-950 border-b border-gray-100 group flex items-center justify-center"
                     >
                       <img
                         src={p.image}
                         alt={p.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-full object-contain object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-brand-navy/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <span className="inline-flex items-center gap-2 bg-white text-brand-navy text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-[2px]">
@@ -264,7 +263,7 @@ export default function Projects() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

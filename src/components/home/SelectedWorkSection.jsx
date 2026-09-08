@@ -5,6 +5,7 @@ import lawfirm from "../../assets/lawfirm.jpg";
 import nimble from "../../assets/nimble.jpg";
 import walexfarms from "../../assets/walexfarms.webp";
 
+
 const PROJECTS = [
   {
     img: lawfirm,
