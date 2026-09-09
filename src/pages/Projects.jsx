@@ -113,7 +113,7 @@ const projects = [
     outcome: "Established immediate enterprise credibility and streamlined B2B proposal discussions.",
     image: korpea,
     tags: ["React", "Corporate Website", "UI/UX"],
-    link: "https://korpeabeauty.vercel.app/",
+    link: "https://korpeatech.com/",
   },
 ];
 

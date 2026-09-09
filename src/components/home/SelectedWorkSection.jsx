@@ -18,7 +18,7 @@ const PROJECTS = [
       "Engineered a distinguished corporate legal website featuring structured practice overviews and seamless consultation scheduling.",
     outcome:
       "Established strong market authority for commercial dispute resolution, driving qualified corporate client consultations.",
-    href: "https://dove-five.vercel.app/",
+    href: "https://law-firm-blush.vercel.app/",
     accent: "#1a3ebd",
     layout: "left",
   },
