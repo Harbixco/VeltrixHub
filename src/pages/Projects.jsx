@@ -10,7 +10,7 @@ import affordable from "../assets/affordable.webp";
 import nimble from "../assets/nimble.jpg";
 import portfolio from "../assets/portfolio.jpg";
 import nimblebasa from "../assets/nimblebasa.jpg";
-import korpea from "../assets/korpea.jpg";
+import jia from "../assets/jia.jpg";
 
 
 const categories = ["All", "Website", "E-Commerce", "Training"];
@@ -105,15 +105,15 @@ const projects = [
     link: "https://language-translators-zeta.vercel.app/",
   },
   {
-    title: "Korpea Technologies",
-    industry: "Company Website",
+    title: "Jesus in Africa",
+    industry: "Church & Ministry Outreach",
     category: "Website",
-    challenge: "Korpea an emerging beauty and skincare brand needed a modern, aesthetic-driven e-commerce platform to launch their products.",
-    solution: "We created a modern corporate website that presents technical services with authority.",
-    outcome: "Established immediate enterprise credibility and streamlined B2B proposal discussions.",
-    image: korpea,
-    tags: ["React", "Corporate Website", "UI/UX"],
-    link: "https://korpeatech.com/",
+    challenge: "The ministry needed an inspiring digital presence to coordinate evangelistic crusades across Africa, publish testimonies, receive prayer requests, and engage global partners.",
+    solution: "Developed an uplifting, responsive web platform featuring upcoming crusade schedules, multimedia highlights, an interactive prayer portal, and online partnership channels.",
+    outcome: "Expanded continental outreach, deepened partner engagement, and streamlined community prayer submissions and crusade inquiries.",
+    image: jia,
+    tags: ["React", "Ministry Platform", "UI/UX"],
+    link: "https://jesus-in-africa.vercel.app/",
   },
 ];
 
