@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
+import SEO from "../components/SEO";
 
 import agencyStoryImg from "../assets/corporate-solutions.webp";
 
@@ -52,6 +53,11 @@ const CORE_VALUES = [
 export default function About() {
   return (
     <PageTransition>
+      <SEO
+        title="About Us – Digital Growth Partner | Veltrix Hub"
+        description="Learn about Veltrix Hub's mission to empower Nigerian and African businesses with credible digital foundations, bespoke engineering, and brand trust."
+        keywords="about Veltrix Hub, web agency Nigeria, digital agency mission, African tech solutions"
+      />
       {/* Hero Banner */}
       <section className="pt-32 pb-10 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

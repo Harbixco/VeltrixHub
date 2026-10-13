@@ -1,4 +1,5 @@
 import PageTransition from "../components/PageTransition";
+import SEO from "../components/SEO";
 import HeroSection from "../components/home/HeroSection";
 import ValueStrip from "../components/home/ValueStrip";
 import ProblemSection from "../components/home/ProblemSection";
@@ -8,6 +9,7 @@ import ServicesSection from "../components/home/ServicesSection";
 import ProcessSection from "../components/home/ProcessSection";
 import WhyVeltrixSection from "../components/home/WhyVeltrixSection";
 import SelectedWorkSection from "../components/home/SelectedWorkSection";
+import TestimonialsSection from "../components/home/TestimonialsSection";
 import QualitativeProofSection from "../components/home/QualitativeProofSection";
 import AcademySection from "../components/home/AcademySection";
 import CACSection from "../components/home/CACSection";
@@ -17,6 +19,11 @@ import FinalCTA from "../components/home/FinalCTA";
 export default function Home() {
   return (
     <PageTransition>
+      <SEO
+        title="Veltrix Hub – Become Visible. Build Trust. Grow Your Business."
+        description="We help businesses build a professional online presence that attracts customers, earns trust, and creates real business growth through bespoke web design, e-commerce, and branding."
+        keywords="website development Nigeria, professional web designer, business websites, e-commerce development, CAC registration Nigeria"
+      />
       {/* 1. HERO */}
       <HeroSection />
 
@@ -43,6 +50,9 @@ export default function Home() {
 
       {/* 8. PROJECTS */}
       <SelectedWorkSection />
+
+      {/* 8.5. CLIENT TESTIMONIALS & CASE IMPACT */}
+      <TestimonialsSection />
 
       {/* 9. QUALITATIVE PROOF / TRUST */}
       <QualitativeProofSection />

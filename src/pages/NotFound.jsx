@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Home, ArrowRight, Compass, PhoneCall, Layers, Wrench, GraduationCap } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
+import SEO from "../components/SEO";
 
 const QUICK_NAV = [
   { label: "Home", path: "/", icon: Home, desc: "Return to the main page" },
@@ -15,6 +16,11 @@ const QUICK_NAV = [
 export default function NotFound() {
   return (
     <PageTransition>
+      <SEO
+        title="Page Not Found – 404 | Veltrix Hub"
+        description="The page you are looking for does not exist or has moved."
+        noIndex={true}
+      />
       <section
         className="min-h-[85vh] pt-32 pb-20 flex items-center justify-center relative overflow-hidden text-white"
         style={{

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import PageTransition from "../components/PageTransition";
+import SEO from "../components/SEO";
 import lawfirm from "../assets/lawfirm.jpg";
 import translator from "../assets/translator.png";
 import walexfarms from "../assets/walexfarms.webp";
@@ -9,7 +10,7 @@ import numace from "../assets/numace.webp";
 import affordable from "../assets/affordable.webp";
 import nimble from "../assets/nimble.jpg";
 import portfolio from "../assets/portfolio.jpg";
-import nimblebasa from "../assets/nimblebasa.jpg";
+import teepearl from "../assets/teepearl.JPG";
 import jia from "../assets/jia.jpg";
 
 
@@ -25,7 +26,7 @@ const projects = [
     outcome: "Streamlined student course inquiries and online program enrollments.",
     image: numace,
     tags: ["Education Portal", "Course Catalog", "Registration"],
-    link: "https://numaceproject.vercel.app/",
+    link: "https://numaceproject.org/",
   },
   {
     title: "Sterling Chambers",
@@ -72,15 +73,15 @@ const projects = [
     link: "https://affordablegadgetshub.vercel.app/",
   },
   {
-    title: "Nimblebasa Technologies",
-    industry: "Digital Tools & Productivity",
+    title: "Teepearl Event Services",
+    industry: "Luxury Event Services & Hospitality",
     category: "Website",
-    challenge: "Users needed a fast, clean interface for converting text across multiple languages in real-time.",
-    solution: "Engineered a lightweight web tool leveraging translation APIs with an intuitive UI.",
-    outcome: "Provided an easy-to-use utility for multilingual users and students.",
-    image: nimblebasa,
-    tags: ["React", "Web App", "API Integration"],
-    link: "https://language-translators-zeta.vercel.app/",
+    challenge: "The brand required a prestigious digital platform to coordinate client bookings, showcase luxury event portfolios, and communicate full-suite services across Akure and Ekiti.",
+    solution: "We engineered an elegant, mobile-optimized website featuring interactive service showcases, package details, and direct consultation channels.",
+    outcome: "Elevated high-end brand perception, streamlined event bookings, and established clear service transparency for corporate and private clients.",
+    image: teepearl,
+    tags: ["React", "Luxury Web", "Event Booking"],
+    link: "https://www.teepearleventservices.com/",
   },
   {
     title: "Portfolio Website",
@@ -113,7 +114,7 @@ const projects = [
     outcome: "Expanded continental outreach, deepened partner engagement, and streamlined community prayer submissions and crusade inquiries.",
     image: jia,
     tags: ["React", "Ministry Platform", "UI/UX"],
-    link: "https://jesus-in-africa.vercel.app/",
+    link: "https://jesusinafrica.org/",
   },
 ];
 
@@ -125,6 +126,11 @@ export default function Projects() {
 
   return (
     <PageTransition>
+      <SEO
+        title="Our Portfolio & Featured Work | Veltrix Hub"
+        description="Explore custom websites, e-commerce stores, and software applications engineered by Veltrix Hub for corporate and growth-focused businesses."
+        keywords="web design portfolio, client case studies, Nigerian software projects, web developer work"
+      />
       {/* Hero */}
       <section className="pt-32 pb-10 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

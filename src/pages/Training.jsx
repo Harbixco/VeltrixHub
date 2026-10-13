@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2, ArrowRight, Code2, Globe, Users, BookOpen, Award, Briefcase, Clock } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
+import SEO from '../components/SEO'
 import { FaWhatsapp } from "react-icons/fa";
 
 const curriculum = [
@@ -22,6 +23,11 @@ const features = [
 export default function Training() {
   return (
     <PageTransition>
+      <SEO
+        title="Veltrix Tech Academy – Practical Web Development Training"
+        description="Learn modern web development from industry practitioners. Hands-on coding curriculum covering HTML, CSS, JavaScript, React, and portfolio projects."
+        keywords="web development training Nigeria, coding academy Lagos, learn React JS, frontend developer course"
+      />
       {/* Hero */}
       <section className="pt-32 pb-10 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

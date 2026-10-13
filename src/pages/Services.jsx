@@ -5,6 +5,7 @@ import {
   CheckCircle2, ArrowRight
 } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
+import SEO from '../components/SEO'
 
 const servicesList = [
   {
@@ -68,6 +69,11 @@ const servicesList = [
 export default function Services() {
   return (
     <PageTransition>
+      <SEO
+        title="Digital Services & Solutions | Veltrix Hub"
+        description="Comprehensive web development, e-commerce stores, brand identity, CAC registration, and website maintenance designed to grow your business."
+        keywords="web design services, custom e-commerce Nigeria, website maintenance, corporate branding, CAC business registration"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

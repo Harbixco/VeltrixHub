@@ -1,0 +1,9 @@
+# Robots.txt for Veltrix Hub
+# https://veltrixhub.ng/
+
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://veltrixhub.ng/sitemap.xml
+Host: https://veltrixhub.ng

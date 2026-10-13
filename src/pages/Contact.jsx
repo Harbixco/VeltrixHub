@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import PageTransition from "../components/PageTransition";
+import SEO from "../components/SEO";
 
 function TikTokIcon({ size = 16 }) {
   return (
@@ -110,6 +111,11 @@ export default function Contact() {
 
   return (
     <PageTransition>
+      <SEO
+        title="Contact Us – Free Business Consultation | Veltrix Hub"
+        description="Get in touch with Veltrix Hub. Book a free consultation for website development, e-commerce stores, branding, or tech advice. Call +234 808 709 8270."
+        keywords="contact Veltrix Hub, free website consultation, hire web designer Lagos, WhatsApp business consultation"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-brand-navy text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">

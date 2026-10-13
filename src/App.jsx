@@ -11,6 +11,7 @@ import Training from "./pages/Training";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 // ─── SCROLL MANAGEMENT UTILITY ───────────────────────────────────────
 function ScrollToTopAndSection() {
@@ -67,6 +68,7 @@ export default function App() {
           <AnimatedRoutes />
         </main>
         <Footer />
+        <FloatingWhatsApp />
       </div>
     </BrowserRouter>
   );
