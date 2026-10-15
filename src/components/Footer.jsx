@@ -147,7 +147,7 @@ export default function Footer() {
                   <div className="w-8 h-8 rounded-[4px] bg-white/5 flex items-center justify-center shrink-0 mt-0.5">
                     <MapPin size={14} />
                   </div>
-                  <span className="text-sm">Global</span>
+                  <span className="text-sm">Osogbo, Osun State, Nigeria</span>
                 </div>
               </li>
             </ul>
