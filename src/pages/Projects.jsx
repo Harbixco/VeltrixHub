@@ -26,7 +26,7 @@ const projects = [
     outcome: "Streamlined student course inquiries and online program enrollments.",
     image: numace,
     tags: ["Education Portal", "Course Catalog", "Registration"],
-    link: "https://numaceproject.org/",
+    link: "https://www.numaceinstitute.org/",
   },
   {
     title: "Sterling Chambers",
