@@ -11,6 +11,7 @@ import Training from "./pages/Training";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import GadgetsDemoPage from "./pages/GadgetsDemoPage";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 
 // ─── SCROLL MANAGEMENT UTILITY ───────────────────────────────────────
@@ -49,9 +50,27 @@ function AnimatedRoutes() {
         <Route path="/training" element={<Training />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/demos/gadgets" element={<GadgetsDemoPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
+  );
+}
+
+// ─── MAIN APP CONTENT & LAYOUT ───────────────────────────────────────
+function AppLayout() {
+  const location = useLocation();
+  const isDemo = location.pathname.startsWith("/demos");
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      {!isDemo && <Navbar />}
+      <main className="flex-1">
+        <AnimatedRoutes />
+      </main>
+      {!isDemo && <Footer />}
+      {!isDemo && <FloatingWhatsApp />}
+    </div>
   );
 }
 
@@ -61,15 +80,7 @@ export default function App() {
     // 2. Switched from <HashRouter> to <BrowserRouter>
     <BrowserRouter>
       <ScrollToTopAndSection />
-
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-      </div>
+      <AppLayout />
     </BrowserRouter>
   );
 }
