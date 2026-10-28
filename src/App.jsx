@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import GadgetsDemoPage from "./pages/GadgetsDemoPage";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import AIChatWidget from "./components/AIChatWidget";
 
 // ─── SCROLL MANAGEMENT UTILITY ───────────────────────────────────────
 function ScrollToTopAndSection() {
@@ -70,6 +71,7 @@ function AppLayout() {
       </main>
       {!isDemo && <Footer />}
       {!isDemo && <FloatingWhatsApp />}
+      {!isDemo && <AIChatWidget />}
     </div>
   );
 }

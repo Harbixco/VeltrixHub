@@ -92,7 +92,7 @@ export default function FloatingWhatsApp() {
   return (
     <div
       ref={widgetRef}
-      className="fixed bottom-6 right-6 z-50 flex flex-col items-end print:hidden select-none"
+      className="fixed bottom-24 right-6 z-50 flex flex-col items-end print:hidden select-none"
     >
       {/* ── CHAT POPUP WINDOW ── */}
       <AnimatePresence>
