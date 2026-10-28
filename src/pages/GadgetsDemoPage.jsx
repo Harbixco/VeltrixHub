@@ -14,7 +14,6 @@ import {
   X,
   CreditCard,
   Lock,
-  Copy,
   CheckCircle2,
   Sparkles,
   ShoppingBag,
@@ -27,14 +26,13 @@ import {
   ChevronLeft,
   ChevronRight,
   Flame,
-  Sparkle,
-  HelpCircle,
   FileText,
   ChevronDown,
   ChevronUp,
   Menu,
   Search,
   Trash2,
+  Home,
 } from "lucide-react";
 import {
   FaFacebookF,
@@ -1216,15 +1214,23 @@ export default function GadgetsDemoPage() {
 
   const generateWhatsAppCheckoutUrl = () => {
     const lines = [
-      `✨ *NEW SHOPEASE FASHION ORDER*`,
+      `✨ *NEW SHOPEASE FASHION & BEAUTY ORDER*`,
       `---------------------------------------`,
-      `*Client Details:*`,
-      `• Name: ${customerInfo.fullName}`,
-      `• Phone: ${customerInfo.phone}`,
-      `• Delivery Address: ${customerInfo.address}, ${customerInfo.city}`,
-      ``,
-      `*Curated Fashion Selection:*`,
     ];
+
+    if (customerInfo.fullName && customerInfo.fullName.trim()) {
+      lines.push(
+        `*Customer Details:*`,
+        `• Name: ${customerInfo.fullName}`,
+        `• Phone: ${customerInfo.phone || "Not provided"}`,
+        `• Delivery: ${customerInfo.address ? `${customerInfo.address}, ${customerInfo.city}` : "To be confirmed"}`,
+        ``
+      );
+    } else {
+      lines.push(`*Customer:* Direct Website Shopper`, ``);
+    }
+
+    lines.push(`*Curated Order Items:*`);
 
     cart.forEach((item, idx) => {
       const colorText = item.selectedColor ? ` / ${item.selectedColor.name}` : "";
@@ -1238,15 +1244,16 @@ export default function GadgetsDemoPage() {
     });
 
     lines.push(`---------------------------------------`);
-    lines.push(`💵 *Order Total:* ${formatNaira(cartSubtotal)}`);
+    lines.push(`💵 *Subtotal:* ${formatNaira(cartSubtotal)}`);
     lines.push(
-      `🚚 *Shipping Status:* ${amountToFreeShipping === 0
-        ? "Complimentary Express Delivery"
-        : "₦4,500 Standard Nationwide Delivery"
+      `🚚 *Delivery:* ${
+        amountToFreeShipping === 0
+          ? "FREE Complimentary Express Delivery"
+          : "₦4,500 Standard Nationwide Delivery"
       }`
     );
     lines.push(``);
-    lines.push(`Please confirm pieces availability & dispatch schedule. Thank you!`);
+    lines.push(`Hello! I want to finalize this order. Please confirm availability and send payment / account details. Thank you!`);
 
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
       lines.join("\n")
@@ -1262,7 +1269,7 @@ export default function GadgetsDemoPage() {
         description="Shop More, Save More! Discover luxury fashion clothes, designer footwear, virgin human hair wigs, French perfumes, and botanical skincare creams at ShopEase."
       />
 
-      <div className="bg-[#fcf8f4] text-[#1a1a1a] min-h-screen font-body antialiased selection:bg-[#e85d04] selection:text-white">
+      <div className="bg-[#fcf8f4] text-[#1a1a1a] min-h-screen font-body antialiased selection:bg-[#e85d04] selection:text-white pb-20 sm:pb-0">
         {/* ─── 1. TOP ANNOUNCEMENT BAR ─── */}
         <div className="bg-[#081d16] text-[#e2e8f0] py-2 px-4 text-xs font-medium border-b border-white/5">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -2464,7 +2471,7 @@ export default function GadgetsDemoPage() {
                     className="group bg-white rounded-2xl border border-[#f1e6da] p-3 overflow-hidden cursor-pointer shadow-xs hover:shadow-xl hover:border-[#e85d04]/40 transition-all flex flex-col justify-between"
                   >
                     {/* Photo with Overlay Badge */}
-                    <div className="relative w-full h-44 sm:h-52 rounded-xl overflow-hidden bg-[#faf6f1] mb-3">
+                    <div className="relative w-full h-52 sm:h-56 rounded-xl overflow-hidden bg-[#faf6f1] mb-3">
                       <img
                         src={cat.image}
                         alt={cat.name}
@@ -2555,16 +2562,16 @@ export default function GadgetsDemoPage() {
                 </div>
 
                 {/* Right Product Card with Countdown */}
-                <div className="w-full max-w-md bg-white rounded-2xl border border-[#f1e6da] p-6 shadow-xl flex flex-col sm:flex-row items-center gap-5">
+                <div className="w-full max-w-md sm:max-w-xl lg:max-w-2xl bg-white rounded-2xl border border-[#f1e6da] p-4 sm:p-6 shadow-xl flex flex-col sm:flex-row items-center sm:items-stretch gap-5 sm:gap-6">
                   {/* Product Image */}
                   <div
                     onClick={() => openModal(DEAL_OF_THE_DAY)}
-                    className="w-36 h-36 rounded-xl bg-[#faf6f1] p-2 flex items-center justify-center shrink-0 cursor-pointer overflow-hidden group"
+                    className="w-full h-64 sm:h-auto sm:w-52 md:w-60 lg:w-64 min-h-[240px] sm:min-h-[280px] rounded-xl bg-[#faf6f1] p-2 flex items-center justify-center shrink-0 cursor-pointer overflow-hidden group relative"
                   >
                     <img
                       src={DEAL_OF_THE_DAY.image}
                       alt={DEAL_OF_THE_DAY.name}
-                      className="max-h-full object-contain transform group-hover:scale-108 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center rounded-lg transform group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
@@ -2732,7 +2739,7 @@ export default function GadgetsDemoPage() {
                       {/* Image Showcase with Angle 2 Hover Swap on Desktop */}
                       <div
                         onClick={() => openModal(prod)}
-                        className="relative w-full h-40 sm:h-64 rounded-xl bg-[#faf6f1] p-2 sm:p-4 flex items-center justify-center cursor-pointer overflow-hidden mb-2 sm:mb-3"
+                        className="relative w-full h-52 sm:h-68 md:h-72 rounded-xl bg-[#faf6f1] flex items-center justify-center cursor-pointer overflow-hidden mb-2 sm:mb-3"
                       >
                         <img
                           src={prod.image}
@@ -2741,7 +2748,7 @@ export default function GadgetsDemoPage() {
                             e.currentTarget.src =
                               "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80";
                           }}
-                          className={`max-h-full max-w-full object-contain transition-all duration-700 ${
+                          className={`w-full h-full object-cover object-center transition-all duration-700 ${
                             prod.gallery && prod.gallery[1]
                               ? "group-hover:opacity-0 group-hover:scale-105"
                               : "group-hover:scale-108"
@@ -2751,7 +2758,7 @@ export default function GadgetsDemoPage() {
                           <img
                             src={prod.gallery[1]}
                             alt={`${prod.name} angle 2`}
-                            className="max-h-full max-w-full object-contain absolute inset-0 m-auto opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-105 transition-all duration-700 pointer-events-none p-2 sm:p-4"
+                            className="w-full h-full object-cover object-center absolute inset-0 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-105 transition-all duration-700 pointer-events-none"
                           />
                         )}
                         {/* Quick View Hover Pill on Desktop */}
@@ -3371,20 +3378,20 @@ export default function GadgetsDemoPage() {
                     <div className="space-y-2">
                       <button
                         onClick={handleOpenPaystack}
-                        className="w-full py-3.5 rounded-xl bg-[#081d16] hover:bg-[#0c261e] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all"
+                        className="w-full py-3.5 rounded-xl bg-[#081d16] hover:bg-[#0c261e] active:scale-[0.98] text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-all"
                       >
                         <CreditCard size={16} />
-                        Checkout ({formatNaira(cartSubtotal)})
+                        Pay with Card / Paystack ({formatNaira(cartSubtotal)})
                       </button>
 
                       <a
                         href={generateWhatsAppCheckoutUrl()}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all"
+                        className="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
                       >
-                        <FaWhatsapp size={16} />
-                        Instant Order via WhatsApp
+                        <FaWhatsapp size={17} />
+                        <span>Order via WhatsApp (1-Click)</span>
                       </a>
                     </div>
                   </div>
@@ -3971,6 +3978,92 @@ export default function GadgetsDemoPage() {
           )}
         </AnimatePresence>
 
+        {/* ─── MOBILE STICKY BOTTOM NAVIGATION BAR (Luxury App Experience) ─── */}
+        <div className="fixed bottom-0 left-0 right-0 z-40 sm:hidden bg-white/95 backdrop-blur-md border-t border-[#f1e6da] shadow-[0_-4px_25px_rgba(8,29,22,0.08)] px-2 py-2 flex items-center justify-around">
+          {/* Home */}
+          <button
+            onClick={() => {
+              setActiveCategoryPage(null);
+              setSelectedFilterCategory("All");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className={`flex flex-col items-center gap-1 py-1 px-3 rounded-xl transition-all ${
+              !activeCategoryPage
+                ? "text-[#e85d04] font-black"
+                : "text-gray-500 hover:text-gray-900 font-medium"
+            }`}
+          >
+            <Home size={19} />
+            <span className="text-[10px] tracking-tight">Home</span>
+          </button>
+
+          {/* Shop */}
+          <button
+            onClick={() => {
+              const el = document.getElementById("new-arrivals");
+              if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+              } else {
+                window.scrollTo({ top: 800, behavior: "smooth" });
+              }
+            }}
+            className="flex flex-col items-center gap-1 py-1 px-3 rounded-xl text-gray-500 hover:text-gray-900 font-medium transition-all"
+          >
+            <ShoppingBag size={19} />
+            <span className="text-[10px] tracking-tight">Shop</span>
+          </button>
+
+          {/* Search */}
+          <button
+            onClick={() => setIsSearchOpen(true)}
+            className="flex flex-col items-center gap-1 py-1 px-3 rounded-xl text-gray-500 hover:text-gray-900 font-medium transition-all"
+          >
+            <Search size={19} />
+            <span className="text-[10px] tracking-tight">Search</span>
+          </button>
+
+          {/* Wishlist */}
+          <button
+            onClick={() => setIsWishlistOpen(true)}
+            className="relative flex flex-col items-center gap-1 py-1 px-3 rounded-xl text-gray-500 hover:text-gray-900 font-medium transition-all"
+          >
+            <div className="relative">
+              <Heart
+                size={19}
+                className={
+                  Object.values(wishlist).filter(Boolean).length > 0
+                    ? "text-red-500 fill-red-500"
+                    : ""
+                }
+              />
+              {Object.values(wishlist).filter(Boolean).length > 0 && (
+                <span className="absolute -top-1.5 -right-2 bg-red-500 text-white text-[9px] font-black rounded-full w-4 h-4 flex items-center justify-center shadow-xs">
+                  {Object.values(wishlist).filter(Boolean).length}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] tracking-tight">Wishlist</span>
+          </button>
+
+          {/* Bag / Cart */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative flex flex-col items-center gap-0.5 py-0.5 px-3 rounded-xl text-[#081d16] font-bold transition-all"
+          >
+            <div className="relative">
+              <div className="w-8 h-8 rounded-full bg-[#081d16] text-white flex items-center justify-center shadow-md">
+                <ShoppingCart size={15} />
+              </div>
+              {totalCartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#e85d04] text-white text-[10px] font-black rounded-full w-4 h-4 flex items-center justify-center border-2 border-white shadow-xs">
+                  {totalCartCount}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] tracking-tight text-[#081d16]">Bag</span>
+          </button>
+        </div>
+
         {/* ─── TOAST NOTIFICATION ─── */}
         <AnimatePresence>
           {toastMessage && (
@@ -3978,7 +4071,7 @@ export default function GadgetsDemoPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
-              className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-[#081d16] text-white text-xs font-semibold shadow-2xl flex items-center gap-2 border border-[#235342]"
+              className="fixed bottom-20 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-full bg-[#081d16] text-white text-xs font-semibold shadow-2xl flex items-center gap-2 border border-[#235342]"
             >
               <CheckCircle2 size={16} className="text-[#f06428] shrink-0" />
               <span>{toastMessage}</span>
