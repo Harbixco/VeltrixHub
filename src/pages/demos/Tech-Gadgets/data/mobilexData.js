@@ -1,0 +1,707 @@
+// MobileX Store Data - Nigerian Tech Hub Edition
+// Genuine tech assets and verified direct images
+
+export const formatNaira = (val) => {
+  if (typeof val !== "number") return val;
+  return `₦${Math.round(val).toLocaleString()}`;
+};
+
+// 5 Hero Carousel Slides (Smartphones, Pro Laptops, Wireless Audio, Powerbanks, Smartwatches)
+export const HERO_SLIDES = [
+  {
+    id: "slide-phones",
+    category: "Smartphones",
+    tag: "NEW ARRIVAL",
+    titlePrimary: "Latest Smartphones.",
+    titleSecondary: "Ultimate Performance.",
+    subtitle:
+      "Experience next-level speed, stunning aerospace-grade titanium design, and ultra-fast 5G connectivity across Lagos, Abuja & nationwide.",
+    badgeSmall: "UP TO",
+    badgeHighlight: "25%",
+    badgeFoot: "OFF",
+    ctaText: "SHOP NOW",
+    image: "https://cdn.pixabay.com/photo/2016/11/29/05/08/apple-1867461_1280.jpg",
+    alt: "Flagship 5G Smartphones",
+  },
+  {
+    id: "slide-laptops",
+    category: "Pro Laptops",
+    tag: "NEW ARRIVAL",
+    titlePrimary: "Pro Laptops & Work.",
+    titleSecondary: "Built For Creators.",
+    subtitle:
+      "Lightning-fast Apple M3 and Intel Core processors, all-day battery life, and vivid retina displays ready for heavy software development, design, and business.",
+    badgeSmall: "SAVE UP TO",
+    badgeHighlight: "₦150K",
+    badgeFoot: "TODAY",
+    ctaText: "SHOP NOW",
+    image: "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+    alt: "Pro Laptops and Workstations",
+  },
+  {
+    id: "slide-earpods",
+    category: "Wireless Audio",
+    tag: "NEW ARRIVAL",
+    titlePrimary: "Wireless Earpods.",
+    titleSecondary: "Studio Sound Everyday.",
+    subtitle:
+      "Active Noise Cancellation, deep punchy bass, and crystal-clear microphone calls built for commuting in Lagos and daily fitness.",
+    badgeSmall: "SPECIAL",
+    badgeHighlight: "30%",
+    badgeFoot: "OFF",
+    ctaText: "SHOP NOW",
+    image: "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+    alt: "Wireless Earbuds and Headphones",
+  },
+  {
+    id: "slide-powerbanks",
+    category: "Powerbanks",
+    tag: "NEW ARRIVAL",
+    titlePrimary: "Heavy-Duty Power.",
+    titleSecondary: "Never Run Out Of Charge.",
+    subtitle:
+      "20,000mAh – 60,000mAh high-capacity fast charging powerbanks with 65W PD output to keep your phones, laptops, and Wi-Fi running non-stop.",
+    badgeSmall: "STARTING",
+    badgeHighlight: "₦28K",
+    badgeFoot: "BEST PRICE",
+    ctaText: "SHOP NOW",
+    // Authentic, verified real powerbank image
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+    alt: "Heavy Duty Fast Charging Powerbank",
+  },
+  {
+    id: "slide-smartwatches",
+    category: "Smartwatches",
+    tag: "NEW ARRIVAL",
+    titlePrimary: "Luxury Smartwatches.",
+    titleSecondary: "Health On Your Wrist.",
+    subtitle:
+      "Blood pressure & ECG monitoring, AMOLED always-on display, Bluetooth phone calls, and multi-day battery to track every milestone.",
+    badgeSmall: "SAVE",
+    badgeHighlight: "20%",
+    badgeFoot: "OFF",
+    ctaText: "SHOP NOW",
+    image: "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+    alt: "Luxury Smartwatches and Fitness Trackers",
+  },
+];
+
+// 5 Main Categories for "Shop By Category" (5 items for spacious 5-column layout)
+export const CATEGORIES = [
+  {
+    id: "smartphones",
+    name: "Smartphones",
+    count: "48+ Models",
+    image:
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "laptops",
+    name: "Laptops & MacBooks",
+    count: "32+ Models",
+    image:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+  },
+  {
+    id: "earpods",
+    name: "Earpods & Audio",
+    count: "24+ Models",
+    image:
+      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+  },
+  {
+    id: "powerbanks",
+    name: "Powerbanks & Charging",
+    count: "18+ Models",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+  },
+  {
+    id: "smartwatches",
+    name: "Smartwatches",
+    count: "20+ Models",
+    image:
+      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+  },
+];
+
+// Top Brand Deals
+export const TOP_BRANDS_DEALS = [
+  {
+    brand: "Apple",
+    logoText: "Apple",
+    phoneName: "iPhone 15 Pro Max",
+    image:
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    brand: "Samsung",
+    logoText: "SAMSUNG",
+    phoneName: "Galaxy S24 Ultra",
+    image:
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    brand: "OnePlus",
+    logoText: "ONEPLUS",
+    phoneName: "OnePlus 12",
+    image:
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    brand: "Xiaomi",
+    logoText: "Xiaomi",
+    phoneName: "Xiaomi 14 Ultra",
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80",
+  },
+  {
+    brand: "Google",
+    logoText: "Google",
+    phoneName: "Pixel 8 Pro",
+    image:
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80",
+  },
+];
+
+// 16 Popular Products (4 rows x 4 columns) with large images and Nigerian pricing
+export const POPULAR_PRODUCTS = [
+  // --- ROW 1: Flagship 5G Smartphones ---
+  {
+    id: "p-iphone-15-pro",
+    name: "Apple iPhone 15 Pro Max",
+    brand: "Apple",
+    category: "Smartphones",
+    price: 1450000,
+    originalPrice: 1750000,
+    priceLabel: "From ₦1,450,000",
+    discountBadge: "Save 17%",
+    rating: 5,
+    reviewsCount: 128,
+    stockCount: 12,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2016/11/29/05/08/apple-1867461_1280.jpg",
+    ],
+    material: "Grade 5 Titanium & Ceramic Shield",
+    battery: "4422 mAh (Up to 29 hrs video)",
+    processor: "Apple A17 Pro (3nm)",
+    description:
+      "Forged in premium Grade 5 titanium, iPhone 15 Pro Max features the groundbreaking A17 Pro chip, customizable Action button, and 5x optical telephoto lens.",
+    colors: [
+      { name: "NATURAL TITANIUM", hex: "#C8B89C" },
+      { name: "BLACK TITANIUM", hex: "#2C2F33" },
+      { name: "BLUE TITANIUM", hex: "#2B3545" },
+      { name: "WHITE TITANIUM", hex: "#F5F5F7" },
+    ],
+    sizes: ["256GB", "512GB", "1TB"],
+  },
+  {
+    id: "p-s24-ultra",
+    name: "Samsung Galaxy S24 Ultra 5G",
+    brand: "Samsung",
+    category: "Smartphones",
+    price: 1750000,
+    originalPrice: 2100000,
+    priceLabel: "From ₦1,750,000",
+    discountBadge: "Save 16%",
+    rating: 5,
+    reviewsCount: 96,
+    stockCount: 8,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "Titanium Frame & Corning Gorilla Armor",
+    battery: "5000 mAh (45W Fast Charging)",
+    processor: "Snapdragon 8 Gen 3 for Galaxy",
+    description:
+      "The ultimate Android titan featuring integrated S Pen, Galaxy AI Live Translate, Circle to Search, and a crystal-clear 200MP Quad Camera.",
+    colors: [
+      { name: "TITANIUM GRAY", hex: "#7E7F83" },
+      { name: "TITANIUM BLACK", hex: "#232426" },
+      { name: "TITANIUM VIOLET", hex: "#524B66" },
+      { name: "TITANIUM YELLOW", hex: "#D9C99A" },
+    ],
+    sizes: ["256GB", "512GB", "1TB"],
+  },
+  {
+    id: "p-oneplus-12r",
+    name: "OnePlus 12R 5G Flagship",
+    brand: "OnePlus",
+    category: "Smartphones",
+    price: 750000,
+    originalPrice: 890000,
+    priceLabel: "From ₦750,000",
+    discountBadge: "Save 15%",
+    rating: 5,
+    reviewsCount: 75,
+    stockCount: 15,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "Aluminum Frame & 3D Curved Glass",
+    battery: "5500 mAh (100W SUPERVOOC Charge)",
+    processor: "Qualcomm Snapdragon 8 Gen 2",
+    description:
+      "Extreme performance meets endurance: 1.5K 120Hz ProXDR display, Snapdragon 8 Gen 2, and 100W charging that hits 100% in 26 minutes.",
+    colors: [
+      { name: "COOL BLUE", hex: "#79A6D2" },
+      { name: "IRON GRAY", hex: "#373A3C" },
+    ],
+    sizes: ["128GB", "256GB"],
+  },
+  {
+    id: "p-xiaomi-14-ultra",
+    name: "Xiaomi 14 Ultra Leica Pro",
+    brand: "Xiaomi",
+    category: "Smartphones",
+    price: 1250000,
+    originalPrice: 1500000,
+    priceLabel: "From ₦1,250,000",
+    discountBadge: "Save 16%",
+    rating: 5,
+    reviewsCount: 80,
+    stockCount: 9,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "Xiaomi Shield Glass & Vegan Leather",
+    battery: "5000 mAh (90W HyperCharge)",
+    processor: "Snapdragon 8 Gen 3 Mobile Platform",
+    description:
+      "Leica Quad Camera System with 1-inch sensor and stepless mechanical aperture. Unmatched mobile cinema photography.",
+    colors: [
+      { name: "LEICA BLACK", hex: "#1A1A1A" },
+      { name: "LEICA WHITE", hex: "#F3F3F3" },
+    ],
+    sizes: ["512GB", "1TB"],
+  },
+
+  // --- ROW 2: Pro Laptops & Workstations ---
+  {
+    id: "p-macbook-pro-m3",
+    name: "Apple MacBook Pro 16\" M3 Max",
+    brand: "Apple",
+    category: "Laptops",
+    price: 3650000,
+    originalPrice: 4100000,
+    priceLabel: "From ₦3,650,000",
+    discountBadge: "Save 11%",
+    rating: 5,
+    reviewsCount: 64,
+    stockCount: 5,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "Unibody Recycled Space Black Aluminum",
+    battery: "Up to 22 hours battery life",
+    processor: "Apple M3 Max (16-core CPU, 40-core GPU)",
+    description:
+      "The most advanced Mac laptop ever. Liquid Retina XDR display, up to 128GB unified memory, and extreme hardware ray tracing for heavy 3D and code.",
+    colors: [
+      { name: "SPACE BLACK", hex: "#1F2022" },
+      { name: "SILVER", hex: "#E3E4E6" },
+    ],
+    sizes: ["512GB", "1TB", "2TB"],
+  },
+  {
+    id: "p-macbook-air-m2",
+    name: "Apple MacBook Air 13\" M2 Chip",
+    brand: "Apple",
+    category: "Laptops",
+    price: 1350000,
+    originalPrice: 1550000,
+    priceLabel: "From ₦1,350,000",
+    discountBadge: "Save 13%",
+    rating: 5,
+    reviewsCount: 110,
+    stockCount: 14,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+    ],
+    material: "All-Aluminum Ultrathin Enclosure",
+    battery: "Up to 18 hours battery life",
+    processor: "Apple M2 Silicon Chip",
+    description:
+      "Strikingly thin design with MagSafe charging, 1080p FaceTime HD camera, Liquid Retina display, and silent fanless performance.",
+    colors: [
+      { name: "MIDNIGHT", hex: "#1E2530" },
+      { name: "STARLIGHT", hex: "#F0E4D3" },
+      { name: "SPACE GRAY", hex: "#7D7E80" },
+    ],
+    sizes: ["256GB", "512GB"],
+  },
+  {
+    id: "p-dell-xps-15",
+    name: "Dell XPS 15 OLED InfinityEdge",
+    brand: "Dell",
+    category: "Laptops",
+    price: 2450000,
+    originalPrice: 2800000,
+    priceLabel: "From ₦2,450,000",
+    discountBadge: "Save 12%",
+    rating: 5,
+    reviewsCount: 42,
+    stockCount: 6,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "CNC Machined Aluminum & Carbon Fiber",
+    battery: "86Whr Fast-Charging Battery",
+    processor: "Intel Core i9 13th Gen + RTX 4070",
+    description:
+      "Engineered for performance creators. 3.5K OLED touchscreen, 100% DCI-P3 color gamut, and quad speaker studio sound.",
+    colors: [
+      { name: "PLATINUM SILVER", hex: "#D6D8DB" },
+    ],
+    sizes: ["1TB SSD", "2TB SSD"],
+  },
+  {
+    id: "p-hp-spectre-x360",
+    name: "HP Spectre x360 2-in-1 Touch",
+    brand: "HP",
+    category: "Laptops",
+    price: 1950000,
+    originalPrice: 2250000,
+    priceLabel: "From ₦1,950,000",
+    discountBadge: "Save 13%",
+    rating: 5,
+    reviewsCount: 38,
+    stockCount: 7,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+    ],
+    material: "Gem-Cut Aluminum with Bang & Olufsen Audio",
+    battery: "Up to 16 hours battery",
+    processor: "Intel Core Ultra 7 Evo Certified",
+    description:
+      "Versatile 360-degree convertible laptop with stylus pen support, OLED 120Hz display, and built-in AI productivity tuning.",
+    colors: [
+      { name: "NIGHTFALL BLACK", hex: "#1C1D21" },
+      { name: "NOCTURNE BLUE", hex: "#1B2838" },
+    ],
+    sizes: ["512GB", "1TB"],
+  },
+
+  // --- ROW 3: Wireless Earpods & Studio Audio ---
+  {
+    id: "p-airpods-pro-2",
+    name: "Apple AirPods Pro 2 (USB-C)",
+    brand: "Apple",
+    category: "Audio",
+    price: 385000,
+    originalPrice: 450000,
+    priceLabel: "From ₦385,000",
+    discountBadge: "Save 14%",
+    rating: 5,
+    reviewsCount: 154,
+    stockCount: 22,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "MagSafe Charging Case (USB-C) & Silicone Tips",
+    battery: "Up to 30 hrs with Charging Case",
+    processor: "Apple H2 Headphone Silicon",
+    description:
+      "Up to 2x more Active Noise Cancellation, Adaptive Audio, Transparency mode, and Personalized Spatial Audio with dynamic head tracking.",
+    colors: [
+      { name: "WHITE", hex: "#FFFFFF" },
+    ],
+    sizes: ["Standard Case", "Engraved Case"],
+  },
+  {
+    id: "p-sony-wh-1000xm5",
+    name: "Sony WH-1000XM5 Noise-Canceling",
+    brand: "Sony",
+    category: "Audio",
+    price: 490000,
+    originalPrice: 580000,
+    priceLabel: "From ₦490,000",
+    discountBadge: "Save 15%",
+    rating: 5,
+    reviewsCount: 88,
+    stockCount: 11,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "Soft Fit Leatherette & Carbon Composite",
+    battery: "30 Hours Battery Life (Quick 3-min Charge = 3 hrs)",
+    processor: "Dual Processor V1 + HD QN1",
+    description:
+      "World-class industry-leading noise cancelation, 8 microphones for crystal clear hands-free calls, and High-Resolution Audio wireless LDAC.",
+    colors: [
+      { name: "BLACK", hex: "#1E1E1E" },
+      { name: "SILVER PLATINUM", hex: "#E2DED7" },
+      { name: "MIDNIGHT BLUE", hex: "#1C2436" },
+    ],
+    sizes: ["Standard"],
+  },
+  {
+    id: "p-galaxy-buds-2-pro",
+    name: "Samsung Galaxy Buds2 Pro 360",
+    brand: "Samsung",
+    category: "Audio",
+    price: 245000,
+    originalPrice: 290000,
+    priceLabel: "From ₦245,000",
+    discountBadge: "Save 15%",
+    rating: 5,
+    reviewsCount: 67,
+    stockCount: 19,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+    ],
+    material: "Matte Ergonomic Finish & IPX7 Water Resistance",
+    battery: "29 Hours total playtime",
+    processor: "24-bit Hi-Fi Sound Architecture",
+    description:
+      "24-bit Hi-Fi audio for studio quality sound, intelligent 360 audio with direct multi-channel, and comfortable ergonomic aerodynamic fit.",
+    colors: [
+      { name: "GRAPHITE", hex: "#323338" },
+      { name: "WHITE", hex: "#FFFFFF" },
+      { name: "BORA PURPLE", hex: "#8A699B" },
+    ],
+    sizes: ["Standard"],
+  },
+  {
+    id: "p-jbl-charge-5",
+    name: "JBL Charge 5 Waterproof Bass",
+    brand: "JBL",
+    category: "Audio",
+    price: 195000,
+    originalPrice: 230000,
+    priceLabel: "From ₦195,000",
+    discountBadge: "Save 15%",
+    rating: 5,
+    reviewsCount: 52,
+    stockCount: 14,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+    ],
+    material: "Rugged Waterproof & Dustproof IP67",
+    battery: "20 Hours Playtime + Built-in Power Bank",
+    processor: "Optimized Long Excursion Driver & Dual Bass Radiators",
+    description:
+      "Take the party anywhere in rain or shine. Bold JBL Original Pro Sound, built-in powerbank to charge your phone while playing, and PartyBoost.",
+    colors: [
+      { name: "SQUAD CAMO", hex: "#4E5340" },
+      { name: "BLACK", hex: "#222222" },
+      { name: "RED", hex: "#B82E2E" },
+    ],
+    sizes: ["Standard"],
+  },
+
+  // --- ROW 4: Heavy-Duty Powerbanks & Smart Wearables ---
+  {
+    id: "p-xiaomi-powerbank-30k",
+    name: "Xiaomi 30,000mAh 65W Fast Powerbank",
+    brand: "Xiaomi",
+    category: "Powerbanks",
+    price: 48000,
+    originalPrice: 60000,
+    priceLabel: "From ₦48,000",
+    discountBadge: "Save 20%",
+    rating: 5,
+    reviewsCount: 178,
+    stockCount: 35,
+    inStock: true,
+    // Authentic, verified real powerbank image
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+    gallery: [
+      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/5/53/Charging_a_smartphone_with_a_USB_power_bank.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/ff/Batterie_externe_Xiaomi_10400_mAh.jpg",
+    ],
+    material: "Aircraft Grade Aluminum Shell & Anti-Skid Finish",
+    battery: "30,000 mAh High-Density Lithium Polymer",
+    processor: "Smart 9-Layer Circuit Safety Chip",
+    description:
+      "Charges an iPhone up to 7 times or a MacBook Pro up to 2 times. Features 65W Power Delivery fast charging, triple device output, and LED power indicator.",
+    colors: [
+      { name: "SPACE SILVER", hex: "#C8CAD0" },
+      { name: "MATTE BLACK", hex: "#222326" },
+    ],
+    sizes: ["20,000mAh", "30,000mAh", "40,000mAh"],
+  },
+  {
+    id: "p-anker-737-powerbank",
+    name: "Anker 737 Power Bank (PowerCore 24K)",
+    brand: "Anker",
+    category: "Powerbanks",
+    price: 165000,
+    originalPrice: 195000,
+    priceLabel: "From ₦165,000",
+    discountBadge: "Save 15%",
+    rating: 5,
+    reviewsCount: 92,
+    stockCount: 15,
+    inStock: true,
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/5/53/Charging_a_smartphone_with_a_USB_power_bank.jpg",
+    gallery: [
+      "https://upload.wikimedia.org/wikipedia/commons/5/53/Charging_a_smartphone_with_a_USB_power_bank.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/ff/Batterie_externe_Xiaomi_10400_mAh.jpg",
+    ],
+    material: "Polycarbonate Shell & Smart Digital Color Display",
+    battery: "24,000 mAh (140W Ultra-Fast Two-Way Charging)",
+    processor: "GaNPrime Power Intelligence System",
+    description:
+      "Equipped with the latest Power Delivery 3.1 and bi-directional technology to quickly recharge the portable charger or get a 140W ultra-powerful charge.",
+    colors: [
+      { name: "TITANIUM CHARCOAL", hex: "#2D2E32" },
+    ],
+    sizes: ["24,000mAh (140W)"],
+  },
+  {
+    id: "p-apple-watch-ultra-2",
+    name: "Apple Watch Ultra 2 GPS + Cellular",
+    brand: "Apple",
+    category: "Smartwatches",
+    price: 1250000,
+    originalPrice: 1450000,
+    priceLabel: "From ₦1,250,000",
+    discountBadge: "Save 14%",
+    rating: 5,
+    reviewsCount: 71,
+    stockCount: 8,
+    inStock: true,
+    image:
+      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+    gallery: [
+      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "49mm Corrosion-Resistant Grade 5 Titanium",
+    battery: "Up to 72 hours in Low Power Mode",
+    processor: "Apple S9 SiP with Double Tap Gesture",
+    description:
+      "The most rugged and capable Apple Watch. 3000 nits brightness display, precision dual-frequency GPS, depth gauge for diving, and customizable Action button.",
+    colors: [
+      { name: "TITANIUM ORANGE LOOP", hex: "#E86427" },
+      { name: "TITANIUM BLUE OCEAN", hex: "#204369" },
+      { name: "TITANIUM TRAIL GRAY", hex: "#4B4D52" },
+    ],
+    sizes: ["49mm (S/M)", "49mm (M/L)"],
+  },
+  {
+    id: "p-galaxy-watch-6-classic",
+    name: "Samsung Galaxy Watch6 Classic 47mm",
+    brand: "Samsung",
+    category: "Smartwatches",
+    price: 520000,
+    originalPrice: 610000,
+    priceLabel: "From ₦520,000",
+    discountBadge: "Save 15%",
+    rating: 5,
+    reviewsCount: 59,
+    stockCount: 13,
+    inStock: true,
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+    ],
+    material: "Stainless Steel with Rotating Physical Bezel",
+    battery: "Up to 40 hours with fast wireless charging",
+    processor: "Exynos W930 Dual Core 1.4GHz",
+    description:
+      "Timeless rotating bezel, 20% larger Sapphire Crystal display, advanced sleep coaching, body composition analysis, and ECG heart monitoring.",
+    colors: [
+      { name: "BLACK", hex: "#1A1A1A" },
+      { name: "SILVER", hex: "#D2D4D8" },
+    ],
+    sizes: ["43mm", "47mm"],
+  },
+];
+
+// Why Choose Us
+export const WHY_CHOOSE_US = [
+  {
+    id: "trusted",
+    title: "Trusted by Thousands",
+    description: "50,000+ happy tech buyers across Lagos, Abuja, Port Harcourt & nationwide.",
+    icon: "users",
+  },
+  {
+    id: "prices",
+    title: "Best Prices Guaranteed",
+    description: "Direct wholesale rates on genuine phones, laptops, and original accessories.",
+    icon: "price",
+  },
+  {
+    id: "support",
+    title: "Expert Tech Support",
+    description: "Instant advice & after-sales support via WhatsApp & phone call anytime.",
+    icon: "support",
+  },
+  {
+    id: "warranty",
+    title: "1-Year Warranty & Genuine",
+    description: "100% brand new, factory sealed gadgets with manufacturer warranty guarantee.",
+    icon: "shield",
+  },
+];

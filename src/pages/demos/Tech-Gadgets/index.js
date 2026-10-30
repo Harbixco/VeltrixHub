@@ -1,0 +1,12 @@
+export { default } from "./TechGadgetsPage";
+export { default as TechGadgetsPage } from "./TechGadgetsPage";
+export { default as ProductsPage } from "./pages/ProductsPage";
+export { default as CategoriesPage } from "./pages/CategoriesPage";
+export { default as BrandsPage } from "./pages/BrandsPage";
+export { default as AboutPage } from "./pages/AboutPage";
+export { default as TrackingPage } from "./pages/TrackingPage";
+export { default as ShippingPage } from "./pages/ShippingPage";
+export { default as WarrantyPage } from "./pages/WarrantyPage";
+export { default as VerificationPage } from "./pages/VerificationPage";
+export { default as FaqsPage } from "./pages/FaqsPage";
+export { default as TermsPage } from "./pages/TermsPage";

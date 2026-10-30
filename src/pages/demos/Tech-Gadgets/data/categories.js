@@ -1,0 +1,203 @@
+// 7 Core Tech Gadgets Categories matching template design + detailed metadata for Category Focus View
+export const CATEGORIES = [
+  {
+    id: "laptops",
+    key: "Laptops",
+    name: "Laptops",
+    itemCount: "48 Models",
+    image:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+    badge: "M3 & Ultra AI",
+    linkText: "Explore Laptops →",
+  },
+  {
+    id: "smartphones",
+    key: "Smartphones",
+    name: "Smartphones",
+    itemCount: "64 Models",
+    image:
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80",
+    badge: "5G Flagships",
+    linkText: "Shop Phones →",
+  },
+  {
+    id: "audio",
+    key: "Audio",
+    name: "Audio",
+    itemCount: "32 Items",
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
+    badge: "Lossless ANC",
+    linkText: "Shop Audio →",
+  },
+  {
+    id: "wearables",
+    key: "Wearables",
+    name: "Wearables",
+    itemCount: "28 Styles",
+    image:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+    badge: "OLED & ECG",
+    linkText: "Shop Wearables →",
+  },
+  {
+    id: "gaming",
+    key: "Gaming",
+    name: "Gaming",
+    itemCount: "55 Items",
+    image:
+      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80",
+    badge: "Haptic & 240Hz",
+    linkText: "Upgrade Gaming →",
+  },
+  {
+    id: "monitors",
+    key: "Monitors",
+    name: "Monitors",
+    itemCount: "22 Models",
+    image:
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80",
+    badge: "4K Curved",
+    linkText: "Shop Displays →",
+  },
+  {
+    id: "smarthome",
+    key: "Smart Home",
+    name: "Smart Home",
+    itemCount: "36 Devices",
+    image:
+      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=600&q=80",
+    badge: "2K AI Vision",
+    linkText: "Live Smarter →",
+  },
+];
+
+// Rich Category Metadata for the dedicated CategoryFocusView
+export const CATEGORY_DETAILS = {
+  Laptops: {
+    id: "laptops",
+    key: "Laptops",
+    title: "Pro Laptops & Mobile Workstations",
+    tagline: "NEXT-GEN SILICON, LIQUID RETINA & ALL-DAY POWER",
+    description:
+      "Engineered for Nigerian software engineers, creatives, and executives. Featuring Ultra-AI cores, 120Hz Liquid Retina XDR displays, up to 22-hour battery endurance, and 1-Year local Ikeja warranty.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "PRO WORKSTATIONS",
+    stats: "48 High-Performance Models",
+    specsHighlights: [
+      "M3 & Ultra AI Processors",
+      "Up to 22h Real Battery Life",
+      "Liquid Retina XDR 120Hz",
+      "1-Year Nigerian Warranty",
+    ],
+  },
+  Smartphones: {
+    id: "smartphones",
+    key: "Smartphones",
+    title: "Flagship 5G Smartphones & Pro Cameras",
+    tagline: "AEROSPACE TITANIUM, 200MP OPTICS & MTN/AIRTEL 5G CERTIFIED",
+    description:
+      "Grade 5 titanium chassis, ultra-fast 4nm processors, 200MP sensor arrays with 5x optical telephoto, 2600 nits outdoor sunlight visibility, and dual physical SIM + eSIM support.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "FLAGSHIP 5G PHONES",
+    stats: "64 Certified Sealed Models",
+    specsHighlights: [
+      "Snapdragon 8 Gen 3 / A18 Pro",
+      "200MP OIS Studio Cameras",
+      "Dynamic 120Hz LTPO AMOLED",
+      "Same-Day Lagos Dispatch",
+    ],
+  },
+  Audio: {
+    id: "audio",
+    key: "Audio",
+    title: "Lossless Studio Audio & Active Noise Cancelling",
+    tagline: "CUSTOM TITANIUM DRIVERS & 45dB ADAPTIVE HYBRID ANC",
+    description:
+      "Block out Lagos generator hum and street noise with cutting-edge 45dB Hybrid ANC. Hi-Res 96kHz/24-bit lossless playback, multipoint Bluetooth 5.3, and all-day battery life.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "HI-RES AUDIO",
+    stats: "32 Studio-Grade Devices",
+    specsHighlights: [
+      "45dB Hybrid Active ANC",
+      "Titanium Dynamic Drivers",
+      "Up to 40h Wireless Playtime",
+      "Spatial 3D Sound Tracking",
+    ],
+  },
+  Wearables: {
+    id: "wearables",
+    key: "Wearables",
+    title: "Luxury Smartwatches & Bio-Sensors",
+    tagline: "SAPPHIRE CRYSTAL, REAL-TIME ECG & DUAL-FREQUENCY GPS",
+    description:
+      "Rugged luxury smartwatches built for fitness tracking and productivity. Monitor ECG, blood oxygen, sleep phases, and receive WhatsApp/call notifications directly on your wrist with up to 14 days of battery.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "SMART HEALTH & FITNESS",
+    stats: "28 Premium Styles",
+    specsHighlights: [
+      "Sapphire Glass & Titanium Case",
+      "Real-time ECG & SpO2 Heart Health",
+      "Dual-Band Precision GPS",
+      "Up to 14 Days Battery Life",
+    ],
+  },
+  Gaming: {
+    id: "gaming",
+    key: "Gaming",
+    title: "Next-Gen Gaming Consoles & Pro Controllers",
+    tagline: "ADAPTIVE HAPTIC TRIGGERS, 4K 120FPS & ULTRA-LOW LATENCY",
+    description:
+      "Immerse yourself in competitive gaming with adaptive trigger resistance, lightning-fast haptic actuators, 1ms wireless latency, and full compatibility across PS5, PC, and mobile.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "ESPORTS & CONSOLES",
+    stats: "55 Gaming Gear & Accessories",
+    specsHighlights: [
+      "Dynamic Dual Haptic Motors",
+      "Adaptive Tension Triggers",
+      "Low Latency 2.4GHz & BT",
+      "Ergonomic Non-Slip Grip",
+    ],
+  },
+  Monitors: {
+    id: "monitors",
+    key: "Monitors",
+    title: "Curved Ultrawide & 4K Pro Displays",
+    tagline: "1500R CURVATURE, 165Hz REFRESH & 98% DCI-P3 COLOR ACCURACY",
+    description:
+      "Expand your productivity and coding workflow with panoramic curved displays. USB-C 90W single-cable power delivery to charge your laptop while driving dual 4K video.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "ULTRAWIDE WORKSPACE",
+    stats: "22 Pro Displays",
+    specsHighlights: [
+      "34\" WQHD 3440 × 1440 Panoramic",
+      "165Hz Refresh with 1ms MPRT",
+      "USB-C 90W Power Delivery",
+      "Eye-Care Low Blue Light",
+    ],
+  },
+  "Smart Home": {
+    id: "smarthome",
+    key: "Smart Home",
+    title: "Smart Home Security & Intelligent Automation",
+    tagline: "2K HDR VISION, MOTORIZED 360° AI TRACKING & REMOTE MOBILE APP",
+    description:
+      "Monitor your Nigerian home, office, or store from anywhere in the world on your smartphone. Full-color night vision, instant motion alerts, and two-way talk audio.",
+    bannerImage:
+      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1400&q=80",
+    badgeText: "CONNECTED HOME",
+    stats: "36 Intelligent Devices",
+    specsHighlights: [
+      "2K Ultra HD Pan & Tilt 360°",
+      "Color Night Vision with Spotlight",
+      "Two-Way Audio with Noise Cancel",
+      "Instant Mobile Alert Notifications",
+    ],
+  },
+};

@@ -1,6 +1,5 @@
 // 1. Switched HashRouter to BrowserRouter here
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -11,7 +10,19 @@ import Training from "./pages/Training";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
-import GadgetsDemoPage from "./pages/GadgetsDemoPage";
+import FashionDemoPage from "./pages/demos/fashion";
+import TechGadgetsPage, {
+  ProductsPage,
+  CategoriesPage,
+  BrandsPage,
+  AboutPage,
+  TrackingPage,
+  ShippingPage,
+  WarrantyPage,
+  VerificationPage,
+  FaqsPage,
+  TermsPage,
+} from "./pages/demos/Tech-Gadgets";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import AIChatWidget from "./components/AIChatWidget";
 
@@ -43,18 +54,41 @@ function ScrollToTopAndSection() {
 function AnimatedRoutes() {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/training" element={<Training />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/demos/gadgets" element={<GadgetsDemoPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </AnimatePresence>
+    <Routes location={location} key={location.pathname}>
+      <Route path="/" element={<Home />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/training" element={<Training />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/demos" element={<Navigate to="/demos/fashion" replace />} />
+      <Route path="/demos/fashion" element={<FashionDemoPage />} />
+      <Route path="/demos/boutique" element={<Navigate to="/demos/fashion" replace />} />
+      <Route path="/demos/cosmetics" element={<Navigate to="/demos/fashion" replace />} />
+
+      {/* Tech Gadgets Showcase - Dedicated Pages */}
+      <Route path="/demos/tech-gadgets" element={<TechGadgetsPage />} />
+      <Route path="/demos/tech-gadgets/products" element={<ProductsPage />} />
+      <Route path="/demos/tech-gadgets/categories" element={<CategoriesPage />} />
+      <Route path="/demos/tech-gadgets/brands" element={<BrandsPage />} />
+      <Route path="/demos/tech-gadgets/about" element={<AboutPage />} />
+      <Route path="/demos/tech-gadgets/contact" element={<Navigate to="/demos/tech-gadgets/faqs" replace />} />
+      <Route path="/demos/tech-gadgets/tracking" element={<TrackingPage />} />
+      <Route path="/demos/tech-gadgets/shipping" element={<ShippingPage />} />
+      <Route path="/demos/tech-gadgets/warranty" element={<WarrantyPage />} />
+      <Route path="/demos/tech-gadgets/verification" element={<VerificationPage />} />
+      <Route path="/demos/tech-gadgets/faqs" element={<FaqsPage />} />
+      <Route path="/demos/tech-gadgets/terms" element={<TermsPage />} />
+
+      {/* Alternate routes & case fallbacks */}
+      <Route path="/demos/contact" element={<Navigate to="/demos/tech-gadgets/faqs" replace />} />
+      <Route path="/demos/Tech-Gadgets" element={<Navigate to="/demos/tech-gadgets" replace />} />
+      <Route path="/demos/Tech-Gadgets/*" element={<Navigate to="/demos/tech-gadgets" replace />} />
+      <Route path="/demos/gadgets" element={<Navigate to="/demos/tech-gadgets" replace />} />
+      <Route path="/demos/gadgets/*" element={<Navigate to="/demos/tech-gadgets" replace />} />
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
@@ -79,7 +113,6 @@ function AppLayout() {
 // ─── MAIN APP COMPONENT ──────────────────────────────────────────────
 export default function App() {
   return (
-    // 2. Switched from <HashRouter> to <BrowserRouter>
     <BrowserRouter>
       <ScrollToTopAndSection />
       <AppLayout />
