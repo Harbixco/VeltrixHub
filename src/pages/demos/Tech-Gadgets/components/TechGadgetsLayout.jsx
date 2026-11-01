@@ -6,6 +6,7 @@ import CartDrawer from "./CartDrawer";
 import QuickViewModal from "./QuickViewModal";
 import ToastNotification from "./ToastNotification";
 import MobileBottomNav from "./MobileBottomNav";
+import VeltrixFloatingCTA from "./VeltrixFloatingCTA";
 import { TechGadgetsProvider, useTechGadgets } from "../context/TechGadgetsContext";
 
 function TechGadgetsLayoutContent({ children }) {
@@ -68,6 +69,9 @@ function TechGadgetsLayoutContent({ children }) {
 
       {/* Mobile Sticky Bottom Navigation Bar */}
       <MobileBottomNav />
+
+      {/* Built by Veltrix Hub Floating Call to Action */}
+      <VeltrixFloatingCTA />
     </div>
   );
 }

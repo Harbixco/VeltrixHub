@@ -28,6 +28,7 @@ import CheckoutModal from "./components/CheckoutModal";
 import PoliciesModal from "./components/PoliciesModal";
 import MobileBottomNav from "./components/MobileBottomNav";
 import ToastNotification from "./components/ToastNotification";
+import VeltrixFloatingCTA from "./components/VeltrixFloatingCTA";
 
 export default function FashionDemoPage() {
   // Navigation active tab
@@ -488,6 +489,9 @@ export default function FashionDemoPage() {
 
         {/* TOAST NOTIFICATION */}
         <ToastNotification toastMessage={toastMessage} />
+
+        {/* BUILT BY VELTRIX HUB FLOATING CALL TO ACTION */}
+        <VeltrixFloatingCTA />
       </div>
     </PageTransition>
   );

@@ -6,7 +6,8 @@ export const HERO_SLIDES = [
     titleLine2: "Save More!",
     subtitle:
       "Discover luxury ready-to-wear dresses, bespoke suits, artisan leather footwear, and niche perfumery.",
-    image: "/shopease-hero.jpg",
+    image:
+      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=1000&q=80",
     discountBadge: "50%",
     discountLabel: "UP TO",
     ctaText: "EXPLORE COLLECTION",
@@ -34,7 +35,7 @@ export const HERO_SLIDES = [
     subtitle:
       "100% Raw Virgin Human Hair bone straight wigs, deeply hydrating botanical glow creams, and French perfumes.",
     image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1000&q=80",
     discountBadge: "40%",
     discountLabel: "SPECIAL",
     ctaText: "EXPLORE BEAUTY",

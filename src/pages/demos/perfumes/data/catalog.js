@@ -1,0 +1,573 @@
+// 20 Luxury Haute Parfumerie Items (4 in each of the 5 categories: Oud & Oriental, Gourmand & Vanilla, Floral & Botanical, Fresh & Woody Aquatic, Attar & Pure Oils)
+export const PERFUMES_CATALOG = [
+  // ─── OUD & ORIENTAL (4 Items) ───
+  {
+    id: "oud-1",
+    name: "Baccarat Oud Royale Extrait",
+    category: "Oud & Oriental",
+    price: 185000,
+    oldPrice: 280000,
+    rating: 5.0,
+    reviewsCount: 184,
+    badge: "SIGNATURE",
+    concentration: "Extrait de Parfum (40% Oil)",
+    sillage: "Beast Mode (24hr+ Sillage)",
+    image:
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon", "150ml Sovereign"],
+    notes: {
+      top: "Bitter Almond, Saffron Stigmas, Calabrian Bergamot",
+      heart: "Egyptian Grandiflorum Jasmine, French Cedar, Taif Rose",
+      base: "Wild Cambodian Agarwood (Oud), Warm Ambergris, Cashmere Musk",
+    },
+    description:
+      "A hypnotic symphony of wild-harvested Cambodian oud and resinous ambergris laced with almond and Egyptian jasmine. Radiates sovereign elegance and commands deep respect in any room.",
+    longevity: "24+ Hours on Skin & Clothes",
+  },
+  {
+    id: "oud-2",
+    name: "Oud Maracujá Seduction",
+    category: "Oud & Oriental",
+    price: 175000,
+    oldPrice: 245000,
+    rating: 4.9,
+    reviewsCount: 142,
+    badge: "TRENDING",
+    concentration: "Extrait de Parfum (35% Oil)",
+    sillage: "Heavy Sillage (18-20 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon"],
+    notes: {
+      top: "Ripe Passionfruit, Turkish Saffron, Blackcurrant",
+      heart: "Smoky Cambodian Oud, Indonesian Patchouli, Benzoin",
+      base: "Leather Accord, Madagascar Vanilla, Labdanum",
+    },
+    description:
+      "A daring contrast between sweet exotic passionfruit and dark, smoky resinous oud. Seductive, dark, and utterly impossible to forget.",
+    longevity: "18 - 20 Hours",
+  },
+  {
+    id: "oud-3",
+    name: "Sultan Supreme Amber Oud",
+    category: "Oud & Oriental",
+    price: 160000,
+    oldPrice: 220000,
+    rating: 5.0,
+    reviewsCount: 96,
+    badge: "BESPOKE",
+    concentration: "Eau de Parfum Intense (30% Oil)",
+    sillage: "Room-Filling (20 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["100ml Flacon", "150ml Decant"],
+    notes: {
+      top: "Cardamom, Cinnamon Bark, Bergamot",
+      heart: "Incense, Bulgarian Rose, Caramelized Amber",
+      base: "Aged Assamese Oud, Sandalwood, Animalic Amber",
+    },
+    description:
+      "Inspired by the private quarters of Arabian sultans. Pure warmth and royalty wrapped in smoky incense and ancient agarwood.",
+    longevity: "20+ Hours",
+  },
+  {
+    id: "oud-4",
+    name: "Smoky Frankincense & Black Saffron",
+    category: "Oud & Oriental",
+    price: 145000,
+    oldPrice: 195000,
+    rating: 4.8,
+    reviewsCount: 78,
+    badge: "EDITORIAL",
+    concentration: "Extrait de Parfum (32% Oil)",
+    sillage: "Noticeable Across Rooms (16 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1592914610354-fd354ea45e48?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1592914610354-fd354ea45e48?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon"],
+    notes: {
+      top: "Kashmiri Black Saffron, Juniper Berries, Pomelo",
+      heart: "Hojari Royal Frankincense, Black Violet, Leather",
+      base: "Dark Vetiver, Raspberry Nectar, Cashmeran",
+    },
+    description:
+      "Sacred Omani frankincense meets dark purple saffron and velvety black leather. A refined, mysterious aura for evening black-tie occasions.",
+    longevity: "16+ Hours",
+  },
+
+  // ─── GOURMAND & VANILLA (4 Items) ───
+  {
+    id: "gour-1",
+    name: "Grand Bourbon Vanille Reserve",
+    category: "Gourmand & Vanilla",
+    price: 155000,
+    oldPrice: 220000,
+    rating: 5.0,
+    reviewsCount: 246,
+    badge: "BESTSELLER",
+    concentration: "Extrait de Parfum (38% Oil)",
+    sillage: "Warm & Enveloping (20 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon", "150ml Decant"],
+    notes: {
+      top: "Smoked Vanilla Caviar, Nutmeg, Caramelized Sugar",
+      heart: "Tonka Bean Butter, Spiced Amber, Warm Milk",
+      base: "Madagascar Bourbon Vanilla Absolute, White Musk, Sandalwood",
+    },
+    description:
+      "The undisputed gold standard of gourmet vanilla. Dense, velvety, and deeply comforting without being cloying. Melts into skin like liquid gold.",
+    longevity: "20+ Hours",
+  },
+  {
+    id: "gour-2",
+    name: "Angels' Reserve Cognac & Oak",
+    category: "Gourmand & Vanilla",
+    price: 168000,
+    oldPrice: 235000,
+    rating: 4.9,
+    reviewsCount: 188,
+    badge: "TRENDING",
+    concentration: "Eau de Parfum Intense (30% Oil)",
+    sillage: "Intoxicating Sillage (18 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Decant", "100ml Flacon"],
+    notes: {
+      top: "Cognac Essence, Cinnamon Bark, Bitter Orange",
+      heart: "Roasted Hazelnut, Tonka Bean, Oak Wood Absolute",
+      base: "Bourbon Vanilla, Praline, Sandalwood",
+    },
+    description:
+      "Crafted to mirror the 'angels' share' evaporated from fine French oak barrels. Spiced, alcoholic warmth wrapped in hazelnut and roasted vanilla praline.",
+    longevity: "18+ Hours",
+  },
+  {
+    id: "gour-3",
+    name: "Velvet Tonka & Roasted Espresso",
+    category: "Gourmand & Vanilla",
+    price: 135000,
+    oldPrice: 190000,
+    rating: 4.8,
+    reviewsCount: 112,
+    badge: "NEW",
+    concentration: "Extrait de Parfum (32% Oil)",
+    sillage: "Addictive (16 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon"],
+    notes: {
+      top: "Fresh Ground Ethiopian Coffee, Cardamom, Almond Milk",
+      heart: "Roasted Tonka Bean, Heliotrope, Cacao Pods",
+      base: "Benzoin Resin, Dark Vanilla, Amber",
+    },
+    description:
+      "A rich Parisian café morning bottled into a bottle. Intensely aromatic dark roast coffee beans softened by almond milk and roasted tonka bean.",
+    longevity: "16+ Hours",
+  },
+  {
+    id: "gour-4",
+    name: "Dark Chocolate & Truffle Extrait",
+    category: "Gourmand & Vanilla",
+    price: 140000,
+    oldPrice: 200000,
+    rating: 4.9,
+    reviewsCount: 84,
+    badge: "LIMITED",
+    concentration: "Extrait de Parfum (35% Oil)",
+    sillage: "Magnetic & Seductive (18 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1583445013765-46c20c4a6772?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon"],
+    notes: {
+      top: "Black Cherry Liqueur, Red Mandarin, Bitter Cocoa",
+      heart: "Dark Chocolate Truffle, Spiced Rum, Damask Rose",
+      base: "Patchouli, Ambergris, Bourbon Vanilla Pods",
+    },
+    description:
+      "Indulgent 85% Belgian dark chocolate laced with aged spiced rum and luscious dark cherry liqueur. Seduction in a crystal bottle.",
+    longevity: "18+ Hours",
+  },
+
+  // ─── FLORAL & BOTANICAL (4 Items) ───
+  {
+    id: "flor-1",
+    name: "Delina Lychee & Damask Rose",
+    category: "Floral & Botanical",
+    price: 165000,
+    oldPrice: 230000,
+    rating: 5.0,
+    reviewsCount: 220,
+    badge: "BESTSELLER",
+    concentration: "Extrait de Parfum (36% Oil)",
+    sillage: "Radiant Sillage (20 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon", "150ml Decant"],
+    notes: {
+      top: "Sweet Lychee, Rhubarb, Bergamot, Nutmeg",
+      heart: "Turkish Damask Rose, Peony, Vanilla, Petalia",
+      base: "Cashmeran, Cedarwood, Incense, Haitian Vetiver",
+    },
+    description:
+      "The ultimate regal feminine fragrance. Juicy tart lychee blended seamlessly with thousands of morning-harvested Turkish rose petals and silky cashmere woods.",
+    longevity: "20+ Hours",
+  },
+  {
+    id: "flor-2",
+    name: "Imperial Neroli Portofino",
+    category: "Floral & Botanical",
+    price: 145000,
+    oldPrice: 205000,
+    rating: 4.8,
+    reviewsCount: 94,
+    badge: "EDITORIAL",
+    concentration: "Eau de Parfum (28% Oil)",
+    sillage: "Bright & Sparkling (14 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Decant", "100ml Flacon"],
+    notes: {
+      top: "Italian Neroli, Bitter Orange, Sicilian Lemon, Lavender",
+      heart: "African Orange Flower, Pittosporum, Jasmine Sambac",
+      base: "Amber, Angelica Root, Musk Mallow",
+    },
+    description:
+      "A sun-drenched escape to the Italian Riviera. Sparkling citrus blossoms and crisp neroli that deliver pure refreshing luxury.",
+    longevity: "14+ Hours",
+  },
+  {
+    id: "flor-3",
+    name: "Night Blooming Tuberose & White Musk",
+    category: "Floral & Botanical",
+    price: 150000,
+    oldPrice: 215000,
+    rating: 4.9,
+    reviewsCount: 108,
+    badge: "TRENDING",
+    concentration: "Extrait de Parfum (34% Oil)",
+    sillage: "Hypnotic Trail (18 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Extrait", "100ml Flacon"],
+    notes: {
+      top: "Pink Pepper, White Peach, Green Mandarin",
+      heart: "Nocturnal Indian Tuberose, Jasmine, Gardenia",
+      base: "Clean White Musk, Sandalwood, Bourbon Vanilla",
+    },
+    description:
+      "Tuberose harvested exclusively at midnight when its narcotic scent reaches full intensity. Clean, creamy, and irresistibly sensual.",
+    longevity: "18+ Hours",
+  },
+  {
+    id: "flor-4",
+    name: "Silk Magnolia & Peony Nectar",
+    category: "Floral & Botanical",
+    price: 130000,
+    oldPrice: 180000,
+    rating: 4.8,
+    reviewsCount: 76,
+    badge: "NEW",
+    concentration: "Eau de Parfum (25% Oil)",
+    sillage: "Delicate & Elegant (12-14 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1587017539504-67cfbddac569?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["100ml Flacon"],
+    notes: {
+      top: "Dewy Peony, Pear Blossom, Italian Bergamot",
+      heart: "Louisiana White Magnolia, Rose de Mai, Freesia",
+      base: "Cashmeran, White Cedar, Subtle Amber",
+    },
+    description:
+      "Like walking into a royal conservatory garden at first dawn. Weightless, sparkling floral petals that exude high-society refinement.",
+    longevity: "14+ Hours",
+  },
+
+  // ─── FRESH & WOODY AQUATIC (4 Items) ───
+  {
+    id: "fresh-1",
+    name: "Aventus Sovereign Silver",
+    category: "Fresh & Woody Aquatic",
+    price: 195000,
+    oldPrice: 290000,
+    rating: 5.0,
+    reviewsCount: 298,
+    badge: "SIGNATURE",
+    concentration: "Millésime Extrait (35% Oil)",
+    sillage: "Executive Powerhouse (22 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Millésime", "100ml Flacon", "150ml Sovereign"],
+    notes: {
+      top: "Smoky Pineapple, Blackcurrant, Italian Bergamot, Apple",
+      heart: "Birch Wood Smoke, Moroccan Jasmine, Patchouli, Rose",
+      base: "Oakmoss, Ambergris, Vanilla, White Musk",
+    },
+    description:
+      "The undisputed king of masculine executive perfumery. Crisp tart pineapple and bergamot layered over birch smoke and natural ambergris.",
+    longevity: "22+ Hours",
+  },
+  {
+    id: "fresh-2",
+    name: "Santal 33 Smoked Cardamom",
+    category: "Fresh & Woody Aquatic",
+    price: 155000,
+    oldPrice: 215000,
+    rating: 4.9,
+    reviewsCount: 164,
+    badge: "TRENDING",
+    concentration: "Eau de Parfum (30% Oil)",
+    sillage: "Hypnotic Trail (18 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Decant", "100ml Flacon"],
+    notes: {
+      top: "Violet Accord, Green Cardamom, Papyrus",
+      heart: "Iris, Australian Sandalwood, Virginia Cedarwood",
+      base: "Leather, Amber, Cashmeran",
+    },
+    description:
+      "The cult-classic woody scent of art galleries and boutique hotels. Smoky Australian sandalwood entwined with green cardamom and leather.",
+    longevity: "18+ Hours",
+  },
+  {
+    id: "fresh-3",
+    name: "Pacific Citrus & Sea Salt Driftwood",
+    category: "Fresh & Woody Aquatic",
+    price: 125000,
+    oldPrice: 175000,
+    rating: 4.8,
+    reviewsCount: 88,
+    badge: "SUMMER",
+    concentration: "Eau de Parfum (25% Oil)",
+    sillage: "Refreshing & Crisp (14 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["100ml Flacon"],
+    notes: {
+      top: "Blood Grapefruit, Sea Salt, Crushed Sage",
+      heart: "Aquatic Water Lilies, Driftwood, Seaweed Absolute",
+      base: "Mineral Amber, Vetiver, Clean Musk",
+    },
+    description:
+      "An ocean breeze on a sun-drenched cliff. Salty Pacific mineral sea spray paired with crushed sage and sun-bleached driftwood.",
+    longevity: "14+ Hours",
+  },
+  {
+    id: "fresh-4",
+    name: "Vetiver Sauvage & Crisp Bergamot",
+    category: "Fresh & Woody Aquatic",
+    price: 135000,
+    oldPrice: 190000,
+    rating: 4.9,
+    reviewsCount: 92,
+    badge: "ESSENTIAL",
+    concentration: "Eau de Parfum (28% Oil)",
+    sillage: "Crisp Executive (16 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["50ml Decant", "100ml Flacon"],
+    notes: {
+      top: "Calabrian Bergamot, Elemi Resin, Sichuan Pepper",
+      heart: "Haitian Vetiver, Lavender, Geranium",
+      base: "Ambroxan, Cedarwood, Labdanum",
+    },
+    description:
+      "Clean, earthy, and relentlessly sharp. Premium Haitian vetiver lifted with sparkling bergamot and ambroxan for unstoppable confidence.",
+    longevity: "16+ Hours",
+  },
+
+  // ─── ATTAR & PURE OILS (4 Items) ───
+  {
+    id: "attar-1",
+    name: "Pure Royal Dehn El Oud Oil (12ml)",
+    category: "Attar & Pure Oils",
+    price: 120000,
+    oldPrice: 175000,
+    rating: 5.0,
+    reviewsCount: 156,
+    badge: "100% PURE OIL",
+    concentration: "100% Undiluted Attar Oil",
+    sillage: "Extreme 48-Hour Skin Lock",
+    image:
+      "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["6ml Crystal Tola", "12ml Royal Crystal Flacon", "24ml Double Tola"],
+    notes: {
+      top: "Sweet Assamese Agarwood Resin, Wild Saffron",
+      heart: "Smoky Cambodi Oud, Incense Tears",
+      base: "Ancient Dark Oud, Leather, Warm Earth",
+    },
+    description:
+      "0% alcohol, 100% pure distilled oud essence. Applied with a crystal dip-wand directly to pulse points. Lasts for days on fabric and locks onto skin through showers.",
+    longevity: "48+ Hours",
+  },
+  {
+    id: "attar-2",
+    name: "Golden Musk Tahara Silk Oil (12ml)",
+    category: "Attar & Pure Oils",
+    price: 45000,
+    oldPrice: 70000,
+    rating: 4.9,
+    reviewsCount: 284,
+    badge: "BESTSELLER",
+    concentration: "100% Pure Silk Musk Attar",
+    sillage: "Clean Intimate Halo (36 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1563178406-4cdc2923acbc?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["12ml Crystal Vial", "25ml Luxury Decant"],
+    notes: {
+      top: "Fresh White Lotus, Powdery Violet Petals",
+      heart: "Pure White Musk Tahara, Lily of the Valley",
+      base: "Vanilla Orchid, Soft Ambergris, Clean Cotton",
+    },
+    description:
+      "The holy grail of clean musk oils. Thick, silky texture that imparts a heavenly, fresh, irresistible clean-skin halo for over 36 hours.",
+    longevity: "36+ Hours",
+  },
+  {
+    id: "attar-3",
+    name: "Amber Cashmere Pure Attar Drops (12ml)",
+    category: "Attar & Pure Oils",
+    price: 65000,
+    oldPrice: 95000,
+    rating: 4.8,
+    reviewsCount: 104,
+    badge: "TRENDING",
+    concentration: "100% Concentrated Perfume Oil",
+    sillage: "Hypnotic Warmth (30 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1615396899839-c99c121888b0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["12ml Crystal Vial", "24ml Royal Bottle"],
+    notes: {
+      top: "Golden Honey, Cinnamon Infusion",
+      heart: "Sweet Amber Resins, Labdanum, Benzoin",
+      base: "Cashmere Wood, Bourbon Vanilla, Smoked Tonka",
+    },
+    description:
+      "Rich golden amber oil with a drop of wildflower honey and cashmere wood. Layers magically under any spray perfume to double its longevity.",
+    longevity: "30+ Hours",
+  },
+  {
+    id: "attar-4",
+    name: "Rose Taif & Sandalwood Elixir (12ml)",
+    category: "Attar & Pure Oils",
+    price: 85000,
+    oldPrice: 125000,
+    rating: 5.0,
+    reviewsCount: 88,
+    badge: "ROYAL TAIF",
+    concentration: "100% Pure Attar Oil",
+    sillage: "Enchanting Sillage (36 hrs)",
+    image:
+      "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80",
+    gallery: [
+      "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80",
+    ],
+    sizes: ["12ml Crystal Vial", "25ml Decant"],
+    notes: {
+      top: "Mountain Taif Rose Petals, Saffron Drops",
+      heart: "Centifolia Rose Absolute, Spiced Clove",
+      base: "Mysore Sandalwood, Frankincense, Musk",
+    },
+    description:
+      "Precious mountain Taif roses from Saudi Arabia co-distilled with pure Mysore sandalwood. A royal Arabian treasure in a crystal flacon.",
+    longevity: "36+ Hours",
+  },
+];
+

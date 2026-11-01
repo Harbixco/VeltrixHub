@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Smartphone, MapPin, Phone, Mail } from "lucide-react";
+import { Smartphone, MapPin, Phone, Mail, Lock, ShieldCheck } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -219,10 +219,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Veltrix Hub Credit (Matching First Image Template) */}
-        <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-center sm:text-left">
+        {/* Trust Badges (Matching Uploaded Template) */}
+        <div className="pt-6 pb-2 border-t border-white/5 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-gray-300">
+              <Lock size={12} className="text-emerald-400" />
+              <span>256–Bit SSL Encrypted</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-gray-300">
+              <ShieldCheck size={13} className="text-[#FF6B00]" />
+              <span>Paystack Secured</span>
+            </div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[11px] text-gray-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>Bank Transfer / Verve / Mastercard</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Copyright & Veltrix Hub Credit */}
+        <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-center sm:text-left">
           <p className="font-medium text-white/90">
-            © {new Date().getFullYear()} MobileX Technologies Ltd. All rights reserved.
+            © {new Date().getFullYear()} MobileX Technologies Ltd. All Rights Reserved.
           </p>
           <p className="text-gray-400 flex flex-wrap items-center justify-center gap-1.5">
             <span>E-Commerce Store Built by</span>

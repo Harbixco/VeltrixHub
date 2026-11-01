@@ -7,7 +7,11 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { WHATSAPP_NUMBER, formatNaira } from "../utils/helpers";
+import {
+  WHATSAPP_NUMBER,
+  formatNaira,
+  generateSingleProductWhatsAppUrl,
+} from "../utils/helpers";
 
 export default function QuickViewModal({
   activeModalProduct,
@@ -268,15 +272,13 @@ export default function QuickViewModal({
                   </button>
 
                   <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                      `Hello ShopEase! 🛍️\n\nI want to order:\n• *${
-                        activeModalProduct.name
-                      }*\n• Color: ${modalColor?.name || "Standard"}\n• Size: ${
-                        modalSize || "Standard"
-                      }\n• Price: ${formatNaira(
-                        activeModalProduct.price
-                      )}\n\nPlease confirm availability!`
-                    )}`}
+                    href={generateSingleProductWhatsAppUrl({
+                      product: activeModalProduct,
+                      color: modalColor,
+                      size: modalSize,
+                      qty: modalQty,
+                      city: "Lekki, Lagos",
+                    })}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5"

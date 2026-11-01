@@ -5,7 +5,7 @@ export const CATEGORIES = [
     name: "Women",
     itemCount: "240+ Styles",
     image:
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=700&q=80",
     linkText: "Shop Now →",
   },
   {
@@ -13,7 +13,7 @@ export const CATEGORIES = [
     name: "Men",
     itemCount: "185+ Styles",
     image:
-      "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=700&q=80",
     linkText: "Shop Now →",
   },
   {
@@ -37,7 +37,7 @@ export const CATEGORIES = [
     name: "Beauty & Hair",
     itemCount: "95+ Products",
     image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=700&q=80",
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=700&q=80",
     linkText: "Shop Now →",
   },
 ];
@@ -52,7 +52,7 @@ export const CATEGORY_DETAILS = {
     description:
       "Explore 22-momme pure mulberry silk slips, tailored Normandy flax linen blazers, sunburst pleated chiffon gowns, and Grade-A Mongolian cashmere knitwear crafted for effortless presence.",
     bannerImage:
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=1400&q=80",
     badgeText: "PREMIUM COUTURE EDIT",
     stats: "240+ Handpicked Styles",
     fabricHighlights: [
@@ -69,7 +69,7 @@ export const CATEGORY_DETAILS = {
     description:
       "Storm-resistant gabardine trench overcoats, Super 130s Australian Merino wool bespoke suits, heavyweight 480 GSM French terry hoodies, and two-ply Egyptian Giza cotton Oxford shirts.",
     bannerImage:
-      "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1400&q=80",
     badgeText: "SAVILE ROW STANDARDS",
     stats: "185+ Masterpiece Cuts",
     fabricHighlights: [
@@ -120,7 +120,7 @@ export const CATEGORY_DETAILS = {
     description:
       "Double-drawn bone straight & deep wavy wigs with invisible melted HD Swiss lace, deeply hydrating 5% Niacinamide restorative face creams, and whipped African raw shea butter body soufflés.",
     bannerImage:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1400&q=80",
     badgeText: "VIRGIN HAIR & BOTANICALS",
     stats: "95+ Products",
     fabricHighlights: [

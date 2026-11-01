@@ -41,13 +41,13 @@ export default function PopularProducts() {
       id="popular-products"
       className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 select-none"
     >
-      {/* Header Row - Mobile-optimized to prevent awkward wrapping */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 sm:mb-8 text-left">
-        <div>
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-[#FF6B00] block mb-1">
+      {/* Header Row - Cleanly aligned across mobile, tablet & desktop without awkward wrapping */}
+      <div className="flex items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 text-left">
+        <div className="min-w-0">
+          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-[#FF6B00] block mb-1 truncate">
             VERIFIED NIGERIA STOCK
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-950 uppercase tracking-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-950 uppercase tracking-tight whitespace-nowrap">
             Popular Products
           </h2>
         </div>
@@ -55,12 +55,16 @@ export default function PopularProducts() {
         {/* Link to dedicated Products Page */}
         <Link
           to="/demos/tech-gadgets/products"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#FF6B00] sm:text-gray-800 hover:text-[#FF6B00] transition-colors uppercase tracking-wider cursor-pointer group w-fit"
+          className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-bold text-[#FF6B00] sm:text-gray-800 hover:text-[#FF6B00] transition-colors uppercase tracking-wider cursor-pointer group shrink-0 whitespace-nowrap pb-0.5"
         >
-          <span>View All Products ({POPULAR_PRODUCTS.length})</span>
+          <span>
+            <span className="hidden sm:inline">View All Products</span>
+            <span className="sm:hidden">View All</span>{" "}
+            <span className="text-[#FF6B00] font-black">({POPULAR_PRODUCTS.length})</span>
+          </span>
           <ChevronRight
             size={14}
-            className="transform group-hover:translate-x-1 transition-transform"
+            className="transform group-hover:translate-x-1 transition-transform shrink-0"
           />
         </Link>
       </div>

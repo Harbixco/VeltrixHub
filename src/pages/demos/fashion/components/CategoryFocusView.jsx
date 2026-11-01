@@ -12,7 +12,11 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import { CATEGORY_DETAILS } from "../data/categories";
 import { FASHION_CATALOG } from "../data/catalog";
-import { WHATSAPP_NUMBER, formatNaira } from "../utils/helpers";
+import {
+  WHATSAPP_NUMBER,
+  formatNaira,
+  generateSingleProductWhatsAppUrl,
+} from "../utils/helpers";
 
 export default function CategoryFocusView({
   activeCategoryPage,
@@ -221,9 +225,10 @@ export default function CategoryFocusView({
                         <span>Add</span>
                       </button>
                       <a
-                        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                          `Hello ShopEase Stylist! I want to order the *${product.name}* (${formatNaira(product.price)}). Please confirm availability!`
-                        )}`}
+                        href={generateSingleProductWhatsAppUrl({
+                          product,
+                          city: "Lekki, Lagos",
+                        })}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-sm transition-all"

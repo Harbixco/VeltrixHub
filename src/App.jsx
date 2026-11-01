@@ -11,6 +11,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import FashionDemoPage from "./pages/demos/fashion";
+import PerfumesDemoPage from "./pages/demos/perfumes";
 import TechGadgetsPage, {
   ProductsPage,
   CategoriesPage,
@@ -65,6 +66,12 @@ function AnimatedRoutes() {
       <Route path="/demos/fashion" element={<FashionDemoPage />} />
       <Route path="/demos/boutique" element={<Navigate to="/demos/fashion" replace />} />
       <Route path="/demos/cosmetics" element={<Navigate to="/demos/fashion" replace />} />
+
+      {/* Luxury Perfumes & Scent Parfumerie Showcase */}
+      <Route path="/demos/perfumes" element={<PerfumesDemoPage />} />
+      <Route path="/demos/perfume" element={<Navigate to="/demos/perfumes" replace />} />
+      <Route path="/demos/fragrances" element={<Navigate to="/demos/perfumes" replace />} />
+      <Route path="/demos/scents" element={<Navigate to="/demos/perfumes" replace />} />
 
       {/* Tech Gadgets Showcase - Dedicated Pages */}
       <Route path="/demos/tech-gadgets" element={<TechGadgetsPage />} />
