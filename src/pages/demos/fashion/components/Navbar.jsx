@@ -59,11 +59,11 @@ export default function Navbar({
         <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 text-xs lg:text-[13px] font-semibold text-[#374151] shrink-0">
           {[
             { label: "New In", key: null },
-            { label: "Senator & Bespoke", key: "Senator & Bespoke" },
-            { label: "Tailored Suits", key: "Tailored Suits" },
-            { label: "Resort Sets", key: "Resort Sets" },
-            { label: "Luxury Knitwear", key: "Luxury Knitwear" },
-            { label: "Outerwear", key: "Outerwear" },
+            { label: "Classic Senator", key: "Classic Senator" },
+            { label: "Embroidered", key: "Embroidered Kaftans" },
+            { label: "Color-Block", key: "Color-Block Tunics" },
+            { label: "Mandarin Suits", key: "Mandarin Suits" },
+            { label: "Casual Kaftans", key: "Short-Sleeve Casual" },
           ].map((item) => {
             const isCurNav =
               item.key === "Deals"

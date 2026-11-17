@@ -114,11 +114,11 @@ export default function CategoryFocusView({
       {/* Quick Category Switcher Tabs */}
       <div className="bg-white border border-[#f1e6da] rounded-2xl p-2.5 shadow-xs flex items-center gap-2 overflow-x-auto scrollbar-none">
         {[
-          { label: "Senator & Bespoke", key: "Senator & Bespoke" },
-          { label: "Tailored Suits", key: "Tailored Suits" },
-          { label: "Resort Sets", key: "Resort Sets" },
-          { label: "Luxury Knitwear", key: "Luxury Knitwear" },
-          { label: "Outerwear & Jackets", key: "Outerwear" },
+          { label: "Classic Senator", key: "Classic Senator" },
+          { label: "Embroidered Kaftans", key: "Embroidered Kaftans" },
+          { label: "Color-Block Tunics", key: "Color-Block Tunics" },
+          { label: "Mandarin Suits", key: "Mandarin Suits" },
+          { label: "Short-Sleeve Casual", key: "Short-Sleeve Casual" },
         ].map((tab) => (
           <button
             key={tab.key}
@@ -164,36 +164,31 @@ export default function CategoryFocusView({
                 key={product.id}
                 className="bg-white rounded-2xl border border-[#f1e6da] overflow-hidden shadow-xs hover:shadow-xl hover:border-orange-300 transition-all flex flex-col justify-between group"
               >
-                {/* Image & Badges */}
-                <div className="relative w-full h-64 sm:h-72 bg-[#faf6f1] overflow-hidden">
+                {/* Pure, Clean Image with Zero Text Overlay */}
+                <div
+                  onClick={() => openModal(product)}
+                  className="relative w-full h-72 sm:h-80 bg-[#faf6f1] overflow-hidden cursor-pointer"
+                >
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transform group-hover:scale-106 transition-transform duration-700"
+                    className="w-full h-full object-cover object-top transform group-hover:scale-106 transition-transform duration-700"
                   />
-                  <span className="absolute top-3 left-3 bg-[#081d16] text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                    {product.badge}
-                  </span>
-                  <span className="absolute top-3 right-3 bg-[#e85d04] text-white text-[10px] font-black px-2.5 py-1 rounded-full shadow-sm">
-                    -{discountPct}%
-                  </span>
-                  <button
-                    onClick={() => openModal(product)}
-                    className="absolute bottom-3 left-3 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-xs text-gray-800 text-[11px] font-bold flex items-center gap-1 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <Eye size={13} />
-                    <span>3 Photos</span>
-                  </button>
                 </div>
 
                 {/* Product Info */}
-                <div className="p-5 flex-1 flex flex-col justify-between text-left space-y-3">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-1 text-amber-500 text-xs font-bold">
-                      <Star size={12} fill="currentColor" />
-                      <span>{product.rating}</span>
-                      <span className="text-gray-400 font-normal">
-                        ({product.reviewsCount})
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between text-left space-y-3">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="bg-[#081d16] text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        {product.badge}
+                      </span>
+                      <span className="flex items-center gap-1 text-amber-500 font-bold text-xs">
+                        <Star size={12} fill="currentColor" />
+                        <span>{product.rating}</span>
+                        <span className="text-gray-400 font-normal">
+                          ({product.reviewsCount})
+                        </span>
                       </span>
                     </div>
                     <h3 className="font-extrabold text-sm text-gray-900 group-hover:text-[#e85d04] transition-colors line-clamp-1">

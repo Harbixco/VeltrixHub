@@ -93,11 +93,11 @@ export default function Footer({
             </h4>
             <ul className="space-y-2.5 text-xs text-gray-500 font-medium">
               {[
-                "Senator & Bespoke",
-                "Tailored Suits",
-                "Resort Sets",
-                "Luxury Knitwear",
-                "Outerwear",
+                "Classic Senator",
+                "Embroidered Kaftans",
+                "Color-Block Tunics",
+                "Mandarin Suits",
+                "Short-Sleeve Casual",
               ].map((link) => (
                 <li key={link}>
                   <button

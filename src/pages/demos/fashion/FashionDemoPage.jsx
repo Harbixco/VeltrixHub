@@ -294,7 +294,7 @@ export default function FashionDemoPage() {
   return (
     <PageTransition>
       <SEO
-        title="Atelier Veltrix – Bespoke Apparel & Luxury Clothing Atelier"
+        title="Veltrix – Bespoke Apparel & Luxury Clothing Atelier"
         description="Discover handcrafted African Senator kaftans, Super 150s bespoke suits, luxury silk-linen resort sets, and modern outerwear at Atelier Veltrix."
       />
 

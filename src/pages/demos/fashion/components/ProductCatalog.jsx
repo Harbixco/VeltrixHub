@@ -31,11 +31,7 @@ export default function ProductCatalog({
       {/* Header Row */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
-          <span className="text-[#e85d04] text-xs font-bold tracking-widest uppercase flex items-center gap-1.5">
-            <Sparkles size={13} className="text-[#e85d04]" />
-            HAUTE PRÊT-À-PORTER & BESPOKE
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight mt-0.5">
+          <h2 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
             Curated Clothing Designs
           </h2>
         </div>
@@ -44,11 +40,11 @@ export default function ProductCatalog({
         <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
           {[
             { label: "All Garments", key: "All" },
-            { label: "Senator & Bespoke", key: "Senator & Bespoke" },
-            { label: "Tailored Suits", key: "Tailored Suits" },
-            { label: "Resort Sets", key: "Resort Sets" },
-            { label: "Luxury Knitwear", key: "Luxury Knitwear" },
-            { label: "Outerwear", key: "Outerwear" },
+            { label: "Classic Senator", key: "Classic Senator" },
+            { label: "Embroidered Kaftans", key: "Embroidered Kaftans" },
+            { label: "Color-Block Tunics", key: "Color-Block Tunics" },
+            { label: "Mandarin Suits", key: "Mandarin Suits" },
+            { label: "Short-Sleeve Casual", key: "Short-Sleeve Casual" },
           ].map((pill) => (
             <button
               key={pill.key}
@@ -107,7 +103,7 @@ export default function ProductCatalog({
                 )}
               </div>
 
-              {/* Image Showcase: Full luxury aspect ratio with Angle 2 Hover Swap on Desktop */}
+              {/* Image Showcase: 100% Clean Clothes Design with Zero Text Overlay */}
               <div
                 onClick={() => openModal(prod)}
                 className="relative w-full h-80 sm:h-72 md:h-84 rounded-2xl bg-[#faf6f1] flex items-center justify-center cursor-pointer overflow-hidden mb-3"
@@ -132,19 +128,6 @@ export default function ProductCatalog({
                     className="w-full h-full object-cover object-top absolute inset-0 opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-105 transition-all duration-700 pointer-events-none"
                   />
                 )}
-
-                {/* Quick View Hover Pill on Desktop */}
-                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity hidden sm:flex items-center justify-center backdrop-blur-2xs">
-                  <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white text-gray-900 font-bold text-xs shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                    <Eye size={14} />
-                    Inspect All Angles
-                  </span>
-                </div>
-
-                {/* Mobile Angle Badge */}
-                <span className="absolute bottom-2 left-2 sm:hidden text-[10px] font-bold bg-white/95 backdrop-blur-xs px-2 py-1 rounded-md text-gray-800 shadow-xs">
-                  3 Runway Views
-                </span>
               </div>
 
               {/* Product Meta */}

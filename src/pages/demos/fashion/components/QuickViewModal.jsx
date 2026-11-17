@@ -107,11 +107,6 @@ export default function QuickViewModal({
                       >
                         <ChevronRight size={16} />
                       </button>
-
-                      {/* Image Index Counter */}
-                      <div className="absolute bottom-3 right-3 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur-xs">
-                        {activeImageIndex + 1} / {currentModalImages.length}
-                      </div>
                     </>
                   )}
                 </div>
