@@ -240,7 +240,7 @@ export default function Footer() {
         {/* Bottom Bar: Copyright & Veltrix Hub Credit */}
         <div className="pt-4 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-center sm:text-left">
           <p className="font-medium text-white/90">
-            © {new Date().getFullYear()} MobileX Technologies Ltd. All Rights Reserved.
+            © {new Date().getFullYear()} MobileX Technologies Ltd All Rights Reserved.
           </p>
           <p className="text-gray-400 flex flex-wrap items-center justify-center gap-1.5">
             <span>E-Commerce Store Built by</span>
