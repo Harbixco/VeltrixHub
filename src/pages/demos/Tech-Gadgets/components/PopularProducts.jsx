@@ -44,9 +44,6 @@ export default function PopularProducts() {
       {/* Header Row - Cleanly aligned across mobile, tablet & desktop without awkward wrapping */}
       <div className="flex items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 text-left">
         <div className="min-w-0">
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-[#FF6B00] block mb-1 truncate">
-            VERIFIED NIGERIA STOCK
-          </span>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-950 uppercase tracking-tight whitespace-nowrap">
             Popular Products
           </h2>
@@ -87,37 +84,28 @@ export default function PopularProducts() {
               className="bg-white rounded-3xl border border-gray-100 p-3 sm:p-3.5 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300 text-left relative group"
             >
               <div>
-                {/* Visual Stage with Badge, Angle Hover & Quick View - High Visibility */}
+                {/* Pure, Clean Device Photo with Zero Text Overlay */}
                 <div
                   onClick={() => setActiveModalProduct(prod)}
                   className="relative w-full h-64 sm:h-72 rounded-2xl bg-gradient-to-b from-[#f8f9fa] to-[#edf1f5] flex items-center justify-center mb-3 cursor-pointer overflow-hidden shadow-2xs"
                 >
-                  {/* Top Left Dark Badge (BESTSELLER / SIGNATURE / NEW) */}
-                  <span className="absolute top-2.5 left-2.5 z-10 px-2.5 py-1 rounded-md text-[9px] font-black tracking-wider uppercase bg-black text-white shadow-xs">
-                    {badgeText}
-                  </span>
-
-                  {/* Primary Product Image with high-definition coverage */}
                   <img
                     src={prod.image}
                     alt={prod.name}
                     className="w-full h-full object-cover object-center transform group-hover:scale-106 transition-transform duration-700"
                   />
-
-                  {/* Desktop Quick View Overlay Pill */}
-                  <div className="absolute inset-0 bg-black/15 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-2xs pointer-events-none">
-                    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/95 text-gray-950 font-bold text-xs shadow-lg transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                      <Eye size={13} />
-                      <span>View Angles</span>
-                    </span>
-                  </div>
                 </div>
 
-                {/* Category & Star Rating Row */}
-                <div className="flex items-center justify-between text-xs px-0.5 mb-1">
-                  <span className="text-[10px] font-black uppercase tracking-wider text-[#FF6B00]">
-                    {prod.category}
-                  </span>
+                {/* Badge & Category Row */}
+                <div className="flex items-center justify-between text-xs px-0.5 mb-1.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="px-2 py-0.5 rounded text-[9px] font-black tracking-wider uppercase bg-black text-white">
+                      {badgeText}
+                    </span>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-[#FF6B00]">
+                      {prod.category}
+                    </span>
+                  </div>
                   <div className="flex items-center gap-1 font-bold text-amber-500 text-[11px]">
                     <Star size={11} fill="currentColor" />
                     <span>{prod.rating ? prod.rating.toFixed(1) : "5.0"}</span>

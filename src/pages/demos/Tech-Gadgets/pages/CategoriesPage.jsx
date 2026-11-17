@@ -161,7 +161,7 @@ export default function CategoriesPage() {
                 className="group rounded-3xl border border-gray-100 bg-white p-4 sm:p-6 hover:border-orange-200 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* High Visibility Visual Stage */}
+                  {/* Pure, Clean Category Image with Zero Text Overlay */}
                   <div
                     onClick={() =>
                       navigate(
@@ -170,35 +170,23 @@ export default function CategoriesPage() {
                         )}`
                       )
                     }
-                    className="relative w-full h-56 sm:h-68 lg:h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-[#f8f9fa] via-[#edf1f5] to-[#e4e9f0] mb-5 cursor-pointer flex items-center justify-center p-4 shadow-inner"
+                    className="relative w-full h-56 sm:h-68 lg:h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-[#f8f9fa] via-[#edf1f5] to-[#e4e9f0] mb-4 cursor-pointer flex items-center justify-center p-2 shadow-inner"
                   >
                     <img
                       src={cat.image}
                       alt={cat.displayName}
                       className="w-full h-full object-cover rounded-xl transform group-hover:scale-106 transition-transform duration-700"
                     />
+                  </div>
 
-                    {/* Top-Left Category Badge */}
-                    <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                      <span className="bg-black/80 backdrop-blur-md text-white text-[10.5px] font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md border border-white/10">
-                        {cat.badge}
-                      </span>
-                    </div>
-
-                    {/* Top-Right Starting Price Pill */}
-                    <div className="absolute top-3.5 right-3.5">
-                      <span className="bg-[#FF6B00] text-white text-[10.5px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
-                        {cat.highlight}
-                      </span>
-                    </div>
-
-                    {/* Hover Floating Pill Indicator */}
-                    <div className="absolute bottom-3.5 right-3.5 opacity-90 group-hover:opacity-100 transition-opacity">
-                      <span className="bg-white/95 backdrop-blur-md text-gray-900 text-[11px] font-extrabold px-3 py-1.5 rounded-xl shadow-lg border border-black/5 flex items-center gap-1.5 group-hover:bg-[#FF6B00] group-hover:text-white transition-colors">
-                        <span>Explore Catalog</span>
-                        <ArrowRight size={13} />
-                      </span>
-                    </div>
+                  {/* Badge & Starting Price Row */}
+                  <div className="flex items-center justify-between text-xs mb-2">
+                    <span className="bg-black text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded">
+                      {cat.badge}
+                    </span>
+                    <span className="text-[#FF6B00] font-extrabold text-xs">
+                      {cat.highlight}
+                    </span>
                   </div>
 
                   {/* Category Title */}

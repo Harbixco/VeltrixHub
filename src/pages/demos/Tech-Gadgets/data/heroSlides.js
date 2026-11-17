@@ -17,16 +17,11 @@ export const HERO_SLIDES = [
       { id: "delivery", label: "Faster Delivery" },
     ],
     // High-tech multi-device composite representation
-    image:
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
-    tabletImage:
-      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80",
-    phoneImage:
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80",
-    budsImage:
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80",
-    watchImage:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+    image: "/demos/gadgets/gadget-1.jpg",
+    tabletImage: "/demos/gadgets/gadget-3.jpg",
+    phoneImage: "/demos/gadgets/gadget-3.jpg",
+    budsImage: "/demos/gadgets/gadget-3.jpg",
+    watchImage: "/demos/gadgets/gadget-3.jpg",
   },
   {
     id: "slide-2",
@@ -44,16 +39,11 @@ export const HERO_SLIDES = [
       { id: "battery", label: "22h Battery Life" },
       { id: "display", label: "3.2K 120Hz OLED" },
     ],
-    image:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1200&q=80",
-    tabletImage:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
-    phoneImage:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80",
-    budsImage:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80",
-    watchImage:
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80",
+    image: "/demos/gadgets/gadget-2.jpg",
+    tabletImage: "/demos/gadgets/gadget-3.jpg",
+    phoneImage: "/demos/gadgets/gadget-3.jpg",
+    budsImage: "/demos/gadgets/gadget-3.jpg",
+    watchImage: "/demos/gadgets/gadget-3.jpg",
   },
   {
     id: "slide-3",
@@ -71,16 +61,11 @@ export const HERO_SLIDES = [
       { id: "hifi", label: "Lossless Audio" },
       { id: "playtime", label: "40-Hour Playtime" },
     ],
-    image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1200&q=80",
-    tabletImage:
-      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80",
-    phoneImage:
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80",
-    budsImage:
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80",
-    watchImage:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80",
+    image: "/demos/gadgets/gadget-3.jpg",
+    tabletImage: "/demos/gadgets/gadget-3.jpg",
+    phoneImage: "/demos/gadgets/gadget-3.jpg",
+    budsImage: "/demos/gadgets/gadget-3.jpg",
+    watchImage: "/demos/gadgets/gadget-3.jpg",
   },
 ];
 

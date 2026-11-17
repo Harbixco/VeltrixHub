@@ -132,11 +132,6 @@ export default function QuickViewModal({
                 >
                   <ChevronRight size={16} />
                 </button>
-
-                {/* Counter Badge matching template (e.g. 1/3) */}
-                <div className="absolute bottom-3 right-3 bg-black/65 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full z-10">
-                  {activeImageIndex + 1}/{gallery.length}
-                </div>
               </div>
 
               {/* Thumbnails Row: 01, 02, 03 */}

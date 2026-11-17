@@ -170,7 +170,7 @@ function ProductsPageContent() {
                   className="bg-white rounded-3xl border border-gray-100 p-3.5 sm:p-4 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300 text-left relative group"
                 >
                   <div>
-                    {/* High-Visibility Showcase Stage with Overlaid Badges */}
+                    {/* Pure, Clean Device Photo with Zero Text Overlay */}
                     <div
                       onClick={() => setActiveModalProduct(prod)}
                       className="relative w-full h-72 sm:h-80 lg:h-84 rounded-2xl bg-gradient-to-b from-[#f8f9fa] to-[#edf1f5] flex items-center justify-center mb-3.5 cursor-pointer overflow-hidden shadow-2xs"
@@ -180,24 +180,18 @@ function ProductsPageContent() {
                         alt={prod.name}
                         className="w-full h-full object-cover object-center transform group-hover:scale-106 transition-transform duration-700"
                       />
+                    </div>
 
-                      {/* Top-Left: Brand & Category Badge */}
-                      <span className="absolute top-3 left-3 bg-black/80 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md shadow-md border border-white/10">
+                    {/* Brand, Category & Discount Row */}
+                    <div className="flex items-center justify-between text-xs px-0.5 mb-1.5">
+                      <span className="bg-black text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded">
                         {prod.brand} • {prod.category}
                       </span>
-
-                      {/* Top-Right: Discount Badge */}
-                      <span className="absolute top-3 right-3 bg-[#FF6B00] text-white text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full shadow-md">
-                        {prod.discountBadge}
-                      </span>
-
-                      {/* Quick View Hover Pill on Desktop */}
-                      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-2xs">
-                        <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/95 text-gray-950 text-xs font-bold shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
-                          <Eye size={14} />
-                          <span>Quick View</span>
+                      {prod.discountBadge && (
+                        <span className="text-[10px] font-extrabold text-[#FF6B00] bg-orange-50 px-2 py-0.5 rounded-full">
+                          {prod.discountBadge}
                         </span>
-                      </div>
+                      )}
                     </div>
 
                     {/* Product Title */}

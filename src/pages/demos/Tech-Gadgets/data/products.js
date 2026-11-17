@@ -9,12 +9,11 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 128,
     isTrending: true,
-    image:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-16.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-16.jpg",
+      "/demos/gadgets/gadget-32.jpg",
+      "/demos/gadgets/gadget-39.jpg",
     ],
     colors: [
       { name: "Space Gray", hex: "#4B4846" },
@@ -41,12 +40,11 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 96,
     isTrending: true,
-    image:
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-17.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1572536147248-ac59a8abfa4b?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-17.jpg",
+      "/demos/gadgets/gadget-33.jpg",
+      "/demos/gadgets/gadget-40.jpg",
     ],
     colors: [
       { name: "Matte Carbon", hex: "#151515" },
@@ -72,12 +70,11 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 210,
     isTrending: true,
-    image:
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-18.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-18.jpg",
+      "/demos/gadgets/gadget-34.jpg",
+      "/demos/gadgets/gadget-41.jpg",
     ],
     colors: [
       { name: "Titanium Deep Blue", hex: "#1A2E40" },
@@ -103,11 +100,11 @@ export const PRODUCTS = [
     rating: 4.8,
     reviewsCount: 74,
     isTrending: true,
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-19.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-19.jpg",
+      "/demos/gadgets/gadget-35.jpg",
+      "/demos/gadgets/gadget-42.jpg",
     ],
     colors: [
       { name: "Stealth Black", hex: "#1c1917" },
@@ -132,11 +129,11 @@ export const PRODUCTS = [
     rating: 4.8,
     reviewsCount: 58,
     isTrending: true,
-    image:
-      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-20.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-20.jpg",
+      "/demos/gadgets/gadget-36.jpg",
+      "/demos/gadgets/gadget-43.jpg",
     ],
     colors: [
       { name: "Midnight Black", hex: "#111827" },
@@ -161,11 +158,11 @@ export const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 112,
     isTrending: true,
-    image:
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-21.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-21.jpg",
+      "/demos/gadgets/gadget-37.jpg",
+      "/demos/gadgets/gadget-44.jpg",
     ],
     colors: [{ name: "Arctic White", hex: "#ffffff" }],
     storage: ["Standard"],

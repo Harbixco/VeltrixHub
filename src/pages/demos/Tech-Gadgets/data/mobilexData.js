@@ -20,7 +20,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "25%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "https://cdn.pixabay.com/photo/2016/11/29/05/08/apple-1867461_1280.jpg",
+    image: "/demos/gadgets/gadget-1.jpg",
     alt: "Flagship 5G Smartphones",
   },
   {
@@ -35,7 +35,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "₦150K",
     badgeFoot: "TODAY",
     ctaText: "SHOP NOW",
-    image: "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+    image: "/demos/gadgets/gadget-2.jpg",
     alt: "Pro Laptops and Workstations",
   },
   {
@@ -50,7 +50,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "30%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+    image: "/demos/gadgets/gadget-3.jpg",
     alt: "Wireless Earbuds and Headphones",
   },
   {
@@ -66,7 +66,7 @@ export const HERO_SLIDES = [
     badgeFoot: "BEST PRICE",
     ctaText: "SHOP NOW",
     // Authentic, verified real powerbank image
-    image: "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+    image: "/demos/gadgets/gadget-4.jpg",
     alt: "Heavy Duty Fast Charging Powerbank",
   },
   {
@@ -81,7 +81,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "20%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+    image: "/demos/gadgets/gadget-5.jpg",
     alt: "Luxury Smartwatches and Fitness Trackers",
   },
 ];
@@ -92,36 +92,31 @@ export const CATEGORIES = [
     id: "smartphones",
     name: "Smartphones",
     count: "48+ Models",
-    image:
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=600&q=80",
+    image: "/demos/gadgets/gadget-6.jpg",
   },
   {
     id: "laptops",
     name: "Laptops & MacBooks",
     count: "32+ Models",
-    image:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+    image: "/demos/gadgets/gadget-7.jpg",
   },
   {
     id: "earpods",
     name: "Earpods & Audio",
     count: "24+ Models",
-    image:
-      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+    image: "/demos/gadgets/gadget-8.jpg",
   },
   {
     id: "powerbanks",
     name: "Powerbanks & Charging",
     count: "18+ Models",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+    image: "/demos/gadgets/gadget-9.jpg",
   },
   {
     id: "smartwatches",
     name: "Smartwatches",
     count: "20+ Models",
-    image:
-      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+    image: "/demos/gadgets/gadget-10.jpg",
   },
 ];
 
@@ -131,36 +126,31 @@ export const TOP_BRANDS_DEALS = [
     brand: "Apple",
     logoText: "Apple",
     phoneName: "iPhone 15 Pro Max",
-    image:
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=500&q=80",
+    image: "/demos/gadgets/gadget-11.jpg",
   },
   {
     brand: "Samsung",
     logoText: "SAMSUNG",
     phoneName: "Galaxy S24 Ultra",
-    image:
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80",
+    image: "/demos/gadgets/gadget-12.jpg",
   },
   {
     brand: "OnePlus",
     logoText: "ONEPLUS",
     phoneName: "OnePlus 12",
-    image:
-      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=500&q=80",
+    image: "/demos/gadgets/gadget-13.jpg",
   },
   {
     brand: "Xiaomi",
     logoText: "Xiaomi",
     phoneName: "Xiaomi 14 Ultra",
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80",
+    image: "/demos/gadgets/gadget-14.jpg",
   },
   {
     brand: "Google",
     logoText: "Google",
     phoneName: "Pixel 8 Pro",
-    image:
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80",
+    image: "/demos/gadgets/gadget-15.jpg",
   },
 ];
 
@@ -180,12 +170,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 128,
     stockCount: 12,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-16.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2016/11/29/05/08/apple-1867461_1280.jpg",
+      "/demos/gadgets/gadget-16.jpg",
+      "/demos/gadgets/gadget-32.jpg",
+      "/demos/gadgets/gadget-39.jpg",
     ],
     material: "Grade 5 Titanium & Ceramic Shield",
     battery: "4422 mAh (Up to 29 hrs video)",
@@ -213,12 +202,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 96,
     stockCount: 8,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-17.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-17.jpg",
+      "/demos/gadgets/gadget-33.jpg",
+      "/demos/gadgets/gadget-40.jpg",
     ],
     material: "Titanium Frame & Corning Gorilla Armor",
     battery: "5000 mAh (45W Fast Charging)",
@@ -246,12 +234,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 75,
     stockCount: 15,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-18.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-18.jpg",
+      "/demos/gadgets/gadget-34.jpg",
+      "/demos/gadgets/gadget-41.jpg",
     ],
     material: "Aluminum Frame & 3D Curved Glass",
     battery: "5500 mAh (100W SUPERVOOC Charge)",
@@ -277,12 +264,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 80,
     stockCount: 9,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-19.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-19.jpg",
+      "/demos/gadgets/gadget-35.jpg",
+      "/demos/gadgets/gadget-42.jpg",
     ],
     material: "Xiaomi Shield Glass & Vegan Leather",
     battery: "5000 mAh (90W HyperCharge)",
@@ -310,12 +296,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 64,
     stockCount: 5,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-20.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
-      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-20.jpg",
+      "/demos/gadgets/gadget-36.jpg",
+      "/demos/gadgets/gadget-43.jpg",
     ],
     material: "Unibody Recycled Space Black Aluminum",
     battery: "Up to 22 hours battery life",
@@ -341,12 +326,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 110,
     stockCount: 14,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-21.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+      "/demos/gadgets/gadget-21.jpg",
+      "/demos/gadgets/gadget-37.jpg",
+      "/demos/gadgets/gadget-44.jpg",
     ],
     material: "All-Aluminum Ultrathin Enclosure",
     battery: "Up to 18 hours battery life",
@@ -373,12 +357,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 42,
     stockCount: 6,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-22.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-22.jpg",
+      "/demos/gadgets/gadget-38.jpg",
+      "/demos/gadgets/gadget-45.jpg",
     ],
     material: "CNC Machined Aluminum & Carbon Fiber",
     battery: "86Whr Fast-Charging Battery",
@@ -403,12 +386,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 38,
     stockCount: 7,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-23.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2015/01/08/18/25/desk-593327_1280.jpg",
+      "/demos/gadgets/gadget-23.jpg",
+      "/demos/gadgets/gadget-39.jpg",
+      "/demos/gadgets/gadget-32.jpg",
     ],
     material: "Gem-Cut Aluminum with Bang & Olufsen Audio",
     battery: "Up to 16 hours battery",
@@ -436,12 +418,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 154,
     stockCount: 22,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-24.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-24.jpg",
+      "/demos/gadgets/gadget-40.jpg",
+      "/demos/gadgets/gadget-33.jpg",
     ],
     material: "MagSafe Charging Case (USB-C) & Silicone Tips",
     battery: "Up to 30 hrs with Charging Case",
@@ -466,12 +447,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 88,
     stockCount: 11,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-25.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-25.jpg",
+      "/demos/gadgets/gadget-41.jpg",
+      "/demos/gadgets/gadget-34.jpg",
     ],
     material: "Soft Fit Leatherette & Carbon Composite",
     battery: "30 Hours Battery Life (Quick 3-min Charge = 3 hrs)",
@@ -498,12 +478,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 67,
     stockCount: 19,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-26.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+      "/demos/gadgets/gadget-26.jpg",
+      "/demos/gadgets/gadget-42.jpg",
+      "/demos/gadgets/gadget-35.jpg",
     ],
     material: "Matte Ergonomic Finish & IPX7 Water Resistance",
     battery: "29 Hours total playtime",
@@ -530,12 +509,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 52,
     stockCount: 14,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-27.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2018/01/16/10/18/headphones-3085681_1280.jpg",
+      "/demos/gadgets/gadget-27.jpg",
+      "/demos/gadgets/gadget-43.jpg",
+      "/demos/gadgets/gadget-36.jpg",
     ],
     material: "Rugged Waterproof & Dustproof IP67",
     battery: "20 Hours Playtime + Built-in Power Bank",
@@ -565,12 +543,11 @@ export const POPULAR_PRODUCTS = [
     stockCount: 35,
     inStock: true,
     // Authentic, verified real powerbank image
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
+    image: "/demos/gadgets/gadget-28.jpg",
     gallery: [
-      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/5/53/Charging_a_smartphone_with_a_USB_power_bank.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/f/ff/Batterie_externe_Xiaomi_10400_mAh.jpg",
+      "/demos/gadgets/gadget-28.jpg",
+      "/demos/gadgets/gadget-44.jpg",
+      "/demos/gadgets/gadget-37.jpg",
     ],
     material: "Aircraft Grade Aluminum Shell & Anti-Skid Finish",
     battery: "30,000 mAh High-Density Lithium Polymer",
@@ -596,12 +573,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 92,
     stockCount: 15,
     inStock: true,
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/5/53/Charging_a_smartphone_with_a_USB_power_bank.jpg",
+    image: "/demos/gadgets/gadget-29.jpg",
     gallery: [
-      "https://upload.wikimedia.org/wikipedia/commons/5/53/Charging_a_smartphone_with_a_USB_power_bank.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/5/5b/Xiaomi_PowerBank.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/f/ff/Batterie_externe_Xiaomi_10400_mAh.jpg",
+      "/demos/gadgets/gadget-29.jpg",
+      "/demos/gadgets/gadget-45.jpg",
+      "/demos/gadgets/gadget-38.jpg",
     ],
     material: "Polycarbonate Shell & Smart Digital Color Display",
     battery: "24,000 mAh (140W Ultra-Fast Two-Way Charging)",
@@ -626,12 +602,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 71,
     stockCount: 8,
     inStock: true,
-    image:
-      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
+    image: "/demos/gadgets/gadget-30.jpg",
     gallery: [
-      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-30.jpg",
+      "/demos/gadgets/gadget-32.jpg",
+      "/demos/gadgets/gadget-39.jpg",
     ],
     material: "49mm Corrosion-Resistant Grade 5 Titanium",
     battery: "Up to 72 hours in Low Power Mode",
@@ -658,12 +633,11 @@ export const POPULAR_PRODUCTS = [
     reviewsCount: 59,
     stockCount: 13,
     inStock: true,
-    image:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+    image: "/demos/gadgets/gadget-31.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
-      "https://cdn.pixabay.com/photo/2015/06/25/17/21/smart-watch-821557_1280.jpg",
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+      "/demos/gadgets/gadget-31.jpg",
+      "/demos/gadgets/gadget-33.jpg",
+      "/demos/gadgets/gadget-40.jpg",
     ],
     material: "Stainless Steel with Rotating Physical Bezel",
     battery: "Up to 40 hours with fast wireless charging",

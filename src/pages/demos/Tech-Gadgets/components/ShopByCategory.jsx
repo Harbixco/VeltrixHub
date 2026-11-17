@@ -7,13 +7,10 @@ export default function ShopByCategory() {
   const navigate = useNavigate();
 
   return (
-    <section id="categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 select-none">
-      {/* Header Row - Cleanly aligned across mobile, tablet & desktop without awkward wrapping */}
+    <section id="categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 select-none">
+      {/* Header Row */}
       <div className="flex items-end justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 text-left">
         <div className="min-w-0">
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-[#FF6B00] block mb-1 truncate">
-            CURATED DEPARTMENTS
-          </span>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-950 uppercase tracking-tight whitespace-nowrap">
             Shop By Category
           </h2>
@@ -35,8 +32,8 @@ export default function ShopByCategory() {
         </Link>
       </div>
 
-      {/* 5 Cards Row matching the requested template (First uploaded image) */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+      {/* Grid: 1 column on mobile (single device per row), 2 on tablet, 5 on desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
         {CATEGORIES.map((cat, idx) => (
           <motion.div
             key={cat.id}
@@ -52,27 +49,25 @@ export default function ShopByCategory() {
                 )}`
               )
             }
-            className="group bg-white rounded-2xl sm:rounded-3xl border border-gray-100 p-3 sm:p-3.5 flex flex-col justify-between cursor-pointer shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300"
+            className="group bg-white rounded-3xl border border-gray-100 p-3 sm:p-3.5 flex flex-col justify-between cursor-pointer shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300"
           >
-            {/* Visual stage with top-right floating pill count */}
-            <div className="relative w-full h-44 sm:h-52 rounded-xl sm:rounded-2xl overflow-hidden bg-gradient-to-b from-[#f8f9fa] to-[#f0f2f5] mb-3 flex items-center justify-center p-3">
+            {/* Pure, Clean Device Photo with Zero Text Overlay */}
+            <div className="relative w-full h-64 sm:h-52 rounded-2xl overflow-hidden bg-[#faf6f1] mb-3 flex items-center justify-center">
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="w-full h-full object-cover rounded-lg sm:rounded-xl transform group-hover:scale-108 transition-transform duration-500"
+                className="w-full h-full object-cover object-center transform group-hover:scale-108 transition-transform duration-500"
               />
-
-              {/* Floating Pill Badge in Top Right */}
-              <span className="absolute top-2.5 right-2.5 text-[10px] sm:text-[11px] font-bold bg-white/95 backdrop-blur-md text-gray-800 px-2.5 py-1 rounded-full shadow-xs border border-black/5 pointer-events-none">
-                {cat.count}
-              </span>
             </div>
 
-            {/* Category Name & "Shop Now →" Link below */}
+            {/* Category Info Cleanly Below the Photo */}
             <div className="text-center pt-1 pb-1">
-              <h3 className="font-extrabold text-sm sm:text-base text-gray-950 group-hover:text-[#FF6B00] transition-colors mb-1 leading-snug">
+              <h3 className="font-extrabold text-sm sm:text-base text-gray-950 group-hover:text-[#FF6B00] transition-colors mb-0.5 leading-snug">
                 {cat.name}
               </h3>
+              <p className="text-[11px] text-gray-500 font-medium mb-1">
+                {cat.count}
+              </p>
               <span className="text-xs font-bold text-[#FF6B00] inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Shop Now →
               </span>

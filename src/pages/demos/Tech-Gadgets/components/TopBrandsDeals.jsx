@@ -12,8 +12,7 @@ export default function TopBrandsDeals() {
       badge: "Titanium",
       logo: <FaApple size={16} className="text-white" />,
       // Clean isolated studio render
-      image:
-        "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80",
+      image: "/demos/gadgets/gadget-11.jpg",
     },
     {
       id: "samsung",
@@ -26,8 +25,7 @@ export default function TopBrandsDeals() {
         </span>
       ),
       // Clean frontal studio render
-      image:
-        "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=500&q=80",
+      image: "/demos/gadgets/gadget-12.jpg",
     },
     {
       id: "oneplus",
@@ -41,8 +39,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean studio device render
-      image:
-        "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=500&q=80",
+      image: "/demos/gadgets/gadget-13.jpg",
     },
     {
       id: "xiaomi",
@@ -55,8 +52,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean phone portrait
-      image:
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80",
+      image: "/demos/gadgets/gadget-14.jpg",
     },
     {
       id: "google",
@@ -70,8 +66,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean flagship camera bar device
-      image:
-        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80",
+      image: "/demos/gadgets/gadget-15.jpg",
     },
   ];
 
