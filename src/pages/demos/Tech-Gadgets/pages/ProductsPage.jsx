@@ -170,15 +170,15 @@ function ProductsPageContent() {
                   className="bg-white rounded-3xl border border-gray-100 p-3.5 sm:p-4 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300 text-left relative group"
                 >
                   <div>
-                    {/* Pure, Clean Device Photo with Zero Text Overlay */}
+                    {/* Pure, Clean Device Photo: Full Gadget Display with Zero Text Overlay */}
                     <div
                       onClick={() => setActiveModalProduct(prod)}
-                      className="relative w-full h-72 sm:h-80 lg:h-84 rounded-2xl bg-gradient-to-b from-[#f8f9fa] to-[#edf1f5] flex items-center justify-center mb-3.5 cursor-pointer overflow-hidden shadow-2xs"
+                      className="relative w-full h-72 sm:h-80 lg:h-84 rounded-2xl bg-gradient-to-b from-[#f8f9fa] to-[#edf1f5] flex items-center justify-center mb-3.5 cursor-pointer overflow-hidden shadow-2xs p-3.5"
                     >
                       <img
                         src={prod.image}
                         alt={prod.name}
-                        className="w-full h-full object-cover object-center transform group-hover:scale-106 transition-transform duration-700"
+                        className="w-full h-full object-contain object-center transform group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
 

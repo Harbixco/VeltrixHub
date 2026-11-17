@@ -154,9 +154,6 @@ export default function QuickViewModal({
                         alt={`Thumbnail ${thumbLabel}`}
                         className="max-h-full max-w-full object-contain"
                       />
-                      <span className="absolute bottom-1 right-1 bg-black/65 text-white text-[8.5px] font-bold px-1 rounded">
-                        {thumbLabel}
-                      </span>
                     </div>
                   );
                 })}

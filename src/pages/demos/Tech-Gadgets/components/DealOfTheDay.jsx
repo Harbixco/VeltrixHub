@@ -154,14 +154,9 @@ export default function DealOfTheDay({
         {/* Deal Content Card */}
         <div className="bg-gradient-to-br from-[#111827] via-[#0E1524] to-[#0A0E18] rounded-3xl border border-white/10 p-6 sm:p-10 shadow-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left: Product Imagery with Angle Thumbnails */}
+            {/* Left: Product Imagery with Angle Thumbnails - 100% Clean Device with Zero Text Overlay */}
             <div className="lg:col-span-6 space-y-4">
-              <div className="relative rounded-2xl bg-gradient-to-b from-[#1E293B]/60 to-[#0B0F19] p-8 border border-white/10 flex items-center justify-center min-h-[320px] sm:min-h-[400px]">
-                <div className="absolute top-4 left-4 z-20 px-3 py-1 rounded-full bg-red-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg flex items-center gap-1.5">
-                  <Zap size={12} fill="currentColor" />
-                  <span>{deal.badge}</span>
-                </div>
-
+              <div className="relative rounded-2xl bg-gradient-to-b from-[#1E293B]/60 to-[#0B0F19] p-6 sm:p-8 border border-white/10 flex items-center justify-center min-h-[320px] sm:min-h-[400px]">
                 <motion.img
                   key={activeImageIndex}
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -198,6 +193,10 @@ export default function DealOfTheDay({
             {/* Right: Deal Details & CTAs */}
             <div className="lg:col-span-6 space-y-6 text-left">
               <div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 text-white font-bold text-xs uppercase tracking-wider shadow-sm mb-3">
+                  <Zap size={12} fill="currentColor" />
+                  <span>{deal.badge}</span>
+                </div>
                 <p className="text-cyan-400 font-bold text-xs uppercase tracking-widest mb-1">
                   OFFICIAL NIGERIA FLASH SALE
                 </p>
