@@ -47,10 +47,10 @@ export default function Navbar({
           </div>
           <div className="flex flex-col">
             <span className="font-black text-base sm:text-lg tracking-tight text-[#111827] leading-none">
-              ShopEase
+              Atelier Veltrix
             </span>
             <span className="text-[8.5px] sm:text-[9px] font-medium text-[#e85d04] tracking-tight mt-0.5 leading-none whitespace-nowrap">
-              Shop Smart, Live Better
+              Haute Prêt-à-Porter & Bespoke
             </span>
           </div>
         </button>
@@ -59,11 +59,11 @@ export default function Navbar({
         <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 text-xs lg:text-[13px] font-semibold text-[#374151] shrink-0">
           {[
             { label: "New In", key: null },
-            { label: "Women", key: "Women" },
-            { label: "Men", key: "Men" },
-            { label: "Footwear", key: "Footwear" },
-            { label: "Perfume", key: "Perfume" },
-            { label: "Beauty & Hair", key: "Beauty" },
+            { label: "Senator & Bespoke", key: "Senator & Bespoke" },
+            { label: "Tailored Suits", key: "Tailored Suits" },
+            { label: "Resort Sets", key: "Resort Sets" },
+            { label: "Luxury Knitwear", key: "Luxury Knitwear" },
+            { label: "Outerwear", key: "Outerwear" },
           ].map((item) => {
             const isCurNav =
               item.key === "Deals"
@@ -117,7 +117,7 @@ export default function Navbar({
           <div className="relative flex items-center">
             <input
               type="text"
-              placeholder="Search fashion..."
+              placeholder="Search garments..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-8 pr-7 py-1.5 rounded-full bg-[#faf6f1] border border-[#f1e6da] text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#e85d04] focus:bg-white transition-all shadow-2xs"
@@ -272,7 +272,7 @@ export default function Navbar({
               <Search size={15} className="absolute left-3.5 text-gray-400" />
               <input
                 type="text"
-                placeholder="Search dresses, suits, footwear, wigs..."
+                placeholder="Search Senator sets, bespoke suits, resort linen..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus

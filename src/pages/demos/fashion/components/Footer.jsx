@@ -27,17 +27,17 @@ export default function Footer({
               </div>
               <div>
                 <span className="font-black text-xl text-gray-900 block leading-none">
-                  ShopEase
+                  Atelier Veltrix
                 </span>
                 <span className="text-[10px] text-[#e85d04] font-semibold tracking-wide">
-                  Shop Smart, Live Better
+                  Haute Prêt-à-Porter & Bespoke
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-gray-500 leading-relaxed max-w-xs">
-              Your one-stop destination for quality clothes, footwears,
-              perfumes, creams, and virgin human hair wigs.
+              Your bespoke atelier destination for hand-tailored African Senator sets,
+              Super 150s bespoke suits, luxury silk-linen resort wear, and elevated outerwear.
             </p>
 
             {/* Social icons */}
@@ -89,28 +89,30 @@ export default function Footer({
           {/* Col 2: QUICK LINKS */}
           <div className="hidden md:block">
             <h4 className="font-black text-xs text-gray-900 uppercase tracking-wider mb-4">
-              QUICK LINKS
+              CLOTHING COLLECTIONS
             </h4>
             <ul className="space-y-2.5 text-xs text-gray-500 font-medium">
-              {["Women", "Men", "Footwear", "Perfume", "Beauty & Hair"].map(
-                (link) => (
-                  <li key={link}>
-                    <button
-                      onClick={() => {
-                        const catKey =
-                          link === "Beauty & Hair" ? "Beauty" : link;
-                        setActiveCategoryPage(catKey);
-                        setActiveNav(link);
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                        if (showToast) showToast(`Viewing ${link} Collection`);
-                      }}
-                      className="hover:text-[#e85d04] transition-colors text-left"
-                    >
-                      {link} Collection
-                    </button>
-                  </li>
-                )
-              )}
+              {[
+                "Senator & Bespoke",
+                "Tailored Suits",
+                "Resort Sets",
+                "Luxury Knitwear",
+                "Outerwear",
+              ].map((link) => (
+                <li key={link}>
+                  <button
+                    onClick={() => {
+                      setActiveCategoryPage(link);
+                      setActiveNav(link);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                      if (showToast) showToast(`Viewing ${link} Collection`);
+                    }}
+                    className="hover:text-[#e85d04] transition-colors text-left"
+                  >
+                    {link}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

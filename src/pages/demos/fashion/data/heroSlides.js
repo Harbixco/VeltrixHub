@@ -1,45 +1,42 @@
-// Carousel Hero Slides (High contrast colors: Pure white + Coral orange on dark green)
+// Carousel Hero Slides (100% Authentic Nigerian Senator Wears)
 export const HERO_SLIDES = [
   {
-    badge: "LIMITED TIME ONLY",
-    titleLine1: "Shop More,",
-    titleLine2: "Save More!",
+    badge: "NIGERIAN BESPOKE COUTURE",
+    titleLine1: "Sartorial Grace,",
+    titleLine2: "Royal Distinction!",
     subtitle:
-      "Discover luxury ready-to-wear dresses, bespoke suits, artisan leather footwear, and niche perfumery.",
-    image:
-      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=1000&q=80",
-    discountBadge: "50%",
-    discountLabel: "UP TO",
-    ctaText: "EXPLORE COLLECTION",
-    ctaLink: "#new-arrivals",
-    socialProof: "12,000+ Curated Shoppers",
-  },
-  {
-    badge: "NEW FOOTWEAR & LEATHER EDIT",
-    titleLine1: "Step Into",
-    titleLine2: "Pure Luxury!",
-    subtitle:
-      "Handcrafted Italian calfskin loafers, minimalist court sneakers, and designer stiletto heels built for presence.",
-    image:
-      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80",
+      "Hand-tailored Nigerian Senator kaftans, Super 150s cashmere wool sets, and stiffened mandarin collar suits cut to your exact body measurements.",
+    image: "/demos/fashion/senator/senator-1.jpg",
     discountBadge: "35%",
-    discountLabel: "SAVE",
-    ctaText: "SHOP FOOTWEAR",
+    discountLabel: "UP TO",
+    ctaText: "EXPLORE SENATOR WEARS",
     ctaLink: "#new-arrivals",
-    socialProof: "8,500+ Footwear Lovers",
+    socialProof: "2,400+ Distinguished Nigerian Gentlemen Styled",
   },
   {
-    badge: "LUXE VIRGIN HAIR & BEAUTY CREAMS",
-    titleLine1: "Elegance &",
-    titleLine2: "Radiant Glow!",
+    badge: "ROYAL EMBROIDERED EDIT",
+    titleLine1: "Artisanal Damask &",
+    titleLine2: "Madeira Gold Thread!",
     subtitle:
-      "100% Raw Virgin Human Hair bone straight wigs, deeply hydrating botanical glow creams, and French perfumes.",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1000&q=80",
+      "Intricate metallic neckline embroidery and festive Agbada tunics crafted for weddings, coronation galas, and VIP celebrations.",
+    image: "/demos/fashion/senator/senator-6.jpg",
     discountBadge: "40%",
-    discountLabel: "SPECIAL",
-    ctaText: "EXPLORE BEAUTY",
+    discountLabel: "SAVE",
+    ctaText: "SHOP EMBROIDERED",
     ctaLink: "#new-arrivals",
-    socialProof: "15,000+ Glowing Clients",
+    socialProof: "1,850+ Traditional Wedding Ensembles Crafted",
+  },
+  {
+    badge: "MONARCH TOGGLE SUITS",
+    titleLine1: "Mandarin Collars &",
+    titleLine2: "Silver Frog Closures!",
+    subtitle:
+      "Commanding architectural tunic suits with oriental toggle closures and structured chest canvasing for effortless presence.",
+    image: "/demos/fashion/senator/senator-16.jpg",
+    discountBadge: "30%",
+    discountLabel: "SPECIAL",
+    ctaText: "SHOP MANDARIN SUITS",
+    ctaLink: "#new-arrivals",
+    socialProof: "3,100+ Executive Wardrobes Delivered",
   },
 ];

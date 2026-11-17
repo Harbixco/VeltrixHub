@@ -30,10 +30,8 @@ export default function CategoryFocusView({
 }) {
   const categoryInfo = CATEGORY_DETAILS[activeCategoryPage];
 
-  const categoryProducts = FASHION_CATALOG.filter((item) =>
-    activeCategoryPage === "Beauty"
-      ? item.category === "Beauty & Hair" || item.category === "Beauty"
-      : item.category.toLowerCase() === activeCategoryPage?.toLowerCase()
+  const categoryProducts = FASHION_CATALOG.filter(
+    (item) => item.category.toLowerCase() === activeCategoryPage?.toLowerCase()
   );
 
   return (
@@ -116,17 +114,17 @@ export default function CategoryFocusView({
       {/* Quick Category Switcher Tabs */}
       <div className="bg-white border border-[#f1e6da] rounded-2xl p-2.5 shadow-xs flex items-center gap-2 overflow-x-auto scrollbar-none">
         {[
-          { label: "Women Collection", key: "Women" },
-          { label: "Men Collection", key: "Men" },
-          { label: "Footwear Collection", key: "Footwear" },
-          { label: "Perfume Collection", key: "Perfume" },
-          { label: "Beauty & Hair", key: "Beauty" },
+          { label: "Senator & Bespoke", key: "Senator & Bespoke" },
+          { label: "Tailored Suits", key: "Tailored Suits" },
+          { label: "Resort Sets", key: "Resort Sets" },
+          { label: "Luxury Knitwear", key: "Luxury Knitwear" },
+          { label: "Outerwear & Jackets", key: "Outerwear" },
         ].map((tab) => (
           <button
             key={tab.key}
             onClick={() => {
               setActiveCategoryPage(tab.key);
-              setActiveNav(tab.key === "Beauty" ? "Beauty & Hair" : tab.key);
+              setActiveNav(tab.key);
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${

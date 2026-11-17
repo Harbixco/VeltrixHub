@@ -1,27 +1,27 @@
-// Fashion Deal of the Day (100% Fashion: Raw Virgin Bone Straight Hair Wig)
+// Fashion Deal of the Day (Authentic Hand-Tailored Nigerian Senator Suit)
 export const DEAL_OF_THE_DAY = {
-  id: "deal-bone-straight-wig",
-  name: "Bone Straight Raw Virgin Hair Wig",
-  subtitle: "Double Drawn 13x4 HD Transparent Lace (28 Inches)",
-  price: 135000,
-  oldPrice: 270000,
-  stockLeft: 14,
+  id: "deal-imperial-senator-set",
+  name: "Imperial Royal Navy Senator Two-Piece",
+  subtitle: "Hand-Tailored Bespoke Kaftan Suit with Mandarin Collar & Razor-Pressed Trousers",
+  price: 115000,
+  oldPrice: 165000,
+  stockLeft: 6,
   rating: 5.0,
-  reviewsCount: 218,
-  image:
-    "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80",
+  reviewsCount: 184,
+  badge: "LIMITED ATELIER DEAL",
+  image: "/demos/fashion/senator/senator-1.jpg",
   gallery: [
-    "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80",
+    "/demos/fashion/senator/senator-1.jpg",
+    "/demos/fashion/senator/senator-6.jpg",
+    "/demos/fashion/senator/senator-11.jpg",
   ],
   colors: [
-    { name: "Natural Jet Black (#1B)", hex: "#111111" },
-    { name: "Rich Dark Chocolate (#2)", hex: "#2f1e16" },
-    { name: "Honey Blonde Highlights", hex: "#bfa36d" },
+    { name: "Royal Navy Blue", hex: "#122038" },
+    { name: "Obsidian Black", hex: "#111111" },
+    { name: "Deep Charcoal", hex: "#2b2e35" },
   ],
-  sizes: ["26 Inches", "28 Inches", "30 Inches"],
+  sizes: ["S", "M", "L", "XL", "XXL", "Custom Measurements"],
   description:
-    "100% Unprocessed Vietnamese Raw Donor Human Hair. Full double-drawn thickness from weft to tip with invisible melted HD Swiss lace. Pre-plucked hairline with bleached knots, tangle-free, and lasts over 3 years with proper care.",
-  composition: "100% Raw Virgin Donor Human Hair",
+    "Masterpiece 2-piece African Senator kaftan featuring a stiffened formal stand collar, hidden button placket, single chest welt pocket, and tailored trousers with side vents and adjustable waistband. Individually cut by master clothiers.",
+  composition: "Super 150s Wool-Touch Cashmere Blend",
 };

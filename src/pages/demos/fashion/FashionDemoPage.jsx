@@ -70,7 +70,7 @@ export default function FashionDemoPage() {
         quantity: 1,
         selectedColor: DEAL_OF_THE_DAY.colors[0],
         selectedSize: DEAL_OF_THE_DAY.sizes[0],
-        cartItemId: "deal-bone-straight-wig-default",
+        cartItemId: "deal-imperial-senator-set-default",
       },
     ];
   });
@@ -187,12 +187,9 @@ export default function FashionDemoPage() {
   // Filter products by category with exact match
   const displayedProducts = useMemo(() => {
     if (selectedFilterCategory === "All") return FASHION_CATALOG;
-    return FASHION_CATALOG.filter((item) => {
-      if (selectedFilterCategory === "Beauty") {
-        return item.category === "Beauty & Hair" || item.category === "Beauty";
-      }
-      return item.category.toLowerCase() === selectedFilterCategory.toLowerCase();
-    });
+    return FASHION_CATALOG.filter(
+      (item) => item.category.toLowerCase() === selectedFilterCategory.toLowerCase()
+    );
   }, [selectedFilterCategory]);
 
   const totalPages = Math.max(1, Math.ceil(displayedProducts.length / ITEMS_PER_PAGE));
@@ -297,8 +294,8 @@ export default function FashionDemoPage() {
   return (
     <PageTransition>
       <SEO
-        title="ShopEase – Shop Smart, Live Better | Luxury Fashion, Footwear, Hair & Perfumes"
-        description="Shop More, Save More! Discover luxury fashion clothes, designer footwear, virgin human hair wigs, French perfumes, and botanical skincare creams at ShopEase."
+        title="Atelier Veltrix – Bespoke Apparel & Luxury Clothing Atelier"
+        description="Discover handcrafted African Senator kaftans, Super 150s bespoke suits, luxury silk-linen resort sets, and modern outerwear at Atelier Veltrix."
       />
 
       <div className="bg-[#fcf8f4] text-[#1a1a1a] min-h-screen font-body antialiased selection:bg-[#e85d04] selection:text-white pb-20 sm:pb-0">

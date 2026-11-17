@@ -39,10 +39,10 @@ export default function MobileMenuDrawer({
                 </div>
                 <div>
                   <span className="font-black text-lg text-gray-900 block leading-none">
-                    ShopEase
+                    Atelier Veltrix
                   </span>
                   <span className="text-[9px] font-bold text-[#e85d04] tracking-wider uppercase">
-                    Luxury Fashion
+                    Haute Prêt-à-Porter
                   </span>
                 </div>
               </div>
@@ -58,28 +58,36 @@ export default function MobileMenuDrawer({
             <div className="flex-1 overflow-y-auto p-4 space-y-5">
               <div className="space-y-1">
                 <span className="text-[10px] font-black tracking-widest uppercase text-gray-400 px-3 block mb-2">
-                  COLLECTIONS
+                  CLOTHING COLLECTIONS
                 </span>
                 {[
-                  { label: "New In (Home)", key: null, badge: "Featured" },
+                  { label: "New In (All Garments)", key: null, badge: "25 Pieces" },
                   {
-                    label: "Women Collection",
-                    key: "Women",
-                    badge: "240+ Styles",
-                  },
-                  { label: "Men Collection", key: "Men", badge: "185+ Styles" },
-                  {
-                    label: "Footwear Collection",
-                    key: "Footwear",
-                    badge: "140+ Pairs",
+                    label: "Senator & Bespoke",
+                    key: "Senator & Bespoke",
+                    badge: "85+ Cuts",
                   },
                   {
-                    label: "Perfume Collection",
-                    key: "Perfume",
-                    badge: "110+ Scents",
+                    label: "Tailored Suits",
+                    key: "Tailored Suits",
+                    badge: "64+ Masterpieces",
                   },
-                  { label: "Beauty & Hair", key: "Beauty", badge: "95+ Units" },
-                  { label: "Deal of the Day", key: "Deals", badge: "50% OFF" },
+                  {
+                    label: "Resort Sets",
+                    key: "Resort Sets",
+                    badge: "52+ Sets",
+                  },
+                  {
+                    label: "Luxury Knitwear",
+                    key: "Luxury Knitwear",
+                    badge: "48+ Styles",
+                  },
+                  {
+                    label: "Outerwear & Jackets",
+                    key: "Outerwear",
+                    badge: "40+ Icons",
+                  },
+                  { label: "Deal of the Day", key: "Deals", badge: "SPECIAL EDIT" },
                 ].map((item) => {
                   const isCur =
                     item.key === "Deals"

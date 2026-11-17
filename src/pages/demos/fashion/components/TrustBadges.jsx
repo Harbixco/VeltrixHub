@@ -36,7 +36,7 @@ export default function TrustBadges({ setActivePolicyModal, setExpandedFaq }) {
           </div>
         </div>
 
-        {/* Premium Quality */}
+        {/* Noble Fabrics */}
         <div
           onClick={() => setActivePolicyModal("terms")}
           className="flex items-center gap-3.5 group cursor-pointer"
@@ -46,13 +46,13 @@ export default function TrustBadges({ setActivePolicyModal, setExpandedFaq }) {
           </div>
           <div>
             <h4 className="font-extrabold text-xs sm:text-sm text-gray-900 group-hover:text-[#e85d04] transition-colors leading-snug">
-              Premium Quality
+              Noble Fabrics
             </h4>
-            <p className="text-[11px] text-gray-500">100% original products</p>
+            <p className="text-[11px] text-gray-500">Pure Silk, Wool & Linen</p>
           </div>
         </div>
 
-        {/* 24/7 Support */}
+        {/* Atelier Stylist */}
         <div
           onClick={() => {
             setActivePolicyModal("faqs");
@@ -65,9 +65,9 @@ export default function TrustBadges({ setActivePolicyModal, setExpandedFaq }) {
           </div>
           <div>
             <h4 className="font-extrabold text-xs sm:text-sm text-gray-900 group-hover:text-[#e85d04] transition-colors leading-snug">
-              24/7 Support
+              Atelier Stylist
             </h4>
-            <p className="text-[11px] text-gray-500">We're here to help</p>
+            <p className="text-[11px] text-gray-500">Custom Fitting Support</p>
           </div>
         </div>
       </div>

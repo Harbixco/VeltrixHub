@@ -110,15 +110,15 @@ export default function DealOfTheDay({ timeLeft, addToCart, openModal }) {
               <span className="text-xs text-gray-400 line-through">
                 {formatNaira(DEAL_OF_THE_DAY.oldPrice)}
               </span>
-              <span className="text-[10px] font-black bg-red-100 text-red-600 px-1.5 py-0.5 rounded">
-                Save 50%
+              <span className="text-[10px] font-black bg-orange-100 text-[#e85d04] px-2 py-0.5 rounded-full">
+                Save {Math.round(((DEAL_OF_THE_DAY.oldPrice - DEAL_OF_THE_DAY.price) / DEAL_OF_THE_DAY.oldPrice) * 100)}%
               </span>
             </div>
 
             {/* Stock Left */}
             <div className="space-y-1">
               <div className="flex justify-between text-[11px] font-bold text-[#e85d04]">
-                <span>Only {DEAL_OF_THE_DAY.stockLeft} wigs left!</span>
+                <span>Only {DEAL_OF_THE_DAY.stockLeft} bespoke sets left in stock!</span>
                 <span className="text-gray-400 font-normal">Selling fast</span>
               </div>
               <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden relative">

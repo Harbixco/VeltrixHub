@@ -56,7 +56,7 @@ export default function QuickViewModal({
               {/* LEFT: Multi-Image Stock Gallery */}
               <div className="space-y-3">
                 {/* Main Stage with Carousel Nav */}
-                <div className="relative w-full h-72 sm:h-92 rounded-2xl bg-[#faf6f1] p-4 flex items-center justify-center overflow-hidden border border-[#f1e6da] group">
+                <div className="relative w-full h-80 sm:h-96 rounded-2xl bg-[#faf6f1] flex items-center justify-center overflow-hidden border border-[#f1e6da] group">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={activeImageIndex}
@@ -76,7 +76,7 @@ export default function QuickViewModal({
                           activeModalProduct.image ||
                           "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80";
                       }}
-                      className="max-h-full max-w-full object-contain"
+                      className="w-full h-full object-cover object-top"
                     />
                   </AnimatePresence>
 
@@ -137,7 +137,7 @@ export default function QuickViewModal({
                               activeModalProduct.image ||
                               "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80";
                           }}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-cover object-top"
                         />
                         <span className="absolute bottom-1 right-1 text-[8px] font-bold bg-black/60 text-white px-1 rounded">
                           0{idx + 1}

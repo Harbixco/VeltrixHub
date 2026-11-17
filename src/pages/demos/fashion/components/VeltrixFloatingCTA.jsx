@@ -7,7 +7,7 @@ export default function VeltrixFloatingCTA() {
   const [isMinimized, setIsMinimized] = useState(false);
 
   const whatsappMessage = encodeURIComponent(
-    "Hello Veltrix Hub! 👋 I am browsing your ShopEase demo store and want an identical e-commerce store set up for my brand in 3–5 days. Let's discuss pricing and launch!"
+    "Hello Veltrix Hub! 👋 I am browsing your Atelier luxury clothing demo store and want a high-converting e-commerce store built for my fashion / clothing brand in 3–5 days. Let's discuss pricing and launch!"
   );
   const whatsappUrl = `https://wa.me/2348086624539?text=${whatsappMessage}`;
 
@@ -69,10 +69,10 @@ export default function VeltrixFloatingCTA() {
             {/* Hook Headline */}
             <div className="space-y-1 mb-3 text-left relative z-10">
               <p className="text-xs sm:text-sm font-extrabold text-white leading-snug">
-                Want an identical luxury store set up for your brand in 3–5 days?
+                Selling Clothes or Running a Fashion Brand?
               </p>
               <p className="text-[11px] text-gray-300 leading-relaxed">
-                We design and launch fast, Paystack & WhatsApp integrated e-commerce websites for Nigerian boutiques & businesses.
+                We build turnkey, high-converting luxury clothing e-commerce stores with Paystack & WhatsApp checkout in 3–5 days.
               </p>
             </div>
 

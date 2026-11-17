@@ -1,28 +1,28 @@
-// Comprehensive FAQs for Customer Care
+// Comprehensive FAQs for Atelier Customer Care
 export const FAQ_ITEMS = [
   {
-    q: "How do I place an order on ShopEase?",
-    a: "Ordering is seamless! You can either add items to your wardrobe cart and click 'Checkout' to pay securely via our Paystack gateway (Card, Bank Transfer, USSD), or click 'Order on WhatsApp' on any product to chat directly with our Lagos styling concierge for instant confirmation.",
+    q: "How do I place an order with Atelier Veltrix?",
+    a: "Ordering is seamless! You can browse our ready-to-wear collections, select your standard size (or custom measurements), and pay securely via our Paystack gateway. Alternatively, tap 'Order on WhatsApp' on any clothing piece to send your exact measurements directly to our head master tailor.",
   },
   {
-    q: "How fast is delivery within Lagos and across Nigeria?",
-    a: "Orders in Lagos placed before 2:00 PM arrive same-day or within 24 hours via our dedicated dispatch fleet. Deliveries to all other 35 states in Nigeria arrive within 2 to 4 business days via GIG Logistics or DHL Express with end-to-end SMS and WhatsApp tracking.",
+    q: "Can I submit custom body measurements for tailored fits?",
+    a: "Yes, absolutely. For all Senator sets, kaftans, and bespoke suits, we provide a complimentary custom-tailoring option. Select 'Custom Measurements' when adding to bag or click 'Order on WhatsApp' to share your chest, shoulder, arm length, waist, and inseam measurements with our styling atelier.",
   },
   {
-    q: "Are the hair wigs made of 100% human raw virgin hair?",
-    a: "Yes, absolutely. All our bone straight and deep wavy units are crafted from 100% unprocessed single-donor raw virgin human hair with double-drawn density from weft to tip. They feature ultra-thin, invisible melted HD Swiss lace, can be bleached to 613 blonde, styled up to 450°F, and last over 3 years with proper care.",
+    q: "What fabrics and materials are used in your collections?",
+    a: "We work exclusively with noble, all-natural fabrics sourced directly from prestigious textile mills worldwide: Super 150s & 160s Australian Merino wool, pure 22-momme sandwashed mulberry silk, certified Normandy flax linen, Egyptian Giza cotton, and genuine Italian lambskin & goat suede.",
   },
   {
-    q: "What payment methods are supported on ShopEase?",
-    a: "We support all Nigerian bank debit and credit cards (Mastercard, Visa, Verve), instant direct bank transfers, and USSD via our PCI-DSS Level 1 certified Paystack gateway. When ordering through our WhatsApp concierge, you can also make direct transfers to our verified corporate bank account.",
+    q: "How fast is delivery across Lagos and nationwide in Nigeria?",
+    a: "Ready-to-wear garments are dispatched same-day for orders placed before 2:00 PM in Lagos. Nationwide deliveries to Abuja, Port Harcourt, Ibadan, Kano, and all 36 states arrive in 2 to 4 business days via DHL Express or GIG Logistics. Bespoke tailored orders are cut and finished within 3 to 5 business days.",
   },
   {
-    q: "How do I ensure I select my correct shoe or clothing size?",
-    a: "Every product card displays standard UK/European sizes alongside item specifications. If you are unsure between sizes, tap 'Order on WhatsApp' and our stylist will guide you on exact body measurements before dispatch.",
+    q: "What payment methods are supported?",
+    a: "We support all Nigerian bank debit and credit cards (Mastercard, Visa, Verve), instant direct bank transfers, and USSD via our PCI-DSS certified Paystack gateway. When ordering through WhatsApp, direct bank transfers to our verified atelier corporate account are also accepted.",
   },
   {
-    q: "Can I return or exchange an item if it doesn't fit?",
-    a: "Yes! We offer a 30-day hassle-free return and exchange policy. Garments and shoes must be unworn with original tags attached. For human hair wigs, the HD lace must remain uncut and unaltered. Exchanges in Lagos include complimentary return pickup.",
+    q: "What is your alterations and exchange policy?",
+    a: "We offer a 100% Perfect Fit Guarantee. If any ready-to-wear or bespoke garment needs a minor adjustment, we provide complimentary in-house alterations within 14 days of delivery. For unworn garments with original tags attached, exchanges and returns are accepted within 30 days.",
   },
 ];
 
@@ -31,158 +31,146 @@ export const POLICY_DATA = {
   faqs: {
     key: "faqs",
     title: "Frequently Asked Questions",
-    badge: "CUSTOMER SUPPORT",
-    subtitle: "Quick answers to help you shop luxury fashion with total confidence.",
+    badge: "ATELIER CLIENT CARE",
+    subtitle: "Everything you need to know about bespoke tailoring, sizing, and ordering.",
   },
   shipping: {
     key: "shipping",
     title: "Shipping & Delivery Policy",
-    badge: "NATIONWIDE LOGISTICS",
-    subtitle: "Fast, tracked, and insured delivery to your doorstep across Nigeria.",
+    badge: "GLOBAL & NATIONWIDE DISPATCH",
+    subtitle: "Fast, insured, and tracked delivery in luxury branded garment bags.",
     highlights: [
       {
-        title: "Lagos Same-Day & 24hr",
-        desc: "Orders placed by 2:00 PM in Lagos arrive same-day or within 24 hours via our private dispatch fleet.",
+        title: "Lagos Same-Day & 24hr Dispatch",
+        desc: "Ready-to-wear orders placed before 2:00 PM are dispatched immediately via our private VIP courier fleet.",
       },
       {
         title: "Nationwide (36 States)",
-        desc: "Delivery across Abuja, Port Harcourt, Ibadan, Kano, and other states takes 2 to 4 business days via GIG Logistics or DHL Express.",
+        desc: "Fast delivery to Abuja, Port Harcourt, and all states within 2 to 4 business days via DHL Express or GIG Logistics.",
       },
       {
         title: "Complimentary Free Shipping",
         desc: "Enjoy 100% free nationwide express delivery on all orders exceeding ₦100,000.",
       },
       {
-        title: "Discreet Luxury Packaging",
-        desc: "Every garment, wig, and shoe is packed in custom branded magnetic gift boxes with tamper-evident seals.",
+        title: "Garment Protection Packaging",
+        desc: "Every bespoke suit, kaftan, and silk set arrives pressed in a luxury breathable suit bag with custom cedar wood hanger.",
       },
     ],
     sections: [
       {
-        heading: "1. Dispatch Schedule & Order Cut-Off Times",
-        body: "All orders confirmed and paid before 2:00 PM (Monday to Saturday) are dispatched the same day from our Victoria Island, Lagos fulfillment hub. Orders placed after 2:00 PM or on Sundays are dispatched the next business morning.",
+        heading: "1. Dispatch Schedule & Tailoring Lead Times",
+        body: "Ready-to-wear garments ship within 24 hours. Bespoke custom-tailored orders require 3 to 5 business days for pattern cutting, hand-stitching, and quality control before immediate courier dispatch.",
       },
       {
-        heading: "2. Real-Time Tracking & Notifications",
-        body: "Once your package is assigned to a courier, you will receive an instant SMS and WhatsApp dispatch alert containing your real-time tracking link and rider contact details.",
+        heading: "2. Real-Time Courier Tracking",
+        body: "Once your package is dispatched, you will receive an automated SMS and WhatsApp notification containing your direct courier tracking link and dispatch rider details.",
       },
       {
         heading: "3. Inspection & Delivery Acceptance",
-        body: "Upon delivery, you or your authorized representative may inspect the outer luxury seal. If you notice any external transit damage, please contact our concierge immediately at +234 808 709 8270.",
+        body: "Please inspect your luxury suit cover upon delivery. If you have any inquiries regarding fit or delivery status, contact our VIP WhatsApp concierge immediately.",
       },
     ],
   },
   returns: {
     key: "returns",
-    title: "Returns & Refunds Policy",
-    badge: "30-DAY ASSURANCE",
-    subtitle: "Peace of mind with simple, transparent 30-day returns and exchanges.",
+    title: "Returns & Fit Guarantee Policy",
+    badge: "PERFECT FIT PROMISE",
+    subtitle: "30-day returns and complimentary tailoring adjustments on all garments.",
     highlights: [
       {
-        title: "30-Day Window",
-        desc: "Return or exchange any unworn fashion item within 30 calendar days of delivery.",
+        title: "Complimentary Alterations",
+        desc: "If any tailored piece requires a waist or sleeve adjustment, our atelier provides free alteration within 14 days.",
       },
       {
-        title: "Complimentary Lagos Pickup",
-        desc: "We arrange free doorstep pickup for exchanges anywhere within Lagos state.",
+        title: "30-Day Hassle-Free Returns",
+        desc: "Unworn ready-to-wear clothing in original condition with security tags attached is eligible for full refund or exchange.",
       },
       {
-        title: "100% Full Refunds",
-        desc: "Approved refunds are credited directly to your Nigerian bank account within 24 hours of inspection.",
+        title: "Doorstep Pickup in Lagos",
+        desc: "We arrange free return pickup directly from your residential or office address in Lagos.",
       },
       {
-        title: "Virgin Hair Guarantee",
-        desc: "Human hair wigs can be exchanged provided the HD Swiss lace remains uncut and unaltered.",
+        title: "Instant Store Credit or Refund",
+        desc: "Refunds are processed back to your original payment card or Nigerian bank account within 24 hours of inspection.",
       },
     ],
     sections: [
       {
-        heading: "1. Eligibility Guidelines",
-        body: "Items must be returned in their original, unwashed, and unworn condition with all luxury brand tags and garment bags intact. Footwear must be tried on carpeted surfaces to prevent sole scuffing. For health and hygiene standards, cosmetics and perfumes must have their cellophane seal unopened.",
+        heading: "1. Return Eligibility Criteria",
+        body: "Items must be returned unwashed, unworn, free from perfume or cologne scents, with all original atelier hangtags and luxury packaging intact.",
       },
       {
-        heading: "2. How to Initiate a Return or Exchange",
-        body: "Simply send a message to our WhatsApp Concierge (+234 808 709 8270) or email support@shopease.com with your order reference and photos of the item. Our team will generate a prepaid return pickup authorization within 2 business hours.",
-      },
-      {
-        heading: "3. Refund Processing Time",
-        body: "Once our Lagos quality control team inspects the item (typically within 24 hours of arrival), your refund will be processed immediately via direct bank transfer or store credit based on your preference.",
+        heading: "2. How to Request an Adjustment or Return",
+        body: "Simply tap 'Order on WhatsApp' or email support@atelier-veltrix.com with your order number. Our concierge will dispatch a return pickup rider to your doorstep.",
       },
     ],
   },
   terms: {
     key: "terms",
-    title: "Terms & Conditions",
-    badge: "SERVICE AGREEMENT",
-    subtitle: "Our commitment to authenticity, pricing transparency, and client protections.",
+    title: "Terms & Bespoke Conditions",
+    badge: "LEGAL & SARTORIAL STANDARDS",
+    subtitle: "Transparent terms governing your bespoke tailoring commissions and purchases.",
     highlights: [
       {
-        title: "100% Authenticity",
-        desc: "Every garment, shoe, extrait, and raw virgin hair unit is guaranteed 100% original.",
+        title: "Authentic Noble Fabrics",
+        desc: "We guarantee all fabrics used are authentic, high-grade wools, pure silks, and natural flax linens.",
       },
       {
-        title: "Price Integrity",
-        desc: "All prices are listed in Nigerian Naira (₦) with zero hidden fees or surprise charges at checkout.",
+        title: "Custom Fitting Agreement",
+        desc: "Bespoke commissions are cut precisely to client-submitted measurements with allowances for future tailoring.",
       },
       {
-        title: "PCI-DSS Security",
-        desc: "Payments are processed securely through Paystack with 256-bit bank-level SSL encryption.",
+        title: "Secure PCI-DSS Payments",
+        desc: "All transactions are encrypted with bank-grade 256-bit SSL via Paystack.",
       },
       {
-        title: "VIP Concierge Support",
-        desc: "Direct access to our dedicated styling and customer support team 7 days a week.",
+        title: "Intellectual Property",
+        desc: "All garment designs, pattern cuts, and photography are proprietary to Atelier Veltrix.",
       },
     ],
     sections: [
       {
-        heading: "1. Product Authenticity & Quality Standards",
-        body: "ShopEase operates with the highest standards of luxury curation. All fabrics (pure mulberry silk, cashmere, Egyptian cotton, French terry), leathers (hand-burnished Italian calfskin), and raw donor virgin hair are rigorously inspected before being cataloged.",
+        heading: "1. Bespoke Orders and Sizing",
+        body: "By confirming an order with custom measurements, you authorize our tailors to cut fabric to the specified dimensions. Minor natural variations (+/- 0.5 inches) occur during hand-pressing and hand-stitching.",
       },
       {
-        heading: "2. Order Acceptance & Pricing",
-        body: "Prices displayed on the website are valid at the time of purchase. In the rare event of a system typographical error, ShopEase reserves the right to contact the client to confirm or cancel the order with a full immediate refund.",
-      },
-      {
-        heading: "3. Intellectual Property",
-        body: "All imagery, product photography, editorial styling, and brand assets on ShopEase are proprietary and protected by copyright laws. Unauthorized reproduction is strictly prohibited.",
+        heading: "2. Pricing and Currency",
+        body: "All prices are listed in Nigerian Naira (₦) inclusive of value-added tax where applicable.",
       },
     ],
   },
   privacy: {
     key: "privacy",
-    title: "Privacy Policy",
-    badge: "DATA PROTECTION",
-    subtitle: "How we collect, protect, and respect your personal information under NDPR guidelines.",
+    title: "Client Privacy & Data Security",
+    badge: "CONFIDENTIAL SARTORIAL DATA",
+    subtitle: "Your personal measurements and styling preferences remain strictly confidential.",
     highlights: [
       {
-        title: "NDPR & GDPR Compliant",
-        desc: "We adhere strictly to Nigeria Data Protection Regulation standards.",
+        title: "Encrypted Measurement Vault",
+        desc: "Your body measurements and fit preferences are stored in a secure encrypted profile for future re-orders.",
       },
       {
-        title: "Zero Third-Party Selling",
-        desc: "We never sell, rent, or trade your personal information with external advertisers.",
+        title: "Zero Third-Party Sharing",
+        desc: "We never sell, rent, or trade your contact information with external marketing agencies.",
       },
       {
-        title: "Encrypted Data Storage",
-        desc: "Your addresses and order history are protected with industry-standard 256-bit SSL encryption.",
+        title: "Card Data Security",
+        desc: "We never store debit or credit card details on our servers; payments are tokenized via Paystack.",
       },
       {
-        title: "Complete Control",
-        desc: "You may request full export or deletion of your personal data at any time.",
+        title: "Full Data Control",
+        desc: "You can request deletion of your client profile and measurement records at any time.",
       },
     ],
     sections: [
       {
         heading: "1. Information We Collect",
-        body: "When you browse our collections or place an order, we collect essential details such as your name, delivery address, phone number, and email. We do NOT store your bank card numbers or CVV; all payment transactions are handled directly through Paystack's certified PCI-DSS Level 1 servers.",
+        body: "We collect only essential details necessary to cut garments and deliver orders: name, delivery address, phone number, email, and bespoke clothing measurements.",
       },
       {
-        heading: "2. How We Use Your Data",
-        body: "Your information is used solely to fulfill your orders, provide dispatch tracking updates, offer personalized wardrobe recommendations, and communicate important customer service notices.",
-      },
-      {
-        heading: "3. Cookies & Preferences",
-        body: "We use essential cookies to keep items in your wardrobe cart and save your wishlist preferences across browser sessions. You can configure your browser to disable non-essential cookies at any time.",
+        heading: "2. How We Protect Your Data",
+        body: "We implement rigorous physical, electronic, and managerial safeguards to protect client records from unauthorized access.",
       },
     ],
   },

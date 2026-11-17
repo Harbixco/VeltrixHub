@@ -19,21 +19,21 @@ export default function AnnouncementBar({ setActivePolicyModal }) {
         {/* Center */}
         <div className="hidden lg:flex items-center gap-1.5 text-[11px] text-[#cbd5e1]">
           <Sparkles size={13} className="text-[#f06428]" />
-          <span>New Season: 20 Curated Runway & Luxury Essentials</span>
+          <span>New Season: 25 Bespoke Tailored Garments & Haute Prêt-à-Porter</span>
         </div>
 
         {/* Right (Desktop only) */}
         <div className="hidden sm:flex items-center gap-4 text-[11px]">
           <a
             href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-              "Hello ShopEase! I would like some assistance styling my wardrobe."
+              "Hello Atelier Veltrix! I would like assistance with bespoke tailoring and garment sizing."
             )}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#f06428] hover:text-orange-400 font-bold transition-colors flex items-center gap-1"
           >
             <FaWhatsapp size={13} />
-            <span>VIP Fashion Concierge</span>
+            <span>VIP Atelier Concierge</span>
           </a>
           <span className="text-white/20">|</span>
           <button

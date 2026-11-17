@@ -1,133 +1,122 @@
-// 5 Pure Fashion Categories
+// 5 Nigerian Senator & Bespoke Fashion Categories
 export const CATEGORIES = [
   {
-    id: "women",
-    name: "Women",
-    itemCount: "240+ Styles",
-    image:
-      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=700&q=80",
-    linkText: "Shop Now →",
+    id: "classic-senator",
+    name: "Classic Senator",
+    itemCount: "45+ Bespoke Cuts",
+    image: "/demos/fashion/senator/senator-1.jpg",
+    linkText: "Shop Classic Sets →",
   },
   {
-    id: "men",
-    name: "Men",
-    itemCount: "185+ Styles",
-    image:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=700&q=80",
-    linkText: "Shop Now →",
+    id: "embroidered-kaftans",
+    name: "Embroidered Kaftans",
+    itemCount: "38+ Royal Designs",
+    image: "/demos/fashion/senator/senator-6.jpg",
+    linkText: "Shop Embroidered →",
   },
   {
-    id: "footwear",
-    name: "Footwear",
-    itemCount: "140+ Pairs",
-    image:
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80",
-    linkText: "Shop Now →",
+    id: "color-block-tunics",
+    name: "Color-Block Tunics",
+    itemCount: "32+ Modern Cuts",
+    image: "/demos/fashion/senator/senator-11.jpg",
+    linkText: "Shop Color-Block →",
   },
   {
-    id: "perfume",
-    name: "Perfume",
-    itemCount: "110+ Scents",
-    image:
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=700&q=80",
-    linkText: "Shop Now →",
+    id: "mandarin-suits",
+    name: "Mandarin Suits",
+    itemCount: "28+ Toggle Suits",
+    image: "/demos/fashion/senator/senator-16.jpg",
+    linkText: "Shop Mandarin Suits →",
   },
   {
-    id: "beauty",
-    name: "Beauty & Hair",
-    itemCount: "95+ Products",
-    image:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=700&q=80",
-    linkText: "Shop Now →",
+    id: "short-sleeve-casual",
+    name: "Short-Sleeve Casual",
+    itemCount: "35+ Friday Wear",
+    image: "/demos/fashion/senator/senator-21.jpg",
+    linkText: "Shop Casual Kaftans →",
   },
 ];
 
 // Detailed Category Metadata for dedicated category focus pages
 export const CATEGORY_DETAILS = {
-  Women: {
-    id: "women",
-    key: "Women",
-    title: "Women's Ready-to-Wear & Couture",
-    tagline: "ELEGANT SILHOUETTES & BESPOKE TAILORING",
+  "Classic Senator": {
+    id: "classic-senator",
+    key: "Classic Senator",
+    title: "Classic Bespoke Senator 2-Piece Sets",
+    tagline: "TIMELESS NIGERIAN SARTORIAL EXCELLENCE",
     description:
-      "Explore 22-momme pure mulberry silk slips, tailored Normandy flax linen blazers, sunburst pleated chiffon gowns, and Grade-A Mongolian cashmere knitwear crafted for effortless presence.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&w=1400&q=80",
-    badgeText: "PREMIUM COUTURE EDIT",
-    stats: "240+ Handpicked Styles",
+      "Signature solid Senator 2-piece ensembles tailored with stiffened formal mandarin collars, concealed plackets, chest welt pockets, and razor-sharp pressed trousers. Hand-cut from Super 150s cashmere wool, pure Egyptian Giza cotton, and Irish linen.",
+    bannerImage: "/demos/fashion/senator/senator-1.jpg",
+    badgeText: "NIGERIAN BESPOKE SIGNATURE",
+    stats: "45+ Handcrafted Masterpieces",
     fabricHighlights: [
-      "Grade 6A Mulberry Silk",
+      "Super 150s Wool-Touch Cashmere",
+      "Two-Ply Egyptian Giza Cotton",
       "100% Normandy Flax Linen",
-      "Grade-A Mongolian Cashmere",
     ],
   },
-  Men: {
-    id: "men",
-    key: "Men",
-    title: "Men's Sartorial & Modern Casual",
-    tagline: "PRECISION TAILORING & NOBLE FABRICS",
+  "Embroidered Kaftans": {
+    id: "embroidered-kaftans",
+    key: "Embroidered Kaftans",
+    title: "Handcrafted Embroidered Agbada & Royal Kaftans",
+    tagline: "METALLIC MADEIRA THREADWORK & DAMASK PATTERNS",
     description:
-      "Storm-resistant gabardine trench overcoats, Super 130s Australian Merino wool bespoke suits, heavyweight 480 GSM French terry hoodies, and two-ply Egyptian Giza cotton Oxford shirts.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1400&q=80",
-    badgeText: "SAVILE ROW STANDARDS",
-    stats: "185+ Masterpiece Cuts",
+      "Opulent necklines and chest embroidery crafted with precision geometric and floral threadwork. The definitive choice for traditional Nigerian weddings, chieftancy coronations, and festive galas.",
+    bannerImage: "/demos/fashion/senator/senator-6.jpg",
+    badgeText: "ROYAL CEREMONIAL EDIT",
+    stats: "38+ Masterpiece Designs",
     fabricHighlights: [
-      "Super 130s Merino Wool",
-      "480 GSM Organic French Terry",
-      "100s Two-Ply Egyptian Giza Cotton",
+      "Heavyweight Brocade Wool Crepe",
+      "Metallic Madeira Gold Threads",
+      "100% Swiss Cotton Voile",
     ],
   },
-  Footwear: {
-    id: "footwear",
-    key: "Footwear",
-    title: "Artisan Footwear & Handcrafted Leather Shoes",
-    tagline: "HAND-BURNISHED ITALIAN CALFSKIN CRAFTSMANSHIP",
+  "Color-Block Tunics": {
+    id: "color-block-tunics",
+    key: "Color-Block Tunics",
+    title: "Asymmetric & Diagonal Color-Block Tunics",
+    tagline: "AVANT-GARDE GEOMETRIC ARCHITECTURAL CUTS",
     description:
-      "Goodyear-welted burnished Italian calfskin penny loafers, minimalist court sneakers with vulcanized natural rubber, mirror-patent stiletto pumps, and supple nappa leather square-toe mules.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1400&q=80",
-    badgeText: "FLORENTINE LEATHERWORK",
-    stats: "140+ Handcrafted Pairs",
+      "Modern asymmetric dual-tone and tri-tone panels designed to accentuate an athletic V-taper frame. Features contrast collars, French turnback cuffs, and clean diagonal chest paneling.",
+    bannerImage: "/demos/fashion/senator/senator-11.jpg",
+    badgeText: "CONTEMPORARY RUNWAY",
+    stats: "32+ Modern Silhouettes",
     fabricHighlights: [
-      "Hand-Burnished Calfskin",
-      "Goodyear-Welted Soles",
-      "Padded Memory Foam Insoles",
+      "Two-Tone Turkish Cashmere Cotton",
+      "Matte & Lustrous Wool Insets",
+      "Durable Chainstitch Construction",
     ],
   },
-  Perfume: {
-    id: "perfume",
-    key: "Perfume",
-    title: "Haute Parfumerie & Niche Extraits",
-    tagline: "24-HOUR SILLAGE & RARE NOBLE BOTANICALS",
+  "Mandarin Suits": {
+    id: "mandarin-suits",
+    key: "Mandarin Suits",
+    title: "Mandarin Stand Collar & Toggle Tunic Suits",
+    tagline: "ORIENTAL FROG CLOSURES & MONARCH SARTORIAL STATURE",
     description:
-      "Intoxicating 30% concentration extraits and eaux de parfum blending wild Cambodian dark agarwood, bitter Mediterranean neroli blossoms, damask roses, and Madagascar vanilla bean.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1400&q=80",
-    badgeText: "FRENCH GRASSE EXTRAITS",
-    stats: "110+ Niche Scents",
+      "High-neck monarch suits fastened with handcrafted silver or brass frog toggles and antique buttons. Engineered with structured chest canvasing for an authoritative, regal presence.",
+    bannerImage: "/demos/fashion/senator/senator-16.jpg",
+    badgeText: "MONARCH SARTORIAL SUITS",
+    stats: "28+ Bespoke Ensembles",
     fabricHighlights: [
-      "30% Pure Extrait Concentration",
-      "Natural Essential Oils",
-      "Hand-Blown Crystal Flacons",
+      "Super 160s Italian Cashmere Wool",
+      "Handcrafted Silver Frog Toggles",
+      "Silky Bemberg Cupro Lining",
     ],
   },
-  Beauty: {
-    id: "beauty",
-    key: "Beauty",
-    title: "Virgin Hair Wigs & Radiant Creams",
-    tagline: "100% UNPROCESSED RAW HAIR & BOTANICAL GLOW",
+  "Short-Sleeve Casual": {
+    id: "short-sleeve-casual",
+    key: "Short-Sleeve Casual",
+    title: "Short-Sleeve Casual Senators & Friday Wear",
+    tagline: "BREEZY RESORT LUXURY & TROPICAL COMFORT",
     description:
-      "Double-drawn bone straight & deep wavy wigs with invisible melted HD Swiss lace, deeply hydrating 5% Niacinamide restorative face creams, and whipped African raw shea butter body soufflés.",
-    bannerImage:
-      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1400&q=80",
-    badgeText: "VIRGIN HAIR & BOTANICALS",
-    stats: "95+ Products",
+      "Relaxed short-sleeve kaftan sets, geometric patterned pocket accents, and vibrant linen sets tailored for Friday Jummah, weekend soirees, and stylish casual dining across Lagos and Abuja.",
+    bannerImage: "/demos/fashion/senator/senator-21.jpg",
+    badgeText: "FRIDAY CASUAL LUXE",
+    stats: "35+ Breezy Styles",
     fabricHighlights: [
-      "100% Donor Virgin Human Hair",
-      "Melted HD Swiss Lace",
-      "Raw Shea & Rosehip Oil",
+      "100% Pure Normandy Flax Linen",
+      "Mulberry Silk & Cotton Blend",
+      "Mercerized Breathable Pima Cotton",
     ],
   },
 };
-
