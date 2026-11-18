@@ -161,7 +161,7 @@ export default function CategoriesPage() {
                 className="group rounded-3xl border border-gray-100 bg-white p-4 sm:p-6 hover:border-orange-200 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  {/* Pure, Clean Category Image: Full Gadget Display with Zero Text Overlay */}
+                  {/* Pure, Clean Category Image: Exact size, height and width matching Image 2 */}
                   <div
                     onClick={() =>
                       navigate(
@@ -170,12 +170,12 @@ export default function CategoriesPage() {
                         )}`
                       )
                     }
-                    className="relative w-full h-56 sm:h-68 lg:h-72 rounded-2xl overflow-hidden bg-gradient-to-br from-[#f8f9fa] via-[#edf1f5] to-[#e4e9f0] mb-4 cursor-pointer flex items-center justify-center p-3 shadow-inner"
+                    className="relative w-full aspect-[5/4] sm:aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-[#f8f9fa] via-[#edf1f5] to-[#e4e9f0] mb-4 cursor-pointer flex items-center justify-center shadow-inner"
                   >
                     <img
                       src={cat.image}
                       alt={cat.displayName}
-                      className="w-full h-full object-contain rounded-xl transform group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 

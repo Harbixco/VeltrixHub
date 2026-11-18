@@ -51,12 +51,12 @@ export default function ShopByCategory() {
             }
             className="group bg-white rounded-3xl border border-gray-100 p-3 sm:p-3.5 flex flex-col justify-between cursor-pointer shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300"
           >
-            {/* Pure, Clean Device Photo: Full Gadget Display with Zero Text Overlay */}
-            <div className="relative w-full h-64 sm:h-52 rounded-2xl overflow-hidden bg-[#faf6f1] mb-3 flex items-center justify-center p-3.5">
+            {/* Category Photo: Exact size, height and width matching Image 2 (5:4 aspect, edge-to-edge object-cover) */}
+            <div className="relative w-full aspect-[5/4] rounded-2xl overflow-hidden bg-[#faf6f1] mb-3 flex items-center justify-center">
               <img
                 src={cat.image}
                 alt={cat.name}
-                className="w-full h-full object-contain object-center transform group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 

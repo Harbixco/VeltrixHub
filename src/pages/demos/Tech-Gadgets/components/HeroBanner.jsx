@@ -44,9 +44,9 @@ export default function HeroBanner({ onShopNow }) {
           }
           setTouchStartX(null);
         }}
-        className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-[#f8f9fa] h-[460px] sm:h-[520px] md:h-[600px] flex items-center justify-center group select-none"
+        className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-[#0b0e14] h-[480px] sm:h-[540px] md:h-[620px] flex items-center justify-center group select-none"
       >
-        {/* Dynamic Carousel Slide Image: Pure, Crisp Gadget Design - Full Device Visibility */}
+        {/* Dynamic Carousel Slide Image: Matches user specification in Image 1 */}
         <AnimatePresence mode="wait">
           <motion.div
             key={slide.id}
@@ -54,12 +54,12 @@ export default function HeroBanner({ onShopNow }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="absolute inset-0 w-full h-full flex items-center justify-center p-3 sm:p-6 md:p-8"
+            className="absolute inset-0 w-full h-full"
           >
             <img
               src={slide.image}
               alt={slide.alt || "Flagship Device"}
-              className="w-full h-full object-contain object-center transition-all duration-500"
+              className="w-full h-full object-cover object-center"
             />
           </motion.div>
         </AnimatePresence>

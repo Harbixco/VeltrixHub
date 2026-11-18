@@ -170,28 +170,25 @@ function ProductsPageContent() {
                   className="bg-white rounded-3xl border border-gray-100 p-3.5 sm:p-4 flex flex-col justify-between shadow-xs hover:shadow-xl hover:border-orange-200 transition-all duration-300 text-left relative group"
                 >
                   <div>
-                    {/* Pure, Clean Device Photo: Full Gadget Display with Zero Text Overlay */}
+                    {/* Product Photo: Exact size, height and width matching user specification in Image 3 */}
                     <div
                       onClick={() => setActiveModalProduct(prod)}
-                      className="relative w-full h-72 sm:h-80 lg:h-84 rounded-2xl bg-gradient-to-b from-[#f8f9fa] to-[#edf1f5] flex items-center justify-center mb-3.5 cursor-pointer overflow-hidden shadow-2xs p-3.5"
+                      className="relative w-full aspect-[4/3] rounded-2xl bg-[#faf6f1] overflow-hidden mb-3.5 cursor-pointer flex items-center justify-center shadow-2xs"
                     >
                       <img
                         src={prod.image}
                         alt={prod.name}
-                        className="w-full h-full object-contain object-center transform group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
 
-                    {/* Brand, Category & Discount Row */}
-                    <div className="flex items-center justify-between text-xs px-0.5 mb-1.5">
-                      <span className="bg-black text-white text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded">
-                        {prod.brand} • {prod.category}
+                    {/* Rating line matching Image 3 (★ 5 (184 reviews)) */}
+                    <div className="flex items-center gap-1.5 font-bold text-amber-500 text-xs mb-1.5 px-0.5">
+                      <Star size={13} fill="currentColor" />
+                      <span>{prod.rating ? prod.rating.toFixed(1) : "5.0"}</span>
+                      <span className="text-gray-400 font-normal">
+                        ({prod.reviewsCount || 184} reviews)
                       </span>
-                      {prod.discountBadge && (
-                        <span className="text-[10px] font-extrabold text-[#FF6B00] bg-orange-50 px-2 py-0.5 rounded-full">
-                          {prod.discountBadge}
-                        </span>
-                      )}
                     </div>
 
                     {/* Product Title */}
@@ -203,14 +200,29 @@ function ProductsPageContent() {
                       {prod.name}
                     </h3>
 
-                    {/* Naira Price */}
-                    <div className="flex items-baseline gap-2 pt-0.5 px-0.5 mb-2">
+                    {/* Subtitle / Specs summary matching Image 3 */}
+                    <p className="text-[11px] sm:text-xs text-gray-500 font-normal line-clamp-2 leading-relaxed mb-3 px-0.5">
+                      {prod.description}
+                    </p>
+
+                    {/* Price and discount badge row matching Image 3 */}
+                    <div className="flex items-baseline gap-2 mb-2 px-0.5">
                       <span className="font-black text-base sm:text-lg text-[#FF6B00] font-mono tracking-tight">
                         {formatNaira(prod.price)}
                       </span>
-                      <span className="text-xs text-gray-400 line-through font-mono">
-                        {formatNaira(prod.originalPrice)}
+                      {prod.originalPrice && (
+                        <span className="text-xs text-gray-400 line-through font-mono">
+                          {formatNaira(prod.originalPrice)}
+                        </span>
+                      )}
+                      <span className="bg-orange-50 text-[#FF6B00] text-[10px] font-extrabold px-2.5 py-0.5 rounded-full">
+                        {prod.discountBadge || "Save 30%"}
                       </span>
+                    </div>
+
+                    {/* Urgency line matching Image 3 */}
+                    <div className="text-[11px] font-bold text-[#E65100] mb-2 px-0.5">
+                      Only {prod.stockCount || 6} units left in stock!
                     </div>
                   </div>
 
