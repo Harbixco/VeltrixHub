@@ -12,7 +12,7 @@ export default function TopBrandsDeals() {
       badge: "Titanium",
       logo: <FaApple size={16} className="text-white" />,
       // Clean isolated studio render
-      image: "/demos/gadgets/phone-1.jpg",
+      image: "/demos/gadgets/iphone-15-pro-max.jpg",
     },
     {
       id: "samsung",
@@ -39,7 +39,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean studio device render
-      image: "/demos/gadgets/phone-7.jpg",
+      image: "/demos/gadgets/oneplus-12.jpg",
     },
     {
       id: "xiaomi",
@@ -52,7 +52,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean phone portrait
-      image: "/demos/gadgets/phone-10.jpg",
+      image: "/demos/gadgets/xiaomi-14-ultra.jpg",
     },
     {
       id: "google",
@@ -66,7 +66,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean flagship camera bar device
-      image: "/demos/gadgets/phone-13.jpg",
+      image: "/demos/gadgets/pixel-8-pro.jpg",
     },
   ];
 

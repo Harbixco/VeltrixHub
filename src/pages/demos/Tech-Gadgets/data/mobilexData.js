@@ -20,7 +20,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "2026",
     badgeFoot: "EDITION",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/hero-setup-1.jpg",
+    image: "/demos/gadgets/hero-desk-pro.jpg",
     alt: "Pro Laptop and Phones Workstation",
   },
   {
@@ -35,7 +35,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "₦150K",
     badgeFoot: "TODAY",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/gadget-2.jpg",
+    image: "/demos/gadgets/macbook-air-m3.jpg",
     alt: "Pro Laptops and Workstations",
   },
   {
@@ -50,7 +50,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "25%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/phone-4.jpg",
+    image: "/demos/gadgets/s24-ultra-main.jpg",
     alt: "Flagship 5G Smartphones",
   },
   {
@@ -65,7 +65,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "DEAL",
     badgeFoot: "LIMITED",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/gadget-1.jpg",
+    image: "/demos/gadgets/gadget-4.jpg",
     alt: "Laptop and Smartphone Setup",
   },
   {
@@ -80,7 +80,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "20%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/phone-1.jpg",
+    image: "/demos/gadgets/iphone-15-pro-max.jpg",
     alt: "Flagship Mobile Devices",
   },
 ];
@@ -91,19 +91,19 @@ export const CATEGORIES = [
     "id": "smartphones",
     "name": "Smartphones",
     "count": "48+ Models",
-    "image": "/demos/gadgets/phone-1.jpg"
+    "image": "/demos/gadgets/iphone-15-pro-max.jpg"
   },
   {
     "id": "laptops",
     "name": "Laptops & MacBooks",
     "count": "32+ Models",
-    "image": "/demos/gadgets/gadget-7.jpg"
+    "image": "/demos/gadgets/macbook-air-m3.jpg"
   },
   {
     "id": "earpods",
     "name": "Earpods & Audio",
     "count": "24+ Models",
-    "image": "/demos/gadgets/earpods-1.jpg"
+    "image": "/demos/gadgets/airpods-pro-2.jpg"
   },
   {
     "id": "powerbanks",
@@ -115,7 +115,7 @@ export const CATEGORIES = [
     "id": "smartwatches",
     "name": "Smartwatches",
     "count": "20+ Models",
-    "image": "/demos/gadgets/smartwatch-1.jpg"
+    "image": "/demos/gadgets/smartwatch-flatlay.jpg"
   }
 ];
 
@@ -124,31 +124,31 @@ export const TOP_BRANDS_DEALS = [
     brand: "Apple",
     logoText: "Apple",
     phoneName: "iPhone 15 Pro Max",
-    image: "/demos/gadgets/phone-1.jpg",
+    image: "/demos/gadgets/iphone-15-pro-max.jpg",
   },
   {
     brand: "Samsung",
     logoText: "SAMSUNG",
     phoneName: "Galaxy S24 Ultra",
-    image: "/demos/gadgets/phone-4.jpg",
+    image: "/demos/gadgets/s24-ultra-main.jpg",
   },
   {
     brand: "OnePlus",
     logoText: "ONEPLUS",
     phoneName: "OnePlus 12",
-    image: "/demos/gadgets/phone-7.jpg",
+    image: "/demos/gadgets/oneplus-12.jpg",
   },
   {
     brand: "Xiaomi",
     logoText: "Xiaomi",
     phoneName: "Xiaomi 14 Ultra",
-    image: "/demos/gadgets/phone-10.jpg",
+    image: "/demos/gadgets/xiaomi-14-ultra.jpg",
   },
   {
     brand: "Google",
     logoText: "Google",
     phoneName: "Pixel 8 Pro",
-    image: "/demos/gadgets/phone-13.jpg",
+    image: "/demos/gadgets/pixel-8-pro.jpg",
   },
 ];
 
@@ -214,11 +214,10 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 218,
     "stockCount": 6,
     "inStock": true,
-    "image": "/demos/gadgets/phone-1.jpg",
+    "image": "/demos/gadgets/iphone-15-pro-max.jpg",
     "gallery": [
-      "/demos/gadgets/phone-1.jpg",
-      "/demos/gadgets/phone-2.jpg",
-      "/demos/gadgets/phone-3.jpg"
+      "/demos/gadgets/iphone-15-pro-max.jpg",
+      "/demos/gadgets/gadget-4.jpg"
     ],
     "material": "Grade 5 Titanium & Ceramic Shield",
     "battery": "4422 mAh (Up to 29 hrs video)",
@@ -261,11 +260,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 98,
     "stockCount": 8,
     "inStock": true,
-    "image": "/demos/gadgets/phone-7.jpg",
+    "image": "/demos/gadgets/oneplus-12.jpg",
     "gallery": [
-      "/demos/gadgets/phone-7.jpg",
-      "/demos/gadgets/phone-8.jpg",
-      "/demos/gadgets/phone-9.jpg"
+      "/demos/gadgets/oneplus-12.jpg"
     ],
     "material": "Aluminum Frame & 3D Curved Emerald Glass",
     "battery": "5400 mAh (100W SUPERVOOC Charge)",
@@ -299,11 +296,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 110,
     "stockCount": 4,
     "inStock": true,
-    "image": "/demos/gadgets/phone-10.jpg",
+    "image": "/demos/gadgets/xiaomi-14-ultra.jpg",
     "gallery": [
-      "/demos/gadgets/phone-10.jpg",
-      "/demos/gadgets/phone-11.jpg",
-      "/demos/gadgets/phone-12.jpg"
+      "/demos/gadgets/xiaomi-14-ultra.jpg"
     ],
     "material": "Xiaomi Shield Glass & Nano-Tech Vegan Leather",
     "battery": "5000 mAh (90W HyperCharge)",
@@ -376,11 +371,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 138,
     "stockCount": 5,
     "inStock": true,
-    "image": "/demos/gadgets/gadget-2.jpg",
+    "image": "/demos/gadgets/dell-xps-15.jpg",
     "gallery": [
-      "/demos/gadgets/gadget-2.jpg",
-      "/demos/gadgets/gadget-21.jpg",
-      "/demos/gadgets/gadget-29.jpg"
+      "/demos/gadgets/dell-xps-15.jpg"
     ],
     "material": "CNC Machined Aluminum & Carbon Fiber",
     "battery": "86Wh (Up to 13 hrs)",
@@ -410,11 +403,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 92,
     "stockCount": 6,
     "inStock": true,
-    "image": "/demos/gadgets/gadget-21.jpg",
+    "image": "/demos/gadgets/hp-spectre-x360.jpg",
     "gallery": [
-      "/demos/gadgets/gadget-21.jpg",
-      "/demos/gadgets/gadget-35.jpg",
-      "/demos/gadgets/gadget-46.jpg"
+      "/demos/gadgets/hp-spectre-x360.jpg"
     ],
     "material": "Gem-Cut Aluminum Chassis",
     "battery": "68Wh (Up to 16 hrs)",
@@ -448,11 +439,10 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 240,
     "stockCount": 8,
     "inStock": true,
-    "image": "/demos/gadgets/gadget-46.jpg",
+    "image": "/demos/gadgets/macbook-air-m3.jpg",
     "gallery": [
-      "/demos/gadgets/gadget-46.jpg",
-      "/demos/gadgets/gadget-54.jpg",
-      "/demos/gadgets/gadget-55.jpg"
+      "/demos/gadgets/macbook-air-m3.jpg",
+      "/demos/gadgets/gadget-4.jpg"
     ],
     "material": "Unibody Recycled Aluminum",
     "battery": "66.5Wh (Up to 18 hrs battery)",
@@ -490,11 +480,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 280,
     "stockCount": 12,
     "inStock": true,
-    "image": "/demos/gadgets/earpods-1.jpg",
+    "image": "/demos/gadgets/airpods-pro-2.jpg",
     "gallery": [
-      "/demos/gadgets/earpods-1.jpg",
-      "/demos/gadgets/earpods-2.jpg",
-      "/demos/gadgets/earpods-3.jpg"
+      "/demos/gadgets/airpods-pro-2.jpg"
     ],
     "material": "Gloss White Case with Lanyard Loop",
     "battery": "Up to 30 hours total with Case",
@@ -523,11 +511,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 165,
     "stockCount": 7,
     "inStock": true,
-    "image": "/demos/gadgets/earpods-4.jpg",
+    "image": "/demos/gadgets/sony-headphones.jpg",
     "gallery": [
-      "/demos/gadgets/earpods-4.jpg",
-      "/demos/gadgets/earpods-5.jpg",
-      "/demos/gadgets/earpods-6.jpg"
+      "/demos/gadgets/sony-headphones.jpg"
     ],
     "material": "Soft Fit Leather & Stepless Slider",
     "battery": "30-Hour Playtime with Fast Charge",
@@ -630,11 +616,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 96,
     "stockCount": 4,
     "inStock": true,
-    "image": "/demos/gadgets/smartwatch-1.jpg",
+    "image": "/demos/gadgets/apple-watch-ultra.jpg",
     "gallery": [
-      "/demos/gadgets/smartwatch-1.jpg",
-      "/demos/gadgets/smartwatch-2.jpg",
-      "/demos/gadgets/smartwatch-3.jpg"
+      "/demos/gadgets/apple-watch-ultra.jpg"
     ],
     "material": "49mm Aerospace Titanium Case & Sapphire Glass",
     "battery": "Up to 72 hours in Low Power Mode",
@@ -663,11 +647,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 84,
     "stockCount": 6,
     "inStock": true,
-    "image": "/demos/gadgets/smartwatch-4.jpg",
+    "image": "/demos/gadgets/smartwatch-2.jpg",
     "gallery": [
-      "/demos/gadgets/smartwatch-4.jpg",
-      "/demos/gadgets/smartwatch-5.jpg",
-      "/demos/gadgets/smartwatch-6.jpg"
+      "/demos/gadgets/smartwatch-2.jpg"
     ],
     "material": "Stainless Steel & Rotating Physical Bezel",
     "battery": "425 mAh (Fast Wireless Charging)",
@@ -700,11 +682,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 88,
     "stockCount": 7,
     "inStock": true,
-    "image": "/demos/gadgets/phone-13.jpg",
+    "image": "/demos/gadgets/pixel-8-pro.jpg",
     "gallery": [
-      "/demos/gadgets/phone-13.jpg",
-      "/demos/gadgets/phone-14.jpg",
-      "/demos/gadgets/phone-15.jpg"
+      "/demos/gadgets/pixel-8-pro.jpg"
     ],
     "material": "Polished Aluminum & Matte Glass Back",
     "battery": "5050 mAh (30W Fast Charging)",
@@ -738,11 +718,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 76,
     "stockCount": 3,
     "inStock": true,
-    "image": "/demos/gadgets/phone-19.jpg",
+    "image": "/demos/gadgets/galaxy-z-fold-5.jpg",
     "gallery": [
-      "/demos/gadgets/phone-19.jpg",
-      "/demos/gadgets/phone-20.jpg",
-      "/demos/gadgets/phone-21.jpg"
+      "/demos/gadgets/galaxy-z-fold-5.jpg"
     ],
     "material": "Armor Aluminum & Zero-Gap Flex Hinge",
     "battery": "4400 mAh (25W Fast Charge)",

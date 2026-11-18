@@ -9,11 +9,11 @@ export const DEAL_OF_THE_DAY = {
   rating: 5.0,
   reviewsCount: 310,
   badge: "SAVE ₦500,000 • 6 LEFT",
-  image: "/demos/gadgets/phone-25.jpg",
+  image: "/demos/gadgets/s24-ultra-main.jpg",
   gallery: [
-    "/demos/gadgets/phone-25.jpg",
-    "/demos/gadgets/phone-26.jpg",
-    "/demos/gadgets/phone-27.jpg",
+    "/demos/gadgets/s24-ultra-main.jpg",
+    "/demos/gadgets/s24-ultra-angle1.jpg",
+    "/demos/gadgets/s24-ultra-angle2.jpg",
   ],
   colors: [
     { name: "Titanium Deep Blue", hex: "#1A2E40" },
