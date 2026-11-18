@@ -24,8 +24,8 @@ export default function TopBrandsDeals() {
           SAMSUNG
         </span>
       ),
-      // Clean frontal studio render
-      image: "/demos/gadgets/phone-4.jpg",
+      // Clean frontal studio render from Konga
+      image: "/demos/gadgets/s24-ultra-main.jpg",
     },
     {
       id: "oneplus",
