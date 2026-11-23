@@ -785,7 +785,7 @@ export default function PersonalInjury() {
               <div className="contact-detail">
                 <span>OFFICE LOCATION</span>
                 <p className="contact-detail__placeholder">Suite 400, Metro Legal Center</p>
-                <p>Pittsburgh, PA &amp; Surrounding Jurisdictions</p>
+                <p>Lagos, Abuja &amp; Key Jurisdictions across Nigeria</p>
               </div>
               <div className="contact-detail">
                 <span>BUSINESS HOURS</span>

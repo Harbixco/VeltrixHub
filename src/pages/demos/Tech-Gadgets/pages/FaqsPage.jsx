@@ -112,7 +112,7 @@ export default function FaqsPage() {
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <a
-                href="https://wa.me/2348086624539"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noreferrer"
                 className="px-6 py-2.5 rounded-xl bg-[#0E8453] hover:bg-[#0c7348] text-white text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2"

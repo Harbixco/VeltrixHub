@@ -25,7 +25,7 @@ export default function AnnouncementBar() {
         {/* Right: Phone & Socials (Desktop only) */}
         <div className="hidden md:flex items-center gap-4 justify-center md:justify-end">
           <a
-            href="tel:+2348086624539"
+            href="tel:+2348087098270"
             className="flex items-center gap-1.5 text-gray-300 hover:text-[#FF6B00] transition-colors"
           >
             <Phone size={13} className="shrink-0" />
@@ -34,7 +34,7 @@ export default function AnnouncementBar() {
 
           <div className="flex items-center gap-3 text-gray-400">
             <a
-              href="https://wa.me/2348086624539"
+              href="https://wa.me/2348087098270"
               target="_blank"
               rel="noreferrer"
               aria-label="WhatsApp"

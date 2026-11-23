@@ -66,7 +66,7 @@ export default function Contact() {
     );
 
     window.open(
-      `mailto:Officialveltrixhub@gmail.com?subject=${emailSubject}&body=${emailBody}`,
+      `mailto:info@veltrixhub.ng?subject=${emailSubject}&body=${emailBody}`,
       "_self"
     );
 
@@ -92,8 +92,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email Support",
-      value: "Officialveltrixhub@gmail.com",
-      href: "mailto:Officialveltrixhub@gmail.com",
+      value: "info@veltrixhub.ng",
+      href: "mailto:info@veltrixhub.ng",
     },
     {
       icon: Phone,

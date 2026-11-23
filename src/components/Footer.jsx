@@ -127,11 +127,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:Officialveltrixhub@gmail.com" className="flex items-start gap-3 text-gray-400 hover:text-white transition-colors group">
+                <a href="mailto:info@veltrixhub.ng" className="flex items-start gap-3 text-gray-400 hover:text-white transition-colors group">
                   <div className="w-8 h-8 rounded-[4px] bg-white/5 group-hover:bg-brand-blue flex items-center justify-center shrink-0 mt-0.5 transition-colors">
                     <Mail size={14} />
                   </div>
-                  <span className="text-sm break-all">Officialveltrixhub@gmail.com</span>
+                  <span className="text-sm break-all">info@veltrixhub.ng</span>
                 </a>
               </li>
               <li>

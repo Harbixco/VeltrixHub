@@ -172,7 +172,7 @@ export default function Contractor() {
               </svg>
             </span>
             <span className="brand-name">
-              alvora<span>tech</span>
+              veltrix<span>tech</span>
               <small>BUILDING WITH PURPOSE</small>
             </span>
           </a>
@@ -1208,7 +1208,7 @@ export default function Contractor() {
                 </svg>
               </span>
               <span className="brand-name">
-                alvora<span>tech</span>
+                veltrix<span>tech</span>
                 <small>BUILDING WITH PURPOSE</small>
               </span>
             </a>

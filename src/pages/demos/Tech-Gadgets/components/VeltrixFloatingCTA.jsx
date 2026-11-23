@@ -9,7 +9,7 @@ export default function VeltrixFloatingCTA() {
   const whatsappMessage = encodeURIComponent(
     "Hello Veltrix Hub! 👋 I am browsing your MobileX tech gadgets demo store and want an identical e-commerce store set up for my brand in 3–5 days. Let's discuss pricing and launch!"
   );
-  const whatsappUrl = `https://wa.me/2348086624539?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/2348087098270?text=${whatsappMessage}`;
 
   return (
     <aside aria-label="Built by Veltrix Hub" className="fixed bottom-20 sm:bottom-6 right-3 sm:right-6 z-40 select-none">

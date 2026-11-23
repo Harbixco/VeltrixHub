@@ -59,7 +59,7 @@ export default function QuickViewModal({
   };
 
   const handleWhatsAppOrder = () => {
-    const phoneNumber = "2348086624539";
+    const phoneNumber = "2348087098270";
     const textMessage = encodeURIComponent(
       `Hello MobileX Nigeria! I would like to order:\n\n*Product:* ${activeProduct.name}\n*Price:* ${formatNaira(
         activeProduct.price

@@ -31,7 +31,7 @@ export default function CartDrawer({
         cartSubtotal
       )}\n\nPlease provide payment and delivery details.`
     );
-    window.open(`https://wa.me/2348086624539?text=${message}`, "_blank");
+    window.open(`https://wa.me/2348087098270?text=${message}`, "_blank");
   };
 
   return (

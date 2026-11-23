@@ -1136,7 +1136,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>Location</h4>
-                  <span className="channel-link">Pittsburgh, PA &amp; Surrounding Areas</span>
+                  <span className="channel-link">Lagos, Abuja &amp; Major Cities across Nigeria</span>
                 </div>
               </div>
             </div>
@@ -1961,7 +1961,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>Location</h4>
-                  <span className="channel-link">Pittsburgh, PA &amp; Surrounding Areas</span>
+                  <span className="channel-link">Lagos, Abuja &amp; Major Cities across Nigeria</span>
                 </div>
               </div>
             </div>
@@ -2130,7 +2130,7 @@ const runInit = () => {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
-            <span>Pittsburgh, PA & Surrounding Areas</span>
+            <span>Lagos, Abuja & Major Cities across Nigeria</span>
           </div>
           <div style={{"marginTop":"1.25rem"}}>
             <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
@@ -2239,7 +2239,7 @@ const runInit = () => {
           © 2026 Veltrix Hub Landscaping & Grounds Care. All rights reserved.
         </div>
         <div>
-          Veltrix Hub Demo • Pittsburgh, PA & Surrounding Areas
+          Veltrix Hub Demo • Lagos, Abuja & Major Cities across Nigeria
         </div>
       </div>
     </div>

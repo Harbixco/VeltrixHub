@@ -1,5 +1,5 @@
 // Luxury Perfume Concierge contact & currency helpers
-export const WHATSAPP_NUMBER = "2348086624539";
+export const WHATSAPP_NUMBER = "2348087098270";
 
 export const formatNaira = (val) => `₦${Math.round(val || 0).toLocaleString()}`;
 

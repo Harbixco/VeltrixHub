@@ -10,7 +10,7 @@ export default function WarrantyPage() {
     const text = encodeURIComponent(
       "Hello MobileX Support! I would like to initiate a warranty / replacement request for my device."
     );
-    window.open(`https://wa.me/2348086624539?text=${text}`, "_blank");
+    window.open(`https://wa.me/2348087098270?text=${text}`, "_blank");
   };
 
   return (

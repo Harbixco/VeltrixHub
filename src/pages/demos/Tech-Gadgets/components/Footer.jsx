@@ -33,7 +33,7 @@ export default function Footer() {
             {/* Social Icons including WhatsApp */}
             <div className="flex items-center gap-3 pt-1 text-gray-400">
               <a
-                href="https://wa.me/2348086624539"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="WhatsApp"
@@ -206,7 +206,7 @@ export default function Footer() {
               </p>
               <div className="pt-1">
                 <a
-                  href="https://wa.me/2348086624539"
+                  href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-white/10 hover:bg-[#25D366] text-white text-[11px] font-bold transition-colors cursor-pointer"
@@ -245,7 +245,7 @@ export default function Footer() {
           <p className="text-gray-400 flex flex-wrap items-center justify-center gap-1.5">
             <span>E-Commerce Store Built by</span>
             <a
-              href="https://wa.me/2348086624539?text=Hello%20Veltrix%20Hub!%20I%20checked%20out%20your%20MobileX%20tech%20gadgets%20store%20demo%20and%20want%20to%20build%20a%20similar%20website%20for%20my%20brand."
+              href="https://wa.me/2348087098270?text=Hello%20Veltrix%20Hub!%20I%20checked%20out%20your%20MobileX%20tech%20gadgets%20store%20demo%20and%20want%20to%20build%20a%20similar%20website%20for%20my%20brand."
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#FF6B00] hover:text-orange-400 font-bold underline underline-offset-2"

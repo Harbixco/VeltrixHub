@@ -292,7 +292,7 @@ export default function TowingCompany() {
               </svg>
             </span>
             <span className="brand-text">
-              <strong>ALVORA</strong><span>TECH</span>
+              <strong>VELTRIX</strong><span>TECH</span>
             </span>
           </a>
 
@@ -506,7 +506,7 @@ export default function TowingCompany() {
                 </li>
                 <li>
                   <span>Service Area:</span>
-                  <span>Greater Pittsburgh, Allegheny County &amp; Highway Corridors</span>
+                  <span>Greater Lagos &amp; Key Transport Corridors</span>
                 </li>
               </ul>
             </div>
@@ -988,7 +988,7 @@ export default function TowingCompany() {
                 </li>
                 <li>
                   <span>Service Area:</span>
-                  <span>Greater Pittsburgh, Allegheny County &amp; Highway Corridors</span>
+                  <span>Greater Lagos &amp; Key Transport Corridors</span>
                 </li>
               </ul>
             </div>
@@ -1111,7 +1111,7 @@ export default function TowingCompany() {
                 </svg>
               </span>
               <span className="brand-text">
-                <strong>ALVORA</strong><span>TECH</span>
+                <strong>VELTRIX</strong><span>TECH</span>
               </span>
             </a>
             <p className="footer-copy">
