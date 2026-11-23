@@ -304,7 +304,11 @@ export default function OutreachDashboard() {
   const fetchTracking = async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch("/api/track?stats=true");
+      const endpoint =
+        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+          ? "https://www.veltrixhub.ng/api/track?stats=true"
+          : "/api/track?stats=true";
+      const res = await fetch(endpoint);
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
@@ -313,7 +317,7 @@ export default function OutreachDashboard() {
         }
       }
     } catch (err) {
-      console.warn("Tracking API not reachable in local dev without live serverless execution:", err);
+      console.warn("Tracking API fetch notice:", err);
     } finally {
       setIsRefreshing(false);
     }

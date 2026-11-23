@@ -40,9 +40,9 @@ def generate_email_content(lead, sender):
     encoded_demo = urllib.parse.quote(demo_url)
 
     # 1x1 Invisible Tracking Pixel (records email opens)
-    tracking_pixel_url = f"https://veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&action=open"
+    tracking_pixel_url = f"https://www.veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&action=open"
     # Tracked Click Link (records demo visits and instantly redirects to live demo)
-    tracked_demo_url = f"https://veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&url={encoded_demo}&action=click"
+    tracked_demo_url = f"https://www.veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&url={encoded_demo}&action=click"
 
     # Clean plain-text version
     plain_text = f"""{greeting}
@@ -330,7 +330,7 @@ def show_stats():
     # Fetch live open and click analytics from tracking server
     try:
         req = urllib.request.Request(
-            "https://veltrixhub.ng/api/track?stats=true",
+            "https://www.veltrixhub.ng/api/track?stats=true",
             headers={"User-Agent": "VeltrixCLI/1.0"},
         )
         with urllib.request.urlopen(req, timeout=5) as response:
