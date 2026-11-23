@@ -54,8 +54,21 @@ Send the daily batch of up to 75 emails to pending leads in `leads_veltrixhub.cs
 python send_outreach.py --send
 ```
 
-### D. View Stats
-Check total leads, sent count, and pending leads:
+### D. Automated Lead Extraction (Google Places & Web Scraper)
+Automatically query Google Places across Lagos, Abuja, Port Harcourt, and Ibadan, crawl business websites for authentic emails, and append fresh prospects directly to `leads_veltrixhub.csv`:
+```bash
+# Extract 75 fresh verified prospects across all niches:
+python extract_leads.py --count 75
+
+# Extract 20 leads for a specific niche in Lagos:
+python extract_leads.py --niche cleaning --city Lagos --count 20
+
+# Extract 20 painting businesses in Abuja:
+python extract_leads.py --niche painting --city Abuja --count 20
+```
+
+### E. View Stats & Live Tracking
+Check total leads, sent count, pending leads, and live email open rates:
 ```bash
 python send_outreach.py --stats
 ```
