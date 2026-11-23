@@ -10,6 +10,7 @@ import urllib.parse
 import urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formatdate, make_msgid
 
 import config
 
@@ -169,6 +170,8 @@ def send_email_smtp(sender, recipient_email, subject, plain_text, html_text):
     msg["From"] = f"{sender['name']} <{sender['email']}>"
     msg["To"] = recipient_email
     msg["Reply-To"] = f"{sender['name']} <{sender['email']}>"
+    msg["Date"] = formatdate(localtime=True)
+    msg["Message-ID"] = make_msgid(domain="veltrixhub.ng")
 
     part1 = MIMEText(plain_text, "plain", "utf-8")
     part2 = MIMEText(html_text, "html", "utf-8")
