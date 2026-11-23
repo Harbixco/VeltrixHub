@@ -323,6 +323,19 @@ export default function OutreachDashboard() {
   const [dispatchRunning, setDispatchRunning] = useState(false);
   const [dispatchLogs, setDispatchLogs] = useState([]);
   const [dispatchAlert, setDispatchAlert] = useState(null);
+  const [dispatchProgress, setDispatchProgress] = useState({
+    sent: 0,
+    total: 0,
+    pending: 0,
+    percent: 0,
+    currentStep: "",
+    currentSender: "",
+    currentRecipient: "",
+    statusDetail: "Engine Standby: 3 Zoho Mailboxes Ready",
+    isDelaying: false,
+    delaySeconds: 0,
+    isCompleted: false,
+  });
   const logTerminalRef = useRef(null);
 
   const [newLead, setNewLead] = useState({
@@ -389,8 +402,18 @@ export default function OutreachDashboard() {
         const data = await res.json();
         if (data.success) {
           setDispatchRunning(Boolean(data.isRunning));
+          if (data.progress) {
+            setDispatchProgress((prev) => ({
+              ...prev,
+              ...data.progress,
+              isCompleted: Boolean(data.isCompleted),
+            }));
+          }
           if (Array.isArray(data.lastLogs) && data.lastLogs.length > 0) {
             setDispatchLogs(data.lastLogs);
+          }
+          if (data.isRunning) {
+            fetchLeads();
           }
         }
       }
@@ -925,19 +948,112 @@ export default function OutreachDashboard() {
             </div>
           </div>
 
-          {/* Engine Status & Terminal Controls */}
-          <div className="mt-6 flex items-center justify-between">
-            <div className="flex items-center gap-2.5 text-xs">
-              <span
-                className={`w-2.5 h-2.5 rounded-full ${
-                  dispatchRunning ? "bg-emerald-400 animate-pulse" : "bg-slate-500"
+          {/* REAL-TIME BATCH DISPATCH PROGRESS BAR */}
+          <div className="mt-6 p-5 rounded-xl bg-slate-950/80 border border-slate-800 shadow-inner">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+              <div className="flex items-center gap-2.5">
+                <span
+                  className={`w-3 h-3 rounded-full ${
+                    dispatchRunning
+                      ? "bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50"
+                      : dispatchProgress.isCompleted
+                      ? "bg-blue-400"
+                      : "bg-slate-500"
+                  }`}
+                />
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">
+                      Batch Dispatch Progress
+                    </span>
+                    <span
+                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full border ${
+                        dispatchRunning
+                          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400 animate-pulse"
+                          : dispatchProgress.isCompleted
+                          ? "bg-blue-500/10 border-blue-500/30 text-blue-400"
+                          : "bg-slate-800 border-slate-700 text-slate-400"
+                      }`}
+                    >
+                      {dispatchRunning
+                        ? "Active: Rotating Across Senders"
+                        : dispatchProgress.isCompleted
+                        ? "Completed"
+                        : "Ready on Standby"}
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 mt-0.5">
+                    {dispatchProgress.statusDetail || "Ready to dispatch outreach queue"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-right">
+                <span className="text-lg font-black text-white font-mono">
+                  {dispatchProgress.percent || (dispatchProgress.total > 0 ? Math.round((dispatchProgress.sent / dispatchProgress.total) * 100) : 0)}%
+                </span>
+                <span className="text-xs text-slate-400 ml-1.5 font-medium">
+                  ({dispatchProgress.sent || 0} of {dispatchProgress.total || leads.length} sent)
+                </span>
+              </div>
+            </div>
+
+            {/* Visual Animated Progress Track */}
+            <div className="w-full h-3 bg-slate-900 rounded-full overflow-hidden p-0.5 border border-slate-800 relative">
+              <div
+                className={`h-full rounded-full transition-all duration-700 ease-out relative ${
+                  dispatchRunning
+                    ? "bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 shadow-md shadow-emerald-500/30"
+                    : dispatchProgress.isCompleted
+                    ? "bg-gradient-to-r from-blue-500 to-indigo-500"
+                    : "bg-slate-700"
                 }`}
-              />
-              <span className="font-semibold text-slate-200">
-                {dispatchRunning
-                  ? "Engine Active: Dispatching pitches across 3 Zoho accounts"
-                  : "Engine Standby: 3 Zoho Mailboxes Ready"}
-              </span>
+                style={{
+                  width: `${Math.max(
+                    dispatchProgress.percent || (dispatchProgress.total > 0 ? Math.round((dispatchProgress.sent / dispatchProgress.total) * 100) : 0),
+                    dispatchRunning ? 5 : 0
+                  )}%`,
+                }}
+              >
+                {dispatchRunning && (
+                  <div className="absolute inset-0 bg-white/20 animate-pulse rounded-full" />
+                )}
+              </div>
+            </div>
+
+            {/* 4 Detail Metrics Under Progress Bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-3 pt-3 border-t border-slate-800/80 text-[11px]">
+              <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
+                <span className="text-slate-500 block uppercase text-[9px] font-semibold">Dispatched</span>
+                <span className="font-bold text-emerald-400 font-mono text-xs">
+                  {dispatchProgress.sent || 0} Delivered
+                </span>
+              </div>
+              <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
+                <span className="text-slate-500 block uppercase text-[9px] font-semibold">Pending Queue</span>
+                <span className="font-bold text-amber-400 font-mono text-xs">
+                  {dispatchProgress.pending || Math.max(0, (dispatchProgress.total || leads.length) - (dispatchProgress.sent || 0))} Remaining
+                </span>
+              </div>
+              <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
+                <span className="text-slate-500 block uppercase text-[9px] font-semibold">Current Sender</span>
+                <span className="font-bold text-slate-200 truncate block text-xs">
+                  {dispatchProgress.currentSender || "3 Senders Ready"}
+                </span>
+              </div>
+              <div className="bg-slate-900/60 p-2 rounded-lg border border-slate-800/50">
+                <span className="text-slate-500 block uppercase text-[9px] font-semibold">Deliverability Pace</span>
+                <span className="font-bold text-blue-400 text-xs">
+                  {dispatchProgress.isDelaying ? `${dispatchProgress.delaySeconds}s Human Delay` : "120s - 300s Safe Interval"}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Engine Terminal Controls */}
+          <div className="mt-4 flex items-center justify-between">
+            <div className="text-xs text-slate-400">
+              Live Console Output
             </div>
 
             <div className="flex items-center gap-2">
