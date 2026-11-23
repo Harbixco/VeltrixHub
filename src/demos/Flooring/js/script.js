@@ -597,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Estimated Area: ${selectedSqft}\n` +
         `• Project Notes: ${notes}`;
 
-      const waUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(waMessage)}`;
+      const waUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(waMessage)}`;
 
       if (formStatus) {
         formStatus.textContent = 'Thank you! Redirecting your request directly to Veltrix Hub WhatsApp...';

@@ -221,7 +221,7 @@ export default function TreeRemoval() {
       message ? `Project Details: ${message}` : '',
     ].filter(Boolean).join('\n');
 
-    const url = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(text)}`;
+    const url = `https://wa.me/2348087098270?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
     setFormSubmitted(true);
   };
@@ -254,7 +254,7 @@ export default function TreeRemoval() {
           </div>
           <div className="banner-action">
             <span>Inquire for Your Business</span>
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
               Chat on WhatsApp
             </a>
           </div>
@@ -304,7 +304,7 @@ export default function TreeRemoval() {
               <li>
                 <a
                   className="btn btn-primary nav-cta"
-                  href="https://wa.me/message/RVTZQMFL7I6OH1"
+                  href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setNavOpen(false)}
@@ -360,7 +360,7 @@ export default function TreeRemoval() {
               <div className="hero-actions">
                 <a
                   className="btn btn-primary"
-                  href="https://wa.me/message/RVTZQMFL7I6OH1"
+                  href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -394,7 +394,7 @@ export default function TreeRemoval() {
                     <h3>{svc.title}</h3>
                     <p>{svc.desc}</p>
                     <a
-                      href="https://wa.me/message/RVTZQMFL7I6OH1"
+                      href="https://wa.me/2348087098270"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -463,7 +463,7 @@ export default function TreeRemoval() {
             <div className="banner-buttons">
               <a
                 className="btn btn-primary"
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -481,8 +481,8 @@ export default function TreeRemoval() {
               <ul className="contact-list">
                 <li>
                   <strong>WhatsApp:</strong>{' '}
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
-                    +1 (412) 796-3968
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                    +234 808 709 8270
                   </a>
                 </li>
                 <li>
@@ -493,7 +493,7 @@ export default function TreeRemoval() {
               </ul>
               <a
                 className="btn btn-primary whatsapp-button mt-4"
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -532,7 +532,7 @@ export default function TreeRemoval() {
                       name="phone"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="(555) 123-4567"
+                      placeholder="+234 808 709 8270"
                       required
                     />
                   </label>
@@ -595,7 +595,7 @@ export default function TreeRemoval() {
                     <h3>{svc.title}</h3>
                     <p>{svc.desc}</p>
                     <a
-                      href="https://wa.me/message/RVTZQMFL7I6OH1"
+                      href="https://wa.me/2348087098270"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -903,7 +903,7 @@ export default function TreeRemoval() {
             <div className="banner-buttons">
               <a
                 className="btn btn-primary"
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -966,8 +966,8 @@ export default function TreeRemoval() {
               <ul className="contact-list">
                 <li>
                   <strong>WhatsApp:</strong>{' '}
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
-                    +1 (412) 796-3968
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                    +234 808 709 8270
                   </a>
                 </li>
                 <li>
@@ -978,7 +978,7 @@ export default function TreeRemoval() {
               </ul>
               <a
                 className="btn btn-primary whatsapp-button mt-4"
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1017,7 +1017,7 @@ export default function TreeRemoval() {
                       name="phone"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="(412) 796-3968"
+                      placeholder="+234 808 709 8270"
                       required
                     />
                   </label>
@@ -1071,8 +1071,8 @@ export default function TreeRemoval() {
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Need Advice on a Diseased or Dangerous Tree?</h2>
             <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our local certified arborists can assess branch hazards, storm risks, or municipal permits.</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
-                Direct Line: +1 (412) 796-3968
+              <a href="tel:+2348087098270" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Direct Line: +234 808 709 8270
               </a>
               <button onClick={(e) => navigateTo('contact', e)} className="button button-outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                 Request Tree Inspection &rarr;
@@ -1092,8 +1092,8 @@ export default function TreeRemoval() {
               <ul className="contact-list">
                 <li>
                   <strong>WhatsApp:</strong>{' '}
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
-                    +1 (412) 796-3968
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                    +234 808 709 8270
                   </a>
                 </li>
                 <li>
@@ -1104,7 +1104,7 @@ export default function TreeRemoval() {
               </ul>
               <a
                 className="btn btn-primary whatsapp-button mt-4"
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                href="https://wa.me/2348087098270"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -1143,7 +1143,7 @@ export default function TreeRemoval() {
                       name="phone"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="(555) 123-4567"
+                      placeholder="+234 808 709 8270"
                       required
                     />
                   </label>
@@ -1234,8 +1234,8 @@ export default function TreeRemoval() {
             <h3>Contact</h3>
             <ul>
               <li>
-                <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
-                  WhatsApp: +1 (412) 796-3968
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  WhatsApp: +234 808 709 8270
                 </a>
               </li>
               <li><a href="mailto:info@Veltrix Hubhq.com">Email: info@Veltrix Hubhq.com</a></li>
@@ -1349,13 +1349,13 @@ export default function TreeRemoval() {
       {/* Floating WhatsApp Action */}
       <a
         className="floating-whatsapp"
-        href="https://wa.me/message/RVTZQMFL7I6OH1"
+        href="https://wa.me/2348087098270"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat With Us on WhatsApp"
       >
         <FaWhatsapp className="floating-whatsapp-icon w-6 h-6" />
-        <span className="floating-whatsapp-text">Chat on WhatsApp: +1 (412) 796-3968</span>
+        <span className="floating-whatsapp-text">Chat on WhatsApp: +234 808 709 8270</span>
       </a>
 
       {/* Lightbox Modal */}

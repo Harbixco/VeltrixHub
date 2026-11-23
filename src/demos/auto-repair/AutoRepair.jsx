@@ -547,9 +547,9 @@ export default function AutoRepair() {
 
             <div className="contact-details">
               <div className="contact-detail">
-                <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968
+                <span>PHONE & WHATSAPP</span>
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  +234 808 709 8270
                 </a>
               </div>
               <div className="contact-detail">
@@ -1163,9 +1163,9 @@ export default function AutoRepair() {
 
             <div className="contact-details">
               <div className="contact-detail">
-                <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968
+                <span>PHONE & WHATSAPP</span>
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  +234 808 709 8270
                 </a>
               </div>
               <div className="contact-detail">
@@ -1197,8 +1197,8 @@ export default function AutoRepair() {
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--ink)' }}>Still Have Questions About Your Vehicle?</h2>
             <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Call our service desk or message us on WhatsApp for transparent answers and quick estimates.</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
-                Call Direct: +1 (412) 796-3968
+              <a href="tel:+2348087098270" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Call Direct: +234 808 709 8270
               </a>
               <button onClick={(e) => navigateTo('appointment', e)} className="button button--outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                 Book an Appointment &rarr;
@@ -1225,9 +1225,9 @@ export default function AutoRepair() {
 
             <div className="contact-details">
               <div className="contact-detail">
-                <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968
+                <span>PHONE & WHATSAPP</span>
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  +234 808 709 8270
                 </a>
               </div>
               <div className="contact-detail">
@@ -1357,7 +1357,7 @@ export default function AutoRepair() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                   <div>
                     <span style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", color: "#64748B" }}>WhatsApp / Phone</span>
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontWeight: "600" }}>+1 (412) 796-3968</a>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" style={{ color: "#ffffff", fontWeight: "600" }}>+234 808 709 8270</a>
                   </div>
                 </div>
 

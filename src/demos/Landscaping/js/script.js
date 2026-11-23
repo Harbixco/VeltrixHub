@@ -618,7 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Property: ${selectedProperty}\n` +
         `• Project Details: ${notes}`;
 
-      const waUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(waMessage)}`;
+      const waUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(waMessage)}`;
 
       // Show inline success message
       if (formStatus) {

@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const msg = encodeURIComponent(
         `Hello Veltrix Hub! I used your online estimator for ${serviceInfo.label} (~${sqft.toLocaleString()} sq ft). My estimated range is $${minPrice.toLocaleString()} - $${maxPrice.toLocaleString()}. I would like to schedule an on-site consultation!`
       );
-      calcWhatsappBtn.href = `https://wa.me/message/RVTZQMFL7I6OH1?text=${msg}`;
+      calcWhatsappBtn.href = `https://wa.me/2348087098270?text=${msg}`;
     }
   };
 
@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Project Notes: ${notes}\n\n` +
         `Please contact me to arrange an on-site walkthrough!`;
 
-      const whatsappUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
       // Reset form and show confirmation

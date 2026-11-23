@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // Constants & WhatsApp Configuration
-  const WHATSAPP_BASE_URL = 'https://wa.me/message/RVTZQMFL7I6OH1';
+  const WHATSAPP_BASE_URL = 'https://wa.me/2348087098270';
 
   /* ==========================================================================
      1. TOP DEMO BANNER DISMISS

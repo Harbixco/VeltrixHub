@@ -351,12 +351,12 @@ export default function DentalCare() {
               <p className="contact-phone">
                 <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
                 <a
-                  href="https://wa.me/14127963968"
+                  href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  +1 (412) 796-3968 (WhatsApp Only)
+                  +234 808 709 8270
                 </a>
               </p>
               <div className="office-details">
@@ -849,12 +849,12 @@ export default function DentalCare() {
               <p className="contact-phone">
                 <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
                 <a
-                  href="https://wa.me/14127963968"
+                  href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  +1 (412) 796-3968 (WhatsApp Only)
+                  +234 808 709 8270
                 </a>
               </p>
               <div className="office-details">
@@ -943,12 +943,12 @@ export default function DentalCare() {
               <p className="contact-phone">
                 <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
                 <a
-                  href="https://wa.me/14127963968"
+                  href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: 'inherit', textDecoration: 'none' }}
                 >
-                  +1 (412) 796-3968 (WhatsApp Only)
+                  +234 808 709 8270
                 </a>
               </p>
               <div className="office-details">
@@ -1052,8 +1052,8 @@ export default function DentalCare() {
             <h2>Visit us</h2>
             <p>240 Medical Plaza, Suite 300<br />Metro Health District</p>
             <p>Mon–Fri, 8:00 am–5:00 pm</p>
-            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-              +1 (412) 796-3968 (WhatsApp Only)
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+              +234 808 709 8270
             </a>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>
             <a
@@ -1157,13 +1157,13 @@ export default function DentalCare() {
             <h2>Here when you need us.</h2>
             <p>For urgent dental concerns, message our office on WhatsApp for same-day emergency care.</p>
             <a
-              href="https://wa.me/14127963968"
+              href="https://wa.me/2348087098270"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-demo-number"
               style={{ textDecoration: 'none' }}
             >
-              +1 (412) 796-3968 (WhatsApp Only)
+              +234 808 709 8270
             </a>
           </div>
         </div>

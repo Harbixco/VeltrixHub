@@ -473,15 +473,15 @@ export default function Contractor() {
                 <div>
                   <span className="contact-symbol">↗</span>
                   <p>
-                    <small>WHATSAPP ONLY</small>
+                    <small>PHONE & WHATSAPP</small>
                     <span>
                       <a
-                        href="https://wa.me/14127963968"
+                        href="https://wa.me/2348087098270"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{ color: 'inherit', textDecoration: 'none' }}
                       >
-                        +1 (412) 796-3968
+                        +234 808 709 8270
                       </a>
                     </span>
                   </p>
@@ -999,15 +999,15 @@ export default function Contractor() {
                 <div>
                   <span className="contact-symbol">↗</span>
                   <p>
-                    <small>WHATSAPP ONLY</small>
+                    <small>PHONE & WHATSAPP</small>
                     <span>
                       <a
-                        href="https://wa.me/14127963968"
+                        href="https://wa.me/2348087098270"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{ color: 'inherit', textDecoration: 'none' }}
                       >
-                        +1 (412) 796-3968
+                        +234 808 709 8270
                       </a>
                     </span>
                   </p>
@@ -1103,15 +1103,15 @@ export default function Contractor() {
                 <div>
                   <span className="contact-symbol">↗</span>
                   <p>
-                    <small>WHATSAPP ONLY</small>
+                    <small>PHONE & WHATSAPP</small>
                     <span>
                       <a
-                        href="https://wa.me/14127963968"
+                        href="https://wa.me/2348087098270"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{ color: 'inherit', textDecoration: 'none' }}
                       >
-                        +1 (412) 796-3968
+                        +234 808 709 8270
                       </a>
                     </span>
                   </p>
@@ -1229,8 +1229,8 @@ export default function Contractor() {
           </div>
           <div className="footer-column footer-contact">
             <h3>Get in touch</h3>
-            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-              WHATSAPP ONLY: +1 (412) 796-3968
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+              +234 808 709 8270
             </a>
             <span>EMAIL: projects@veltrixhub.ng</span>
             <a className="footer-quote" href="#contact" onClick={(e) => navigateTo('contact', e)}>

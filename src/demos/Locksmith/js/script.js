@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Urgency: ${selectedUrgency}\n` +
         `• Vehicle/Property Details: ${notes}`;
 
-      const waUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(waMessage)}`;
+      const waUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(waMessage)}`;
 
       if (formStatus) {
         formStatus.textContent = 'Routing your request to Veltrix Hub Mobile Dispatch on WhatsApp...';

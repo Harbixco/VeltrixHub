@@ -679,7 +679,7 @@ const runInit = () => {
         `• Property: ${selectedProperty}\n` +
         `• Project Details: ${notes}`;
 
-      const waUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(waMessage)}`;
+      const waUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(waMessage)}`;
 
       // Show inline success message
       if (formStatus) {
@@ -829,7 +829,7 @@ const runInit = () => {
             </p>
             <div className="hero-actions">
               <a href="#contact" className="btn btn-primary btn-lg">Request Free Estimate</a>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+              <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
                 <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
@@ -984,7 +984,7 @@ const runInit = () => {
               </div>
             </div>
 
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-navy">
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-navy">
               Talk With Our Landscape Designers
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1077,7 +1077,7 @@ const runInit = () => {
         </p>
         <div className="hero-actions" style={{"justifyContent":"center"}}>
           <a href="#contact" className="btn btn-primary btn-lg">Request Free Estimate</a>
-          <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+          <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
             <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
@@ -1108,7 +1108,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>WhatsApp / Phone</h4>
-                  <a href="tel:+14127963968" className="channel-link">+1 (412) 796-3968</a>
+                  <a href="tel:+2348087098270" className="channel-link">+234 808 709 8270</a>
                 </div>
               </div>
 
@@ -1151,7 +1151,7 @@ const runInit = () => {
             </div>
 
             <div style={{"marginTop":"1.75rem"}}>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"width":"100%"}}>
+              <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"width":"100%"}}>
                 <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
@@ -1177,7 +1177,7 @@ const runInit = () => {
 
                 <div className="form-group">
                   <label htmlFor="phoneNumber" className="form-label">Phone Number *</label>
-                  <input type="tel" id="phoneNumber" className="form-input" placeholder="e.g. +1 (412) 555-0192" required />
+                  <input type="tel" id="phoneNumber" className="form-input" placeholder="e.g. +234 808 709 8270" required />
                   <span id="phoneError" className="form-error">Please enter a valid telephone number.</span>
                 </div>
               </div>
@@ -1260,7 +1260,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Landscape Architecture & 3D Design</h3>
               <p>Custom 3D CAD modeling, photorealistic rendering walkthroughs, topographical grading maps, and botanical schedules before ground is broken.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Landscape%20Architecture%20%26%203D%20Design" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Landscape%20Architecture%20%26%203D%20Design" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Design Consultation
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1276,7 +1276,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Custom Hardscaping & Paver Patios</h3>
               <p>Enduring interlocking concrete pavers, natural bluestone terraces, custom stone fire pits, built-in BBQ kitchens, and courtyard walkways.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Custom%20Hardscaping%20%26%20Paver%20Patios" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Custom%20Hardscaping%20%26%20Paver%20Patios" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Hardscape Estimate
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1292,7 +1292,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Retaining Walls & Terraced Grading</h3>
               <p>Engineered segmental block and natural stone retaining walls to stabilize hillsides, halt soil erosion, and unlock usable flat yard space.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Retaining%20Walls%20%26%20Grading" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Retaining%20Walls%20%26%20Grading" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Wall Consultation
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1308,7 +1308,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Lawn Care & Turf Management</h3>
               <p>Seasonal core aeration, overseeding with premium cultivars, slow-release balanced nutrition, targeted weed elimination, and precision mowing.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Lawn%20Care%20%26%20Turf%20Management" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Lawn%20Care%20%26%20Turf%20Management" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Lawn Care Quote
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1324,7 +1324,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Smart Irrigation & French Drains</h3>
               <p>WiFi-connected weather-sensing sprinkler zones, micro-drip plant watering, French drain conduits, and swales to eradicate standing water.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Smart%20Irrigation%20%26%20Drainage" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Smart%20Irrigation%20%26%20Drainage" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Drainage Plan
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1340,7 +1340,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Specimen Tree & Shrub Planting</h3>
               <p>Planting mature shade trees, evergreen privacy screens, ornamental flowering shrubs, seasonal mulch bedding, and deep root fertilization.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Tree%20%26%20Shrub%20Planting" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Tree%20%26%20Shrub%20Planting" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Planting Service
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1356,7 +1356,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Architectural Outdoor Lighting</h3>
               <p>Low-voltage solid brass LED landscape fixtures, tree canopy uplighting, pathway safety illumination, and smart automated twilight timers.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Architectural%20Outdoor%20Lighting" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Architectural%20Outdoor%20Lighting" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Lighting Design
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1372,7 +1372,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Commercial Grounds Maintenance</h3>
               <p>Reliable commercial landscape contracting for corporate campuses, retail plazas, and HOAs with scheduled weekly maintenance and pristine curb appeal.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Commercial%20Grounds%20Maintenance" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hello%20Veltrix Hub,%20I'm%20interested%20in%20Commercial%20Grounds%20Maintenance" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 Request Commercial RFP
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
               </a>
@@ -1503,7 +1503,7 @@ const runInit = () => {
               </div>
             </div>
 
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-navy">
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-navy">
               Talk With Our Landscape Designers
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1884,7 +1884,7 @@ const runInit = () => {
               </div>
             </button>
             <div className="faq-content">
-              <p>Simply submit the estimate request form below, call us at +1 (412) 796-3968, or click any WhatsApp button to connect immediately with our project scheduling team. We will review your goals and set up a convenient on-site consultation.</p>
+              <p>Simply submit the estimate request form below, call us at +234 808 709 8270, or click any WhatsApp button to connect immediately with our project scheduling team. We will review your goals and set up a convenient on-site consultation.</p>
             </div>
           </div>
         </div>
@@ -1900,8 +1900,8 @@ const runInit = () => {
               <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Have Questions About Your Yard or Timeline?</h2>
               <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Speak directly with our landscape estimators or book a consultation online.</p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
-                  Call +1 (412) 796-3968
+                <a href="tel:+2348087098270" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +234 808 709 8270
                 </a>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                   Send Estimate Request &rarr;
@@ -1933,7 +1933,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>WhatsApp / Phone</h4>
-                  <a href="tel:+14127963968" className="channel-link">+1 (412) 796-3968</a>
+                  <a href="tel:+2348087098270" className="channel-link">+234 808 709 8270</a>
                 </div>
               </div>
 
@@ -1976,7 +1976,7 @@ const runInit = () => {
             </div>
 
             <div style={{"marginTop":"1.75rem"}}>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"width":"100%"}}>
+              <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" style={{"width":"100%"}}>
                 <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
@@ -2002,7 +2002,7 @@ const runInit = () => {
 
                 <div className="form-group">
                   <label htmlFor="phoneNumber" className="form-label">Phone Number *</label>
-                  <input type="tel" id="phoneNumber" className="form-input" placeholder="e.g. +1 (412) 555-0192" required />
+                  <input type="tel" id="phoneNumber" className="form-input" placeholder="e.g. +234 808 709 8270" required />
                   <span id="phoneError" className="form-error">Please enter a valid telephone number.</span>
                 </div>
               </div>
@@ -2116,7 +2116,7 @@ const runInit = () => {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{"color":"var(--color-leaf)","flexShrink":"0"}}>
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
             </svg>
-            <a href="tel:+14127963968" className="footer-link">+1 (412) 796-3968</a>
+            <a href="tel:+2348087098270" className="footer-link">+234 808 709 8270</a>
           </div>
           <div className="footer-contact-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{"color":"var(--color-leaf)","flexShrink":"0"}}>
@@ -2133,7 +2133,7 @@ const runInit = () => {
             <span>Pittsburgh, PA & Surrounding Areas</span>
           </div>
           <div style={{"marginTop":"1.25rem"}}>
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
               WhatsApp Direct Chat
             </a>
           </div>
@@ -2248,11 +2248,11 @@ const runInit = () => {
   {/* ==========================================================================
        18. FIXED FLOATING WHATSAPP BANNER (STRICT: ONLY WHATSAPP ICON & PHONE NUMBER)
        ========================================================================== */}
-  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="fixed-whatsapp-banner" aria-label="Chat with Veltrix Hub on WhatsApp">
+  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="fixed-whatsapp-banner" aria-label="Chat with Veltrix Hub on WhatsApp">
     <svg className="fixed-whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
     </svg>
-    <span className="fixed-whatsapp-text">+1 (412) 796-3968</span>
+    <span className="fixed-whatsapp-text">+234 808 709 8270</span>
   </a>
 
   {/* Script File */}

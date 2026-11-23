@@ -143,8 +143,8 @@ export default function PersonalInjury() {
         <div className="container utility-bar__inner">
           <p>Personal injury counsel. Dedicated advocate for injured individuals.</p>
           <div className="utility-bar__contact">
-            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-              WhatsApp Only <span>+1 (412) 796-3968</span>
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+              Phone & WhatsApp <span>+234 808 709 8270</span>
             </a>
             <span className="utility-bar__divider" aria-hidden="true"></span>
             <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Email <span>counsel@veltrixhub.ng</span></a>
@@ -220,11 +220,11 @@ export default function PersonalInjury() {
               </a>
             </div>
             <div className="mobile-drawer-contact-info">
-              <a href="tel:+14127963968" className="drawer-contact-link">
+              <a href="tel:+2348087098270" className="drawer-contact-link">
                 <span>Call Directly:</span>
-                <strong>+1 (412) 796-3968</strong>
+                <strong>+234 808 709 8270</strong>
               </a>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="drawer-whatsapp-link">
+              <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="drawer-whatsapp-link">
                 <span>WhatsApp Available 24/7</span>
               </a>
             </div>
@@ -418,9 +418,9 @@ export default function PersonalInjury() {
 
             <div className="contact__grid">
               <div className="contact-detail">
-                <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968
+                <span>PHONE & WHATSAPP</span>
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  +234 808 709 8270
                 </a>
                 <p>Message on WhatsApp to schedule an evaluation</p>
               </div>
@@ -771,9 +771,9 @@ export default function PersonalInjury() {
 
             <div className="contact__grid">
               <div className="contact-detail">
-                <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968
+                <span>PHONE & WHATSAPP</span>
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  +234 808 709 8270
                 </a>
                 <p>Message on WhatsApp to schedule an evaluation</p>
               </div>
@@ -804,8 +804,8 @@ export default function PersonalInjury() {
             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0e1626' }}>Have Legal Questions About an Injury Claim?</h2>
             <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We answer questions with clear, plain language. Contact counsel directly with zero financial obligation.</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
-                Direct Line: +1 (412) 796-3968
+              <a href="tel:+2348087098270" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Direct Line: +234 808 709 8270
               </a>
               <button onClick={(e) => navigateTo('consultation', e)} className="button button--outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                 Request Consultation &rarr;
@@ -831,9 +831,9 @@ export default function PersonalInjury() {
 
             <div className="contact__grid">
               <div className="contact-detail">
-                <span>WHATSAPP ONLY</span>
-                <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-                  +1 (412) 796-3968
+                <span>PHONE & WHATSAPP</span>
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  +234 808 709 8270
                 </a>
                 <p>Message on WhatsApp to schedule an evaluation</p>
               </div>
@@ -893,8 +893,8 @@ export default function PersonalInjury() {
 
           <div className="footer__column">
             <h2>Contact</h2>
-            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
-              +1 (412) 796-3968 (WhatsApp Only)
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+              +234 808 709 8270
             </a>
             <a href="mailto:counsel@veltrixhub.ng">counsel@veltrixhub.ng</a>
             <p>Suite 400, Metro Legal Plaza</p>

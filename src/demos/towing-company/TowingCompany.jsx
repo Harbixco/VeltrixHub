@@ -238,7 +238,7 @@ export default function TowingCompany() {
       description ? `Notes: ${description}` : '',
     ].filter(Boolean).join('\n');
 
-    const whatsappUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setFormStatus({ message: 'Dispatch request prepared in WhatsApp.', type: 'is-success' });
   };
@@ -270,7 +270,7 @@ export default function TowingCompany() {
             <p>WEBSITE DEMO - Sample emergency towing website template created by Veltrix Hub.</p>
           </div>
           <a
-            href="https://wa.me/message/RVTZQMFL7I6OH1"
+            href="https://wa.me/2348087098270"
             className="demo-banner__button"
             target="_blank"
             rel="noreferrer"
@@ -323,7 +323,7 @@ export default function TowingCompany() {
             <a href="#gallery" onClick={(e) => { setMobileMenuOpen(false); navigateTo('gallery', e); }} className="nav-link">Gallery</a>
             <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} className="nav-link">Contact</a>
             <a
-              href="https://wa.me/message/RVTZQMFL7I6OH1"
+              href="https://wa.me/2348087098270"
               className="nav-cta"
               target="_blank"
               rel="noreferrer"
@@ -376,7 +376,7 @@ export default function TowingCompany() {
               </p>
               <div className="hero-actions">
                 <a
-                  href="https://wa.me/message/RVTZQMFL7I6OH1"
+                  href="https://wa.me/2348087098270"
                   className="button button-primary"
                   target="_blank"
                   rel="noreferrer"
@@ -429,7 +429,7 @@ export default function TowingCompany() {
                       <h3>{svc.title}</h3>
                       <p>{svc.desc}</p>
                       <a
-                        href="https://wa.me/message/RVTZQMFL7I6OH1"
+                        href="https://wa.me/2348087098270"
                         className="service-link"
                         target="_blank"
                         rel="noreferrer"
@@ -496,8 +496,8 @@ export default function TowingCompany() {
               <ul className="contact-list">
                 <li>
                   <span>WhatsApp:</span>
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noreferrer">
-                    +1 (412) 796-3968
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noreferrer">
+                    +234 808 709 8270
                   </a>
                 </li>
                 <li>
@@ -638,7 +638,7 @@ export default function TowingCompany() {
                       <h3>{svc.title}</h3>
                       <p>{svc.desc}</p>
                       <a
-                        href="https://wa.me/message/RVTZQMFL7I6OH1"
+                        href="https://wa.me/2348087098270"
                         className="service-link"
                         target="_blank"
                         rel="noreferrer"
@@ -695,7 +695,7 @@ export default function TowingCompany() {
                 <li>Reliable Vehicle Transportation</li>
               </ul>
               <a
-                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                href="https://wa.me/2348087098270"
                 className="button button-primary"
                 target="_blank"
                 rel="noreferrer"
@@ -956,8 +956,8 @@ export default function TowingCompany() {
               <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#0f172a' }}>Have Questions About Rates or Coverage?</h2>
               <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Speak directly with our local dispatch manager or message us on WhatsApp for upfront answers.</p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+14127963968" className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
-                  Call Direct: +1 (412) 796-3968
+                <a href="tel:+2348087098270" className="button button-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                  Call Direct: +234 808 709 8270
                 </a>
                 <button onClick={(e) => navigateTo('contact', e)} className="button button-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                   Send Online Message &rarr;
@@ -978,8 +978,8 @@ export default function TowingCompany() {
               <ul className="contact-list">
                 <li>
                   <span>WhatsApp:</span>
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noreferrer">
-                    +1 (412) 796-3968
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noreferrer">
+                    +234 808 709 8270
                   </a>
                 </li>
                 <li>
@@ -1146,8 +1146,8 @@ export default function TowingCompany() {
             <h3>Contact</h3>
             <ul className="footer-links footer-links--contact">
               <li>
-                <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noreferrer">
-                  WhatsApp: +1 (412) 796-3968
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noreferrer">
+                  WhatsApp: +234 808 709 8270
                 </a>
               </li>
               <li><a href="mailto:info@Veltrix Hubhq.com">Email: info@Veltrix Hubhq.com</a></li>
@@ -1262,9 +1262,9 @@ export default function TowingCompany() {
       <div className="floating-whatsapp" aria-label="WhatsApp contact banner">
         <div className="container floating-whatsapp__inner">
           <span className="floating-whatsapp__text">DISPATCH ASSISTANCE AVAILABLE</span>
-          <a href="tel:+14127963968" className="floating-whatsapp__phone">+1 (412) 796-3968</a>
+          <a href="tel:+2348087098270" className="floating-whatsapp__phone">+234 808 709 8270</a>
           <a
-            href="https://wa.me/message/RVTZQMFL7I6OH1"
+            href="https://wa.me/2348087098270"
             className="floating-whatsapp__button"
             target="_blank"
             rel="noreferrer"

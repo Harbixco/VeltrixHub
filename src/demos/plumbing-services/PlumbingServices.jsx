@@ -63,7 +63,7 @@ export default function PlumbingServices() {
  titleEm: "We're on our way.",
  desc: 'Fast, dependable help for leaks, burst pipes, and urgent repairs. Reach a real technician directly on WhatsApp and get help moving quickly.',
  ctaPrimary: 'WhatsApp for Emergency Help',
- ctaPrimaryHref: 'https://wa.me/14127963968',
+ ctaPrimaryHref: 'https://wa.me/2348087098270',
  ctaSecondary: 'Request a Quote',
  ctaSecondaryHref: '#contact',
  image: 'https://cdn.pixabay.com/photo/2013/12/13/21/13/plumber-228010_1280.jpg',
@@ -87,7 +87,7 @@ export default function PlumbingServices() {
  ctaPrimary: 'Schedule a Home Visit',
  ctaPrimaryHref: '#contact',
  ctaSecondary: 'WhatsApp a Plumber',
- ctaSecondaryHref: 'https://wa.me/14127963968',
+ ctaSecondaryHref: 'https://wa.me/2348087098270',
  image: 'https://cdn.pixabay.com/photo/2015/05/31/11/24/tap-791172_1280.jpg',
  },
  ];
@@ -140,7 +140,7 @@ export default function PlumbingServices() {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}>
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
             </svg>
-            WhatsApp Only 24/7 for Emergencies
+            24/7 Emergency Support
           </span>
  <span>•</span>
  <span>Licensed &amp; Insured</span>
@@ -301,7 +301,7 @@ export default function PlumbingServices() {
  <h3>Contact Us Anytime</h3>
 
  <a
- href="https://wa.me/14127963968"
+ href="https://wa.me/2348087098270"
  target="_blank"
  rel="noopener noreferrer"
  className="pf-contact-item"
@@ -311,8 +311,8 @@ export default function PlumbingServices() {
  <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--amber)', stroke: 'none' }} />
  </div>
  <div>
- <div className="pf-contact-label">WhatsApp Only</div>
- <div className="pf-contact-val">+1 (412) 796-3968</div>
+ <div className="pf-contact-label">Phone & WhatsApp</div>
+ <div className="pf-contact-val">+234 808 709 8270</div>
  </div>
  </a>
 
@@ -636,15 +636,15 @@ export default function PlumbingServices() {
  <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--amber-dark)', stroke: 'none' }} />
  </div>
  <div>
- <strong>WhatsApp Only</strong>
+ <strong>Phone & WhatsApp</strong>
  <span>
  <a
- href="https://wa.me/14127963968"
+ href="https://wa.me/2348087098270"
  target="_blank"
  rel="noopener noreferrer"
  style={{ color: 'inherit', textDecoration: 'underline' }}
  >
- +1 (412) 796-3968
+ +234 808 709 8270
  </a>{' '}
  — 24/7 Emergency Support
  </span>
@@ -1150,7 +1150,7 @@ export default function PlumbingServices() {
  </div>
 
  <a
- href="https://wa.me/14127963968"
+ href="https://wa.me/2348087098270"
  target="_blank"
  rel="noopener noreferrer"
  className="pf-btn-primary"
@@ -1180,12 +1180,12 @@ export default function PlumbingServices() {
  <div className="pf-container">
  <h2>Plumbing Emergency? Don't Wait.</h2>
  <p>Every minute counts. Our emergency crew is standing by on WhatsApp right now.</p>
- <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer" className="pf-phone-big">
- +1 (412) 796-3968
+ <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="pf-phone-big">
+ +234 808 709 8270
  </a>
- <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer" className="pf-btn-dark">
+ <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="pf-btn-dark">
  <FaWhatsapp size={20} />
- <span>Tap to WhatsApp Now — WhatsApp Only (24/7)</span>
+ <span>Tap to WhatsApp Now — 24/7 Emergency Support</span>
  </a>
  </div>
  </div>
@@ -1195,7 +1195,7 @@ export default function PlumbingServices() {
       <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Burst Pipe or Flooding Emergency?</h2>
       <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our dispatch team responds 24/7 to shut down leaks and extract standing water before damage spreads.</p>
       <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-        <a href="tel:+14127963968" className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+        <a href="tel:+2348087098270" className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
           Call Emergency Dispatch
         </a>
         <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
@@ -1359,15 +1359,15 @@ export default function PlumbingServices() {
  <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--amber-dark)', stroke: 'none' }} />
  </div>
  <div>
- <strong>WhatsApp Only</strong>
+ <strong>Phone & WhatsApp</strong>
  <span>
  <a
- href="https://wa.me/14127963968"
+ href="https://wa.me/2348087098270"
  target="_blank"
  rel="noopener noreferrer"
  style={{ color: 'inherit', textDecoration: 'underline' }}
  >
- +1 (412) 796-3968
+ +234 808 709 8270
  </a>{' '}
  — 24/7 Emergency Support
  </span>
@@ -1573,8 +1573,8 @@ export default function PlumbingServices() {
 
  <div className="pf-footer-col">
  <h4>Contact</h4>
- <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
- +1 (412) 796-3968 (WhatsApp Only)
+ <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+ +234 808 709 8270
  </a>
  <a href="mailto:contact@proflowplumbing.com">contact@proflowplumbing.com</a>
  <a href="#contact" onClick={(e) => navigateTo('contact', e)} >Get Free Quote</a>
@@ -1686,9 +1686,9 @@ export default function PlumbingServices() {
 
  {/* ── STICKY MOBILE WHATSAPP CTA ── */}
  <div className="pf-sticky-cta">
- <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+ <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
  <FaWhatsapp style={{ width: '20px', height: '20px', fill: 'var(--navy)', stroke: 'none' }} />
- <span>WhatsApp Us — +1 (412) 796-3968</span>
+ <span>WhatsApp Us — +234 808 709 8270</span>
  </a>
  </div>
  </div>

@@ -231,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ].join("\n");
 
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/2348087098270?text=${encodedMessage}`;
 
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       form.reset();

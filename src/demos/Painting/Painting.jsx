@@ -446,7 +446,7 @@ export default function Painting() {
             const msg = encodeURIComponent(
               `Hello Veltrix Hub! I used your online estimator for ${serviceInfo.label} (~${sqft.toLocaleString()} sq ft). My estimated range is $${minPrice.toLocaleString()} - $${maxPrice.toLocaleString()}. I would like to schedule an on-site consultation!`
             );
-            calcWhatsappBtn.href = `https://wa.me/message/RVTZQMFL7I6OH1?text=${msg}`;
+            calcWhatsappBtn.href = `https://wa.me/2348087098270?text=${msg}`;
           }
         };
 
@@ -582,7 +582,7 @@ export default function Painting() {
               `• Project Notes: ${notes}\n\n` +
               `Please contact me to arrange an on-site walkthrough!`;
 
-            const whatsappUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(message)}`;
+            const whatsappUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
             // Reset form and show confirmation
@@ -910,7 +910,7 @@ export default function Painting() {
                 </p>
                 <div style={{ "display": "flex", "gap": "1rem", "flexWrap": "wrap" }}>
                   <a href="#estimate" className="btn btn-coral">Request Your Consultation</a>
-                  <a href="tel:+14127963968" className="btn btn-secondary">Direct Line: +1 (412) 796-3968</a>
+                  <a href="tel:+2348087098270" className="btn btn-secondary">Direct Line: +234 808 709 8270</a>
                 </div>
               </div>
             </div>
@@ -1013,7 +1013,7 @@ export default function Painting() {
 
                   <div className="form-group">
                     <label className="form-label" htmlFor="form-phone">Phone Number *</label>
-                    <input type="tel" id="form-phone" className="form-input" placeholder="+1 (555) 000-0000" required />
+                    <input type="tel" id="form-phone" className="form-input" placeholder="+234 808 709 8270" required />
                   </div>
                 </div>
 
@@ -1091,7 +1091,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Interior Quote
                     </a>
                   </div>
@@ -1118,7 +1118,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Exterior Quote
                     </a>
                   </div>
@@ -1145,7 +1145,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Cabinet Quote
                     </a>
                   </div>
@@ -1172,7 +1172,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Commercial Quote
                     </a>
                   </div>
@@ -1199,7 +1199,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Deck Quote
                     </a>
                   </div>
@@ -1226,7 +1226,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Repair Quote
                     </a>
                   </div>
@@ -1253,7 +1253,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Book Color Consult
                     </a>
                   </div>
@@ -1280,7 +1280,7 @@ export default function Painting() {
                     </div>
                   </div>
                   <div className="service-action">
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" style={{ "width": "100%" }}>
                       Request Epoxy Quote
                     </a>
                   </div>
@@ -1387,7 +1387,7 @@ export default function Painting() {
                     <span style={{ "fontSize": "0.8125rem", "color": "var(--color-text-muted)" }}>
                       *Exact perceived tone varies slightly based on northern vs southern exposure.
                     </span>
-                    <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
+                    <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-sm">
                       Inquire About This Color
                     </a>
                   </div>
@@ -1474,7 +1474,7 @@ export default function Painting() {
                   </div>
                 </div>
 
-                <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-lg" id="calc-whatsapp-btn">
+                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-coral btn-lg" id="calc-whatsapp-btn">
                   Lock In This Estimate on WhatsApp
                 </a>
               </div>
@@ -1776,7 +1776,7 @@ export default function Painting() {
                 </p>
                 <div style={{ "display": "flex", "gap": "1rem", "flexWrap": "wrap" }}>
                   <a href="#estimate" className="btn btn-coral">Request Your Consultation</a>
-                  <a href="tel:+14127963968" className="btn btn-secondary">Direct Line: +1 (412) 796-3968</a>
+                  <a href="tel:+2348087098270" className="btn btn-secondary">Direct Line: +234 808 709 8270</a>
                 </div>
               </div>
             </div>
@@ -2038,8 +2038,8 @@ export default function Painting() {
                 <h2>We're Here to Help</h2>
                 <p style={{ margin: '1rem 0 2rem', color: '#64748b' }}>Speak directly with our master contractor today or send us a message for immediate assistance.</p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <a href="tel:+14127963968" className="btn btn-primary">Call +1 (412) 796-3968</a>
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">Chat On WhatsApp</a>
+                  <a href="tel:+2348087098270" className="btn btn-primary">Call +234 808 709 8270</a>
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">Chat On WhatsApp</a>
                 </div>
               </div>
             </section>
@@ -2066,7 +2066,7 @@ export default function Painting() {
 
                   <div className="form-group">
                     <label className="form-label" htmlFor="form-phone">Phone Number *</label>
-                    <input type="tel" id="form-phone" className="form-input" placeholder="+1 (555) 000-0000" required />
+                    <input type="tel" id="form-phone" className="form-input" placeholder="+234 808 709 8270" required />
                   </div>
                 </div>
 
@@ -2174,7 +2174,7 @@ export default function Painting() {
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                   <div>
                     <span style={{ "display": "block", "fontSize": "0.75rem", "textTransform": "uppercase", "color": "#64748B" }}>Phone / WhatsApp</span>
-                    <a href="tel:+14127963968" style={{ "color": "var(--color-white)", "fontWeight": "600" }}>+1 (412) 796-3968</a>
+                    <a href="tel:+2348087098270" style={{ "color": "var(--color-white)", "fontWeight": "600" }}>+234 808 709 8270</a>
                   </div>
                 </div>
 
@@ -2313,11 +2313,11 @@ export default function Painting() {
       {/* ==========================================================================
        20. STATIC FLOATING WHATSAPP BOTTOM BANNER
        ========================================================================== */}
-      <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" id="fixed-whatsapp-banner" aria-label="Chat with Veltrix Hub on WhatsApp">
+      <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" id="fixed-whatsapp-banner" aria-label="Chat with Veltrix Hub on WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
         </svg>
-        <span>+1 (412) 796-3968</span>
+        <span>+234 808 709 8270</span>
       </a>
 
       {/* Script */}

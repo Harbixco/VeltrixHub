@@ -67,7 +67,7 @@ const runInit = () => {
   'use strict';
 
   // Constants & WhatsApp Configuration
-  const WHATSAPP_BASE_URL = 'https://wa.me/message/RVTZQMFL7I6OH1';
+  const WHATSAPP_BASE_URL = 'https://wa.me/2348087098270';
 
   /* ==========================================================================
      1. STICKY HEADER & SCROLL SHADOW
@@ -934,7 +934,7 @@ const runInit = () => {
           </div>
 
           <div className="reveal stagger-4">
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
               <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
               </svg>
@@ -1033,7 +1033,7 @@ const runInit = () => {
       <div className="special-cta-content reveal">
         <h2>Take Back Your Home from Unwanted Pests.</h2>
         <p>Don't let pests compromise your comfort, hygiene, or structural safety. Get in touch with Veltrix Hub today.</p>
-        <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
+        <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp btn-lg">
           <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
           </svg>
@@ -1069,9 +1069,9 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>WhatsApp / Phone</h4>
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="channel-link">+1 (412) 796-3968</a>
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="channel-link">+234 808 709 8270</a>
                   <div style={{"marginTop":"4px"}}>
-                    <a href="tel:+14127963968" style={{"fontSize":"0.85rem","color":"var(--color-forest)","fontWeight":"600"}}>(Call directly)</a>
+                    <a href="tel:+2348087098270" style={{"fontSize":"0.85rem","color":"var(--color-forest)","fontWeight":"600"}}>(Call directly)</a>
                   </div>
                 </div>
               </div>
@@ -1125,7 +1125,7 @@ const runInit = () => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone" className="form-label">Phone Number *</label>
-                  <input type="tel" id="phone" className="form-input" placeholder="e.g. +1 (412) 555-0199" required />
+                  <input type="tel" id="phone" className="form-input" placeholder="e.g. +234 808 709 8270" required />
                   <div className="form-error" id="phoneError"></div>
                 </div>
               </div>
@@ -1213,7 +1213,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Termite Inspection & Defense</h3>
               <p>Proactive monitoring and barrier treatments to safeguard structural wooden foundations and joists.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Termite%20Inspection%20and%20Defense" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Termite%20Inspection%20and%20Defense" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1232,7 +1232,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Rodent Exclusion & Control</h3>
               <p>Comprehensive trapping, removal, and entry-point sealing against mice and rats in walls and attics.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Rodent%20Exclusion%20and%20Control" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Rodent%20Exclusion%20and%20Control" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1251,7 +1251,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Bed Bug Treatments</h3>
               <p>Intensive multi-stage targeted eradication designed to reach hidden seams and nesting areas.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Bed%20Bug%20Treatments" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Bed%20Bug%20Treatments" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1270,7 +1270,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Mosquito & Tick Reduction</h3>
               <p>Exterior yard misting and standing water larval disruption to reclaim outdoor patios and lawns.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Mosquito%20and%20Tick%20Reduction" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Mosquito%20and%20Tick%20Reduction" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1289,7 +1289,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Ant Defense</h3>
               <p>Disruption of active nesting colonies and exterior barrier applications for persistent ant trails.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Ant%20Defense" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Ant%20Defense" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1308,7 +1308,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Cockroach Eradication</h3>
               <p>High-potency bait matrices and perimeter crack sealing for kitchens, basements, and utilities.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Cockroach%20Eradication" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Cockroach%20Eradication" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1327,7 +1327,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Wildlife Management</h3>
               <p>Humane trapping and exclusion barriers to prevent raccoons, squirrels, and bats from attic nesting.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Wildlife%20Management" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Wildlife%20Management" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1346,7 +1346,7 @@ const runInit = () => {
             <div className="service-content">
               <h3>Commercial Pest Defense</h3>
               <p>Scheduled regulatory compliance inspections and preventative defense for restaurants and facilities.</p>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Commercial%20Pest%20Defense" target="_blank" rel="noopener noreferrer" className="service-cta-link">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I'm%20interested%20in%20Commercial%20Pest%20Defense" target="_blank" rel="noopener noreferrer" className="service-cta-link">
                 <span>Request This Service</span>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -1414,7 +1414,7 @@ const runInit = () => {
             </div>
 
             <div style={{"marginTop":"1.75rem"}}>
-              <a href="https://wa.me/message/RVTZQMFL7I6OH1?text=Hi%20Veltrix Hub,%20I%20suspect%20a%20Termite%20issue%20at%20my%20property%20and%20need%20an%20inspection." target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" id="pestReportBtn">
+              <a href="https://wa.me/2348087098270?text=Hi%20Veltrix Hub,%20I%20suspect%20a%20Termite%20issue%20at%20my%20property%20and%20need%20an%20inspection." target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp" id="pestReportBtn">
                 <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
                 </svg>
@@ -1551,7 +1551,7 @@ const runInit = () => {
           </div>
 
           <div className="reveal stagger-4">
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="btn btn-whatsapp">
               <svg className="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
               </svg>
@@ -1899,7 +1899,7 @@ const runInit = () => {
               </div>
             </button>
             <div className="faq-content">
-              <p>You can schedule an inspection by clicking any WhatsApp button on this site, messaging us directly at +1 (412) 796-3968, submitting the contact form below, or emailing info@Veltrix Hubhq.com.</p>
+              <p>You can schedule an inspection by clicking any WhatsApp button on this site, messaging us directly at +234 808 709 8270, submitting the contact form below, or emailing info@Veltrix Hubhq.com.</p>
             </div>
           </div>
 
@@ -1917,8 +1917,8 @@ const runInit = () => {
               <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--color-navy)' }}>Need Urgent Pest Identification or Emergency Dispatch?</h2>
               <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Call our extermination specialists directly or message us on WhatsApp for rapid scheduling.</p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a href="tel:+14127963968" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
-                  Call +1 (412) 796-3968
+                <a href="tel:+2348087098270" className="btn btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                  Call +234 808 709 8270
                 </a>
                 <button onClick={(e) => navigateTo('contact', e)} className="btn btn-secondary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
                   Request Free Quote Online &rarr;
@@ -1956,9 +1956,9 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>WhatsApp / Phone</h4>
-                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="channel-link">+1 (412) 796-3968</a>
+                  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="channel-link">+234 808 709 8270</a>
                   <div style={{"marginTop":"4px"}}>
-                    <a href="tel:+14127963968" style={{"fontSize":"0.85rem","color":"var(--color-forest)","fontWeight":"600"}}>(Call directly)</a>
+                    <a href="tel:+2348087098270" style={{"fontSize":"0.85rem","color":"var(--color-forest)","fontWeight":"600"}}>(Call directly)</a>
                   </div>
                 </div>
               </div>
@@ -2012,7 +2012,7 @@ const runInit = () => {
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone" className="form-label">Phone Number *</label>
-                  <input type="tel" id="phone" className="form-input" placeholder="e.g. +1 (412) 555-0199" required />
+                  <input type="tel" id="phone" className="form-input" placeholder="e.g. +234 808 709 8270" required />
                   <div className="form-error" id="phoneError"></div>
                 </div>
               </div>
@@ -2127,7 +2127,7 @@ const runInit = () => {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style={{"color":"var(--color-whatsapp)"}}>
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
             </svg>
-            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="footer-link">+1 (412) 796-3968</a>
+            <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="footer-link">+234 808 709 8270</a>
           </div>
           <div className="footer-contact-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -2256,11 +2256,11 @@ const runInit = () => {
   {/* ========================================================================
        FIXED WHATSAPP FLOATING BOTTOM BANNER
        ======================================================================== */}
-  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer" className="fixed-whatsapp-banner" id="fixedWhatsappBanner" aria-label="Contact Veltrix Hub on WhatsApp">
+  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="fixed-whatsapp-banner" id="fixedWhatsappBanner" aria-label="Contact Veltrix Hub on WhatsApp">
     <svg className="fixed-whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
       <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.053-1.926-.453-1.077-.42-1.936-1.391-2.091-1.584-.15-.195-.828-1.101-.828-2.102 0-1.001.524-1.493.71-1.696.186-.203.407-.254.543-.254.136 0 .271.001.391.008.125.006.291-.047.455.347.169.407.576 1.405.627 1.507.051.102.085.22.017.356-.068.136-.102.22-.203.339-.102.119-.214.266-.305.356-.102.102-.208.212-.089.416.119.203.528.871 1.134 1.411.782.696 1.442.912 1.646 1.014.203.102.323.085.441-.051.119-.136.509-.593.645-.797.136-.203.271-.17.458-.102.186.068 1.187.559 1.39.661.203.102.339.153.39.237.051.085.051.492-.093.897z"/>
     </svg>
-    <span className="fixed-whatsapp-text">+1 (412) 796-3968</span>
+    <span className="fixed-whatsapp-text">+234 808 709 8270</span>
   </a>
 
   {/* Main JavaScript File */}

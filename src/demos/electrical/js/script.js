@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = encodeURIComponent(
         `Hello Veltrix Hub! I used your Electrical Load Calculator. My calculated load is ${totalAmps} Amps with additions: [${activeApplianceNames.join(', ')}]. Recommendation: ${recommendation}. I would like to schedule a panel load assessment!`
       );
-      loadWhatsappBtn.href = `https://wa.me/message/RVTZQMFL7I6OH1?text=${message}`;
+      loadWhatsappBtn.href = `https://wa.me/2348087098270?text=${message}`;
     }
   };
 
@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• Description: ${notes}\n\n` +
         `Please confirm electrician availability!`;
 
-      const whatsappUrl = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(message)}`;
+      const whatsappUrl = `https://wa.me/2348087098270?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
       dispatchForm.reset();
