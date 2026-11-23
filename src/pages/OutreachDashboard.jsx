@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Mail,
@@ -20,7 +20,12 @@ import {
   MapPin,
   Sparkles,
   ChevronRight,
-  X
+  X,
+  RefreshCw,
+  MousePointerClick,
+  Activity,
+  Flame,
+  Radio
 } from "lucide-react";
 
 // Pre-seeded Nigerian Business Leads matching leads_veltrixhub.csv
@@ -277,6 +282,16 @@ export default function OutreachDashboard() {
   const [previewLead, setPreviewLead] = useState(null);
   const [copiedCmd, setCopiedCmd] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
+  const [trackingSummary, setTrackingSummary] = useState({
+    unique_opened: 0,
+    total_opens: 0,
+    unique_clicked: 0,
+    total_clicks: 0,
+    total_tracked_leads: 0,
+  });
+  const [trackingRecords, setTrackingRecords] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
   const [newLead, setNewLead] = useState({
     business_name: "",
     contact_name: "",
@@ -286,7 +301,38 @@ export default function OutreachDashboard() {
     demo_url: "https://veltrixhub.ng/painting"
   });
 
+  const fetchTracking = async () => {
+    setIsRefreshing(true);
+    try {
+      const res = await fetch("/api/track?stats=true");
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setTrackingSummary(data.summary || {});
+          setTrackingRecords(data.records || []);
+        }
+      }
+    } catch (err) {
+      console.warn("Tracking API not reachable in local dev without live serverless execution:", err);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTracking();
+    const interval = setInterval(fetchTracking, 20000); // 20s polling
+    return () => clearInterval(interval);
+  }, []);
+
   const niches = ["all", ...Array.from(new Set(leads.map((l) => l.niche)))];
+
+  const getTrackingForLead = (email) => {
+    if (!email || !trackingRecords.length) return null;
+    return trackingRecords.find(
+      (r) => r.email && r.email.toLowerCase() === email.toLowerCase()
+    );
+  };
 
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
@@ -344,6 +390,21 @@ export default function OutreachDashboard() {
     document.body.removeChild(link);
   };
 
+  const sentCount = leads.filter((l) => l.status === "sent").length;
+  const openRate =
+    sentCount > 0
+      ? ((trackingSummary.unique_opened / sentCount) * 100).toFixed(1)
+      : trackingSummary.unique_opened > 0
+      ? "100.0"
+      : "0.0";
+
+  const clickRate =
+    sentCount > 0
+      ? ((trackingSummary.unique_clicked / sentCount) * 100).toFixed(1)
+      : trackingSummary.unique_clicked > 0
+      ? "100.0"
+      : "0.0";
+
   return (
     <div className="min-h-screen bg-[#070D18] text-slate-100 font-sans pb-24">
       {/* Minimal Dashboard Top Navigation */}
@@ -357,32 +418,41 @@ export default function OutreachDashboard() {
           </Link>
           <span className="hidden sm:inline text-slate-700">|</span>
           <span className="hidden sm:inline text-xs font-semibold text-slate-400 uppercase tracking-wider">
-            Cold Outreach Engine
+            Cold Outreach & Tracking Control Suite
           </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={fetchTracking}
+            disabled={isRefreshing}
+            className="inline-flex items-center gap-1.5 text-xs text-slate-300 bg-slate-800/90 hover:bg-slate-700 px-2.5 py-1 rounded-md border border-slate-700 transition"
+            title="Refresh tracking data from server"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? "animate-spin text-blue-400" : ""}`} />
+            <span className="hidden sm:inline">Refresh Stats</span>
+          </button>
           <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            SMTP SSL: Connected
+            Tracker Active
           </span>
         </div>
       </header>
 
       {/* Top Banner / Hero */}
-      <section className="relative overflow-hidden pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-gradient-to-b from-[#0B1527] to-[#070D18]">
+      <section className="relative overflow-hidden pt-10 pb-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-gradient-to-b from-[#0B1527] to-[#070D18]">
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wide uppercase mb-3">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                Multi-Mailbox Engine Active (75 Daily Emails)
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-3">
+                <Radio className="w-3.5 h-3.5 animate-pulse text-blue-400" />
+                Real-Time Open & Click Pixel Active
               </div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
                 Automated Pitching Command Center
               </h1>
               <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
-                Zero-budget cold outreach engine delivering 75 personalized website pitches every day across 3 authenticated Zoho mailboxes to Nigerian businesses.
+                Zero-budget outreach engine delivering 75 personalized website pitches daily with real-time email open tracking and demo click verification.
               </p>
             </div>
 
@@ -404,8 +474,9 @@ export default function OutreachDashboard() {
             </div>
           </div>
 
-          {/* Key Stat Cards */}
+          {/* Key Metric & Tracking Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
+            {/* Card 1: Daily Capacity */}
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
                 <span className="text-xs font-semibold uppercase tracking-wider">Daily Outreach Cap</span>
@@ -415,31 +486,48 @@ export default function OutreachDashboard() {
               <p className="text-xs text-slate-400 mt-1">25 emails per mailbox limit</p>
             </div>
 
+            {/* Card 2: Active Senders */}
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
                 <span className="text-xs font-semibold uppercase tracking-wider">Active Mailboxes</span>
                 <Server className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">3 Accounts</div>
-              <p className="text-xs text-emerald-400/90 mt-1">Round-Robin SMTP rotation</p>
+              <p className="text-xs text-emerald-400/90 mt-1">Zoho SSL (Kayode, Chris, William)</p>
             </div>
 
-            <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-sm">
+            {/* Card 3: Email Opens */}
+            <div className="bg-slate-900/80 border border-emerald-900/40 rounded-xl p-5 shadow-sm relative overflow-hidden">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-semibold uppercase tracking-wider">Sending Interval</span>
-                <Clock className="w-5 h-5 text-amber-400" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
+                  Unique Opens (View Rate)
+                </span>
+                <Eye className="w-5 h-5 text-emerald-400" />
               </div>
-              <div className="text-2xl font-bold text-white">120s – 300s</div>
-              <p className="text-xs text-slate-400 mt-1">Randomized human cadence</p>
+              <div className="text-2xl font-bold text-emerald-300">
+                {trackingSummary.unique_opened} Opened{" "}
+                <span className="text-sm font-normal text-emerald-400/80">({openRate}%)</span>
+              </div>
+              <p className="text-xs text-slate-400 mt-1">
+                {trackingSummary.total_opens} total views logged
+              </p>
             </div>
 
-            <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-sm">
+            {/* Card 4: Demo Link Clicks */}
+            <div className="bg-slate-900/80 border border-blue-900/40 rounded-xl p-5 shadow-sm relative overflow-hidden">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-semibold uppercase tracking-wider">Leads in Pipeline</span>
-                <Users className="w-5 h-5 text-purple-400" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-400">
+                  Demo Website Clicks
+                </span>
+                <MousePointerClick className="w-5 h-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white">{leads.length} Prospects</div>
-              <p className="text-xs text-slate-400 mt-1">18 pre-loaded across 4 states</p>
+              <div className="text-2xl font-bold text-blue-300">
+                {trackingSummary.unique_clicked} Clicks{" "}
+                <span className="text-sm font-normal text-blue-400/80">({clickRate}%)</span>
+              </div>
+              <p className="text-xs text-slate-400 mt-1">
+                {trackingSummary.total_clicks} total demo visits
+              </p>
             </div>
           </div>
         </div>
@@ -447,13 +535,57 @@ export default function OutreachDashboard() {
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-10">
-        {/* Section 1: 3 Sender Mailboxes */}
+        {/* Section 1: Live Engagement Activity Feed (if any opens exist) */}
+        {trackingRecords.length > 0 && (
+          <div className="bg-slate-900/80 border border-emerald-900/30 rounded-xl p-6 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Flame className="w-5 h-5 text-amber-400" />
+                <h3 className="text-base font-bold text-white">Live Prospect Engagement Stream</h3>
+              </div>
+              <span className="text-xs text-slate-400">Showing last {trackingRecords.length} activities</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {trackingRecords.slice(0, 6).map((rec, i) => (
+                <div
+                  key={i}
+                  className="bg-slate-950/70 border border-slate-800 rounded-lg p-3.5 flex items-start justify-between"
+                >
+                  <div className="space-y-1">
+                    <p className="text-xs font-bold text-white truncate max-w-[200px]">{rec.business_name}</p>
+                    <p className="text-[11px] font-mono text-slate-400 truncate max-w-[200px]">{rec.email}</p>
+                    <div className="flex items-center gap-2 pt-1">
+                      {rec.open_count > 0 && (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                          <Eye className="w-3 h-3" />
+                          Opened {rec.open_count}x
+                        </span>
+                      )}
+                      {rec.click_count > 0 && (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-medium text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                          <MousePointerClick className="w-3 h-3" />
+                          Clicked Demo
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <span className="text-[10px] text-slate-500 font-mono">
+                    {rec.last_opened_at ? new Date(rec.last_opened_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : "Just now"}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Section 2: 3 Sender Mailboxes */}
         <div>
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-xl font-bold text-white">Authenticated Zoho Sender Mailboxes</h2>
               <p className="text-sm text-slate-400">
-                Outreach emails rotate through these 3 accounts to keep domain spam scores zero and ensure high inbox placement.
+                Outreach emails rotate through these 3 accounts to keep domain spam scores zero and guarantee high deliverability.
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-md border border-emerald-500/20">
@@ -493,7 +625,7 @@ export default function OutreachDashboard() {
           </div>
         </div>
 
-        {/* Section 2: Terminal Runner Command Box */}
+        {/* Section 3: Terminal Runner Command Box */}
         <div className="bg-gradient-to-r from-slate-900 via-[#0B1527] to-slate-900 border border-slate-800 rounded-xl p-6 shadow-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="space-y-1">
@@ -503,7 +635,7 @@ export default function OutreachDashboard() {
               </div>
               <h3 className="text-lg font-bold text-white">How to Execute Live Pitches</h3>
               <p className="text-sm text-slate-400 max-w-xl">
-                The automation script runs directly from your terminal. Use dry-run mode to preview pitches or trigger the full 75-batch dispatch.
+                The automation script embeds the 1x1 open tracking pixel and tracked demo links automatically into every email.
               </p>
             </div>
 
@@ -539,7 +671,7 @@ export default function OutreachDashboard() {
           </div>
         </div>
 
-        {/* Section 3: Prospect Database Table */}
+        {/* Section 4: Prospect Database Table */}
         <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
           {/* Controls Bar */}
           <div className="p-5 border-b border-slate-800 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -587,58 +719,82 @@ export default function OutreachDashboard() {
                   <th className="py-3 px-4 font-semibold">Location</th>
                   <th className="py-3 px-4 font-semibold">Niche</th>
                   <th className="py-3 px-4 font-semibold">Live Demo Link</th>
-                  <th className="py-3 px-4 font-semibold">Status</th>
+                  <th className="py-3 px-4 font-semibold">Engagement Status</th>
                   <th className="py-3 px-4 font-semibold text-right">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60">
-                {filteredLeads.map((lead) => (
-                  <tr key={lead.id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3.5 px-4">
-                      <div className="font-medium text-white">{lead.business_name}</div>
-                      <div className="text-xs text-slate-400">
-                        {lead.contact_name} &bull; <span className="font-mono text-slate-400">{lead.email}</span>
-                      </div>
-                    </td>
-                    <td className="py-3.5 px-4 text-slate-300">
-                      <span className="inline-flex items-center gap-1.5 text-xs text-slate-300">
-                        <MapPin className="w-3.5 h-3.5 text-slate-500" />
-                        {lead.city}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4">
-                      <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 capitalize">
-                        {lead.niche.replace("-", " ")}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4">
-                      <a
-                        href={lead.demo_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 hover:underline font-mono"
-                      >
-                        {lead.demo_url.replace("https://veltrixhub.ng", "")}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </td>
-                    <td className="py-3.5 px-4">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 capitalize">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                        {lead.status}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4 text-right">
-                      <button
-                        onClick={() => setPreviewLead(lead)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition"
-                      >
-                        <Eye className="w-3.5 h-3.5" />
-                        Preview Pitch
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {filteredLeads.map((lead) => {
+                  const tracking = getTrackingForLead(lead.email);
+                  const isOpened = tracking && tracking.open_count > 0;
+                  const isClicked = tracking && tracking.click_count > 0;
+
+                  return (
+                    <tr key={lead.id} className="hover:bg-slate-800/40 transition">
+                      <td className="py-3.5 px-4">
+                        <div className="font-medium text-white">{lead.business_name}</div>
+                        <div className="text-xs text-slate-400">
+                          {lead.contact_name} &bull;{" "}
+                          <span className="font-mono text-slate-400">{lead.email}</span>
+                        </div>
+                      </td>
+                      <td className="py-3.5 px-4 text-slate-300">
+                        <span className="inline-flex items-center gap-1.5 text-xs text-slate-300">
+                          <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                          {lead.city}
+                        </span>
+                      </td>
+                      <td className="py-3.5 px-4">
+                        <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 capitalize">
+                          {lead.niche.replace("-", " ")}
+                        </span>
+                      </td>
+                      <td className="py-3.5 px-4">
+                        <a
+                          href={lead.demo_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 hover:underline font-mono"
+                        >
+                          {lead.demo_url.replace("https://veltrixhub.ng", "")}
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </td>
+                      <td className="py-3.5 px-4">
+                        {isClicked ? (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/40">
+                            <MousePointerClick className="w-3 h-3 text-blue-400" />
+                            Demo Viewed ({tracking.click_count}x)
+                          </span>
+                        ) : isOpened ? (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                            <Eye className="w-3 h-3 text-emerald-400" />
+                            Opened ({tracking.open_count}x)
+                          </span>
+                        ) : lead.status === "sent" ? (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                            <CheckCircle2 className="w-3 h-3 text-slate-400" />
+                            Delivered
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 capitalize">
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                            Pending
+                          </span>
+                        )}
+                      </td>
+                      <td className="py-3.5 px-4 text-right">
+                        <button
+                          onClick={() => setPreviewLead(lead)}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition"
+                        >
+                          <Eye className="w-3.5 h-3.5" />
+                          Preview Pitch
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -652,7 +808,7 @@ export default function OutreachDashboard() {
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div>
                 <span className="text-xs uppercase font-semibold text-blue-400 tracking-wider">
-                  Outreach Pitch Preview
+                  Outreach Pitch Preview (with Tracker Embedded)
                 </span>
                 <h3 className="text-xl font-bold text-white mt-0.5">{previewLead.business_name}</h3>
               </div>
@@ -680,6 +836,12 @@ export default function OutreachDashboard() {
                 <span className="w-20 text-slate-500">Subject:</span>
                 <span className="text-white font-semibold">
                   Quick question regarding {previewLead.business_name}'s website
+                </span>
+              </div>
+              <div className="flex">
+                <span className="w-20 text-slate-500">Tracker:</span>
+                <span className="text-blue-400">
+                  https://veltrixhub.ng/api/track?email={encodeURIComponent(previewLead.email)}&action=open
                 </span>
               </div>
             </div>

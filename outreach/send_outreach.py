@@ -1,17 +1,20 @@
 import csv
 import datetime
+import json
 import os
 import random
 import smtplib
 import sys
 import time
+import urllib.parse
+import urllib.request
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 import config
 
 # ==============================================================================
-# Email Copy Generator tailored for Nigerian Local Businesses
+# Email Copy Generator tailored for Nigerian Local Businesses with Real-Time Tracking
 # ==============================================================================
 
 def generate_email_content(lead, sender):
@@ -20,6 +23,7 @@ def generate_email_content(lead, sender):
     city = lead.get("city", "Nigeria").strip()
     niche = lead.get("niche", "business").strip()
     demo_url = lead.get("demo_url", config.VELTRIX_WEBSITE).strip()
+    recipient_email = lead.get("email", "").strip()
 
     greeting = f"Hello {contact_name}," if contact_name else f"Hello {business_name} Team,"
 
@@ -30,7 +34,17 @@ def generate_email_content(lead, sender):
     ]
     subject = random.choice(subject_templates)
 
-    # Clean plain-text version (superior deliverability, zero spam flags)
+    # Tracking parameters
+    encoded_email = urllib.parse.quote(recipient_email)
+    encoded_biz = urllib.parse.quote(business_name)
+    encoded_demo = urllib.parse.quote(demo_url)
+
+    # 1x1 Invisible Tracking Pixel (records email opens)
+    tracking_pixel_url = f"https://veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&action=open"
+    # Tracked Click Link (records demo visits and instantly redirects to live demo)
+    tracked_demo_url = f"https://veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&url={encoded_demo}&action=click"
+
+    # Clean plain-text version
     plain_text = f"""{greeting}
 
 I came across {business_name} while researching top {niche} businesses in {city}.
@@ -56,7 +70,7 @@ Website: {config.VELTRIX_WEBSITE}
 Email: {config.VELTRIX_INBOUND_EMAIL}
 """
 
-    # Optional HTML version formatted cleanly with high deliverability
+    # HTML version with 1x1 transparent tracking pixel and tracked demo click
     html_text = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -72,7 +86,7 @@ Email: {config.VELTRIX_INBOUND_EMAIL}
   <p>We built a live demonstration website tailored specifically for your industry:</p>
   
   <p style="margin: 24px 0;">
-    <a href="{demo_url}" style="display: inline-block; background-color: #050f2c; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">View Live Demonstration &rarr;</a>
+    <a href="{tracked_demo_url}" style="display: inline-block; background-color: #050f2c; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">View Live Demonstration &rarr;</a>
   </p>
   
   <p><strong>What this brings to {business_name}:</strong></p>
@@ -90,6 +104,9 @@ Email: {config.VELTRIX_INBOUND_EMAIL}
     WhatsApp / Phone: <a href="{config.VELTRIX_WHATSAPP}" style="color: #2563eb;">{config.VELTRIX_PHONE}</a><br>
     Website: <a href="{config.VELTRIX_WEBSITE}" style="color: #2563eb;">{config.VELTRIX_WEBSITE}</a>
   </p>
+  
+  <!-- Invisible 1x1 Open Tracking Pixel -->
+  <img src="{tracking_pixel_url}" width="1" height="1" alt="" style="display:none;width:1px;height:1px;max-height:1px;max-width:1px;opacity:0;border:none;outline:none;" />
 </body>
 </html>
 """
@@ -167,7 +184,7 @@ def run_dry_run():
     pending = [l for l in leads if l.get("status", "").lower() == "pending"]
 
     print("=" * 70)
-    print("VELTRIX HUB OUTREACH ENGINE - DRY RUN MODE")
+    print("VELTRIX HUB OUTREACH ENGINE - DRY RUN MODE (WITH OPEN TRACKER)")
     print(f"Total Leads in CSV: {len(leads)}")
     print(f"Pending Leads: {len(pending)}")
     print(f"Daily Rotation Senders: {len(config.SENDERS)} accounts (25 each = 75 total)")
@@ -185,14 +202,16 @@ def run_dry_run():
         sender = config.SENDERS[sender_index % len(config.SENDERS)]
         sender_index += 1
 
-        subject, plain, _ = generate_email_content(lead, sender)
+        subject, plain, html = generate_email_content(lead, sender)
         print(f"\n--- [SAMPLE {i+1}] SENDER: {sender['name']} <{sender['email']}> ---")
         print(f"TO: {lead['email']} ({lead['business_name']}, {lead['city']})")
         print(f"SUBJECT: {subject}")
         print("CONTENT PREVIEW:")
-        for line in plain.splitlines()[:12]:
+        for line in plain.splitlines()[:10]:
             print("  " + line)
         print("  ...")
+        print("TRACKING PIXEL EMBEDDED:")
+        print(f"  https://veltrixhub.ng/api/track?email={urllib.parse.quote(lead['email'])}&action=open")
 
     print("\n" + "=" * 70)
     print("Dry run completed. To send real emails, run: python send_outreach.py --send")
@@ -229,12 +248,11 @@ def run_live_send():
         return
 
     print("=" * 70)
-    print("VELTRIX HUB OUTREACH ENGINE - LIVE SENDING")
+    print("VELTRIX HUB OUTREACH ENGINE - LIVE SENDING (OPEN TRACKER ACTIVE)")
     print(f"Pending Leads Available: {len(pending_indices)}")
     print(f"Targeting Maximum: {config.TOTAL_DAILY_LIMIT} emails today across 3 accounts.")
     print("=" * 70)
 
-    # Track count sent today per sender
     sender_counts = {s["id"]: 0 for s in config.SENDERS}
     total_sent = 0
     sender_idx = 0
@@ -244,7 +262,6 @@ def run_live_send():
             print(f"\nReached total daily limit of {config.TOTAL_DAILY_LIMIT} emails. Stopping.")
             break
 
-        # Pick next sender that has not exceeded their 25 daily limit
         attempts = 0
         current_sender = None
         while attempts < len(config.SENDERS):
@@ -279,7 +296,6 @@ def run_live_send():
             total_sent += 1
             print(f"  ✓ Delivered. (Sender count today: {sender_counts[current_sender['id']]}/25)")
 
-            # Natural delay between sends to protect sender reputation
             if total_sent < config.TOTAL_DAILY_LIMIT and total_sent < len(pending_indices):
                 pause = random.randint(config.MIN_DELAY_SECONDS, config.MAX_DELAY_SECONDS)
                 print(f"  Sleeping {pause} seconds to maintain human sending rhythm...")
@@ -304,13 +320,51 @@ def show_stats():
     pending = len([l for l in leads if l.get("status", "").lower() == "pending"])
     failed = len([l for l in leads if l.get("status", "").lower() == "failed"])
 
-    print("=" * 60)
-    print("VELTRIX HUB OUTREACH DATABASE STATUS")
-    print(f"Total Leads:   {total}")
-    print(f"Sent:          {sent}")
-    print(f"Pending:       {pending}")
-    print(f"Failed:        {failed}")
-    print("=" * 60)
+    print("=" * 65)
+    print("VELTRIX HUB OUTREACH & REAL-TIME ENGAGEMENT STATS")
+    print(f"Total Leads in CSV:   {total}")
+    print(f"Delivered / Sent:     {sent}")
+    print(f"Pending in Queue:     {pending}")
+    print(f"Failed:               {failed}")
+
+    # Fetch live open and click analytics from tracking server
+    try:
+        req = urllib.request.Request(
+            "https://veltrixhub.ng/api/track?stats=true",
+            headers={"User-Agent": "VeltrixCLI/1.0"},
+        )
+        with urllib.request.urlopen(req, timeout=5) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            if data.get("success"):
+                summary = data.get("summary", {})
+                unique_opens = summary.get("unique_opened", 0)
+                total_opens = summary.get("total_opens", 0)
+                unique_clicks = summary.get("unique_clicked", 0)
+                total_clicks = summary.get("total_clicks", 0)
+
+                open_rate = (unique_opens / sent * 100) if sent > 0 else 0
+                click_rate = (unique_clicks / sent * 100) if sent > 0 else 0
+
+                print("-" * 65)
+                print("LIVE EMAIL TRACKING (REAL-TIME)")
+                print(f"Unique Leads Opened:  {unique_opens} ({open_rate:.1f}% Open Rate)")
+                print(f"Total Opens Logged:   {total_opens} (includes re-opens)")
+                print(f"Demo Links Clicked:   {unique_clicks} ({click_rate:.1f}% Click-Through Rate)")
+                print(f"Total Demo Clicks:    {total_clicks}")
+
+                records = data.get("records", [])
+                if records:
+                    print("-" * 65)
+                    print("RECENT PROSPECT ENGAGEMENT:")
+                    for r in records[:5]:
+                        opens = r.get("open_count", 0)
+                        clicks = r.get("click_count", 0)
+                        opened_at = r.get("last_opened_at", "N/A")
+                        print(f"  • {r.get('business_name')} ({r.get('email')}): Opened {opens}x | Clicks: {clicks}")
+    except Exception as e:
+        print(f"(Note: Live open tracking API will report stats once deployed live to veltrixhub.ng)")
+
+    print("=" * 65)
 
 
 if __name__ == "__main__":

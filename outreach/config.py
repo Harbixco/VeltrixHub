@@ -4,8 +4,30 @@ import os
 # Veltrix Hub Automated Outreach Configuration
 # ==============================================================================
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(BASE_DIR)
+
+# Automatic .env loader (no external dependencies required)
+def load_env():
+    for env_file in [os.path.join(BASE_DIR, ".env"), os.path.join(PROJECT_ROOT, ".env")]:
+        if os.path.exists(env_file):
+            with open(env_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if line and not line.startswith("#") and "=" in line:
+                        key, val = line.split("=", 1)
+                        key = key.strip()
+                        val = val.strip().strip('"').strip("'")
+                        if key and not os.environ.get(key):
+                            os.environ[key] = val
+
+load_env()
+
 SMTP_HOST = "smtp.zoho.com"
 SMTP_PORT = 465  # SSL
+
+# Default fallback password if all accounts share the same master/app password
+DEFAULT_PASS = os.environ.get("ZOHO_PASSWORD") or os.environ.get("ZOHO_PASS") or ""
 
 # 3 Distinct Outreach Senders (25 emails/day each = 75 total daily)
 SENDERS = [
@@ -15,8 +37,7 @@ SENDERS = [
         "name": "Kayode | Veltrix Hub",
         "first_name": "Kayode",
         "daily_limit": 25,
-        # Read from environment or local .env file
-        "password": os.environ.get("ZOHO_PASS_KAYODE", ""),
+        "password": os.environ.get("ZOHO_PASS_KAYODE") or DEFAULT_PASS,
     },
     {
         "id": "christopher",
@@ -24,7 +45,7 @@ SENDERS = [
         "name": "Christopher | Veltrix Hub",
         "first_name": "Christopher",
         "daily_limit": 25,
-        "password": os.environ.get("ZOHO_PASS_CHRISTOPHER", ""),
+        "password": os.environ.get("ZOHO_PASS_CHRISTOPHER") or DEFAULT_PASS,
     },
     {
         "id": "william",
@@ -32,7 +53,7 @@ SENDERS = [
         "name": "William | Veltrix Hub",
         "first_name": "William",
         "daily_limit": 25,
-        "password": os.environ.get("ZOHO_PASS_WILLIAM", ""),
+        "password": os.environ.get("ZOHO_PASS_WILLIAM") or DEFAULT_PASS,
     },
 ]
 
@@ -45,7 +66,6 @@ MIN_DELAY_SECONDS = 120
 MAX_DELAY_SECONDS = 300
 
 # File paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LEADS_CSV_PATH = os.path.join(BASE_DIR, "leads_veltrixhub.csv")
 LOG_PATH = os.path.join(BASE_DIR, "outreach.log")
 
