@@ -52,7 +52,7 @@ I came across {business_name} while researching top {niche} businesses in {city}
 In today's market, most clients in {city} search for {niche} services on their phones before deciding who to trust. Without a fast, mobile-friendly website that connects directly to your WhatsApp, potential customers often end up booking with competitors.
 
 We have built a live demonstration website tailored specifically for your industry:
-👉 {demo_url}
+Demo: {demo_url}
 
 What this brings to {business_name}:
 1. Direct WhatsApp Ordering: Customers click one button and chat directly with your sales team.

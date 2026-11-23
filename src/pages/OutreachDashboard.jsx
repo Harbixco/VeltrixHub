@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   Mail,
@@ -20,15 +20,22 @@ import {
   MapPin,
   Sparkles,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   X,
   RefreshCw,
   MousePointerClick,
   Activity,
   Flame,
-  Radio
+  Radio,
+  Play,
+  Zap,
+  Loader2,
+  AlertCircle,
+  RotateCw
 } from "lucide-react";
 
-// Pre-seeded Nigerian Business Leads matching leads_veltrixhub.csv
+// Fallback seed leads matching leads_veltrixhub.csv
 const INITIAL_LEADS = [
   {
     id: 1,
@@ -277,11 +284,15 @@ const SENDERS = [
 
 export default function OutreachDashboard() {
   const [leads, setLeads] = useState(INITIAL_LEADS);
+  const [isLoadingLeads, setIsLoadingLeads] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNiche, setSelectedNiche] = useState("all");
   const [previewLead, setPreviewLead] = useState(null);
   const [copiedCmd, setCopiedCmd] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showManualCommands, setShowManualCommands] = useState(false);
+
+  // Tracking metrics
   const [trackingSummary, setTrackingSummary] = useState({
     unique_opened: 0,
     total_opens: 0,
@@ -292,6 +303,20 @@ export default function OutreachDashboard() {
   const [trackingRecords, setTrackingRecords] = useState([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  // Lead Extraction State
+  const [isExtracting, setIsExtracting] = useState(false);
+  const [extractCount, setExtractCount] = useState(25);
+  const [extractNiche, setExtractNiche] = useState("all");
+  const [extractStatus, setExtractStatus] = useState("");
+  const [extractAlert, setExtractAlert] = useState(null);
+
+  // Outreach Dispatch State
+  const [isDispatching, setIsDispatching] = useState(false);
+  const [dispatchRunning, setDispatchRunning] = useState(false);
+  const [dispatchLogs, setDispatchLogs] = useState([]);
+  const [dispatchAlert, setDispatchAlert] = useState(null);
+  const logTerminalRef = useRef(null);
+
   const [newLead, setNewLead] = useState({
     business_name: "",
     contact_name: "",
@@ -301,13 +326,34 @@ export default function OutreachDashboard() {
     demo_url: "https://veltrixhub.ng/painting"
   });
 
+  // Base API URL helper
+  const getApiUrl = (path) => {
+    return path;
+  };
+
+  // 1. Fetch live leads from MongoDB / CSV
+  const fetchLeads = async () => {
+    setIsLoadingLeads(true);
+    try {
+      const res = await fetch(getApiUrl("/api/extract?get_leads=true"));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
+          setLeads(data.leads);
+        }
+      }
+    } catch (err) {
+      console.warn("Notice loading saved leads:", err);
+    } finally {
+      setIsLoadingLeads(false);
+    }
+  };
+
+  // 2. Fetch email open & click tracking metrics
   const fetchTracking = async () => {
     setIsRefreshing(true);
     try {
-      const endpoint =
-        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-          ? "https://www.veltrixhub.ng/api/track?stats=true"
-          : "/api/track?stats=true";
+      const endpoint = getApiUrl("/api/track?stats=true");
       const res = await fetch(endpoint);
       if (res.ok) {
         const data = await res.json();
@@ -323,11 +369,141 @@ export default function OutreachDashboard() {
     }
   };
 
+  // 3. Fetch dispatch process status & logs
+  const fetchDispatchStatus = async () => {
+    try {
+      const res = await fetch(getApiUrl("/api/dispatch?status=true"));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setDispatchRunning(Boolean(data.isRunning));
+          if (Array.isArray(data.lastLogs) && data.lastLogs.length > 0) {
+            setDispatchLogs(data.lastLogs);
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("Dispatch status notice:", err);
+    }
+  };
+
+  // Auto-scroll log terminal on update
   useEffect(() => {
+    if (logTerminalRef.current) {
+      logTerminalRef.current.scrollTop = logTerminalRef.current.scrollHeight;
+    }
+  }, [dispatchLogs]);
+
+  // Initial load
+  useEffect(() => {
+    fetchLeads();
     fetchTracking();
-    const interval = setInterval(fetchTracking, 20000); // 20s polling
-    return () => clearInterval(interval);
+    fetchDispatchStatus();
+
+    const trackInterval = setInterval(fetchTracking, 15000);
+    return () => clearInterval(trackInterval);
   }, []);
+
+  // Dispatch polling when active
+  useEffect(() => {
+    let dispatchInterval = null;
+    if (dispatchRunning) {
+      dispatchInterval = setInterval(fetchDispatchStatus, 2500);
+    }
+    return () => {
+      if (dispatchInterval) clearInterval(dispatchInterval);
+    };
+  }, [dispatchRunning]);
+
+  // Handle Automated Lead Extraction
+  const handleExtractLeads = async () => {
+    if (isExtracting) return;
+    setIsExtracting(true);
+    setExtractAlert(null);
+    setExtractStatus("Connecting to Google Places API (New) for Lagos & Abuja...");
+
+    try {
+      setTimeout(() => {
+        setExtractStatus("Crawling company websites for authentic business emails...");
+      }, 2000);
+
+      setTimeout(() => {
+        setExtractStatus("Mapping verified prospects to dedicated industry demo URLs...");
+      }, 5000);
+
+      const payload = {
+        count: extractCount,
+        niche: extractNiche === "all" ? null : extractNiche,
+      };
+
+      const res = await fetch(getApiUrl("/api/extract"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setExtractAlert({
+          type: "success",
+          message: `Successfully extracted ${data.added_count} verified businesses. Saved to MongoDB Atlas and leads_veltrixhub.csv.`,
+        });
+        await fetchLeads();
+      } else {
+        setExtractAlert({
+          type: "error",
+          message: data.error || "Failed to extract leads. Please check API key settings.",
+        });
+      }
+    } catch (err) {
+      setExtractAlert({
+        type: "error",
+        message: `Extraction encountered an error: ${err.message}`,
+      });
+    } finally {
+      setIsExtracting(false);
+      setExtractStatus("");
+    }
+  };
+
+  // Handle Outreach Pitch Dispatch
+  const handleStartDispatch = async (mode = "send") => {
+    if (isDispatching) return;
+    setIsDispatching(true);
+    setDispatchAlert(null);
+
+    try {
+      const res = await fetch(getApiUrl("/api/dispatch"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setDispatchRunning(true);
+        setDispatchAlert({
+          type: "success",
+          message: data.message || `Outreach engine active in ${mode} mode. Live progress streaming below.`,
+        });
+        await fetchDispatchStatus();
+      } else {
+        setDispatchAlert({
+          type: "error",
+          message: data.error || "Failed to launch outreach engine.",
+        });
+      }
+    } catch (err) {
+      setDispatchAlert({
+        type: "error",
+        message: `Dispatch error: ${err.message}`,
+      });
+    } finally {
+      setIsDispatching(false);
+    }
+  };
 
   const niches = ["all", ...Array.from(new Set(leads.map((l) => l.niche)))];
 
@@ -340,10 +516,10 @@ export default function OutreachDashboard() {
 
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
-      lead.business_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lead.contact_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lead.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      lead.email.toLowerCase().includes(searchTerm.toLowerCase());
+      (lead.business_name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (lead.contact_name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (lead.city || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (lead.email || "").toLowerCase().includes(searchTerm.toLowerCase());
     const matchesNiche = selectedNiche === "all" || lead.niche === selectedNiche;
     return matchesSearch && matchesNiche;
   });
@@ -381,7 +557,7 @@ export default function OutreachDashboard() {
     const rows = leads
       .map(
         (l) =>
-          `"${l.business_name}","${l.contact_name}","${l.email}","${l.niche}","${l.city}","${l.demo_url}","${l.status}","${l.sent_at}","${l.sent_by}"`
+          `"${(l.business_name || "").replace(/"/g, '""')}","${(l.contact_name || "").replace(/"/g, '""')}","${l.email}","${l.niche}","${l.city}","${l.demo_url}","${l.status}","${l.sent_at || ""}","${l.sent_by || ""}"`
       )
       .join("\n");
     const blob = new Blob([header + rows], { type: "text/csv;charset=utf-8;" });
@@ -422,22 +598,26 @@ export default function OutreachDashboard() {
           </Link>
           <span className="hidden sm:inline text-slate-700">|</span>
           <span className="hidden sm:inline text-xs font-semibold text-slate-400 uppercase tracking-wider">
-            Cold Outreach & Tracking Control Suite
+            Cold Outreach & Automated Lead Acquisition
           </span>
         </div>
         <div className="flex items-center gap-2.5">
           <button
-            onClick={fetchTracking}
-            disabled={isRefreshing}
+            onClick={() => {
+              fetchTracking();
+              fetchLeads();
+              fetchDispatchStatus();
+            }}
+            disabled={isRefreshing || isLoadingLeads}
             className="inline-flex items-center gap-1.5 text-xs text-slate-300 bg-slate-800/90 hover:bg-slate-700 px-2.5 py-1 rounded-md border border-slate-700 transition"
-            title="Refresh tracking data from server"
+            title="Refresh database and tracking stats"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing ? "animate-spin text-blue-400" : ""}`} />
-            <span className="hidden sm:inline">Refresh Stats</span>
+            <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing || isLoadingLeads ? "animate-spin text-blue-400" : ""}`} />
+            <span className="hidden sm:inline">Sync All Data</span>
           </button>
           <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Tracker Active
+            System Online
           </span>
         </div>
       </header>
@@ -456,7 +636,7 @@ export default function OutreachDashboard() {
                 Automated Pitching Command Center
               </h1>
               <p className="mt-3 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed">
-                Zero-budget outreach engine delivering 75 personalized website pitches daily with real-time email open tracking and demo click verification.
+                Zero-budget automated prospecting engine querying Google Places in Lagos and Abuja, verified email extraction, and automated pitch rotation across 3 Zoho mailboxes.
               </p>
             </div>
 
@@ -470,24 +650,26 @@ export default function OutreachDashboard() {
               </button>
               <button
                 onClick={() => setShowAddModal(true)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold shadow-lg shadow-blue-500/20 transition"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-sm font-semibold border border-slate-700 transition"
               >
                 <Plus className="w-4 h-4" />
-                Add New Lead
+                Add Lead Manually
               </button>
             </div>
           </div>
 
           {/* Key Metric & Tracking Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-            {/* Card 1: Daily Capacity */}
+            {/* Card 1: Pipeline Count */}
             <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5 shadow-sm">
               <div className="flex items-center justify-between text-slate-400 mb-2">
-                <span className="text-xs font-semibold uppercase tracking-wider">Daily Outreach Cap</span>
-                <Mail className="w-5 h-5 text-blue-400" />
+                <span className="text-xs font-semibold uppercase tracking-wider">Prospects in Queue</span>
+                <Users className="w-5 h-5 text-blue-400" />
               </div>
-              <div className="text-2xl font-bold text-white">75 Emails / Day</div>
-              <p className="text-xs text-slate-400 mt-1">25 emails per mailbox limit</p>
+              <div className="text-2xl font-bold text-white">
+                {leads.length} Leads
+              </div>
+              <p className="text-xs text-slate-400 mt-1">Ready for automated outreach</p>
             </div>
 
             {/* Card 2: Active Senders */}
@@ -539,7 +721,339 @@ export default function OutreachDashboard() {
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-10">
-        {/* Section 1: Live Engagement Activity Feed (if any opens exist) */}
+
+        {/* SECTION 1: ONE-CLICK AUTOMATED LEAD EXTRACTION ENGINE */}
+        <div className="bg-gradient-to-r from-slate-900 via-[#0B172E] to-slate-900 border border-blue-900/40 rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase">
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                Automated Google Places Crawler
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white">
+                One-Click Lead Extraction
+              </h2>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Queries Google Places across Lagos and Abuja, crawls business sites for verified direct emails, matches with your live industry demo, and saves directly to MongoDB Atlas and CSV.
+              </p>
+            </div>
+
+            {/* Extraction Action Controls */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-slate-950/80 p-3 rounded-xl border border-slate-800">
+              {/* Batch Size Selector */}
+              <div className="flex flex-col">
+                <label className="text-[10px] uppercase font-semibold text-slate-400 px-1 mb-1">
+                  Batch Size
+                </label>
+                <select
+                  value={extractCount}
+                  onChange={(e) => setExtractCount(Number(e.target.value))}
+                  disabled={isExtracting}
+                  className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
+                >
+                  <option value={10}>10 Verified Leads</option>
+                  <option value={25}>25 Verified Leads</option>
+                  <option value={50}>50 Verified Leads</option>
+                  <option value={75}>75 Verified Leads</option>
+                </select>
+              </div>
+
+              {/* Target Niche Selector */}
+              <div className="flex flex-col">
+                <label className="text-[10px] uppercase font-semibold text-slate-400 px-1 mb-1">
+                  Target Industry
+                </label>
+                <select
+                  value={extractNiche}
+                  onChange={(e) => setExtractNiche(e.target.value)}
+                  disabled={isExtracting}
+                  className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer capitalize"
+                >
+                  <option value="all">All 18 Industries</option>
+                  <option value="cleaning">Cleaning Services</option>
+                  <option value="painting">Painting Companies</option>
+                  <option value="plumbing-services">Plumbing</option>
+                  <option value="auto-repair">Auto Repair</option>
+                  <option value="contractor">Building Contractors</option>
+                  <option value="dental-care">Dental Clinics</option>
+                  <option value="personal-injury">Legal Practitioners</option>
+                  <option value="towing-company">Towing Services</option>
+                  <option value="electrical">Electrical Services</option>
+                  <option value="flooring">Flooring & Epoxy</option>
+                  <option value="pest-control">Pest Control</option>
+                  <option value="pressure-demo">Pressure Washing</option>
+                  <option value="fashion">Fashion & Boutique</option>
+                  <option value="perfumes">Luxury Perfumes</option>
+                  <option value="tech-gadgets">Tech & Phones</option>
+                </select>
+              </div>
+
+              {/* Extraction Primary CTA */}
+              <div className="flex flex-col sm:self-end">
+                <button
+                  onClick={handleExtractLeads}
+                  disabled={isExtracting}
+                  className={`inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-white transition shadow-lg ${
+                    isExtracting
+                      ? "bg-blue-600/60 cursor-not-allowed"
+                      : "bg-blue-600 hover:bg-blue-500 shadow-blue-600/30 active:scale-95"
+                  }`}
+                >
+                  {isExtracting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Extracting Leads...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4 text-blue-200" />
+                      <span>Extract Fresh Leads Now</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Active Extraction Progress Banner */}
+          {isExtracting && (
+            <div className="mt-5 p-4 rounded-xl bg-blue-950/40 border border-blue-800/60 flex items-center gap-3">
+              <Loader2 className="w-5 h-5 text-blue-400 animate-spin shrink-0" />
+              <div className="text-xs text-blue-200">
+                <p className="font-semibold text-white">{extractStatus || "Running extraction engine..."}</p>
+                <p className="text-blue-300/80 mt-0.5">
+                  Filtering out duplicates against MongoDB and saving verified Nigerian prospects.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Extraction Alert Notification */}
+          {extractAlert && (
+            <div
+              className={`mt-5 p-4 rounded-xl border flex items-center justify-between text-xs ${
+                extractAlert.type === "success"
+                  ? "bg-emerald-950/40 border-emerald-800/60 text-emerald-200"
+                  : "bg-rose-950/40 border-rose-800/60 text-rose-200"
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                {extractAlert.type === "success" ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                ) : (
+                  <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                )}
+                <span>{extractAlert.message}</span>
+              </div>
+              <button
+                onClick={() => setExtractAlert(null)}
+                className="text-slate-400 hover:text-white p-1"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* SECTION 2: ONE-CLICK OUTREACH PITCHING DISPATCHER & LIVE LOG TERMINAL */}
+        <div className="bg-gradient-to-r from-slate-900 via-[#0D1525] to-slate-900 border border-emerald-900/40 rounded-2xl p-6 sm:p-8 shadow-xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-800/80">
+            <div className="space-y-2 max-w-xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wide uppercase">
+                <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                Live Dispatch Control Center
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white">
+                One-Click Pitch Dispatcher
+              </h2>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                Rotates outbound emails evenly across your 3 authenticated Zoho mailboxes (`kayode`, `christopher`, `william`). Embeds individual open tracking pixels and demo visit verification into each message.
+              </p>
+            </div>
+
+            {/* Dispatch Action Buttons */}
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Simulation (Dry-Run) Button */}
+              <button
+                onClick={() => handleStartDispatch("dry-run")}
+                disabled={isDispatching || dispatchRunning}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold border transition ${
+                  dispatchRunning
+                    ? "bg-slate-800/40 border-slate-700/40 text-slate-500 cursor-not-allowed"
+                    : "bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 active:scale-95"
+                }`}
+                title="Verify email generation without sending real emails"
+              >
+                <Zap className="w-3.5 h-3.5 text-blue-400" />
+                <span>Simulate Run (Dry-Run)</span>
+              </button>
+
+              {/* Live Send Button */}
+              <button
+                onClick={() => handleStartDispatch("send")}
+                disabled={isDispatching || dispatchRunning}
+                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-white transition shadow-lg ${
+                  dispatchRunning
+                    ? "bg-emerald-600/60 cursor-not-allowed"
+                    : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/30 active:scale-95"
+                }`}
+              >
+                {dispatchRunning ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <span>Dispatch Engine Running...</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-4 h-4 text-emerald-200 fill-emerald-200" />
+                    <span>Start 75 Daily Pitching Batch</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Engine Status & Terminal Controls */}
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex items-center gap-2.5 text-xs">
+              <span
+                className={`w-2.5 h-2.5 rounded-full ${
+                  dispatchRunning ? "bg-emerald-400 animate-pulse" : "bg-slate-500"
+                }`}
+              />
+              <span className="font-semibold text-slate-200">
+                {dispatchRunning
+                  ? "Engine Active: Dispatching pitches across 3 Zoho accounts"
+                  : "Engine Standby: 3 Zoho Mailboxes Ready"}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={fetchDispatchStatus}
+                className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-white bg-slate-950 px-2.5 py-1 rounded border border-slate-800 transition"
+              >
+                <RotateCw className="w-3 h-3" />
+                Refresh Logs
+              </button>
+              {dispatchLogs.length > 0 && (
+                <button
+                  onClick={() => setDispatchLogs([])}
+                  className="text-[11px] text-slate-500 hover:text-slate-300 px-2 py-1 transition"
+                >
+                  Clear View
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Live Monospace Terminal Log Viewer */}
+          <div className="mt-3 bg-black/90 rounded-xl border border-slate-800 overflow-hidden shadow-inner">
+            <div className="px-4 py-2 bg-slate-950 border-b border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+              <span className="flex items-center gap-2">
+                <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+                outreach.log &bull; Live Execution Tail
+              </span>
+              <span>Python 3.14 + Zoho SMTP Engine</span>
+            </div>
+
+            <div
+              ref={logTerminalRef}
+              className="p-4 max-h-56 overflow-y-auto font-mono text-xs text-slate-300 space-y-1 select-text"
+            >
+              {dispatchLogs.length > 0 ? (
+                dispatchLogs.map((line, idx) => {
+                  const isErr = line.includes("ERROR") || line.includes("FAIL");
+                  const isSuccess = line.includes("SUCCESS") || line.includes("Sent pitch") || line.includes("DISPATCH FINISHED");
+                  const isHeader = line.includes("===");
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`${
+                        isErr
+                          ? "text-rose-400 font-bold"
+                          : isSuccess
+                          ? "text-emerald-400"
+                          : isHeader
+                          ? "text-amber-400 font-semibold"
+                          : "text-slate-300"
+                      }`}
+                    >
+                      {line}
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="text-slate-500 italic py-3 text-center">
+                  Terminal standby. Click "Start 75 Daily Pitching Batch" or "Simulate Run" to launch the outreach sequence.
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Dispatch Alert Notification */}
+          {dispatchAlert && (
+            <div
+              className={`mt-4 p-3.5 rounded-xl border flex items-center justify-between text-xs ${
+                dispatchAlert.type === "success"
+                  ? "bg-emerald-950/40 border-emerald-800/60 text-emerald-200"
+                  : "bg-rose-950/40 border-rose-800/60 text-rose-200"
+              }`}
+            >
+              <div className="flex items-center gap-2">
+                {dispatchAlert.type === "success" ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                ) : (
+                  <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                )}
+                <span>{dispatchAlert.message}</span>
+              </div>
+              <button
+                onClick={() => setDispatchAlert(null)}
+                className="text-slate-400 hover:text-white p-1"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+
+          {/* Optional CLI Commands Reference Toggle */}
+          <div className="mt-4 pt-3 border-t border-slate-800/80">
+            <button
+              onClick={() => setShowManualCommands(!showManualCommands)}
+              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition"
+            >
+              {showManualCommands ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+              <span>{showManualCommands ? "Hide CLI Commands Reference" : "Show Manual CLI Commands Reference"}</span>
+            </button>
+
+            {showManualCommands && (
+              <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+                <div className="flex items-center justify-between bg-black/60 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono">
+                  <span className="text-emerald-400 truncate mr-2">python send_outreach.py --dry-run</span>
+                  <button
+                    onClick={() => handleCopy("python send_outreach.py --dry-run", "dry-run")}
+                    className="text-slate-400 hover:text-white p-1"
+                  >
+                    {copiedCmd === "dry-run" ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
+                <div className="flex items-center justify-between bg-black/60 border border-slate-800 rounded-lg px-3 py-2 text-xs font-mono">
+                  <span className="text-blue-300 truncate mr-2">python send_outreach.py --send</span>
+                  <button
+                    onClick={() => handleCopy("python send_outreach.py --send", "send")}
+                    className="text-slate-400 hover:text-white p-1"
+                  >
+                    {copiedCmd === "send" ? <Check className="w-3.5 h-3.5 text-blue-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* SECTION 3: LIVE ENGAGEMENT ACTIVITY FEED (When Opens / Clicks Logged) */}
         {trackingRecords.length > 0 && (
           <div className="bg-slate-900/80 border border-emerald-900/30 rounded-xl p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
@@ -583,7 +1097,7 @@ export default function OutreachDashboard() {
           </div>
         )}
 
-        {/* Section 2: 3 Sender Mailboxes */}
+        {/* SECTION 4: 3 SENDER MAILBOXES */}
         <div>
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -629,64 +1143,31 @@ export default function OutreachDashboard() {
           </div>
         </div>
 
-        {/* Section 3: Terminal Runner Command Box */}
-        <div className="bg-gradient-to-r from-slate-900 via-[#0B1527] to-slate-900 border border-slate-800 rounded-xl p-6 shadow-md">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="space-y-1">
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 uppercase tracking-wide">
-                <Terminal className="w-4 h-4" />
-                Backend Engine Runner
-              </div>
-              <h3 className="text-lg font-bold text-white">How to Execute Live Pitches</h3>
-              <p className="text-sm text-slate-400 max-w-xl">
-                The automation script embeds the 1x1 open tracking pixel and tracked demo links automatically into every email.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-stretch gap-3">
-              {/* Dry Run Command */}
-              <div className="flex items-center bg-black/60 border border-slate-800 rounded-lg px-3 py-2">
-                <code className="text-xs font-mono text-emerald-400 select-all mr-3">
-                  python send_outreach.py --dry-run
-                </code>
-                <button
-                  onClick={() => handleCopy("python send_outreach.py --dry-run", "dry-run")}
-                  className="text-slate-400 hover:text-white transition p-1"
-                  title="Copy command"
-                >
-                  {copiedCmd === "dry-run" ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
-
-              {/* Live Send Command */}
-              <div className="flex items-center bg-black/60 border border-blue-900/40 rounded-lg px-3 py-2">
-                <code className="text-xs font-mono text-blue-300 select-all mr-3">
-                  python send_outreach.py --send
-                </code>
-                <button
-                  onClick={() => handleCopy("python send_outreach.py --send", "send")}
-                  className="text-slate-400 hover:text-white transition p-1"
-                  title="Copy command"
-                >
-                  {copiedCmd === "send" ? <Check className="w-4 h-4 text-blue-400" /> : <Copy className="w-4 h-4" />}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 4: Prospect Database Table */}
+        {/* SECTION 5: PROSPECT DATABASE TABLE */}
         <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
           {/* Controls Bar */}
           <div className="p-5 border-b border-slate-800 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <h3 className="text-lg font-bold text-white">Prospects Pipeline ({filteredLeads.length})</h3>
+              <div className="flex items-center gap-2">
+                <h3 className="text-lg font-bold text-white">Prospects Pipeline ({filteredLeads.length})</h3>
+                {isLoadingLeads && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}
+              </div>
               <p className="text-xs text-slate-400 mt-0.5">
                 Targeted Nigerian businesses matched with dedicated industry demo websites.
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
+              {/* Force Refresh Button */}
+              <button
+                onClick={fetchLeads}
+                disabled={isLoadingLeads}
+                className="p-2 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg text-slate-400 hover:text-white transition"
+                title="Reload leads from database"
+              >
+                <RotateCw className={`w-4 h-4 ${isLoadingLeads ? "animate-spin text-blue-400" : ""}`} />
+              </button>
+
               {/* Search */}
               <div className="relative">
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -728,13 +1209,13 @@ export default function OutreachDashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60">
-                {filteredLeads.map((lead) => {
+                {filteredLeads.map((lead, index) => {
                   const tracking = getTrackingForLead(lead.email);
                   const isOpened = tracking && tracking.open_count > 0;
                   const isClicked = tracking && tracking.click_count > 0;
 
                   return (
-                    <tr key={lead.id} className="hover:bg-slate-800/40 transition">
+                    <tr key={lead.id || lead.email || index} className="hover:bg-slate-800/40 transition">
                       <td className="py-3.5 px-4">
                         <div className="font-medium text-white">{lead.business_name}</div>
                         <div className="text-xs text-slate-400">
@@ -750,7 +1231,7 @@ export default function OutreachDashboard() {
                       </td>
                       <td className="py-3.5 px-4">
                         <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 capitalize">
-                          {lead.niche.replace("-", " ")}
+                          {(lead.niche || "painting").replace("-", " ")}
                         </span>
                       </td>
                       <td className="py-3.5 px-4">
@@ -760,7 +1241,7 @@ export default function OutreachDashboard() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 hover:underline font-mono"
                         >
-                          {lead.demo_url.replace("https://veltrixhub.ng", "")}
+                          {(lead.demo_url || "").replace("https://veltrixhub.ng", "")}
                           <ExternalLink className="w-3 h-3" />
                         </a>
                       </td>
@@ -844,8 +1325,8 @@ export default function OutreachDashboard() {
               </div>
               <div className="flex">
                 <span className="w-20 text-slate-500">Tracker:</span>
-                <span className="text-blue-400">
-                  https://veltrixhub.ng/api/track?email={encodeURIComponent(previewLead.email)}&action=open
+                <span className="text-blue-400 truncate">
+                  https://www.veltrixhub.ng/api/track?email={encodeURIComponent(previewLead.email)}&action=open
                 </span>
               </div>
             </div>
@@ -855,10 +1336,10 @@ export default function OutreachDashboard() {
               <p>Hello {previewLead.contact_name},</p>
               <p>
                 I came across <strong>{previewLead.business_name}</strong> while researching top{" "}
-                {previewLead.niche.replace("-", " ")} businesses in {previewLead.city}.
+                {(previewLead.niche || "services").replace("-", " ")} businesses in {previewLead.city}.
               </p>
               <p>
-                In today's market, most clients in {previewLead.city} search for {previewLead.niche.replace("-", " ")}{" "}
+                In today's market, most clients in {previewLead.city} search for {(previewLead.niche || "services").replace("-", " ")}{" "}
                 services on their phones before deciding who to trust. Without a fast, mobile-friendly website that
                 connects directly to your WhatsApp, potential customers often end up booking with competitors.
               </p>
@@ -926,7 +1407,7 @@ export default function OutreachDashboard() {
         </div>
       )}
 
-      {/* Modal: Add New Lead */}
+      {/* Modal: Add New Lead Manually */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-lg shadow-2xl p-6 sm:p-8">
@@ -1021,7 +1502,6 @@ export default function OutreachDashboard() {
                     <option value="dental-care">Dental Care</option>
                     <option value="personal-injury">Legal</option>
                     <option value="towing-company">Towing</option>
-                    <option value="tree-removal">Tree Removal</option>
                     <option value="electrical">Electrical</option>
                     <option value="flooring">Flooring</option>
                     <option value="landscaping">Landscaping</option>
