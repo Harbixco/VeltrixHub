@@ -1,0 +1,1375 @@
+import React, { useState, useEffect } from 'react';
+import DemoTopBar from '../DemoTopBar';
+import CountUpNumber from '../../components/CountUpNumber';
+import './contractor.css';
+
+export default function Contractor() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","projects","testimonials","contact"].includes(hash)) return hash;
+      if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","projects","testimonials","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
+        setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const [bannerDismissed, setBannerDismissed] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const projectsData = [
+    {
+      id: 'northline',
+      categoryKey: 'commercial',
+      category: 'COMMERCIAL · OFFICE',
+      title: 'Northline Workplace',
+      description: 'An illustrative commercial office project focused on a bright, adaptable workplace, considered finishes, and a smooth path from planning through delivery.',
+      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85',
+      isFeature: true,
+    },
+    {
+      id: 'oak-house',
+      categoryKey: 'residential',
+      category: 'RESIDENTIAL · NEW BUILD',
+      title: 'Oak House',
+      description: 'An illustrative new-build home combining warm natural materials, a connection to the landscape, and practical spaces for everyday living.',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85',
+      isFeature: false,
+    },
+    {
+      id: 'foundry-commons',
+      categoryKey: 'commercial',
+      category: 'COMMERCIAL · INTERIOR',
+      title: 'Foundry Commons',
+      description: 'An illustrative commercial interior brought together around natural light, flexible collaboration areas, and durable, welcoming finishes.',
+      image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85',
+      isFeature: false,
+    },
+    {
+      id: 'the-harper',
+      categoryKey: 'renovation',
+      category: 'RENOVATION · RESIDENTIAL',
+      title: 'The Harper',
+      description: 'An illustrative residential renovation that gives a familiar space new life through thoughtful planning and a refreshed, cohesive interior.',
+      image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85',
+      isFeature: false,
+    },
+    {
+      id: 'ridgeview',
+      categoryKey: 'residential',
+      category: 'RESIDENTIAL · CUSTOM HOME',
+      title: 'Ridgeview Residence',
+      description: 'An illustrative custom residence balancing clean architectural lines, inviting materials, and a practical connection between indoor and outdoor living.',
+      image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85',
+      isFeature: false,
+    },
+    {
+      id: 'union-hall',
+      categoryKey: 'renovation',
+      category: 'RENOVATION · COMMERCIAL',
+      title: 'Union Hall',
+      description: 'An illustrative commercial renovation centered on renewing an existing space with durable finishes, improved comfort, and a clear identity.',
+      image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85',
+      isFeature: false,
+    },
+    {
+      id: 'oakridge-roof',
+      categoryKey: 'roofing',
+      category: 'ROOFING · RESIDENTIAL',
+      title: 'Oakridge Roof Renewal',
+      description: 'An illustrative residential roofing project showcasing a roof renewal designed to complement the home and help protect it from the elements.',
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85',
+      isFeature: false,
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote: '“Working together felt collaborative from day one. The team kept communication clear and brought a thoughtful approach to every detail.”',
+      author: 'Jordan M.',
+      role: 'Commercial office · Fictional demo',
+      avatar: 'JM',
+      avatarClass: '',
+    },
+    {
+      quote: '“From planning through final handover, we always knew what was happening next. The result feels like home in every way.”',
+      author: 'Alex L.',
+      role: 'Custom residence · Fictional demo',
+      avatar: 'AL',
+      avatarClass: 'avatar-two',
+    },
+    {
+      quote: '“A complex renovation felt surprisingly manageable. The team listened, adapted, and treated the space with real care.”',
+      author: 'Riley K.',
+      role: 'Building renovation · Fictional demo',
+      avatar: 'RK',
+      avatarClass: 'avatar-three',
+    },
+  ];
+
+  const filteredProjects = activeFilter === 'all'
+    ? projectsData
+    : projectsData.filter((p) => p.categoryKey === activeFilter);
+
+  const scrollTo = (e, id) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      const top = element.getBoundingClientRect().top + window.pageYOffset - 75;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setFormSubmitted(true);
+  };
+
+  return (
+    <div className="contractor-demo" id="home">
+      {/* ── TOP DEMO BAR WITH RETURN BUTTON ── */}
+      <DemoTopBar demoName="Veltrix Hub General Contractor & Construction" />
+
+      {/* Site Header */}
+      <header className="site-header">
+        <nav className="nav-shell container" aria-label="Main navigation">
+          <a className="brand" href="#home" onClick={(e) => navigateTo('home', e)}>
+            <span className="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 44 44">
+                <path d="M5 36 21.8 7 39 36h-8.2l-9-15.5L13 36H5Z" />
+                <path d="M17 29h17" className="mark-cut" />
+              </svg>
+            </span>
+            <span className="brand-name">
+              alvora<span>tech</span>
+              <small>BUILDING WITH PURPOSE</small>
+            </span>
+          </a>
+
+          <button
+            className={`menu-toggle mobile-toggle ${mobileMenuOpen ? 'active' : ''}`}
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`} onClick={() => setMobileMenuOpen(false)} aria-hidden="true"></div>
+          <div className={`nav-panel ${mobileMenuOpen ? 'is-open' : ''}`}>
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Contractor Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
+            <div className="nav-links">
+              <a href="#home" onClick={(e) => { setMobileMenuOpen(false); navigateTo('home', e); }}>Home</a>
+              <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
+              <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
+              <a href="#projects" onClick={(e) => { setMobileMenuOpen(false); navigateTo('projects', e); }}>Projects</a>
+              <a href="#testimonials" onClick={(e) => { setMobileMenuOpen(false); navigateTo('testimonials', e); }}>Testimonials</a>
+              <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
+            </div>
+            <a className="button button-gold nav-cta" href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>
+              Request a Free Quote <span>↗</span>
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main">
+
+      {/* Section Header Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '2.25rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'General Contracting & Remodeling Services'}
+              {currentView === 'about' && 'About Veltrix Hub Construction'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Homeowners Choose Veltrix Hub Construction'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Completed Remodels & Architectural Builds'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Homeowner Reviews & Building Experiences'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Discuss Your Project & Get an Estimate'}
+            </h1>
+            </div>
+        </section>
+      )}
+
+      {/* HOMEPAGE VIEW: High-converting, clean customer essentials */}
+      {currentView === 'home' && (
+        <>
+        <section className="hero">
+          <div className="hero-image" role="img" aria-label="Construction site background"></div>
+          <div className="hero-shade"></div>
+          <div className="hero-grid container">
+            <div className="hero-content">
+              <h1>
+                Building your vision.<br />
+                <span>Delivering excellence.</span>
+              </h1>
+              <p className="hero-copy">
+                From concept to completion, Veltrix Hub delivers exceptional construction solutions built on quality craftsmanship, integrity, and innovation.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-gold" href="#projects" onClick={(e) => scrollTo(e, 'projects')}>
+                  Explore our projects <span>↗</span>
+                </a>
+                <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+                  Request a free quote <span>→</span>
+                </a>
+              </div>
+            </div>
+            <div className="hero-aside">
+              <span className="aside-rule"></span>
+              <p>Thoughtful planning.<br />Lasting craftsmanship.</p>
+            </div>
+          </div>
+          <a className="scroll-cue" href="#about" onClick={(e) => scrollTo(e, 'about')}>
+            <span className="scroll-cue-line"></span>
+            <span>SCROLL TO EXPLORE</span>
+          </a>
+          <div className="hero-index">
+            <span>01</span><i></i><span>04</span>
+          </div>
+        </section>
+
+        {/* ── STATS SECTION ── */}
+        <section className="stats-section" aria-label="Veltrix Hub at a glance">
+          <div className="stats-grid container">
+            <div className="stats-intro">
+              <p>Experience that<br />builds confidence.</p>
+            </div>
+            <div className="stat-item">
+              <strong>
+                <CountUpNumber end={15} suffix="+" duration={1.8} />
+              </strong>
+              <span>Years of experience</span>
+            </div>
+            <div className="stat-item">
+              <strong>
+                <CountUpNumber end={250} suffix="+" duration={2} />
+              </strong>
+              <span>Projects completed</span>
+            </div>
+            <div className="stat-item">
+              <strong>
+                <CountUpNumber end={98} suffix="%" duration={1.8} />
+              </strong>
+              <span>Client satisfaction</span>
+            </div>
+            <div className="stat-item">
+              <strong>
+                <CountUpNumber end={50} suffix="+" duration={2} />
+              </strong>
+              <span>Skilled professionals</span>
+            </div>
+          </div>
+          <p className="stats-note container">Illustrative demo figures for presentation purposes.</p>
+        </section>
+
+        {/* ── ABOUT SECTION ── */}
+        <section className="services-section section-pad section-dark" id="services">
+          <div className="container">
+            <div className="section-heading heading-light reveal">
+              <div>
+                <h2>Built around your <span>ambition.</span></h2>
+              </div>
+              <p>
+                From a single renovation to a ground-up build, our team brings the right expertise to every scale of work.
+              </p>
+            </div>
+
+            <div className="services-grid">
+              {[
+                {
+                  id: '01',
+                  title: 'General Contracting',
+                  desc: 'One accountable partner to coordinate people, materials, and every moving part.',
+                  image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V12l11-7 11 7v15M11 27v-8h10v8M3 27h26" />,
+                },
+                {
+                  id: '02',
+                  title: 'Commercial Construction',
+                  desc: 'High-performing workplaces and commercial spaces designed for what comes next.',
+                  image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M7 28V5h18v23M4 28h24M12 10h2m4 0h2m-8 5h2m4 0h2m-8 5h2m4 0h2" />,
+                },
+                {
+                  id: '03',
+                  title: 'Residential Construction',
+                  desc: 'Thoughtfully built homes shaped around the way you want to live.',
+                  image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="m4 15 12-10 12 10M7 13v14h18V13M13 27v-8h6v8" />,
+                },
+                {
+                  id: '04',
+                  title: 'Building Renovations',
+                  desc: 'Give existing spaces a considered new chapter with less disruption and more purpose.',
+                  image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V9h22v18M3 27h26M10 15h4m4 0h4m-12 6h4m4 0h4M10 5h12v4H10z" />,
+                },
+                {
+                  id: '05',
+                  title: 'Project Management',
+                  desc: 'Clear leadership, proactive coordination, and a steady hand from start to finish.',
+                  image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
+                  svg: (
+                    <>
+                      <circle cx="16" cy="16" r="11" />
+                      <path d="M16 9v7l5 3M5 5l4 4" />
+                    </>
+                  ),
+                },
+                {
+                  id: '06',
+                  title: 'Design & Build',
+                  desc: 'Connected design and construction for a more cohesive, buildable vision.',
+                  image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="m4 26 12-20 12 20M9 18h14M13 26l3-6 3 6M4 29h24" />,
+                },
+                {
+                  id: '07',
+                  title: 'Remodeling Services',
+                  desc: 'Refresh the way your property looks, feels, and works inside and out.',
+                  image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V6h22v21M9 27v-8h14v8M10 11h4m4 0h4M3 27h26" />,
+                },
+                {
+                  id: '08',
+                  title: 'Structural Works',
+                  desc: 'Sound structural solutions with care for safety, performance, and longevity.',
+                  image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V8l11-4 11 4v19M3 27h26M11 12h2m6 0h2m-10 5h2m6 0h2m-10 5h2m6 0h2" />,
+                },
+                {
+                  id: '09',
+                  title: 'Roofing Solutions',
+                  desc: 'Roof installation, replacement, and repairs to help protect your home from the elements.',
+                  image: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="m3 16 13-10 13 10M6 14v14h20V14M12 28v-9h8v9M4 28h24" />,
+                },
+              ].map((serv) => (
+                <article key={serv.id} className="service-card reveal">
+                  <div className="service-image">
+                    <img src={serv.image} alt={serv.title} loading="lazy" />
+                    <span className="service-number">{serv.id}</span>
+                  </div>
+                  <div className="service-body">
+                    <span className="service-icon" aria-hidden="true">
+                      <svg viewBox="0 0 32 32">{serv.svg}</svg>
+                    </span>
+                    <h3>{serv.title}</h3>
+                    <p>{serv.desc}</p>
+                    <a href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+                      Explore service <span>↗</span>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PROJECTS SECTION ── */}
+        <section className="testimonials-section section-pad" id="testimonials">
+          <div className="container testimonial-layout">
+            <div className="testimonial-intro">
+              <h2>Good work is<br /><span>built together.</span></h2>
+              <p>Every successful project begins with listening and grows through trust.</p>
+              <div className="slider-controls">
+                <button
+                  type="button"
+                  className="slider-button"
+                  aria-label="Previous testimonial"
+                  onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                >
+                  ←
+                </button>
+                <span className="slider-count">
+                  <b>{String(activeTestimonial + 1).padStart(2, '0')}</b> <i>/</i> <span>03</span>
+                </span>
+                <button
+                  type="button"
+                  className="slider-button"
+                  aria-label="Next testimonial"
+                  onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
+                >
+                  →
+                </button>
+              </div>
+              <p className="fictional-note">Fictional demo testimonials — illustrative presentation.</p>
+            </div>
+
+            <div className="testimonial-stage">
+              <article className="testimonial-slide">
+                <div className="quote-mark">“</div>
+                <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>{testimonials[activeTestimonial].quote}</blockquote>
+                <div className="client-profile">
+                  <div className={`client-avatar ${testimonials[activeTestimonial].avatarClass}`}>
+                    {testimonials[activeTestimonial].avatar}
+                  </div>
+                  <div>
+                    <strong>{testimonials[activeTestimonial].author}</strong>
+                    <span>{testimonials[activeTestimonial].role}</span>
+                  </div>
+                  <span className="client-type">DEMO PROFILE</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA SECTION ── */}
+        <section className="contact-section section-pad" id="contact">
+          <div className="container contact-grid">
+            <div className="contact-copy">
+              <h2>Tell us what<br />you're <span>building.</span></h2>
+              <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
+              <div className="contact-details">
+                <div>
+                  <span className="contact-symbol">↗</span>
+                  <p>
+                    <small>WHATSAPP ONLY</small>
+                    <span>
+                      <a
+                        href="https://wa.me/14127963968"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'inherit', textDecoration: 'none' }}
+                      >
+                        +1 (412) 796-3968
+                      </a>
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <span className="contact-symbol">@</span>
+                  <p>
+                    <small>EMAIL US</small>
+                    <span>projects@veltrixhub.ng</span>
+                  </p>
+                </div>
+                <div>
+                  <span className="contact-symbol">⌖</span>
+                  <p>
+                    <small>OUR LOCATION</small>
+                    <span>500 Construction Way, Suite 400</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <form className="inquiry-form" onSubmit={handleFormSubmit}>
+              <div className="form-heading">
+                <h3>Start a conversation</h3>
+                <span>ALL FIELDS MARKED * ARE REQUIRED</span>
+              </div>
+              <div className="form-row">
+                <label>
+                  Full name *
+                  <input name="name" type="text" placeholder="Your name" required minLength="2" />
+                </label>
+                <label>
+                  Email address *
+                  <input name="email" type="email" placeholder="you@example.com" required />
+                </label>
+              </div>
+              <div className="form-row">
+                <label>
+                  WhatsApp / Phone number
+                  <input name="phone" type="tel" placeholder="Your WhatsApp or phone number" />
+                </label>
+                <label>
+                  Project type *
+                  <select name="projectType" required defaultValue="">
+                    <option value="" disabled>Select a service</option>
+                    <option>General contracting</option>
+                    <option>Commercial construction</option>
+                    <option>Residential construction</option>
+                    <option>Building renovation</option>
+                    <option>Project management</option>
+                    <option>Design & build</option>
+                    <option>Roofing services</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Tell us about your project *
+                <textarea
+                  name="description"
+                  rows="4"
+                  placeholder="A few details about what you have in mind..."
+                  required
+                  minLength="5"
+                ></textarea>
+              </label>
+              <div className="form-footer">
+                <p>Demo form only. In production, this sends an instant SMS and email to your estimators.</p>
+                <button className="button button-dark" type="submit">
+                  Submit inquiry <span>↗</span>
+                </button>
+              </div>
+              {formSubmitted && (
+                <div className="form-message">
+                  ✓ Inquiry logged in demonstration preview!
+                </div>
+              )}
+            </form>
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* SERVICES VIEW */}
+      {currentView === 'services' && (
+        <>
+        <section className="services-section section-pad section-dark" id="services">
+          <div className="container">
+            <div className="section-heading heading-light reveal">
+              <div>
+                <h2>Built around your <span>ambition.</span></h2>
+              </div>
+              <p>
+                From a single renovation to a ground-up build, our team brings the right expertise to every scale of work.
+              </p>
+            </div>
+
+            <div className="services-grid">
+              {[
+                {
+                  id: '01',
+                  title: 'General Contracting',
+                  desc: 'One accountable partner to coordinate people, materials, and every moving part.',
+                  image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V12l11-7 11 7v15M11 27v-8h10v8M3 27h26" />,
+                },
+                {
+                  id: '02',
+                  title: 'Commercial Construction',
+                  desc: 'High-performing workplaces and commercial spaces designed for what comes next.',
+                  image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M7 28V5h18v23M4 28h24M12 10h2m4 0h2m-8 5h2m4 0h2m-8 5h2m4 0h2" />,
+                },
+                {
+                  id: '03',
+                  title: 'Residential Construction',
+                  desc: 'Thoughtfully built homes shaped around the way you want to live.',
+                  image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="m4 15 12-10 12 10M7 13v14h18V13M13 27v-8h6v8" />,
+                },
+                {
+                  id: '04',
+                  title: 'Building Renovations',
+                  desc: 'Give existing spaces a considered new chapter with less disruption and more purpose.',
+                  image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V9h22v18M3 27h26M10 15h4m4 0h4m-12 6h4m4 0h4M10 5h12v4H10z" />,
+                },
+                {
+                  id: '05',
+                  title: 'Project Management',
+                  desc: 'Clear leadership, proactive coordination, and a steady hand from start to finish.',
+                  image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
+                  svg: (
+                    <>
+                      <circle cx="16" cy="16" r="11" />
+                      <path d="M16 9v7l5 3M5 5l4 4" />
+                    </>
+                  ),
+                },
+                {
+                  id: '06',
+                  title: 'Design & Build',
+                  desc: 'Connected design and construction for a more cohesive, buildable vision.',
+                  image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="m4 26 12-20 12 20M9 18h14M13 26l3-6 3 6M4 29h24" />,
+                },
+                {
+                  id: '07',
+                  title: 'Remodeling Services',
+                  desc: 'Refresh the way your property looks, feels, and works inside and out.',
+                  image: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V6h22v21M9 27v-8h14v8M10 11h4m4 0h4M3 27h26" />,
+                },
+                {
+                  id: '08',
+                  title: 'Structural Works',
+                  desc: 'Sound structural solutions with care for safety, performance, and longevity.',
+                  image: 'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="M5 27V8l11-4 11 4v19M3 27h26M11 12h2m6 0h2m-10 5h2m6 0h2m-10 5h2m6 0h2" />,
+                },
+                {
+                  id: '09',
+                  title: 'Roofing Solutions',
+                  desc: 'Roof installation, replacement, and repairs to help protect your home from the elements.',
+                  image: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80',
+                  svg: <path d="m3 16 13-10 13 10M6 14v14h20V14M12 28v-9h8v9M4 28h24" />,
+                },
+              ].map((serv) => (
+                <article key={serv.id} className="service-card reveal">
+                  <div className="service-image">
+                    <img src={serv.image} alt={serv.title} loading="lazy" />
+                    <span className="service-number">{serv.id}</span>
+                  </div>
+                  <div className="service-body">
+                    <span className="service-icon" aria-hidden="true">
+                      <svg viewBox="0 0 32 32">{serv.svg}</svg>
+                    </span>
+                    <h3>{serv.title}</h3>
+                    <p>{serv.desc}</p>
+                    <a href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+                      Explore service <span>↗</span>
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Planning a Renovation or Commercial Build?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>From architectural framing to turnkey finishes, our licensed project managers ensure on-time delivery.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request a Project Estimate &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* ABOUT / STORY VIEW */}
+      {currentView === 'about' && (
+        <>
+        <section className="about-section section-pad" id="about">
+          <div className="container about-grid">
+            <div className="about-visual">
+              <div className="about-photo image-frame">
+                <img
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1100&q=85"
+                  alt="Construction professionals working together on site"
+                  loading="lazy"
+                />
+              </div>
+              <div className="about-stamp">
+                <span>BUILT ON</span>
+                <strong>TRUST<br />&amp; CRAFT</strong>
+                <i>VELTRIX HUB · EST. 2009</i>
+              </div>
+              <div className="about-caption">
+                <span className="caption-dot"></span> Craftsmanship in every detail
+              </div>
+            </div>
+
+            <div className="about-copy">
+              <h2>Building trust through <span>quality construction.</span></h2>
+              <p className="lead">
+                Great buildings start with great partnerships. We bring people, expertise, and practical thinking together to make every project work harder.
+              </p>
+              <p>
+                From the first conversation to the final walkthrough, our team is committed to dependable communication, careful planning, safe worksites, and quality that lasts. Every detail is considered. Every commitment matters.
+              </p>
+              <div className="belief-grid">
+                <article>
+                  <span className="belief-icon">01</span>
+                  <div>
+                    <h3>Our mission</h3>
+                    <p>Deliver exceptional spaces through dependable, people-first construction.</p>
+                  </div>
+                </article>
+                <article>
+                  <span className="belief-icon">02</span>
+                  <div>
+                    <h3>Our vision</h3>
+                    <p>Build a stronger future through enduring places and trusted partnerships.</p>
+                  </div>
+                </article>
+                <article>
+                  <span className="belief-icon">03</span>
+                  <div>
+                    <h3>Our values</h3>
+                    <p>Integrity, safety, craftsmanship, collaboration, and accountability.</p>
+                  </div>
+                </article>
+              </div>
+              <a className="text-link" href="#services" onClick={(e) => navigateTo('services', e)}>
+                Discover our services <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SERVICES SECTION ── */}
+        <section className="why-section section-pad">
+          <div className="container why-grid">
+            <div className="why-heading">
+              <h2>Good people.<br /><span>Good building.</span></h2>
+              <p>We make the complex feel clear, and the important things stay important.</p>
+              <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+                Let's talk about your project <span>↗</span>
+              </a>
+            </div>
+            <div className="why-list">
+              {[
+                { num: '01', title: 'Experienced construction professionals', desc: 'Seasoned people who know how to anticipate challenges and keep work moving.' },
+                { num: '02', title: 'Quality materials & craftsmanship', desc: 'Thoughtful choices, precise execution, and details made to stand the test of time.' },
+                { num: '03', title: 'On-time project delivery', desc: 'Realistic schedules, coordinated teams, and clear visibility along the way.' },
+                { num: '04', title: 'Transparent communication', desc: 'Direct answers, thoughtful updates, and no surprises where they can be avoided.' },
+                { num: '05', title: 'Competitive, considered pricing', desc: 'Clear scope and informed decisions to make the most of your investment.' },
+                { num: '06', title: 'Safety-focused operations', desc: 'A culture of care that protects our people, partners, and your project.' },
+              ].map((item) => (
+                <article key={item.num} className="why-item">
+                  <span className="why-icon">
+                    <svg viewBox="0 0 32 32">
+                      <path d="M16 4 6 8v7c0 7 4 11 10 13 6-2 10-6 10-13V8L16 4Z" />
+                      <path d="m11 16 3 3 7-7" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <b>{item.num}</b>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Craftsmanship Built on Trust &amp; Transparency</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We provide transparent line-item estimates, dedicated on-site supervision, and daily milestones.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Consult With Our Builders &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* WHY US VIEW */}
+      {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && (
+        <>
+        <section className="why-section section-pad">
+          <div className="container why-grid">
+            <div className="why-heading">
+              <h2>Good people.<br /><span>Good building.</span></h2>
+              <p>We make the complex feel clear, and the important things stay important.</p>
+              <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+                Let's talk about your project <span>↗</span>
+              </a>
+            </div>
+            <div className="why-list">
+              {[
+                { num: '01', title: 'Experienced construction professionals', desc: 'Seasoned people who know how to anticipate challenges and keep work moving.' },
+                { num: '02', title: 'Quality materials & craftsmanship', desc: 'Thoughtful choices, precise execution, and details made to stand the test of time.' },
+                { num: '03', title: 'On-time project delivery', desc: 'Realistic schedules, coordinated teams, and clear visibility along the way.' },
+                { num: '04', title: 'Transparent communication', desc: 'Direct answers, thoughtful updates, and no surprises where they can be avoided.' },
+                { num: '05', title: 'Competitive, considered pricing', desc: 'Clear scope and informed decisions to make the most of your investment.' },
+                { num: '06', title: 'Safety-focused operations', desc: 'A culture of care that protects our people, partners, and your project.' },
+              ].map((item) => (
+                <article key={item.num} className="why-item">
+                  <span className="why-icon">
+                    <svg viewBox="0 0 32 32">
+                      <path d="M16 4 6 8v7c0 7 4 11 10 13 6-2 10-6 10-13V8L16 4Z" />
+                      <path d="m11 16 3 3 7-7" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                  <b>{item.num}</b>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Fixed Timelines, Clean Job Sites, Zero Surprises</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Experience contracting done right with dedicated tradesmen and clear progress reporting.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Start Planning Your Build &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* PROJECTS / PORTFOLIO VIEW */}
+      {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
+        <>
+        <section className="projects-section section-pad" id="projects">
+          <div className="container">
+            <div className="section-heading reveal">
+              <div>
+                <h2>Spaces made to <span>move us.</span></h2>
+              </div>
+              <p>A few examples of the places and possibilities we're proud to help bring to life.</p>
+            </div>
+
+            <div className="project-toolbar">
+              <p>
+                PORTFOLIO <span>·</span> <b>{String(filteredProjects.length).padStart(2, '0')} PROJECTS</b>
+              </p>
+              <div className="project-filters" role="group" aria-label="Filter projects">
+                {['all', 'commercial', 'residential', 'renovation', 'roofing'].map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    className={`filter-button ${activeFilter === cat ? 'is-active' : ''}`}
+                    onClick={() => setActiveFilter(cat)}
+                  >
+                    {cat === 'all' ? 'All work' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="projects-grid">
+              {filteredProjects.map((proj) => (
+                <article
+                  key={proj.id}
+                  className={`project-card reveal ${proj.isFeature && activeFilter === 'all' ? 'project-feature' : ''}`}
+                >
+                  <button
+                    className="project-open"
+                    type="button"
+                    onClick={() => setSelectedProject(proj)}
+                  >
+                    <span className="project-image">
+                      <img src={proj.image} alt={proj.title} loading="lazy" />
+                    </span>
+                    <span className="project-overlay">
+                      <span>VIEW PROJECT <i>↗</i></span>
+                    </span>
+                    <span className="project-info">
+                      <span>
+                        <small>{proj.category}</small>
+                        <strong>{proj.title}</strong>
+                      </span>
+                      <span className="project-arrow">↗</span>
+                    </span>
+                  </button>
+                </article>
+              ))}
+            </div>
+            <p className="portfolio-note">Portfolio names and projects shown are illustrative demo content.</p>
+          </div>
+        </section>
+
+        {/* Projects Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Inspired by What You See?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Let's review your blueprints, sketches, or ideas and provide an accurate cost roadmap.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Get an Architectural Estimate &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* REVIEWS / TESTIMONIALS VIEW */}
+      {(currentView === 'reviews' || currentView === 'testimonials') && (
+        <>
+        <section className="testimonials-section section-pad" id="testimonials">
+          <div className="container testimonial-layout">
+            <div className="testimonial-intro">
+              <h2>Good work is<br /><span>built together.</span></h2>
+              <p>Every successful project begins with listening and grows through trust.</p>
+              <div className="slider-controls">
+                <button
+                  type="button"
+                  className="slider-button"
+                  aria-label="Previous testimonial"
+                  onClick={() => setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+                >
+                  ←
+                </button>
+                <span className="slider-count">
+                  <b>{String(activeTestimonial + 1).padStart(2, '0')}</b> <i>/</i> <span>03</span>
+                </span>
+                <button
+                  type="button"
+                  className="slider-button"
+                  aria-label="Next testimonial"
+                  onClick={() => setActiveTestimonial((prev) => (prev + 1) % testimonials.length)}
+                >
+                  →
+                </button>
+              </div>
+              <p className="fictional-note">Fictional demo testimonials — illustrative presentation.</p>
+            </div>
+
+            <div className="testimonial-stage">
+              <article className="testimonial-slide">
+                <div className="quote-mark">“</div>
+                <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                <blockquote>{testimonials[activeTestimonial].quote}</blockquote>
+                <div className="client-profile">
+                  <div className={`client-avatar ${testimonials[activeTestimonial].avatarClass}`}>
+                    {testimonials[activeTestimonial].avatar}
+                  </div>
+                  <div>
+                    <strong>{testimonials[activeTestimonial].author}</strong>
+                    <span>{testimonials[activeTestimonial].role}</span>
+                  </div>
+                  <span className="client-type">DEMO PROFILE</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#111827' }}>Join Property Owners Who Built with Confidence</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read authentic client stories and discover how we turn complex renovations into smooth builds.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Talk With Our Team &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <>
+        <section className="contact-section section-pad" id="contact">
+          <div className="container contact-grid">
+            <div className="contact-copy">
+              <h2>Tell us what<br />you're <span>building.</span></h2>
+              <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
+              <div className="contact-details">
+                <div>
+                  <span className="contact-symbol">↗</span>
+                  <p>
+                    <small>WHATSAPP ONLY</small>
+                    <span>
+                      <a
+                        href="https://wa.me/14127963968"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'inherit', textDecoration: 'none' }}
+                      >
+                        +1 (412) 796-3968
+                      </a>
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <span className="contact-symbol">@</span>
+                  <p>
+                    <small>EMAIL US</small>
+                    <span>projects@veltrixhub.ng</span>
+                  </p>
+                </div>
+                <div>
+                  <span className="contact-symbol">⌖</span>
+                  <p>
+                    <small>OUR LOCATION</small>
+                    <span>500 Construction Way, Suite 400</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <form className="inquiry-form" onSubmit={handleFormSubmit}>
+              <div className="form-heading">
+                <h3>Start a conversation</h3>
+                <span>ALL FIELDS MARKED * ARE REQUIRED</span>
+              </div>
+              <div className="form-row">
+                <label>
+                  Full name *
+                  <input name="name" type="text" placeholder="Your name" required minLength="2" />
+                </label>
+                <label>
+                  Email address *
+                  <input name="email" type="email" placeholder="you@example.com" required />
+                </label>
+              </div>
+              <div className="form-row">
+                <label>
+                  WhatsApp / Phone number
+                  <input name="phone" type="tel" placeholder="Your WhatsApp or phone number" />
+                </label>
+                <label>
+                  Project type *
+                  <select name="projectType" required defaultValue="">
+                    <option value="" disabled>Select a service</option>
+                    <option>General contracting</option>
+                    <option>Commercial construction</option>
+                    <option>Residential construction</option>
+                    <option>Building renovation</option>
+                    <option>Project management</option>
+                    <option>Design & build</option>
+                    <option>Roofing services</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Tell us about your project *
+                <textarea
+                  name="description"
+                  rows="4"
+                  placeholder="A few details about what you have in mind..."
+                  required
+                  minLength="5"
+                ></textarea>
+              </label>
+              <div className="form-footer">
+                <p>Demo form only. In production, this sends an instant SMS and email to your estimators.</p>
+                <button className="button button-dark" type="submit">
+                  Submit inquiry <span>↗</span>
+                </button>
+              </div>
+              {formSubmitted && (
+                <div className="form-message">
+                  ✓ Inquiry logged in demonstration preview!
+                </div>
+              )}
+            </form>
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
+      {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
+        <>
+        <section className="contact-section section-pad" id="contact">
+          <div className="container contact-grid">
+            <div className="contact-copy">
+              <h2>Tell us what<br />you're <span>building.</span></h2>
+              <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
+              <div className="contact-details">
+                <div>
+                  <span className="contact-symbol">↗</span>
+                  <p>
+                    <small>WHATSAPP ONLY</small>
+                    <span>
+                      <a
+                        href="https://wa.me/14127963968"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'inherit', textDecoration: 'none' }}
+                      >
+                        +1 (412) 796-3968
+                      </a>
+                    </span>
+                  </p>
+                </div>
+                <div>
+                  <span className="contact-symbol">@</span>
+                  <p>
+                    <small>EMAIL US</small>
+                    <span>projects@veltrixhub.ng</span>
+                  </p>
+                </div>
+                <div>
+                  <span className="contact-symbol">⌖</span>
+                  <p>
+                    <small>OUR LOCATION</small>
+                    <span>500 Construction Way, Suite 400</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <form className="inquiry-form" onSubmit={handleFormSubmit}>
+              <div className="form-heading">
+                <h3>Start a conversation</h3>
+                <span>ALL FIELDS MARKED * ARE REQUIRED</span>
+              </div>
+              <div className="form-row">
+                <label>
+                  Full name *
+                  <input name="name" type="text" placeholder="Your name" required minLength="2" />
+                </label>
+                <label>
+                  Email address *
+                  <input name="email" type="email" placeholder="you@example.com" required />
+                </label>
+              </div>
+              <div className="form-row">
+                <label>
+                  WhatsApp / Phone number
+                  <input name="phone" type="tel" placeholder="Your WhatsApp or phone number" />
+                </label>
+                <label>
+                  Project type *
+                  <select name="projectType" required defaultValue="">
+                    <option value="" disabled>Select a service</option>
+                    <option>General contracting</option>
+                    <option>Commercial construction</option>
+                    <option>Residential construction</option>
+                    <option>Building renovation</option>
+                    <option>Project management</option>
+                    <option>Design & build</option>
+                    <option>Roofing services</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                Tell us about your project *
+                <textarea
+                  name="description"
+                  rows="4"
+                  placeholder="A few details about what you have in mind..."
+                  required
+                  minLength="5"
+                ></textarea>
+              </label>
+              <div className="form-footer">
+                <p>Demo form only. In production, this sends an instant SMS and email to your estimators.</p>
+                <button className="button button-dark" type="submit">
+                  Submit inquiry <span>↗</span>
+                </button>
+              </div>
+              {formSubmitted && (
+                <div className="form-message">
+                  ✓ Inquiry logged in demonstration preview!
+                </div>
+              )}
+            </form>
+          </div>
+        </section>
+        </>
+      )}
+
+      </main>
+
+            <footer className="site-footer">
+        <div className="container footer-main">
+          <div className="footer-brand">
+            <a className="brand brand-footer" href="#home" onClick={(e) => navigateTo('home', e)}>
+              <span className="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 44 44">
+                  <path d="M5 36 21.8 7 39 36h-8.2l-9-15.5L13 36H5Z" />
+                  <path d="M17 29h17" className="mark-cut" />
+                </svg>
+              </span>
+              <span className="brand-name">
+                alvora<span>tech</span>
+                <small>BUILDING WITH PURPOSE</small>
+              </span>
+            </a>
+            <p>Building with purpose, integrity, and a commitment to work that lasts.</p>
+          </div>
+          <div className="footer-column">
+            <h3>Explore</h3>
+            <a href="#about" onClick={(e) => navigateTo('about', e)}>About us</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Our services</a>
+            <a href="#projects" onClick={(e) => navigateTo('projects', e)}>Selected work</a>
+          </div>
+          <div className="footer-column">
+            <h3>Our services</h3>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>General contracting</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Commercial build</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Residential design</a>
+            <a href="#services" onClick={(e) => navigateTo('services', e)}>Renovations</a>
+          </div>
+          <div className="footer-column footer-contact">
+            <h3>Get in touch</h3>
+            <a href="https://wa.me/14127963968" target="_blank" rel="noopener noreferrer">
+              WHATSAPP ONLY: +1 (412) 796-3968
+            </a>
+            <span>EMAIL: projects@veltrixhub.ng</span>
+            <a className="footer-quote" href="#contact" onClick={(e) => navigateTo('contact', e)}>
+              Tell us about your project <span>↗</span>
+            </a>
+          <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="Facebook"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="Instagram"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a
+              href="https://x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="X (formerly Twitter)"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a
+              href="https://pinterest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="Pinterest"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div className="container footer-bottom-inner">
+            <span>© 2026 Veltrix Hub. All rights reserved.</span>
+            <span>DEMO WEBSITE · ALL PROJECTS, FIGURES &amp; TESTIMONIALS ARE ILLUSTRATIVE</span>
+            <a href="#home" onClick={(e) => navigateTo('home', e)}>BACK TO TOP ↑</a>
+          </div>
+        </div>
+      </footer>
+
+      {/* ── PROJECT DETAILS MODAL ── */}
+      {selectedProject && (
+        <div className="contractor-modal-backdrop">
+          <div className="contractor-modal-box">
+            <button
+              className="dialog-close"
+              type="button"
+              aria-label="Close project details"
+            >
+              ×
+            </button>
+            <div className="dialog-image">
+              <img src={selectedProject.image} alt={selectedProject.title} />
+            </div>
+            <div className="dialog-content">
+              
+              <h2>{selectedProject.title}</h2>
+              <p>{selectedProject.description}</p>
+              <a
+                className="button button-dark"
+                href="#contact" onClick={(e) => navigateTo('contact', e)}
+              >
+                Discuss a similar project <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+

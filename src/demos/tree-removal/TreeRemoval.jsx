@@ -1,0 +1,1379 @@
+import React, { useState, useEffect } from 'react';
+import DemoTopBar from '../DemoTopBar';
+import {
+  FiCheck,
+  FiPhoneCall,
+  FiChevronLeft,
+  FiChevronRight,
+  FiArrowUp,
+  FiX
+} from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
+import './tree-removal.css';
+
+export default function TreeRemoval() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","projects","testimonials","faq","contact"].includes(hash)) return hash;
+      if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) return hash;
+    }
+    return 'home';
+  });
+
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    setCurrentView(view);
+    if (typeof window !== 'undefined') {
+      window.location.hash = view === 'home' ? '' : view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (["services","about","projects","testimonials","faq","contact"].includes(hash)) {
+        setCurrentView(hash);
+      } else if (['services', 'about', 'reviews', 'testimonials', 'projects', 'gallery', 'faq', 'contact'].includes(hash)) {
+        setCurrentView(hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const [navOpen, setNavOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFaq, setActiveFaq] = useState(0);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    service: '',
+    message: '',
+  });
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    setNavOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      const top = element.getBoundingClientRect().top + window.pageYOffset - 75;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  };
+
+  const services = [
+    {
+      title: 'Tree Removal',
+      desc: 'Professional tree removal solutions for unwanted, damaged, dead, or hazardous trees.',
+      image: '/tree-removal/images/tree-removal-crew.webp',
+      alt: 'Tree removal crew cutting down a tree in a residential area',
+    },
+    {
+      title: 'Tree Trimming & Pruning',
+      desc: 'Tree maintenance solutions that help improve appearance, manage growth, and maintain healthy outdoor spaces.',
+      image: '/tree-removal/images/tree-trimming.webp',
+      alt: 'Arborist trimming a tree branch with a saw',
+    },
+    {
+      title: 'Stump Grinding & Removal',
+      desc: 'Solutions for removing unwanted tree stumps and reclaiming usable outdoor yard and turf space.',
+      image: '/tree-removal/images/stump-grinding.webp',
+      alt: 'Stump grinder working on a tree stump',
+    },
+    {
+      title: 'Emergency Tree Services',
+      desc: 'Immediate assistance with storm damage, fallen limbs, and dangerous structural property threats.',
+      image: '/tree-removal/images/residential-tree-removal.webp',
+      alt: 'Tree removal crew working on a large residential tree',
+    },
+    {
+      title: 'Land & Lot Clearing',
+      desc: 'Tree and dense vegetation clearing solutions for residential developments and commercial expansions.',
+      image: '/tree-removal/images/tree-removal-crew.webp',
+      alt: 'Tree crew cutting down a tree as part of property clearing',
+    },
+    {
+      title: 'Tree Maintenance',
+      desc: 'Routine crown thinning, deadwooding, and health assessments to keep your grounds safe and vibrant.',
+      image: '/tree-removal/images/tree-trimming.webp',
+      alt: 'Arborist performing routine tree trimming',
+    },
+  ];
+
+  const projects = [
+    {
+      title: 'Controlled Tree Removal',
+      category: 'removal',
+      label: 'Tree Removal',
+      image: '/tree-removal/images/tree-removal-crew.webp',
+      alt: 'Tree crew cutting down a tree in a residential neighborhood',
+    },
+    {
+      title: 'Canopy Pruning & Shaping',
+      category: 'trimming',
+      label: 'Tree Trimming',
+      image: '/tree-removal/images/tree-trimming.webp',
+      alt: 'Arborist sawing a branch during tree trimming',
+    },
+    {
+      title: 'Deep Stump Extraction',
+      category: 'stump',
+      label: 'Stump Grinding',
+      image: '/tree-removal/images/stump-grinding.webp',
+      alt: 'Stump grinder operating beside a tree stump',
+    },
+    {
+      title: 'Estate Perimeter Clearing',
+      category: 'clearing',
+      label: 'Land Clearing',
+      image: '/tree-removal/images/residential-tree-removal.webp',
+      alt: 'Workers removing a large tree from a residential property',
+    },
+    {
+      title: 'Sectional Crane Take-Down',
+      category: 'removal',
+      label: 'Tree Removal',
+      image: '/tree-removal/images/arborist-tree-cutting.webp',
+      alt: 'Arborist felling a large tree in sections with a chainsaw',
+    },
+    {
+      title: 'Lateral Branch Clearance',
+      category: 'trimming',
+      label: 'Tree Trimming',
+      image: '/tree-removal/images/tree-removal-crew.webp',
+      alt: 'Tree care crew working on a mature tree',
+    },
+  ];
+
+  const filteredProjects = activeFilter === 'all'
+    ? projects
+    : projects.filter((p) => p.category === activeFilter);
+
+  const testimonials = [
+    {
+      quote: 'The team was responsive, professional, and made a stressful tree removal situation feel straightforward. Communication was clear from start to finish.',
+      person: 'David M.',
+      role: 'Residential Property Owner',
+    },
+    {
+      quote: 'Their service was organized and thoughtful. The crew handled our pruning needs carefully and kept the property neat throughout the project.',
+      person: 'Sarah H.',
+      role: 'Homeowner',
+    },
+    {
+      quote: 'We appreciated how easy it was to ask questions and get a clear estimate. The process felt professional and customer-focused.',
+      person: 'Robert T.',
+      role: 'Commercial Property Manager',
+    },
+  ];
+
+  const faqs = [
+    {
+      q: 'What types of tree removal services do you offer?',
+      a: 'Veltrix Hub provides tree removal services for unwanted, damaged, dead, and hazardous trees, with support tailored to each property and project.',
+    },
+    {
+      q: 'Do you provide tree trimming and pruning?',
+      a: 'Yes. Tree trimming and pruning are available to improve appearance, manage growth, and support healthier outdoor spaces.',
+    },
+    {
+      q: 'Can you help remove unwanted tree stumps?',
+      a: 'Yes. Stump grinding and removal services can help reclaim usable outdoor space and improve the overall look of a property.',
+    },
+    {
+      q: 'Do you offer emergency tree services?',
+      a: 'Emergency response support can be arranged for tree-related issues caused by severe storms or unexpected property hazards.',
+    },
+    {
+      q: 'How can I request a free estimate?',
+      a: 'Contact Veltrix Hub directly through WhatsApp or use the contact form to share your property details and service needs.',
+    },
+    {
+      q: 'Do you provide residential and commercial tree services?',
+      a: 'Yes. Services can be planned for both residential homes and commercial commercial complexes depending on project scope.',
+    },
+  ];
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, phone, service, message } = formData;
+    if (!name || !phone || !service) return;
+
+    const text = [
+      'Hello Veltrix Hub Tree Care,',
+      '',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      email ? `Email: ${email}` : '',
+      `Service: ${service}`,
+      message ? `Project Details: ${message}` : '',
+    ].filter(Boolean).join('\n');
+
+    const url = `https://wa.me/message/RVTZQMFL7I6OH1?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+    setFormSubmitted(true);
+  };
+
+  return (
+    <div className="tree-removal-demo min-h-screen">
+      {/* Veltrix Hub Demo Banner */}
+      <DemoTopBar demoName="Veltrix Hub Professional Tree Removal & Care" />
+
+      {/* Demo Sub-Banner */}
+      <div className="demo-banner banner-top" aria-label="Website demo banner">
+        <div className="container banner-inner">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <a
+              href="/"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                color: '#FF9718',
+                textDecoration: 'none',
+                fontWeight: 800,
+                fontSize: '0.8rem',
+                letterSpacing: '0.04em',
+              }}
+            >
+              &larr; BACK TO VELTRIX HUB
+            </a>
+            <p>WEBSITE DEMO - Sample arborist and tree care website template created by Veltrix Hub.</p>
+          </div>
+          <div className="banner-action">
+            <span>Inquire for Your Business</span>
+            <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Header Navigation */}
+      <header className="site-header">
+        <nav className="navbar container" aria-label="Primary navigation">
+          <a href="#home" onClick={(e) => navigateTo('home', e)} className="logo" aria-label="Veltrix Hub home">
+            <span className="logo-mark" aria-hidden="true">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tree icon">
+                <circle cx="32" cy="14" r="6" fill="currentColor" />
+                <path d="M32 20 L22 39 H28 V52 H36 V39 H42 Z" fill="currentColor" />
+                <path d="M20 32 C20 23, 28 18, 32 18 C36 18, 44 23, 44 32" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </span>
+            <span className="logo-text">Veltrix Hub</span>
+          </a>
+
+          <button
+            className={`nav-toggle mobile-toggle ${navOpen ? 'is-open' : ''}`}
+            aria-label="Toggle navigation"
+            aria-expanded={navOpen}
+            onClick={() => setNavOpen(!navOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div className={`mobile-nav-overlay ${navOpen ? 'active' : ''}`} onClick={() => setNavOpen(false)} aria-hidden="true"></div>
+          <div className={`nav-menu-wrap ${navOpen ? 'open' : ''}`}>
+            <div className="mobile-drawer-header">
+              <span className="mobile-drawer-title">Tree Service Menu</span>
+              <button type="button" className="mobile-drawer-close" onClick={() => setNavOpen(false)} aria-label="Close navigation menu">
+                &times;
+              </button>
+            </div>
+            <ul className="nav-menu">
+              <li><a href="#home" onClick={(e) => { setNavOpen(false); navigateTo('home', e); }}>Home</a></li>
+              <li><a href="#about" onClick={(e) => { setNavOpen(false); navigateTo('about', e); }}>About Us</a></li>
+              <li><a href="#services" onClick={(e) => { setNavOpen(false); navigateTo('services', e); }}>Services</a></li>
+              <li><a href="#projects" onClick={(e) => { setNavOpen(false); navigateTo('projects', e); }}>Projects</a></li>
+              <li><a href="#testimonials" onClick={(e) => { setNavOpen(false); navigateTo('testimonials', e); }}>Reviews</a></li>
+              <li><a href="#contact" onClick={(e) => { setNavOpen(false); navigateTo('contact', e); }}>Contact</a></li>
+              <li>
+                <a
+                  className="btn btn-primary nav-cta"
+                  href="https://wa.me/message/RVTZQMFL7I6OH1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setNavOpen(false)}
+                >
+                  Get a Free Estimate
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main id="main-content">
+
+      {/* Section Header Banner */}
+      {currentView !== 'home' && (
+        <section className="view-page-banner" style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+          padding: '2.25rem 1.5rem',
+          color: '#ffffff',
+          textAlign: 'center',
+          borderBottom: '1px solid rgba(255,255,255,0.08)'
+        }}>
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'services' && 'Tree Removal & Arborist Services'}
+              {currentView === 'about' && 'About Veltrix Hub Tree Care'}
+              {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Homeowners Trust Our Tree Care'}
+              {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && 'Tree Removal & Pruning Gallery'}
+              {(currentView === 'reviews' || currentView === 'testimonials') && 'Homeowner Feedback & Reviews'}
+              {currentView === 'faq' && 'Frequently Asked Questions'}
+              {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Get a Free Tree Service Estimate'}
+            </h1>
+            </div>
+        </section>
+      )}
+
+      {/* HOMEPAGE VIEW: High-converting, clean customer essentials */}
+      {currentView === 'home' && (
+        <>
+        <section id="home" className="hero">
+          <div className="hero-media" aria-hidden="true"></div>
+          <div className="hero-overlay"></div>
+
+          <div className="container hero-inner">
+            <div className="hero-copy reveal">
+              <h1>Professional Tree Removal &amp; Tree Care Services You Can Trust</h1>
+              <p className="lead">
+                From difficult tree removals to routine maintenance, Veltrix Hub helps property owners maintain safer,
+                cleaner, and more beautiful outdoor spaces.
+              </p>
+              <div className="hero-actions">
+                <a
+                  className="btn btn-primary"
+                  href="https://wa.me/message/RVTZQMFL7I6OH1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Get a Free Estimate
+                </a>
+                <a
+                  className="btn btn-secondary"
+                  href="#services"
+                  onClick={(e) => scrollToSection(e, 'services')}
+                >
+                  Explore Our Services
+                </a>
+              </div>
+              <p className="trust-indicator">Professional Service | Reliable Communication | Customer-Focused Solutions</p>
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+
+        <section id="services" className="services section">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Complete Tree Care for Residential and Commercial Properties</h2>
+            </div>
+            <div className="service-grid">
+              {services.map((svc, idx) => (
+                <article className="service-card reveal" key={idx}>
+                  <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
+                  <div className="card-content">
+                    <h3>{svc.title}</h3>
+                    <p>{svc.desc}</p>
+                    <a
+                      href="https://wa.me/message/RVTZQMFL7I6OH1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Request a Quote &rarr;
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Why Choose Us */}
+        <section id="testimonials" className="testimonials section">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Client feedback from property owners</h2>
+            </div>
+            <div className="testimonial-carousel reveal" aria-live="polite">
+              <button
+                className="carousel-btn prev"
+                type="button"
+                aria-label="Previous testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              >
+                <FiChevronLeft />
+              </button>
+              <div className="testimonial-track">
+                {testimonials.map((t, idx) => (
+                  <article
+                    className={`testimonial-item ${idx === testimonialIndex ? 'active' : ''}`}
+                    key={idx}
+                    style={{ display: idx === testimonialIndex ? 'block' : 'none' }}
+                  >
+                    <div className="stars" aria-label="Five star review">Rating: 5.0 / 5.0</div>
+                    <p>&ldquo;{t.quote}&rdquo;</p>
+                    <div className="person">
+                      <strong>{t.person}</strong>
+                      <span>{t.role}</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <button
+                className="carousel-btn next"
+                type="button"
+                aria-label="Next testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
+              >
+                <FiChevronRight />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Promo Banner */}
+        <div className="promo-banner middle-banner">
+          <div className="container promo-inner reveal">
+            <div>
+              <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
+              <p>
+                Want a modern website like this for your business? Veltrix Hub creates professional websites that help you
+                Dedicated to safe tree removal, storm cleanup, and expert tree trimming.
+              </p>
+            </div>
+            <div className="banner-buttons">
+              <a
+                className="btn btn-primary"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Started on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <section id="contact" className="contact section">
+          <div className="container contact-grid">
+            <div className="contact-copy reveal">
+              <h2>Let's Talk About Your Tree Service Needs.</h2>
+              <ul className="contact-list">
+                <li>
+                  <strong>WhatsApp:</strong>{' '}
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 796-3968
+                  </a>
+                </li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                </li>
+                <li><strong>Service:</strong> Residential &amp; Commercial Service</li>
+              </ul>
+              <a
+                className="btn btn-primary whatsapp-button mt-4"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <div className="contact-form-wrap reveal">
+              <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
+                <div className="form-grid">
+                  <label>
+                    <span>Full Name *</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Email Address</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                  <label>
+                    <span>Phone Number *</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="(555) 123-4567"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Service Required *</span>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Tree Removal">Tree Removal</option>
+                      <option value="Tree Trimming & Pruning">Tree Trimming &amp; Pruning</option>
+                      <option value="Stump Grinding & Removal">Stump Grinding &amp; Removal</option>
+                      <option value="Emergency Tree Services">Emergency Tree Services</option>
+                      <option value="Land & Lot Clearing">Land &amp; Lot Clearing</option>
+                      <option value="Tree Maintenance">Tree Maintenance</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  <span>Project Description</span>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about the tree location, hazards, or property access..."
+                  ></textarea>
+                </label>
+                <button className="btn btn-primary submit-btn" type="submit">
+                  Send Your Request on WhatsApp
+                </button>
+                {formSubmitted && (
+                  <p className="form-message mt-3 text-sm font-semibold text-emerald-600">
+                    Your request was opened in WhatsApp.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* SERVICES VIEW */}
+      {currentView === 'services' && (
+        <>
+        <section id="services" className="services section">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Complete Tree Care for Residential and Commercial Properties</h2>
+            </div>
+            <div className="service-grid">
+              {services.map((svc, idx) => (
+                <article className="service-card reveal" key={idx}>
+                  <img src={svc.image} alt={svc.alt} loading="lazy" decoding="async" />
+                  <div className="card-content">
+                    <h3>{svc.title}</h3>
+                    <p>{svc.desc}</p>
+                    <a
+                      href="https://wa.me/message/RVTZQMFL7I6OH1"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Request a Quote &rarr;
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Services Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Need Tree Removal, Trimming, or Emergency Clearing?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our certified arborists provide upfront written estimates and safe, fully insured property protection.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Free Tree Estimate &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* ABOUT / STORY VIEW */}
+      {currentView === 'about' && (
+        <>
+        <section id="about" className="about section">
+          <div className="container about-grid">
+            <div className="about-image reveal">
+              <img
+                src="/tree-removal/images/arborist-tree-cutting.webp"
+                alt="Arborist using a chainsaw to remove a tree in sections"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="about-content reveal">
+              <h2>We Build Professional Websites That Help You Attract More Clients.</h2>
+              <p>
+                Veltrix Hub creates polished, professional websites that help businesses showcase their services, build
+                trust with potential customers, and attract more clients. We make it easier for your business to stand
+                out online and connect with the people who need what you offer.
+              </p>
+              <div className="highlight-list">
+                <article>
+                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
+                  <div>
+                    <h3>Customer-Focused Service</h3>
+                  </div>
+                </article>
+                <article>
+                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
+                  <div>
+                    <h3>Professional Approach</h3>
+                  </div>
+                </article>
+                <article>
+                  <div className="icon-box" aria-hidden="true"><FiCheck /></div>
+                  <div>
+                    <h3>Reliable Communication</h3>
+                  </div>
+                </article>
+              </div>
+              <a className="btn btn-primary" href="#contact" onClick={(e) => scrollToSection(e, 'contact')}>
+                Learn More
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="reasons section alt-bg">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Reliable service, thoughtful communication, and dependable results.</h2>
+            </div>
+            <div className="feature-grid">
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Experienced Team</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Safety First Approach</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Proper Equipment</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Customer Satisfaction</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
+                <h3>Reliable Communication</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Comprehensive Services</h3>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* About Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Safety First, Precision Execution Always</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>We protect your lawn, structures, and overhead utilities using advanced rigging and zero-impact cranes.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Schedule an Arborist Consultation &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* WHY US VIEW */}
+      {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && (
+        <>
+        <section className="reasons section alt-bg">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Reliable service, thoughtful communication, and dependable results.</h2>
+            </div>
+            <div className="feature-grid">
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Experienced Team</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Safety First Approach</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Proper Equipment</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Customer Satisfaction</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiPhoneCall /></div>
+                <h3>Reliable Communication</h3>
+              </article>
+              <article className="feature-card reveal">
+                <div className="feature-icon" aria-hidden="true"><FiCheck /></div>
+                <h3>Comprehensive Services</h3>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Us Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Fully Licensed, Bonded &amp; Insured for Your Protection</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Never risk homeowner liability. We carry full commercial liability and perform immaculate ground cleanups.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Get a Written Estimate &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* PROJECTS / PORTFOLIO VIEW */}
+      {(currentView === 'projects' || currentView === 'gallery' || currentView === 'results') && (
+        <>
+        <section id="projects" className="projects section">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Tree Service Work in Action</h2>
+              <p className="gallery-note">Illustrative photographs showcasing tree service operations.</p>
+            </div>
+
+            <div className="gallery-filters reveal" aria-label="Project filters">
+              <button
+                className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('all')}
+              >
+                All Projects
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'removal' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('removal')}
+              >
+                Tree Removal
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'trimming' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('trimming')}
+              >
+                Tree Trimming
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'stump' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('stump')}
+              >
+                Stump Grinding
+              </button>
+              <button
+                className={`filter-btn ${activeFilter === 'clearing' ? 'active' : ''}`}
+                type="button"
+                onClick={() => setActiveFilter('clearing')}
+              >
+                Land Clearing
+              </button>
+            </div>
+
+            <div className="gallery-grid reveal">
+              {filteredProjects.map((p, idx) => (
+                <figure
+                  className="gallery-item cursor-pointer"
+                  key={idx}
+                  onClick={() => {
+                    setLightboxImage(p.image);
+                    setLightboxOpen(true);
+                  }}
+                >
+                  <img src={p.image} alt={p.alt} loading="lazy" decoding="async" />
+                  <figcaption>{p.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Gallery Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Equipped for the Most Challenging Tree Removals</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>View our crane-assisted felling, tight-quarter limb removals, and precision stump grinding projects.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request an On-Site Assessment &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* REVIEWS / TESTIMONIALS VIEW */}
+      {(currentView === 'reviews' || currentView === 'testimonials') && (
+        <>
+        <section id="testimonials" className="testimonials section">
+          <div className="container">
+            <div className="section-heading reveal">
+              <h2>Client feedback from property owners</h2>
+            </div>
+            <div className="testimonial-carousel reveal" aria-live="polite">
+              <button
+                className="carousel-btn prev"
+                type="button"
+                aria-label="Previous testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
+              >
+                <FiChevronLeft />
+              </button>
+              <div className="testimonial-track">
+                {testimonials.map((t, idx) => (
+                  <article
+                    className={`testimonial-item ${idx === testimonialIndex ? 'active' : ''}`}
+                    key={idx}
+                    style={{ display: idx === testimonialIndex ? 'block' : 'none' }}
+                  >
+                    <div className="stars" aria-label="Five star review">Rating: 5.0 / 5.0</div>
+                    <p>&ldquo;{t.quote}&rdquo;</p>
+                    <div className="person">
+                      <strong>{t.person}</strong>
+                      <span>{t.role}</span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <button
+                className="carousel-btn next"
+                type="button"
+                aria-label="Next testimonial"
+                onClick={() => setTestimonialIndex((prev) => (prev + 1) % testimonials.length)}
+              >
+                <FiChevronRight />
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Promo Banner */}
+        <div className="promo-banner middle-banner">
+          <div className="container promo-inner reveal">
+            <div>
+              <h2>Your Tree Service Business Deserves a Professional Online Presence.</h2>
+              <p>
+                Want a modern website like this for your business? Veltrix Hub creates professional websites that help you
+                Dedicated to safe tree removal, storm cleanup, and expert tree trimming.
+              </p>
+            </div>
+            <div className="banner-buttons">
+              <a
+                className="btn btn-primary"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Started on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Reviews Bottom CTA */}
+          <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Trusted by Homeowners Across the Region</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Read genuine customer reviews on our punctuality, fair pricing, and clean, respectful worksites.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Contact Our Tree Team &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <>
+        <section className="faq section">
+          <div className="container faq-wrap">
+            <div className="section-heading reveal">
+              <h2>Answers to common tree service questions.</h2>
+            </div>
+
+            <div className="faq-list reveal">
+              {faqs.map((faq, idx) => (
+                <article className={`faq-item ${activeFaq === idx ? 'active' : ''}`} key={idx}>
+                  <button
+                    className="faq-question"
+                    type="button"
+                    aria-expanded={activeFaq === idx}
+                    onClick={() => setActiveFaq(activeFaq === idx ? -1 : idx)}
+                  >
+                    <span>{faq.q}</span>
+                    <span className="faq-icon">{activeFaq === idx ? '-' : '+'}</span>
+                  </button>
+                  {activeFaq === idx && (
+                    <div className="faq-answer">
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section (Homepage) */}
+        <section id="contact" className="contact section">
+          <div className="container contact-grid">
+            <div className="contact-copy reveal">
+              <h2>Let's Talk About Your Tree Service Needs.</h2>
+              <ul className="contact-list">
+                <li>
+                  <strong>WhatsApp:</strong>{' '}
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 796-3968
+                  </a>
+                </li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                </li>
+                <li><strong>Service:</strong> Residential &amp; Commercial Tree Care</li>
+              </ul>
+              <a
+                className="btn btn-primary whatsapp-button mt-4"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <div className="contact-form-wrap reveal">
+              <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
+                <div className="form-grid">
+                  <label>
+                    <span>Full Name *</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Email Address</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                  <label>
+                    <span>Phone Number *</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="(412) 796-3968"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Service Required *</span>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Tree Removal">Tree Removal</option>
+                      <option value="Tree Trimming & Pruning">Tree Trimming &amp; Pruning</option>
+                      <option value="Emergency Tree Services">Emergency Tree Services</option>
+                      <option value="Stump Grinding">Stump Grinding</option>
+                      <option value="Storm Damage Cleanup">Storm Damage Cleanup</option>
+                      <option value="Commercial Tree Services">Commercial Tree Services</option>
+                    </select>
+                  </label>
+                </div>
+                <label className="form-full">
+                  <span>How can we help?</span>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about the tree location, hazards, or property access..."
+                  ></textarea>
+                </label>
+                <button className="btn btn-primary submit-btn" type="submit">
+                  Send Your Request on WhatsApp
+                </button>
+                {formSubmitted && (
+                  <p className="form-message mt-3 text-sm font-semibold text-emerald-600">
+                    Your request was opened in WhatsApp.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </section>
+        </>
+      )}
+
+      {/* FAQ VIEW */}
+      {currentView === 'faq' && (
+        <section className="section-padding text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          <div className="container" style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: '#102219' }}>Need Advice on a Diseased or Dangerous Tree?</h2>
+            <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Our local certified arborists can assess branch hazards, storm risks, or municipal permits.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="tel:+14127963968" className="button button-gold" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Direct Line: +1 (412) 796-3968
+              </a>
+              <button onClick={(e) => navigateTo('contact', e)} className="button button-outline" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Tree Inspection &rarr;
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
+      {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
+        <>
+        <section id="contact" className="contact section">
+          <div className="container contact-grid">
+            <div className="contact-copy reveal">
+              <h2>Let's Talk About Your Tree Service Needs.</h2>
+              <ul className="contact-list">
+                <li>
+                  <strong>WhatsApp:</strong>{' '}
+                  <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+                    +1 (412) 796-3968
+                  </a>
+                </li>
+                <li>
+                  <strong>Email:</strong>{' '}
+                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                </li>
+                <li><strong>Service:</strong> Residential &amp; Commercial Service</li>
+              </ul>
+              <a
+                className="btn btn-primary whatsapp-button mt-4"
+                href="https://wa.me/message/RVTZQMFL7I6OH1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
+
+            <div className="contact-form-wrap reveal">
+              <form className="contact-form" onSubmit={handleFormSubmit} noValidate>
+                <div className="form-grid">
+                  <label>
+                    <span>Full Name *</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Email Address</span>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                  <label>
+                    <span>Phone Number *</span>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="(555) 123-4567"
+                      required
+                    />
+                  </label>
+                  <label>
+                    <span>Service Required *</span>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                      required
+                    >
+                      <option value="">Select a service</option>
+                      <option value="Tree Removal">Tree Removal</option>
+                      <option value="Tree Trimming & Pruning">Tree Trimming &amp; Pruning</option>
+                      <option value="Stump Grinding & Removal">Stump Grinding &amp; Removal</option>
+                      <option value="Emergency Tree Services">Emergency Tree Services</option>
+                      <option value="Land & Lot Clearing">Land &amp; Lot Clearing</option>
+                      <option value="Tree Maintenance">Tree Maintenance</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  <span>Project Description</span>
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Tell us about the tree location, hazards, or property access..."
+                  ></textarea>
+                </label>
+                <button className="btn btn-primary submit-btn" type="submit">
+                  Send Your Request on WhatsApp
+                </button>
+                {formSubmitted && (
+                  <p className="form-message mt-3 text-sm font-semibold text-emerald-600">
+                    Your request was opened in WhatsApp.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </section>
+        </>
+      )}
+
+      </main>
+
+            <footer className="site-footer">
+        <div className="container footer-grid">
+          <div>
+            <a href="#home" onClick={(e) => navigateTo('home', e)} className="logo footer-logo" aria-label="Veltrix Hub home">
+              <span className="logo-mark" aria-hidden="true">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tree icon">
+                  <circle cx="32" cy="14" r="6" fill="currentColor" />
+                  <path d="M32 20 L22 39 H28 V52 H36 V39 H42 Z" fill="currentColor" />
+                  <path d="M20 32 C20 23, 28 18, 32 18 C36 18, 44 23, 44 32" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </span>
+              <span className="logo-text">Veltrix Hub</span>
+            </a>
+            <p>Professional tree removal and tree services designed to help property owners maintain cleaner, safer, and more attractive outdoor spaces.</p>
+          </div>
+
+          <div>
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home" onClick={(e) => navigateTo('home', e)}>Home</a></li>
+              <li><a href="#about" onClick={(e) => navigateTo('about', e)}>About Us</a></li>
+              <li><a href="#services" onClick={(e) => navigateTo('services', e)}>Our Services</a></li>
+              <li><a href="#projects" onClick={(e) => navigateTo('projects', e)}>Our Projects</a></li>
+              <li><a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Tree Services</h3>
+            <ul>
+              <li>Tree Removal</li>
+              <li>Tree Trimming &amp; Pruning</li>
+              <li>Stump Grinding</li>
+              <li>Emergency Tree Services</li>
+              <li>Land &amp; Lot Clearing</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              <li>
+                <a href="https://wa.me/message/RVTZQMFL7I6OH1" target="_blank" rel="noopener noreferrer">
+                  WhatsApp: +1 (412) 796-3968
+                </a>
+              </li>
+              <li><a href="mailto:info@Veltrix Hubhq.com">Email: info@Veltrix Hubhq.com</a></li>
+              <li>Location: United States</li>
+            </ul>
+          <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="Facebook"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="Instagram"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+            <a
+              href="https://x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="X (formerly Twitter)"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a
+              href="https://pinterest.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+              aria-label="Pinterest"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.357-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <div className="container footer-bottom-inner">
+            <p>&copy; {new Date().getFullYear()} Veltrix Hub. All Rights Reserved.</p>
+            <p className="demo-disclaimer">Demo website for presentation purposes.</p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Floating WhatsApp Action */}
+      <a
+        className="floating-whatsapp"
+        href="https://wa.me/message/RVTZQMFL7I6OH1"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat With Us on WhatsApp"
+      >
+        <FaWhatsapp className="floating-whatsapp-icon w-6 h-6" />
+        <span className="floating-whatsapp-text">Chat on WhatsApp: +1 (412) 796-3968</span>
+      </a>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="lightbox"
+          style={{ display: 'flex' }}
+        >
+          <button
+            className="lightbox-close"
+            type="button"
+            aria-label="Close image"
+          >
+            &times;
+          </button>
+          <img src={lightboxImage} alt="Expanded project view" />
+        </div>
+      )}
+    </div>
+  );
+}
