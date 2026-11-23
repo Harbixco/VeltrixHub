@@ -8,6 +8,7 @@ import Projects from "./pages/Projects";
 import Training from "./pages/Training";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import OutreachDashboard from "./pages/OutreachDashboard";
 import NotFound from "./pages/NotFound";
 import FashionDemoPage from "./pages/demos/fashion";
 import PerfumesDemoPage from "./pages/demos/perfumes";
@@ -77,6 +78,9 @@ function AnimatedRoutes() {
       <Route path="/training" element={<Training />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/outreach" element={<OutreachDashboard />} />
+      <Route path="/pitching" element={<Navigate to="/outreach" replace />} />
+      <Route path="/outreach-engine" element={<Navigate to="/outreach" replace />} />
 
       {/* ─── DIRECT ROOT DEMO ROUTES (No /demos/ prefix) ─── */}
       {/* Fashion & Boutique */}
