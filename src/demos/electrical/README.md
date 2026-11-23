@@ -8,9 +8,9 @@ A custom-designed, high-converting, responsive website built for **Alvoratech**,
 
 - **Business Name:** Alvoratech
 - **Industry:** Licensed Residential & Commercial Electrical Contracting
-- **Phone / 24/7 Emergency Line:** `+1 (412) 796-3968`
-- **WhatsApp Direct Channel:** [https://wa.me/message/RVTZQMFL7I6OH1](https://wa.me/message/RVTZQMFL7I6OH1)
-- **Email:** `info@Alvoratechhq.com`
+- **Phone / 24/7 Emergency Line:** `+2348087098270`
+- **WhatsApp Direct Channel:** [https://wa.me/2348087098270](https://wa.me/2348087098270)
+- **Email:** `info@veltrixhub.ng`
 - **Location:** `*`
 - **Design Aesthetic:** Deep Substation Graphite (`#0B132B` / `#050814`), High-Voltage Safety Amber (`#F59E0B` / `#D97706`), Precision Cobalt (`#2563EB`), Clean Off-White (`#F8FAFC`), and Pure White (`#FFFFFF`).
 
@@ -67,7 +67,7 @@ alvoratech/
 - **Element ID:** `#fixed-whatsapp-banner`
 - **Position:** Pinned to viewport bottom-right (desktop) and centered bottom pill (mobile).
 - **Behavior:** Persists across all scrolling actions across every section with `z-index: 9999`.
-- **Content:** Contains **only** the official WhatsApp icon and phone number `+1 (412) 796-3968`, linking directly to `https://wa.me/message/RVTZQMFL7I6OH1`.
+- **Content:** Contains **only** the official WhatsApp icon and phone number `+2348087098270`, linking directly to `https://wa.me/2348087098270`.
 
 ### 3. Dynamic Interactive Components (Vanilla JS)
 - **Streamlined 5-Item Navigation:** A clean header navbar featuring `Services`, `Portfolio`, `Why Us`, `FAQ`, and `Contact`, plus an emergency "Schedule Service" CTA.
@@ -101,6 +101,6 @@ Then visit `http://localhost:8000` in your web browser.
 
 ## 🛡️ Strict Constraint Compliance
 - **Frameworks:** 100% Vanilla HTML5, CSS3, and ES6+ JavaScript. No frameworks or external UI dependencies.
-- **Contact Details:** Phone links use `tel:+14127963968`, WhatsApp links use `https://wa.me/message/RVTZQMFL7I6OH1`, and email links use `mailto:info@Alvoratechhq.com`.
+- **Contact Details:** Phone links use `tel:+2348087098270`, WhatsApp links use `https://wa.me/2348087098270`, and email links use `mailto:info@veltrixhub.ng`.
 - **Location:** Strictly and verbatim rendered as `*`.
 - **Local Assets:** All 30 authentic photography assets are stored locally within `assets/images/`.

@@ -35,8 +35,8 @@ alvoratech/
 
 2. **Fixed WhatsApp Floating Banner**:
    - Anchored to the bottom-right viewport across all sections and scroll states.
-   - Follows strict design specifications: features **only** the official WhatsApp icon and `+1 (412) 796-3968`.
-   - Direct link to `https://wa.me/message/RVTZQMFL7I6OH1`.
+   - Follows strict design specifications: features **only** the official WhatsApp icon and `+2348087098270`.
+   - Direct link to `https://wa.me/2348087098270`.
 
 3. **Interactive Before-and-After Transformation Slider**:
    - Touch and mouse draggable split comparison slider.
@@ -101,9 +101,9 @@ alvoratech/
 ## 📞 Business Information & Constraints
 
 - **Business Name**: Alvoratech
-- **WhatsApp / Phone**: `+1 (412) 796-3968`
-- **WhatsApp URL**: `https://wa.me/message/RVTZQMFL7I6OH1`
-- **Email**: `info@Alvoratechhq.com`
+- **WhatsApp / Phone**: `+2348087098270`
+- **WhatsApp URL**: `https://wa.me/2348087098270`
+- **Email**: `info@veltrixhub.ng`
 - **Location**: `*` *(strictly asterisk, no invented city/state/zip)*
 
 ---

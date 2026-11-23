@@ -487,7 +487,7 @@ export default function TreeRemoval() {
                 </li>
                 <li>
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com">info@veltrixhub.ng Hubhq.com</a>
                 </li>
                 <li><strong>Service:</strong> Residential &amp; Commercial Service</li>
               </ul>
@@ -972,7 +972,7 @@ export default function TreeRemoval() {
                 </li>
                 <li>
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com">info@veltrixhub.ng Hubhq.com</a>
                 </li>
                 <li><strong>Service:</strong> Residential &amp; Commercial Tree Care</li>
               </ul>
@@ -1098,7 +1098,7 @@ export default function TreeRemoval() {
                 </li>
                 <li>
                   <strong>Email:</strong>{' '}
-                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com">info@veltrixhub.ng Hubhq.com</a>
                 </li>
                 <li><strong>Service:</strong> Residential &amp; Commercial Service</li>
               </ul>
@@ -1238,7 +1238,7 @@ export default function TreeRemoval() {
                   WhatsApp: +234 808 709 8270
                 </a>
               </li>
-              <li><a href="mailto:info@Veltrix Hubhq.com">Email: info@Veltrix Hubhq.com</a></li>
+              <li><a href="mailto:info@veltrixhub.ng Hubhq.com">Email: info@veltrixhub.ng Hubhq.com</a></li>
               <li>Location: United States</li>
             </ul>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>

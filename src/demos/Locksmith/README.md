@@ -8,9 +8,9 @@ A custom-designed, high-converting, responsive website built for **Alvoratech**,
 
 - **Business Name:** Alvoratech
 - **Industry:** 24/7 Emergency Mobile Locksmith, Automotive Key Replacement, Residential Security & Commercial Access Control
-- **Phone / Emergency Hotline:** `+1 (412) 796-3968`
-- **WhatsApp Direct Channel:** [https://wa.me/message/RVTZQMFL7I6OH1](https://wa.me/message/RVTZQMFL7I6OH1)
-- **Email:** `info@Alvoratechhq.com`
+- **Phone / Emergency Hotline:** `+2348087098270`
+- **WhatsApp Direct Channel:** [https://wa.me/2348087098270](https://wa.me/2348087098270)
+- **Email:** `info@veltrixhub.ng`
 - **Location:** `*`
 - **Design Aesthetic:** High-authority Tactical Midnight Navy (`#0A192F` / `#050C16`) accented with High-Visibility Emergency Amber (`#F59E0B` / `#D97706`), Electric Trust Cyan (`#06B6D4`), and Clean Slate (`#F8FAFC`).
 
@@ -67,7 +67,7 @@ alvoratech/
 - **Element ID:** `#fixed-whatsapp-banner`
 - **Position:** Fixed at viewport bottom right (desktop) and streamlined bottom pill (mobile).
 - **Behavior:** Persists across all scrolling actions across the entire site with high `z-index: 9999`.
-- **Content:** Contains **only** the official WhatsApp icon and phone number `+1 (412) 796-3968`, linking directly to `https://wa.me/message/RVTZQMFL7I6OH1`.
+- **Content:** Contains **only** the official WhatsApp icon and phone number `+2348087098270`, linking directly to `https://wa.me/2348087098270`.
 
 ### 3. Dynamic Interactive Components (Vanilla JS)
 - **Live Dispatcher Radar Status:** Pulsing radar beacon displaying active technician on-call status, live estimated arrival time (15–30 mins), and damage-free guarantee indicators.
@@ -99,6 +99,6 @@ Then visit `http://localhost:8000` in your web browser.
 
 ## 🛡️ Adherence to Strict Constraints
 - **Frameworks:** 100% Vanilla HTML5, CSS3, and ES6+ JavaScript. No React, Vue, jQuery, or Bootstrap.
-- **Contact Info:** All phone links use `tel:+14127963968`, all WhatsApp links use `https://wa.me/message/RVTZQMFL7I6OH1`, and email links use `mailto:info@Alvoratechhq.com`.
+- **Contact Info:** All phone links use `tel:+2348087098270`, all WhatsApp links use `https://wa.me/2348087098270`, and email links use `mailto:info@veltrixhub.ng`.
 - **Location:** Stated strictly as `*` without invented cities or addresses.
 - **Images:** All 30 image assets are stored locally within `assets/images/`.

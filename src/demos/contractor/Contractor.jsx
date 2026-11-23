@@ -490,7 +490,7 @@ export default function Contractor() {
                   <span className="contact-symbol">@</span>
                   <p>
                     <small>EMAIL US</small>
-                    <span>projects@veltrixhub.ng</span>
+                    <span>info@veltrixhub.ng</span>
                   </p>
                 </div>
                 <div>
@@ -1016,7 +1016,7 @@ export default function Contractor() {
                   <span className="contact-symbol">@</span>
                   <p>
                     <small>EMAIL US</small>
-                    <span>projects@veltrixhub.ng</span>
+                    <span>info@veltrixhub.ng</span>
                   </p>
                 </div>
                 <div>
@@ -1120,7 +1120,7 @@ export default function Contractor() {
                   <span className="contact-symbol">@</span>
                   <p>
                     <small>EMAIL US</small>
-                    <span>projects@veltrixhub.ng</span>
+                    <span>info@veltrixhub.ng</span>
                   </p>
                 </div>
                 <div>
@@ -1232,7 +1232,7 @@ export default function Contractor() {
             <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
               +234 808 709 8270
             </a>
-            <span>EMAIL: projects@veltrixhub.ng</span>
+            <span>EMAIL: info@veltrixhub.ng</span>
             <a className="footer-quote" href="#contact" onClick={(e) => navigateTo('contact', e)}>
               Tell us about your project <span>↗</span>
             </a>

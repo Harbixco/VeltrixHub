@@ -85,8 +85,8 @@ alvoratech/
    - **Bottom Demo Banner**: Pre-footer banner with `"Ready to Bring Back Your Property's Shine?"` and a `"Chat With Us"` CTA.
 2. **Fixed WhatsApp Bottom Banner**:
    - Floating widget anchored to viewport bottom-right corner.
-   - Displays WhatsApp icon and phone number: `+1 (412) 796-3968`.
-   - Links directly to `https://wa.me/message/RVTZQMFL7I6OH1`.
+   - Displays WhatsApp icon and phone number: `+2348087098270`.
+   - Links directly to `https://wa.me/2348087098270`.
    - Mobile-optimized compact pill with clearance padding.
 3. **Hero Section with Water Droplets Effect**:
    - Split layout with headline: *"Restore the Beauty of Your Property."*
@@ -126,9 +126,9 @@ alvoratech/
 
 ## 📞 Verified Business Information
 
-- **WhatsApp & Phone**: `+1 (412) 796-3968`
-- **WhatsApp Link**: `https://wa.me/message/RVTZQMFL7I6OH1`
-- **Email**: `info@Alvoratechhq.com`
+- **WhatsApp & Phone**: `+2348087098270`
+- **WhatsApp Link**: `https://wa.me/2348087098270`
+- **Email**: `info@veltrixhub.ng`
 - **Location**: `*`
 
 ---

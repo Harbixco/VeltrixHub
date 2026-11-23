@@ -71,7 +71,7 @@ alvoratech/
 2. **Fixed Floating WhatsApp Banner**:
    - Anchored to the bottom-right viewport across all devices.
    - Subtle pulse and hover interactions.
-   - Direct link to `+1 (412) 796-3968` via WhatsApp URL.
+   - Direct link to `+2348087098270` via WhatsApp URL.
 3. **Hero Section**:
    - High-impact split layout with high-resolution photography.
    - Dual CTAs: *"Get a Free Quote"* and *"Explore Our Services"*.
@@ -107,9 +107,9 @@ alvoratech/
 
 ## 📞 Verified Contact Information
 
-- **WhatsApp & Phone**: `+1 (412) 796-3968`
-- **WhatsApp Direct Link**: `https://wa.me/message/RVTZQMFL7I6OH1`
-- **Email**: `info@Alvoratechhq.com`
+- **WhatsApp & Phone**: `+2348087098270`
+- **WhatsApp Direct Link**: `https://wa.me/2348087098270`
+- **Email**: `info@veltrixhub.ng`
 - **Location**: `*`
 
 ---

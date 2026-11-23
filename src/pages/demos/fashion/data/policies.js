@@ -102,7 +102,7 @@ export const POLICY_DATA = {
       },
       {
         heading: "2. How to Request an Adjustment or Return",
-        body: "Simply tap 'Order on WhatsApp' or email support@atelier-veltrix.com with your order number. Our concierge will dispatch a return pickup rider to your doorstep.",
+        body: "Simply tap 'Order on WhatsApp' or email info@veltrixhub.ng with your order number. Our concierge will dispatch a return pickup rider to your doorstep.",
       },
     ],
   },

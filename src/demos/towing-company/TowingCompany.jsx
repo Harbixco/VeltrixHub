@@ -502,7 +502,7 @@ export default function TowingCompany() {
                 </li>
                 <li>
                   <span>Email:</span>
-                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com">info@veltrixhub.ng Hubhq.com</a>
                 </li>
                 <li>
                   <span>Service Area:</span>
@@ -984,7 +984,7 @@ export default function TowingCompany() {
                 </li>
                 <li>
                   <span>Email:</span>
-                  <a href="mailto:info@Veltrix Hubhq.com">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com">info@veltrixhub.ng Hubhq.com</a>
                 </li>
                 <li>
                   <span>Service Area:</span>
@@ -1150,7 +1150,7 @@ export default function TowingCompany() {
                   WhatsApp: +234 808 709 8270
                 </a>
               </li>
-              <li><a href="mailto:info@Veltrix Hubhq.com">Email: info@Veltrix Hubhq.com</a></li>
+              <li><a href="mailto:info@veltrixhub.ng Hubhq.com">Email: info@veltrixhub.ng Hubhq.com</a></li>
               <li><span>Service: 24/7 Dispatch Available</span></li>
             </ul>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>

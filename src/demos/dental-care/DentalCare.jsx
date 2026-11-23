@@ -370,7 +370,7 @@ export default function DentalCare() {
                 </p>
                 <p>
                   <i className="fa-regular fa-envelope" aria-hidden="true"></i>
-                  <span>care@apexdentalcare.com</span>
+                  <span>info@veltrixhub.ng</span>
                 </p>
               </div>
               <p className="emergency-note">
@@ -868,7 +868,7 @@ export default function DentalCare() {
                 </p>
                 <p>
                   <i className="fa-regular fa-envelope" aria-hidden="true"></i>
-                  <span>care@apexdentalcare.com</span>
+                  <span>info@veltrixhub.ng</span>
                 </p>
               </div>
               <p className="emergency-note">
@@ -962,7 +962,7 @@ export default function DentalCare() {
                 </p>
                 <p>
                   <i className="fa-regular fa-envelope" aria-hidden="true"></i>
-                  <span>care@apexdentalcare.com</span>
+                  <span>info@veltrixhub.ng</span>
                 </p>
               </div>
               <p className="emergency-note">

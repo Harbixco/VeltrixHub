@@ -147,7 +147,7 @@ export default function PersonalInjury() {
               Phone & WhatsApp <span>+234 808 709 8270</span>
             </a>
             <span className="utility-bar__divider" aria-hidden="true"></span>
-            <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Email <span>counsel@veltrixhub.ng</span></a>
+            <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>Email <span>info@veltrixhub.ng</span></a>
           </div>
         </div>
       </div>
@@ -426,7 +426,7 @@ export default function PersonalInjury() {
               </div>
               <div className="contact-detail">
                 <span>EMAIL</span>
-                <a href="mailto:counsel@veltrixhub.ng">counsel@veltrixhub.ng</a>
+                <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
                 <p>Direct attorney inbox access</p>
               </div>
               <div className="contact-detail">
@@ -779,7 +779,7 @@ export default function PersonalInjury() {
               </div>
               <div className="contact-detail">
                 <span>EMAIL</span>
-                <a href="mailto:counsel@veltrixhub.ng">counsel@veltrixhub.ng</a>
+                <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
                 <p>Direct attorney inbox access</p>
               </div>
               <div className="contact-detail">
@@ -839,7 +839,7 @@ export default function PersonalInjury() {
               </div>
               <div className="contact-detail">
                 <span>EMAIL</span>
-                <a href="mailto:counsel@veltrixhub.ng">counsel@veltrixhub.ng</a>
+                <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
                 <p>Direct attorney inbox access</p>
               </div>
               <div className="contact-detail">
@@ -896,7 +896,7 @@ export default function PersonalInjury() {
             <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
               +234 808 709 8270
             </a>
-            <a href="mailto:counsel@veltrixhub.ng">counsel@veltrixhub.ng</a>
+            <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
             <p>Suite 400, Metro Legal Plaza</p>
             <a href="#consultation" onClick={(e) => navigateTo('consultation', e)}>Request a consultation ↗</a>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>

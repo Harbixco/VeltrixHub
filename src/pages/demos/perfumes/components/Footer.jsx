@@ -132,7 +132,7 @@ export default function Footer({
             <ul className="space-y-3 text-xs text-[#6D5C5B]">
               <li className="flex items-center gap-2.5">
                 <Mail size={14} className="text-[#8A4852] shrink-0" />
-                <span>concierge@aurascents.ng</span>
+                <span>info@veltrixhub.ng</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={14} className="text-[#8A4852] shrink-0" />

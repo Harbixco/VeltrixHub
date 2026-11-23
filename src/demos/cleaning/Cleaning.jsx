@@ -1260,7 +1260,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>Email</h4>
-                  <a href="mailto:info@Veltrix Hubhq.com" className="channel-link">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com" className="channel-link">info@veltrixhub.ng Hubhq.com</a>
                 </div>
               </div>
 
@@ -2209,7 +2209,7 @@ const runInit = () => {
               </div>
             </button>
             <div className="faq-content">
-              <p>You can quickly request a quote by sending us a message directly via WhatsApp at +234 808 709 8270, submitting the contact form on this website, or emailing us at info@Veltrix Hubhq.com.</p>
+              <p>You can quickly request a quote by sending us a message directly via WhatsApp at +234 808 709 8270, submitting the contact form on this website, or emailing us at info@veltrixhub.ng Hubhq.com.</p>
             </div>
           </div>
 
@@ -2239,7 +2239,7 @@ const runInit = () => {
               </div>
             </button>
             <div className="faq-content">
-              <p>You can reach out directly via WhatsApp or phone at +234 808 709 8270, email us at info@Veltrix Hubhq.com, or fill out the contact form below.</p>
+              <p>You can reach out directly via WhatsApp or phone at +234 808 709 8270, email us at info@veltrixhub.ng Hubhq.com, or fill out the contact form below.</p>
             </div>
           </div>
 
@@ -2328,7 +2328,7 @@ const runInit = () => {
                 </div>
                 <div className="channel-info">
                   <h4>Email</h4>
-                  <a href="mailto:info@Veltrix Hubhq.com" className="channel-link">info@Veltrix Hubhq.com</a>
+                  <a href="mailto:info@veltrixhub.ng Hubhq.com" className="channel-link">info@veltrixhub.ng Hubhq.com</a>
                 </div>
               </div>
 
@@ -2475,7 +2475,7 @@ const runInit = () => {
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <a href="mailto:info@Veltrix Hubhq.com" className="footer-link">info@Veltrix Hubhq.com</a>
+            <a href="mailto:info@veltrixhub.ng Hubhq.com" className="footer-link">info@veltrixhub.ng Hubhq.com</a>
           </div>
           <div className="footer-contact-item">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

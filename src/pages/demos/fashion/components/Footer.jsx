@@ -153,7 +153,7 @@ export default function Footer({
             <ul className="space-y-3 text-xs text-gray-500">
               <li className="flex items-center gap-2.5">
                 <Mail size={14} className="text-[#e85d04] shrink-0" />
-                <span>support@shopease.com</span>
+                <span>info@veltrixhub.ng</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={14} className="text-[#e85d04] shrink-0" />

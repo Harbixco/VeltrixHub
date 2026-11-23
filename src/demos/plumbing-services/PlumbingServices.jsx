@@ -325,7 +325,7 @@ export default function PlumbingServices() {
  </div>
  <div>
  <div className="pf-contact-label">Email Us</div>
- <div className="pf-contact-val">contact@proflowplumbing.com</div>
+ <div className="pf-contact-val">info@veltrixhub.ng</div>
  </div>
  </div>
 
@@ -660,7 +660,7 @@ export default function PlumbingServices() {
  </div>
  <div>
  <strong>Email</strong>
- <span>contact@proflowplumbing.com</span>
+ <span>info@veltrixhub.ng</span>
  </div>
  </div>
 
@@ -1383,7 +1383,7 @@ export default function PlumbingServices() {
  </div>
  <div>
  <strong>Email</strong>
- <span>contact@proflowplumbing.com</span>
+ <span>info@veltrixhub.ng</span>
  </div>
  </div>
 
@@ -1576,7 +1576,7 @@ export default function PlumbingServices() {
  <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
  +234 808 709 8270
  </a>
- <a href="mailto:contact@proflowplumbing.com">contact@proflowplumbing.com</a>
+ <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
  <a href="#contact" onClick={(e) => navigateTo('contact', e)} >Get Free Quote</a>
  <a href="#about" onClick={(e) => navigateTo('about', e)} >About Us</a>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>

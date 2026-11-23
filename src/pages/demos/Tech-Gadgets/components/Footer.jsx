@@ -202,7 +202,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Mail size={13} className="shrink-0 text-[#FF6B00]" />
-                <span className="truncate">sales@mobilex.ng</span>
+                <span className="truncate">info@veltrixhub.ng</span>
               </p>
               <div className="pt-1">
                 <a
