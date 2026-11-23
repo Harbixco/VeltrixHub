@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { FiArrowLeft, FiMessageCircle } from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 
 /**
  * DemoTopBar - Veltrix Hub Edition
@@ -114,7 +115,7 @@ export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 shrink-0"
           >
-            <FiMessageCircle className="w-4 h-4" />
+            <FaWhatsapp className="w-4 h-4 text-white" />
             <span>Chat on WhatsApp</span>
           </a>
         </div>
