@@ -22,7 +22,12 @@ def generate_email_content(lead, sender):
     contact_name = lead.get("contact_name", "").strip()
     city = lead.get("city", "Nigeria").strip()
     niche = lead.get("niche", "business").strip()
-    demo_url = lead.get("demo_url", config.VELTRIX_WEBSITE).strip()
+    
+    # Ensure valid demonstration website URL
+    demo_url = lead.get("demo_url", "").strip()
+    if not (demo_url.startswith("http://") or demo_url.startswith("https://")):
+        demo_url = f"{config.VELTRIX_WEBSITE}/{niche or 'painting'}"
+    
     recipient_email = lead.get("email", "").strip()
 
     greeting = f"Hello {contact_name}," if contact_name else f"Hello {business_name} Team,"

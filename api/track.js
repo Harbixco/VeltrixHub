@@ -75,7 +75,10 @@ export default async function handler(req, res) {
 
   // 2. CLICK TRACKING: Record click and redirect to the target URL
   if (action === "click" && url) {
-    const targetUrl = decodeURIComponent(url);
+    let targetUrl = decodeURIComponent(url);
+    if (!targetUrl.startsWith("http://") && !targetUrl.startsWith("https://")) {
+      targetUrl = "https://veltrixhub.ng";
+    }
     if (email) {
       try {
         const db = await getDb();

@@ -282,6 +282,14 @@ const SENDERS = [
   }
 ];
 
+export const getDemoUrl = (lead) => {
+  if (lead && typeof lead.demo_url === "string" && (lead.demo_url.startsWith("http://") || lead.demo_url.startsWith("https://"))) {
+    return lead.demo_url.trim();
+  }
+  const cleanNiche = (lead?.niche || "painting").trim().toLowerCase();
+  return `https://veltrixhub.ng/${cleanNiche}`;
+};
+
 export default function OutreachDashboard() {
   const [leads, setLeads] = useState(INITIAL_LEADS);
   const [isLoadingLeads, setIsLoadingLeads] = useState(false);
@@ -339,7 +347,11 @@ export default function OutreachDashboard() {
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
-          setLeads(data.leads);
+          const sanitized = data.leads.map((l) => ({
+            ...l,
+            demo_url: getDemoUrl(l),
+          }));
+          setLeads(sanitized);
         }
       }
     } catch (err) {
@@ -1236,12 +1248,12 @@ export default function OutreachDashboard() {
                       </td>
                       <td className="py-3.5 px-4">
                         <a
-                          href={lead.demo_url}
+                          href={getDemoUrl(lead)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 hover:underline font-mono"
                         >
-                          {(lead.demo_url || "").replace("https://veltrixhub.ng", "")}
+                          {getDemoUrl(lead).replace("https://veltrixhub.ng", "")}
                           <ExternalLink className="w-3 h-3" />
                         </a>
                       </td>
@@ -1348,12 +1360,12 @@ export default function OutreachDashboard() {
                   We have built a live demonstration website tailored specifically for your industry:
                 </p>
                 <a
-                  href={previewLead.demo_url}
+                  href={getDemoUrl(previewLead)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 underline font-mono text-xs inline-flex items-center gap-1"
                 >
-                  {previewLead.demo_url}
+                  {getDemoUrl(previewLead)}
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
