@@ -346,7 +346,29 @@ export default function OutreachDashboard() {
 
   return (
     <div className="min-h-screen bg-[#070D18] text-slate-100 font-sans pb-24">
-      {/* Top Banner / Header */}
+      {/* Minimal Dashboard Top Navigation */}
+      <header className="border-b border-slate-800/80 bg-[#070D18]/95 backdrop-blur-md sticky top-0 z-40 px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-700/60 transition"
+          >
+            &larr; Back to Veltrix Hub
+          </Link>
+          <span className="hidden sm:inline text-slate-700">|</span>
+          <span className="hidden sm:inline text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            Cold Outreach Engine
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            SMTP SSL: Connected
+          </span>
+        </div>
+      </header>
+
+      {/* Top Banner / Hero */}
       <section className="relative overflow-hidden pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-gradient-to-b from-[#0B1527] to-[#070D18]">
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">

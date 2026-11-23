@@ -204,15 +204,23 @@ function AppLayout() {
     currentPath.startsWith("/demos") ||
     DEMO_DIRECT_PATHS.some((path) => currentPath === path || currentPath.startsWith(path + "/"));
 
+  const isOutreach =
+    currentPath === "/outreach" ||
+    currentPath.startsWith("/outreach/") ||
+    currentPath === "/pitching" ||
+    currentPath === "/outreach-engine";
+
+  const hideChrome = isDemo || isOutreach;
+
   return (
     <div className="min-h-screen flex flex-col">
-      {!isDemo && <Navbar />}
+      {!hideChrome && <Navbar />}
       <main className="flex-1">
         <AnimatedRoutes />
       </main>
-      {!isDemo && <Footer />}
-      {!isDemo && <FloatingWhatsApp />}
-      {!isDemo && <AIChatWidget />}
+      {!hideChrome && <Footer />}
+      {!hideChrome && <FloatingWhatsApp />}
+      {!hideChrome && <AIChatWidget />}
     </div>
   );
 }
