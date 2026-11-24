@@ -77,8 +77,8 @@ export default function Navbar() {
           scrolled
             ? "py-3 bg-brand-navy/95 backdrop-blur-md border-b border-white/10 shadow-md"
             : isHero
-            ? "py-3.5 sm:py-4 lg:py-5 bg-brand-navy/90 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none border-b border-white/10 lg:border-transparent"
-            : "py-3.5 sm:py-4 bg-white border-b border-gray-100 shadow-sm"
+            ? "py-5 bg-transparent"
+            : "py-4 bg-white border-b border-gray-100 shadow-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -87,8 +87,8 @@ export default function Navbar() {
             <img src={logo} alt="Veltrix Hub Logo" width={64} className="h-auto object-contain" />
           </Link>
 
-          {/* Desktop Nav (Visible on screens >= 1024px) */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
             {navLinks.map((link) => {
               const active = location.pathname === link.path;
               const isLight = !scrolled && !isHero;
@@ -131,8 +131,8 @@ export default function Navbar() {
             </a>
           </nav>
 
-          {/* Desktop CTA & Portal Buttons (Visible on screens >= 1024px) */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Desktop CTA & Portal Buttons */}
+          <div className="hidden md:flex items-center gap-3">
             {isAuthenticated ? (
               <div className="flex items-center gap-2">
                 <Link
@@ -179,38 +179,23 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* High-Visibility, Tactile Mobile & Tablet Hamburger Button */}
+          {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900/95 border-2 border-amber-400/90 hover:border-amber-400 shadow-md shadow-amber-500/20 active:scale-95 transition-all text-white cursor-pointer z-50"
+            className={`md:hidden p-2 rounded-lg transition-colors border ${
+              scrolled || isHero
+                ? "text-white border-white/20 bg-white/5"
+                : "text-brand-navy border-slate-300 bg-slate-50"
+            }`}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
           >
-            <div className="w-5 h-4 flex flex-col justify-between items-center py-0.5">
-              <span
-                className={`block w-5 h-0.5 bg-amber-400 rounded-full transition-all duration-300 ${
-                  mobileOpen ? "rotate-45 translate-y-[6px]" : ""
-                }`}
-              />
-              <span
-                className={`block w-5 h-0.5 bg-amber-400 rounded-full transition-opacity duration-200 ${
-                  mobileOpen ? "opacity-0" : ""
-                }`}
-              />
-              <span
-                className={`block w-5 h-0.5 bg-amber-400 rounded-full transition-all duration-300 ${
-                  mobileOpen ? "-rotate-45 -translate-y-[6px]" : ""
-                }`}
-              />
-            </div>
-            <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 select-none">
-              {mobileOpen ? "CLOSE" : "MENU"}
-            </span>
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </header>
 
-      {/* Categorized Mobile Navigation Drawer (Visible on screens < 1024px) */}
+      {/* Categorized Mobile Navigation Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -218,7 +203,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[60px] sm:top-[65px] bottom-0 z-40 lg:hidden bg-slate-950/98 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-y-auto"
+            className="fixed inset-x-0 top-[65px] bottom-0 z-40 md:hidden bg-slate-950/98 backdrop-blur-2xl border-b border-white/10 shadow-2xl overflow-y-auto"
           >
             <div className="px-4 py-6 flex flex-col gap-6 max-w-lg mx-auto pb-12">
               
