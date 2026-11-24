@@ -3,10 +3,10 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext(null);
 
 const VALID_CREDENTIALS = {
-  username: "agbajeabodunkay",
+  username: "agbajeabiodunkay",
   password: "Face123book",
-  name: "Abodunkay Agbaje",
-  role: "Lead Strategist & Marketing Director",
+  name: "Abiodun Agbaje",
+  role: "Founder & Marketing Director",
 };
 
 const STORAGE_KEY = "veltrix_auth_session";
@@ -28,12 +28,12 @@ export function AuthProvider({ children }) {
     const cleanUser = (usernameInput || "").trim().toLowerCase();
     const cleanPass = (passwordInput || "").trim();
 
-    if (
-      cleanUser === VALID_CREDENTIALS.username.toLowerCase() &&
-      cleanPass === VALID_CREDENTIALS.password
-    ) {
+    const isValidUser =
+      cleanUser === "agbajeabiodunkay" || cleanUser === "agbajeabodunkay";
+
+    if (isValidUser && cleanPass === VALID_CREDENTIALS.password) {
       const sessionUser = {
-        username: VALID_CREDENTIALS.username,
+        username: "agbajeabiodunkay",
         name: VALID_CREDENTIALS.name,
         role: VALID_CREDENTIALS.role,
         loginAt: new Date().toISOString(),
