@@ -435,15 +435,16 @@
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    margin-top: 0 !important;
-    padding-bottom: 1rem !important;
-    margin-bottom: 1rem !important;
+    margin-top: 4.25rem !important; /* Clears DemoTopBar cleanly with breathing room */
+    padding-bottom: 0.85rem !important;
+    margin-bottom: 0.75rem !important;
     border-bottom: 1px solid rgba(245, 158, 11, 0.25) !important;
     width: 100% !important;
+    flex-shrink: 0 !important;
   }
 
   .contractor-demo .mobile-drawer-title {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     font-weight: 800 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.08em !important;
@@ -451,18 +452,28 @@
   }
 
   .contractor-demo .mobile-drawer-close {
-    background: rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.15) !important;
-    border-radius: 6px !important;
-    font-size: 1.5rem !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.6) !important;
+    border-radius: 8px !important;
+    font-size: 1.75rem !important;
     line-height: 1 !important;
     cursor: pointer !important;
-    width: 36px !important;
-    height: 36px !important;
-    color: #ffffff !important;
+    width: 40px !important;
+    height: 40px !important;
+    color: #FBBF24 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+  }
+
+  .contractor-demo .mobile-drawer-close:hover,
+  .contractor-demo .mobile-drawer-close:active {
+    background: rgba(245, 158, 11, 0.25) !important;
+    border-color: #F59E0B !important;
+    color: #ffffff !important;
+    transform: scale(1.05) !important;
   }
 
   .contractor-demo .nav-links {
