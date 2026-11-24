@@ -66,18 +66,6 @@ const INITIAL_LEADS = [
   },
   {
     id: 3,
-    business_name: "Prime Flow Plumbers",
-    contact_name: "Mr. Emeka",
-    email: "emeka@primeflow.ng",
-    niche: "plumbing-services",
-    city: "Port Harcourt",
-    demo_url: "https://veltrixhub.ng/plumbing-services",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 4,
     business_name: "Crown Auto Specialists",
     contact_name: "Mr. Tunde",
     email: "tunde@crownauto.ng",
@@ -89,7 +77,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 5,
+    id: 4,
     business_name: "Solid Rock Construction",
     contact_name: "Engr. Kola",
     email: "kola@solidrockconst.ng",
@@ -101,7 +89,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 6,
+    id: 5,
     business_name: "Pearl Smiles Dental",
     contact_name: "Dr. Funke",
     email: "funke@pearlsmiles.ng",
@@ -113,7 +101,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 7,
+    id: 6,
     business_name: "Heritage Legal Partners",
     contact_name: "Barr. Nnamdi",
     email: "nnamdi@heritagelegal.ng",
@@ -125,31 +113,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 8,
-    business_name: "Swift Rescue Towing",
-    contact_name: "Mr. Musa",
-    email: "musa@swiftrescuetow.ng",
-    niche: "towing-company",
-    city: "Kano",
-    demo_url: "https://veltrixhub.ng/towing-company",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 9,
-    business_name: "Green Canopy Tree Care",
-    contact_name: "Mr. Biodun",
-    email: "biodun@greencanopy.ng",
-    niche: "tree-removal",
-    city: "Lagos",
-    demo_url: "https://veltrixhub.ng/tree-removal",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 10,
+    id: 7,
     business_name: "Volt Electrical Solutions",
     contact_name: "Engr. Uche",
     email: "uche@voltelectrical.ng",
@@ -161,43 +125,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 11,
-    business_name: "Prestige Floorings",
-    contact_name: "Mr. Segun",
-    email: "segun@prestigefloor.ng",
-    niche: "flooring",
-    city: "Lagos",
-    demo_url: "https://veltrixhub.ng/flooring",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 12,
-    business_name: "Verdant Landscapes",
-    contact_name: "Mrs. Halima",
-    email: "halima@verdantland.ng",
-    niche: "landscaping",
-    city: "Abuja",
-    demo_url: "https://veltrixhub.ng/landscaping",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 13,
-    business_name: "KeyMaster Locksmiths",
-    contact_name: "Mr. Jide",
-    email: "jide@keymaster.ng",
-    niche: "locksmith",
-    city: "Lagos",
-    demo_url: "https://veltrixhub.ng/locksmith",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 14,
+    id: 8,
     business_name: "Shield Pest Control",
     contact_name: "Mr. Hassan",
     email: "hassan@shieldpest.ng",
@@ -209,19 +137,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 15,
-    business_name: "Crystal Pressure Washing",
-    contact_name: "Mr. Femi",
-    email: "femi@crystalpressure.ng",
-    niche: "pressure-demo",
-    city: "Lagos",
-    demo_url: "https://veltrixhub.ng/pressure-demo",
-    status: "pending",
-    sent_at: "",
-    sent_by: ""
-  },
-  {
-    id: 16,
+    id: 9,
     business_name: "Zarah Luxury Boutique",
     contact_name: "Zarah",
     email: "zarah@zarahboutique.ng",
@@ -233,7 +149,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 17,
+    id: 10,
     business_name: "Aroma Royale Parfums",
     contact_name: "Aisha",
     email: "aisha@aromaroyale.ng",
@@ -245,7 +161,7 @@ const INITIAL_LEADS = [
     sent_by: ""
   },
   {
-    id: 18,
+    id: 11,
     business_name: "TechNexus Gadgets",
     contact_name: "Mr. Dayo",
     email: "dayo@technexus.ng",
@@ -875,22 +791,18 @@ export default function OutreachDashboard() {
                   disabled={isExtracting}
                   className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer capitalize"
                 >
-                  <option value="all">All 18 Industries</option>
-                  <option value="cleaning">Cleaning Services</option>
-                  <option value="painting">Painting Companies</option>
-                  <option value="plumbing-services">Plumbing</option>
-                  <option value="auto-repair">Auto Repair</option>
+                  <option value="all">All 11 Focus Industries</option>
                   <option value="contractor">Building Contractors</option>
+                  <option value="painting">Painting Companies</option>
+                  <option value="cleaning">Cleaning Services</option>
+                  <option value="auto-repair">Auto Repair</option>
                   <option value="dental-care">Dental Clinics</option>
                   <option value="personal-injury">Legal Practitioners</option>
-                  <option value="towing-company">Towing Services</option>
-                  <option value="electrical">Electrical Services</option>
-                  <option value="flooring">Flooring & Epoxy</option>
+                  <option value="electrical">Solar & Electrical</option>
                   <option value="pest-control">Pest Control</option>
-                  <option value="pressure-demo">Pressure Washing</option>
                   <option value="fashion">Fashion & Boutique</option>
-                  <option value="perfumes">Luxury Perfumes</option>
                   <option value="tech-gadgets">Tech & Phones</option>
+                  <option value="perfumes">Luxury Perfumes</option>
                 </select>
               </div>
 
@@ -1916,23 +1828,17 @@ export default function OutreachDashboard() {
                     }}
                     className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-200 focus:outline-none focus:border-blue-500 capitalize"
                   >
+                    <option value="contractor">Contractor</option>
                     <option value="painting">Painting</option>
                     <option value="cleaning">Cleaning</option>
-                    <option value="plumbing-services">Plumbing</option>
                     <option value="auto-repair">Auto Repair</option>
-                    <option value="contractor">Contractor</option>
                     <option value="dental-care">Dental Care</option>
                     <option value="personal-injury">Legal</option>
-                    <option value="towing-company">Towing</option>
-                    <option value="electrical">Electrical</option>
-                    <option value="flooring">Flooring</option>
-                    <option value="landscaping">Landscaping</option>
-                    <option value="locksmith">Locksmith</option>
+                    <option value="electrical">Solar & Electrical</option>
                     <option value="pest-control">Pest Control</option>
-                    <option value="pressure-demo">Pressure Washing</option>
                     <option value="fashion">Fashion & Boutique</option>
-                    <option value="perfumes">Perfumes</option>
                     <option value="tech-gadgets">Tech Gadgets</option>
+                    <option value="perfumes">Luxury Perfumes</option>
                   </select>
                 </div>
                 <div>

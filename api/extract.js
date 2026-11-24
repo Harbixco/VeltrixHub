@@ -14,25 +14,21 @@ const DB_NAME = "veltrix_leads";
 const CSV_PATH = path.join(process.cwd(), "outreach", "leads_veltrixhub.csv");
 
 const NICHES = {
-  cleaning: {
-    keywords: ["cleaning company", "cleaning services", "janitorial services"],
-    demo_url: "https://veltrixhub.ng/cleaning",
+  contractor: {
+    keywords: ["building contractor", "construction company", "renovation contractor"],
+    demo_url: "https://veltrixhub.ng/contractor",
   },
   painting: {
     keywords: ["painting company", "house painters", "painting contractor"],
     demo_url: "https://veltrixhub.ng/painting",
   },
-  "plumbing-services": {
-    keywords: ["plumbing services", "emergency plumber", "plumbing contractor"],
-    demo_url: "https://veltrixhub.ng/plumbing-services",
+  cleaning: {
+    keywords: ["cleaning company", "cleaning services", "janitorial services"],
+    demo_url: "https://veltrixhub.ng/cleaning",
   },
   "auto-repair": {
     keywords: ["auto repair workshop", "car mechanic", "auto diagnosis"],
     demo_url: "https://veltrixhub.ng/auto-repair",
-  },
-  contractor: {
-    keywords: ["building contractor", "construction company", "renovation contractor"],
-    demo_url: "https://veltrixhub.ng/contractor",
   },
   "dental-care": {
     keywords: ["dental clinic", "dentist practice", "dental hospital"],
@@ -42,33 +38,13 @@ const NICHES = {
     keywords: ["law firm", "legal practitioners", "barristers solicitors"],
     demo_url: "https://veltrixhub.ng/personal-injury",
   },
-  "towing-company": {
-    keywords: ["towing service", "vehicle recovery", "breakdown service"],
-    demo_url: "https://veltrixhub.ng/towing-company",
-  },
   electrical: {
     keywords: ["electrical services", "electrical contractor", "solar inverter installation"],
     demo_url: "https://veltrixhub.ng/electrical",
   },
-  flooring: {
-    keywords: ["flooring company", "epoxy flooring", "marble tiles installation"],
-    demo_url: "https://veltrixhub.ng/flooring",
-  },
-  landscaping: {
-    keywords: ["landscaping services", "interlocking and paving", "garden design"],
-    demo_url: "https://veltrixhub.ng/landscaping",
-  },
-  locksmith: {
-    keywords: ["locksmith services", "car key programming", "lock repair"],
-    demo_url: "https://veltrixhub.ng/locksmith",
-  },
   "pest-control": {
     keywords: ["pest control services", "fumigation company", "termite treatment"],
     demo_url: "https://veltrixhub.ng/pest-control",
-  },
-  "pressure-demo": {
-    keywords: ["pressure washing", "power washing", "exterior building cleaning"],
-    demo_url: "https://veltrixhub.ng/pressure-demo",
   },
   fashion: {
     keywords: ["fashion boutique", "female clothing store", "bespoke designer"],

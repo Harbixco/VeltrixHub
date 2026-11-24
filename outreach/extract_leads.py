@@ -18,25 +18,21 @@ GOOGLE_PLACES_KEY = os.environ.get("GOOGLE_PLACES_API_KEY") or "AIzaSyB0pWJjUV6y
 
 # Target Niche & Demo Mapping
 NICHES = {
-    "cleaning": {
-        "keywords": ["cleaning company", "cleaning services", "commercial cleaners", "janitorial services"],
-        "demo_url": "https://veltrixhub.ng/cleaning",
+    "contractor": {
+        "keywords": ["building contractor", "construction company", "civil engineering contractors", "home renovation"],
+        "demo_url": "https://veltrixhub.ng/contractor",
     },
     "painting": {
         "keywords": ["painting company", "house painters", "commercial painting", "painting contractor"],
         "demo_url": "https://veltrixhub.ng/painting",
     },
-    "plumbing-services": {
-        "keywords": ["plumbing services", "emergency plumber", "plumbing contractor", "drain cleaning"],
-        "demo_url": "https://veltrixhub.ng/plumbing-services",
+    "cleaning": {
+        "keywords": ["cleaning company", "cleaning services", "commercial cleaners", "janitorial services"],
+        "demo_url": "https://veltrixhub.ng/cleaning",
     },
     "auto-repair": {
         "keywords": ["auto repair workshop", "car mechanic", "auto diagnosis", "car repair garage"],
         "demo_url": "https://veltrixhub.ng/auto-repair",
-    },
-    "contractor": {
-        "keywords": ["building contractor", "construction company", "civil engineering contractors", "home renovation"],
-        "demo_url": "https://veltrixhub.ng/contractor",
     },
     "dental-care": {
         "keywords": ["dental clinic", "dentist practice", "dental hospital", "teeth whitening"],
@@ -46,33 +42,13 @@ NICHES = {
         "keywords": ["law firm", "legal practitioners", "barristers and solicitors", "corporate lawyers"],
         "demo_url": "https://veltrixhub.ng/personal-injury",
     },
-    "towing-company": {
-        "keywords": ["towing service", "vehicle recovery", "emergency roadside towing", "breakdown service"],
-        "demo_url": "https://veltrixhub.ng/towing-company",
-    },
     "electrical": {
         "keywords": ["electrical services", "electrical contractor", "electrical installation", "solar inverter installation"],
         "demo_url": "https://veltrixhub.ng/electrical",
     },
-    "flooring": {
-        "keywords": ["flooring company", "tiles and marble installation", "epoxy flooring", "hardwood flooring"],
-        "demo_url": "https://veltrixhub.ng/flooring",
-    },
-    "landscaping": {
-        "keywords": ["landscaping services", "landscape design", "interlocking and paving", "garden maintenance"],
-        "demo_url": "https://veltrixhub.ng/landscaping",
-    },
-    "locksmith": {
-        "keywords": ["locksmith services", "key cutting and lock repair", "car key programming", "security locks"],
-        "demo_url": "https://veltrixhub.ng/locksmith",
-    },
     "pest-control": {
         "keywords": ["pest control services", "fumigation company", "termite treatment", "bedbug fumigation"],
         "demo_url": "https://veltrixhub.ng/pest-control",
-    },
-    "pressure-demo": {
-        "keywords": ["pressure washing", "power washing services", "exterior building cleaning", "roof cleaning"],
-        "demo_url": "https://veltrixhub.ng/pressure-demo",
     },
     "fashion": {
         "keywords": ["fashion boutique", "female clothing store", "bespoke fashion designer", "luxury apparel"],

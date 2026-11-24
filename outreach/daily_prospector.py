@@ -67,6 +67,21 @@ HIGH_PROBABILITY_NICHES = {
         "keywords": ["pest control services", "fumigation company", "termite treatment"],
         "demo_url": "https://veltrixhub.ng/pest-control",
     },
+    "fashion": {
+        "label": "Fashion & Luxury Boutiques",
+        "keywords": ["fashion boutique", "female clothing store", "bespoke designer"],
+        "demo_url": "https://veltrixhub.ng/fashion",
+    },
+    "tech-gadgets": {
+        "label": "Smartphones & Tech Gadgets",
+        "keywords": ["phone and gadgets store", "laptop shop", "smartphones accessories"],
+        "demo_url": "https://veltrixhub.ng/tech-gadgets",
+    },
+    "perfumes": {
+        "label": "Luxury Perfumes & Scents",
+        "keywords": ["perfume store", "luxury fragrance boutique", "designer scents"],
+        "demo_url": "https://veltrixhub.ng/perfumes",
+    },
 }
 
 LOCATIONS = [
