@@ -2493,8 +2493,7 @@
    PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
    ========================================================================== */
 @media (max-width: 900px) {
-  .electrical-demo .mobile-drawer,
-  .mobile-drawer {
+  .electrical-demo .mobile-drawer {
     position: fixed !important;
     top: 0 !important;
     right: -320px !important;
@@ -2514,13 +2513,11 @@
     box-sizing: border-box !important;
   }
 
-  .electrical-demo .mobile-drawer.active,
-  .mobile-drawer.active {
+  .electrical-demo .mobile-drawer.active {
     right: 0 !important;
   }
 
-  .electrical-demo .mobile-drawer-header,
-  .mobile-drawer-header {
+  .electrical-demo .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -2531,8 +2528,7 @@
     width: 100% !important;
   }
 
-  .electrical-demo .mobile-drawer-title,
-  .mobile-drawer-title {
+  .electrical-demo .mobile-drawer-title {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -2540,8 +2536,7 @@
     color: #ffffff !important;
   }
 
-  .electrical-demo .mobile-drawer-close,
-  .mobile-drawer-close {
+  .electrical-demo .mobile-drawer-close {
     background: transparent !important;
     border: none !important;
     font-size: 1.75rem !important;
@@ -2555,14 +2550,12 @@
     transition: transform 0.2s ease !important;
   }
 
-  .electrical-demo .mobile-drawer-close:hover,
-  .mobile-drawer-close:hover {
+  .electrical-demo .mobile-drawer-close:hover {
     transform: scale(1.1) !important;
     color: #F59E0B !important;
   }
 
-  .electrical-demo .mobile-drawer .nav-link,
-  .mobile-drawer .nav-link {
+  .electrical-demo .mobile-drawer .nav-link {
     font-size: 0.95rem !important;
     font-weight: 500 !important;
     padding: 12px 0 !important;
@@ -2574,15 +2567,12 @@
   }
 
   .electrical-demo .mobile-drawer .nav-link:hover,
-  .electrical-demo .mobile-drawer .nav-link.active,
-  .mobile-drawer .nav-link:hover,
-  .mobile-drawer .nav-link.active {
+  .electrical-demo .mobile-drawer .nav-link.active {
     color: #F59E0B !important;
     padding-left: 4px !important;
   }
 
-  .electrical-demo .mobile-drawer .btn,
-  .mobile-drawer .btn {
+  .electrical-demo .mobile-drawer .btn {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     padding: 12px 16px !important;

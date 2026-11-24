@@ -2660,8 +2660,7 @@
    PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
    ========================================================================== */
 @media (max-width: 900px) {
-  .landscaping-demo .mobile-drawer,
-  .mobile-drawer {
+  .landscaping-demo .mobile-drawer {
     position: fixed !important;
     top: 0 !important;
     right: -320px !important;
@@ -2681,13 +2680,11 @@
     box-sizing: border-box !important;
   }
 
-  .landscaping-demo .mobile-drawer.active,
-  .mobile-drawer.active {
+  .landscaping-demo .mobile-drawer.active {
     right: 0 !important;
   }
 
-  .landscaping-demo .mobile-drawer-header,
-  .mobile-drawer-header {
+  .landscaping-demo .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -2698,8 +2695,7 @@
     width: 100% !important;
   }
 
-  .landscaping-demo .mobile-drawer-title,
-  .mobile-drawer-title {
+  .landscaping-demo .mobile-drawer-title {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -2707,8 +2703,7 @@
     color: #ffffff !important;
   }
 
-  .landscaping-demo .mobile-drawer-close,
-  .mobile-drawer-close {
+  .landscaping-demo .mobile-drawer-close {
     background: transparent !important;
     border: none !important;
     font-size: 1.75rem !important;
@@ -2722,14 +2717,12 @@
     transition: transform 0.2s ease !important;
   }
 
-  .landscaping-demo .mobile-drawer-close:hover,
-  .mobile-drawer-close:hover {
+  .landscaping-demo .mobile-drawer-close:hover {
     transform: scale(1.1) !important;
     color: #2E7D32 !important;
   }
 
-  .landscaping-demo .mobile-drawer .nav-link,
-  .mobile-drawer .nav-link {
+  .landscaping-demo .mobile-drawer .nav-link {
     font-size: 0.95rem !important;
     font-weight: 500 !important;
     padding: 12px 0 !important;
@@ -2741,15 +2734,12 @@
   }
 
   .landscaping-demo .mobile-drawer .nav-link:hover,
-  .landscaping-demo .mobile-drawer .nav-link.active,
-  .mobile-drawer .nav-link:hover,
-  .mobile-drawer .nav-link.active {
+  .landscaping-demo .mobile-drawer .nav-link.active {
     color: #2E7D32 !important;
     padding-left: 4px !important;
   }
 
-  .landscaping-demo .mobile-drawer .btn,
-  .mobile-drawer .btn {
+  .landscaping-demo .mobile-drawer .btn {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     padding: 12px 16px !important;

@@ -2542,13 +2542,12 @@
    PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
    ========================================================================== */
 @media (max-width: 1024px) {
-  .pest-control-demo .mobile-nav-overlay,
-  .mobile-nav-overlay {
+  .pest-control-demo .mobile-nav-overlay {
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(15, 23, 42, 0.65) !important;
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     z-index: 1050 !important;
     opacity: 0 !important;
     visibility: hidden !important;
@@ -2557,16 +2556,13 @@
   }
 
   .pest-control-demo .mobile-nav-overlay.active,
-  .pest-control-demo .mobile-nav-overlay.is-open,
-  .mobile-nav-overlay.active,
-  .mobile-nav-overlay.is-open {
+  .pest-control-demo .mobile-nav-overlay.is-open {
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
   }
 
-  .pest-control-demo .mobile-drawer,
-  .mobile-drawer {
+  .pest-control-demo .mobile-drawer {
     position: fixed !important;
     top: 0 !important;
     right: -340px !important;
@@ -2587,14 +2583,11 @@
   }
 
   .pest-control-demo .mobile-drawer.active,
-  .pest-control-demo .mobile-drawer.is-open,
-  .mobile-drawer.active,
-  .mobile-drawer.is-open {
+  .pest-control-demo .mobile-drawer.is-open {
     right: 0 !important;
   }
 
-  .pest-control-demo .mobile-drawer-header,
-  .mobile-drawer-header {
+  .pest-control-demo .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -2605,8 +2598,7 @@
     width: 100% !important;
   }
 
-  .pest-control-demo .mobile-drawer-title,
-  .mobile-drawer-title {
+  .pest-control-demo .mobile-drawer-title {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -2614,8 +2606,7 @@
     color: #ffffff !important;
   }
 
-  .pest-control-demo .mobile-drawer-close,
-  .mobile-drawer-close {
+  .pest-control-demo .mobile-drawer-close {
     background: transparent !important;
     border: none !important;
     font-size: 1.75rem !important;
@@ -2629,14 +2620,12 @@
     transition: transform 0.2s ease !important;
   }
 
-  .pest-control-demo .mobile-drawer-close:hover,
-  .mobile-drawer-close:hover {
+  .pest-control-demo .mobile-drawer-close:hover {
     transform: scale(1.1) !important;
     color: #10B981 !important;
   }
 
-  .pest-control-demo .mobile-drawer .nav-link,
-  .mobile-drawer .nav-link {
+  .pest-control-demo .mobile-drawer .nav-link {
     font-size: 0.95rem !important;
     font-weight: 500 !important;
     padding: 12px 0 !important;
@@ -2648,17 +2637,13 @@
   }
 
   .pest-control-demo .mobile-drawer .nav-link:hover,
-  .pest-control-demo .mobile-drawer .nav-link.active,
-  .mobile-drawer .nav-link:hover,
-  .mobile-drawer .nav-link.active {
+  .pest-control-demo .mobile-drawer .nav-link.active {
     color: #10B981 !important;
     padding-left: 4px !important;
   }
 
   .pest-control-demo .mobile-drawer .btn,
-  .pest-control-demo .mobile-drawer .nav-cta,
-  .mobile-drawer .btn,
-  .mobile-drawer .nav-cta {
+  .pest-control-demo .mobile-drawer .nav-cta {
     display: flex !important;
     font-size: 0.92rem !important;
     font-weight: 700 !important;

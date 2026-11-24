@@ -2553,8 +2553,7 @@
    PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
    ========================================================================== */
 @media (max-width: 900px) {
-  .painting-demo .mobile-drawer,
-  .mobile-drawer {
+  .painting-demo .mobile-drawer {
     position: fixed !important;
     top: 0 !important;
     right: -320px !important;
@@ -2574,13 +2573,11 @@
     box-sizing: border-box !important;
   }
 
-  .painting-demo .mobile-drawer.active,
-  .mobile-drawer.active {
+  .painting-demo .mobile-drawer.active {
     right: 0 !important;
   }
 
-  .painting-demo .mobile-drawer-header,
-  .mobile-drawer-header {
+  .painting-demo .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -2591,8 +2588,7 @@
     width: 100% !important;
   }
 
-  .painting-demo .mobile-drawer-title,
-  .mobile-drawer-title {
+  .painting-demo .mobile-drawer-title {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -2600,8 +2596,7 @@
     color: #ffffff !important;
   }
 
-  .painting-demo .mobile-drawer-close,
-  .mobile-drawer-close {
+  .painting-demo .mobile-drawer-close {
     background: transparent !important;
     border: none !important;
     font-size: 1.75rem !important;
@@ -2615,14 +2610,12 @@
     transition: transform 0.2s ease !important;
   }
 
-  .painting-demo .mobile-drawer-close:hover,
-  .mobile-drawer-close:hover {
+  .painting-demo .mobile-drawer-close:hover {
     transform: scale(1.1) !important;
     color: #3B82F6 !important;
   }
 
-  .painting-demo .mobile-drawer .nav-link,
-  .mobile-drawer .nav-link {
+  .painting-demo .mobile-drawer .nav-link {
     font-size: 0.95rem !important;
     font-weight: 500 !important;
     padding: 12px 0 !important;
@@ -2634,15 +2627,12 @@
   }
 
   .painting-demo .mobile-drawer .nav-link:hover,
-  .painting-demo .mobile-drawer .nav-link.active,
-  .mobile-drawer .nav-link:hover,
-  .mobile-drawer .nav-link.active {
+  .painting-demo .mobile-drawer .nav-link.active {
     color: #3B82F6 !important;
     padding-left: 4px !important;
   }
 
-  .painting-demo .mobile-drawer .btn,
-  .mobile-drawer .btn {
+  .painting-demo .mobile-drawer .btn {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     padding: 12px 16px !important;

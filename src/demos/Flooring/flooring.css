@@ -2594,13 +2594,12 @@
    PLUMBING-STYLE DARK MOBILE DRAWER (STANDARDIZED)
    ========================================================================== */
 @media (max-width: 1024px) {
-  .flooring-demo .mobile-nav-overlay,
-  .mobile-nav-overlay {
+  .flooring-demo .mobile-nav-overlay {
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(15, 23, 42, 0.65) !important;
-    backdrop-filter: blur(4px) !important;
-    -webkit-backdrop-filter: blur(4px) !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     z-index: 1050 !important;
     opacity: 0 !important;
     visibility: hidden !important;
@@ -2609,16 +2608,13 @@
   }
 
   .flooring-demo .mobile-nav-overlay.active,
-  .flooring-demo .mobile-nav-overlay.is-open,
-  .mobile-nav-overlay.active,
-  .mobile-nav-overlay.is-open {
+  .flooring-demo .mobile-nav-overlay.is-open {
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
   }
 
-  .flooring-demo .mobile-drawer,
-  .mobile-drawer {
+  .flooring-demo .mobile-drawer {
     position: fixed !important;
     top: 0 !important;
     right: -340px !important;
@@ -2639,14 +2635,11 @@
   }
 
   .flooring-demo .mobile-drawer.active,
-  .flooring-demo .mobile-drawer.is-open,
-  .mobile-drawer.active,
-  .mobile-drawer.is-open {
+  .flooring-demo .mobile-drawer.is-open {
     right: 0 !important;
   }
 
-  .flooring-demo .mobile-drawer-header,
-  .mobile-drawer-header {
+  .flooring-demo .mobile-drawer-header {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -2657,8 +2650,7 @@
     width: 100% !important;
   }
 
-  .flooring-demo .mobile-drawer-title,
-  .mobile-drawer-title {
+  .flooring-demo .mobile-drawer-title {
     font-size: 0.92rem !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
@@ -2666,8 +2658,7 @@
     color: #ffffff !important;
   }
 
-  .flooring-demo .mobile-drawer-close,
-  .mobile-drawer-close {
+  .flooring-demo .mobile-drawer-close {
     background: transparent !important;
     border: none !important;
     font-size: 1.75rem !important;
@@ -2681,14 +2672,12 @@
     transition: transform 0.2s ease !important;
   }
 
-  .flooring-demo .mobile-drawer-close:hover,
-  .mobile-drawer-close:hover {
+  .flooring-demo .mobile-drawer-close:hover {
     transform: scale(1.1) !important;
     color: #C5A059 !important;
   }
 
-  .flooring-demo .mobile-drawer .nav-link,
-  .mobile-drawer .nav-link {
+  .flooring-demo .mobile-drawer .nav-link {
     font-size: 0.95rem !important;
     font-weight: 500 !important;
     padding: 12px 0 !important;
@@ -2700,17 +2689,13 @@
   }
 
   .flooring-demo .mobile-drawer .nav-link:hover,
-  .flooring-demo .mobile-drawer .nav-link.active,
-  .mobile-drawer .nav-link:hover,
-  .mobile-drawer .nav-link.active {
+  .flooring-demo .mobile-drawer .nav-link.active {
     color: #C5A059 !important;
     padding-left: 4px !important;
   }
 
   .flooring-demo .mobile-drawer .btn,
-  .flooring-demo .mobile-drawer .nav-cta,
-  .mobile-drawer .btn,
-  .mobile-drawer .nav-cta {
+  .flooring-demo .mobile-drawer .nav-cta {
     display: flex !important;
     font-size: 0.92rem !important;
     font-weight: 700 !important;
