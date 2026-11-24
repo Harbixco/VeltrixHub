@@ -116,7 +116,7 @@ def clean_email(email_str):
     bad_exts = (".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif", ".css", ".js", ".map")
     if any(low.endswith(ext) for ext in bad_exts):
         return None
-    bad_terms = ["wixpress", "sentry", "example", "schema", "wordpress", "yourdomain", "domain.com", "react", "webpack", "npm"]
+    bad_terms = ["wixpress", "sentry", "example", "schema", "wordpress", "yourdomain", "domain.com", "react", "webpack", "npm", "wght@", "mysite.com"]
     if any(t in low for t in bad_terms):
         return None
     if "@" not in e or "." not in e.split("@")[1]:
