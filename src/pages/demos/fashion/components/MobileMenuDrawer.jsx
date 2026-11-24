@@ -15,13 +15,13 @@ export default function MobileMenuDrawer({
   return (
     <AnimatePresence>
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden">
+        <div className="fixed inset-0 z-[10000000] md:hidden">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/60"
           />
 
           <motion.div
@@ -48,7 +48,8 @@ export default function MobileMenuDrawer({
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-1.5 rounded-lg text-gray-400 hover:text-gray-900 hover:bg-gray-100"
+                className="w-10 h-10 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-200 cursor-pointer transition-colors"
+                aria-label="Close navigation menu"
               >
                 <X size={20} />
               </button>

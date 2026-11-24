@@ -19,13 +19,13 @@ export default function MobileMenuDrawer({
   return (
     <AnimatePresence>
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 md:hidden select-none">
+        <div className="fixed inset-0 z-[10000000] md:hidden select-none">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/60"
           />
 
           <motion.div
@@ -40,7 +40,8 @@ export default function MobileMenuDrawer({
               <PerfumeLogo variant="dark" size="sm" />
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-1.5 rounded-lg text-[#8E7574] hover:text-[#231819] hover:bg-[#FAF1F0] cursor-pointer"
+                className="w-10 h-10 rounded-xl bg-[#FAF1F0] border border-[#EFE1DD] flex items-center justify-center text-[#231819] hover:bg-white cursor-pointer transition-colors"
+                aria-label="Close navigation menu"
               >
                 <X size={20} />
               </button>

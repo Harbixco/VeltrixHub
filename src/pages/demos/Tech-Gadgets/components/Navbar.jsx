@@ -154,7 +154,7 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden">
+          <div className="fixed inset-0 z-[10000000] lg:hidden">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -178,7 +178,11 @@ export default function Navbar() {
                     Mobile<span className="text-[#FF6B00]">X</span>
                   </span>
                 </div>
-                <button onClick={() => setIsMobileMenuOpen(false)}>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-10 h-10 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 hover:text-gray-900 hover:bg-gray-200 cursor-pointer transition-colors"
+                  aria-label="Close menu"
+                >
                   <X size={20} />
                 </button>
               </div>

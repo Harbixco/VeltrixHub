@@ -186,9 +186,9 @@ export default function PlumbingServices() {
 
  {/* Mobile Navigation Drawer */}
  <div className={`pf-mobile-nav ${mobileNavOpen ? 'is-open' : ''}`}>
- <div className="pf-mobile-nav-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-   <span style={{ fontWeight: 700, textTransform: 'uppercase', fontSize: '0.9rem', color: '#ffffff' }}>Plumbing Menu</span>
-   <button type="button" onClick={() => setMobileNavOpen(false)} style={{ background: 'transparent', border: 'none', color: '#ffffff', fontSize: '1.75rem', cursor: 'pointer', lineHeight: 1, padding: '0.25rem 0.5rem' }} aria-label="Close menu">&times;</button>
+ <div className="pf-mobile-nav-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.85rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+   <span style={{ fontWeight: 800, textTransform: 'uppercase', fontSize: '0.95rem', color: '#f59e0b', letterSpacing: '0.06em' }}>Plumbing Menu</span>
+   <button type="button" onClick={() => setMobileNavOpen(false)} style={{ background: 'rgba(255,255,255,0.12)', border: '1.5px solid rgba(245,158,11,0.6)', borderRadius: '8px', color: '#f59e0b', fontSize: '1.75rem', cursor: 'pointer', lineHeight: 1, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Close menu">&times;</button>
  </div>
  <a href="#top" onClick={(e) => { setMobileNavOpen(false); navigateTo('home', e); }}>Home</a>
  <a href="#residential" onClick={(e) => { setMobileNavOpen(false); navigateTo('residential', e); }}>Residential Plumbing</a>

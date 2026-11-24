@@ -2643,38 +2643,45 @@
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
-    margin-top: 4rem !important; /* Clears top bar with breathing room */
+    margin-top: 4.25rem !important; /* Clears top bar with breathing room */
     padding-bottom: 0.85rem !important;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     width: 100% !important;
+    flex-shrink: 0 !important;
   }
 
   .flooring-demo .mobile-drawer-title {
-    font-size: 0.92rem !important;
-    font-weight: 700 !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.06em !important;
-    color: #ffffff !important;
+    letter-spacing: 0.08em !important;
+    color: #C5A059 !important;
   }
 
   .flooring-demo .mobile-drawer-close {
-    background: transparent !important;
-    border: none !important;
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1.5px solid rgba(197, 160, 89, 0.6) !important;
+    border-radius: 8px !important;
     font-size: 1.75rem !important;
     line-height: 1 !important;
     cursor: pointer !important;
-    padding: 0.2rem 0.5rem !important;
-    color: #ffffff !important;
+    width: 40px !important;
+    height: 40px !important;
+    color: #C5A059 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    transition: transform 0.2s ease !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
   }
 
-  .flooring-demo .mobile-drawer-close:hover {
-    transform: scale(1.1) !important;
-    color: #C5A059 !important;
+  .flooring-demo .mobile-drawer-close:hover,
+  .flooring-demo .mobile-drawer-close:active {
+    background: rgba(197, 160, 89, 0.25) !important;
+    border-color: #C5A059 !important;
+    color: #ffffff !important;
+    transform: scale(1.05) !important;
   }
 
   .flooring-demo .mobile-drawer .nav-link {

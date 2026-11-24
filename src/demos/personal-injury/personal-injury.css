@@ -547,29 +547,44 @@
 }
 
 .personal-injury-demo .mobile-drawer-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 4rem !important; /* Clears top bar with breathing room */
-  padding: 1.1rem 1.4rem;
-  background: #08111a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 4.25rem !important; /* Clears top bar with breathing room */
+  padding: 0.85rem 1.4rem !important;
+  background: #08111a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  flex-shrink: 0 !important;
 }
 .personal-injury-demo .mobile-drawer-title {
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #ffffff;
+  font-size: 0.95rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #c5a059 !important;
 }
 .personal-injury-demo .mobile-drawer-close {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: 1.75rem;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1.5px solid rgba(197, 160, 89, 0.6) !important;
+  border-radius: 8px !important;
+  color: #c5a059 !important;
+  font-size: 1.75rem !important;
+  cursor: pointer !important;
+  line-height: 1 !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+.personal-injury-demo .mobile-drawer-close:hover,
+.personal-injury-demo .mobile-drawer-close:active {
+  background: rgba(197, 160, 89, 0.25) !important;
+  border-color: #c5a059 !important;
+  color: #ffffff !important;
+  transform: scale(1.05) !important;
 }
 
 .personal-injury-demo .mobile-drawer-body {
