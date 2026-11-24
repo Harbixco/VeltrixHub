@@ -313,7 +313,7 @@ export default function OutreachDashboard() {
 
   // Lead Extraction State
   const [isExtracting, setIsExtracting] = useState(false);
-  const [extractCount, setExtractCount] = useState(25);
+  const [extractCount, setExtractCount] = useState(10);
   const [extractNiche, setExtractNiche] = useState("all");
   const [extractStatus, setExtractStatus] = useState("");
   const [extractAlert, setExtractAlert] = useState(null);
@@ -358,13 +358,18 @@ export default function OutreachDashboard() {
     try {
       const res = await fetch(getApiUrl("/api/extract?get_leads=true"));
       if (res.ok) {
-        const data = await res.json();
-        if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
-          const sanitized = data.leads.map((l) => ({
-            ...l,
-            demo_url: getDemoUrl(l),
-          }));
-          setLeads(sanitized);
+        const rawText = await res.text();
+        try {
+          const data = JSON.parse(rawText);
+          if (data.success && Array.isArray(data.leads) && data.leads.length > 0) {
+            const sanitized = data.leads.map((l) => ({
+              ...l,
+              demo_url: getDemoUrl(l),
+            }));
+            setLeads(sanitized);
+          }
+        } catch (jsonErr) {
+          console.warn("Notice parsing live leads:", jsonErr.message);
         }
       }
     } catch (err) {
@@ -477,7 +482,17 @@ export default function OutreachDashboard() {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
+      const rawText = await res.text();
+      let data;
+      try {
+        data = JSON.parse(rawText);
+      } catch (jsonErr) {
+        throw new Error(
+          res.status === 504 || res.status === 502
+            ? `Gateway timeout (${res.status}). The website crawler exceeded the response threshold. Please extract in smaller batches (5-10 leads).`
+            : `Server returned non-JSON response (${res.status}): ${rawText.slice(0, 100)}`
+        );
+      }
 
       if (data.success) {
         setExtractAlert({
@@ -786,10 +801,10 @@ export default function OutreachDashboard() {
                   disabled={isExtracting}
                   className="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs font-semibold text-slate-200 focus:outline-none focus:border-blue-500 cursor-pointer"
                 >
-                  <option value={10}>10 Verified Leads</option>
+                  <option value={5}>5 Verified Leads (Fastest)</option>
+                  <option value={10}>10 Verified Leads (Recommended)</option>
+                  <option value={15}>15 Verified Leads</option>
                   <option value={25}>25 Verified Leads</option>
-                  <option value={50}>50 Verified Leads</option>
-                  <option value={75}>75 Verified Leads</option>
                 </select>
               </div>
 
