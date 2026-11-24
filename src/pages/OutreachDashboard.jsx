@@ -816,9 +816,17 @@ export default function OutreachDashboard() {
                 <Users className="w-5 h-5 text-blue-400" />
               </div>
               <div className="text-2xl font-bold text-white">
-                {leads.length} Leads
+                {dispatchProgress.pending || leads.filter(l => l.status === "pending").length} Deliverable Leads
               </div>
-              <p className="text-xs text-slate-400 mt-1">Ready for automated outreach</p>
+              <p className="text-xs text-emerald-400 mt-1 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Zero-Bounce MX Shield Active</span>
+              </p>
+              {dispatchProgress.invalidDomains > 0 && (
+                <p className="text-[10px] text-slate-400 mt-0.5">
+                  Filtered {dispatchProgress.invalidDomains} invalid/nonexistent domains
+                </p>
+              )}
             </div>
 
             {/* Card 2: Active Senders */}

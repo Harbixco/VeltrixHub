@@ -1,7 +1,22 @@
 // Vercel Serverless Function & Node Handler: Automated Google Places Lead Extraction
 import { MongoClient } from "mongodb";
+import dns from "dns";
+import { promisify } from "util";
 import fs from "fs";
 import path from "path";
+
+const resolveMx = promisify(dns.resolveMx);
+
+async function isDomainDeliverable(email) {
+  if (!email || !email.includes("@")) return false;
+  const domain = email.split("@")[1].toLowerCase().trim();
+  try {
+    const mx = await resolveMx(domain).catch(() => null);
+    return Boolean(mx && Array.isArray(mx) && mx.length > 0);
+  } catch {
+    return false;
+  }
+}
 
 const GOOGLE_PLACES_KEY =
   process.env.GOOGLE_PLACES_API_KEY || "AIzaSyB0pWJjUV6yBFuefNKZtFsh86v6yIEspLo";
@@ -369,7 +384,16 @@ export default async function handler(req, res) {
                 const freshEmails = foundEmails.filter((e) => !existingEmails.has(e.toLowerCase()));
 
                 if (freshEmails.length > 0) {
-                  const primaryEmail = freshEmails[0];
+                  let primaryEmail = null;
+                  for (const candidate of freshEmails) {
+                    const hasMx = await isDomainDeliverable(candidate);
+                    if (hasMx) {
+                      primaryEmail = candidate;
+                      break;
+                    }
+                  }
+
+                  if (!primaryEmail) continue; // Skip domain if it has no MX mail server
                   existingEmails.add(primaryEmail.toLowerCase());
 
                   const leadRecord = {
