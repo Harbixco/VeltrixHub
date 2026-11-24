@@ -169,7 +169,7 @@ def send_email_smtp(sender, recipient_email, subject, plain_text, html_text):
     msg["Subject"] = subject
     msg["From"] = f"{sender['name']} <{sender['email']}>"
     msg["To"] = recipient_email
-    msg["Reply-To"] = f"{sender['name']} <{sender['email']}>"
+    msg["Reply-To"] = "Kayode | Veltrix Hub Inbound <kayode@veltrixhub.ng>"
     msg["Date"] = formatdate(localtime=True)
     msg["Message-ID"] = make_msgid(domain="veltrixhub.ng")
 
@@ -375,11 +375,130 @@ def show_stats():
     print("=" * 65)
 
 
+def generate_followup_content(lead, sender):
+    business_name = lead.get("business_name", "Your Business").strip()
+    contact_name = lead.get("contact_name", "").strip()
+    city = lead.get("city", "Nigeria").strip()
+    niche = lead.get("niche", "business").strip()
+    demo_url = lead.get("demo_url", "").strip()
+    if not (demo_url.startswith("http://") or demo_url.startswith("https://")):
+        demo_url = f"{config.VELTRIX_WEBSITE}/{niche or 'painting'}"
+
+    recipient_email = lead.get("email", "").strip()
+    greeting = f"Hello {contact_name}," if contact_name else f"Hello {business_name} Team,"
+
+    subject = f"Re: Quick question regarding {business_name}'s website"
+
+    encoded_email = urllib.parse.quote(recipient_email)
+    encoded_biz = urllib.parse.quote(business_name)
+    encoded_demo = urllib.parse.quote(demo_url)
+    tracked_demo_url = f"https://www.veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&url={encoded_demo}&action=click"
+
+    plain_text = f"""{greeting}
+
+Following up on my note last week regarding {business_name}'s web presence and customer WhatsApp ordering in {city}.
+
+I know you are busy managing active operations, so I wanted to bring this back to top of mind. We have already prepared a complete live demonstration website specifically for your sector:
+Demo: {demo_url}
+
+When customers in {city} search for {niche} services on their mobile phones, having an instant WhatsApp booking link and verified trust badges allows you to secure the booking immediately instead of losing them to competitors.
+
+Would you be open to a brief 5-minute chat on WhatsApp this week? You can message our team directly here: {config.VELTRIX_WHATSAPP}
+
+Best regards,
+
+{sender['name']}
+Digital Growth Partner | Veltrix Hub
+WhatsApp/Phone: {config.VELTRIX_PHONE}
+Website: {config.VELTRIX_WEBSITE}
+"""
+
+    html_text = f"""<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <p>{greeting}</p>
+  <p>Following up on my message last week regarding <strong>{business_name}</strong>'s mobile web presence in {city}.</p>
+  <p>I know you are busy managing client deliverables, so I wanted to quickly reshare the live demonstration we prepared for your industry:</p>
+  <p style="margin: 22px 0;">
+    <a href="{tracked_demo_url}" style="display: inline-block; background-color: #050f2c; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">View Your Industry Demonstration &rarr;</a>
+  </p>
+  <p>Having a fast, mobile-responsive website with direct WhatsApp ordering ensures you capture clients searching on their phones instead of losing them to other local services.</p>
+  <p>Would you be open to a brief 5-minute chat on WhatsApp this week? You can connect directly with me here: <a href="{config.VELTRIX_WHATSAPP}" style="color: #2563eb; font-weight: 600;">Chat on WhatsApp &rarr;</a></p>
+  <p>Best regards,<br><br><strong>{sender['name']}</strong><br>Veltrix Hub | {config.VELTRIX_PHONE}</p>
+</body>
+</html>"""
+
+    return subject, plain_text, html_text
+
+
+def run_followup_send():
+    leads = load_leads()
+    now = datetime.datetime.now()
+    due_indices = []
+
+    for i, l in enumerate(leads):
+        status = l.get("status", "").lower()
+        sent_at = l.get("sent_at", "").strip()
+        if status in ("sent", "delivered") and sent_at:
+            try:
+                sent_dt = datetime.datetime.strptime(sent_at, "%Y-%m-%d %H:%M:%S")
+                if (now - sent_dt).days >= 7:
+                    due_indices.append(i)
+            except Exception:
+                pass
+
+    if not due_indices:
+        print("No leads currently due for 7-day follow-up.")
+        return
+
+    print("=" * 70)
+    print("VELTRIX HUB OUTREACH ENGINE - 7-DAY FOLLOW-UP DISPATCH")
+    print(f"Total Follow-Ups Due (>= 7 days since initial pitch): {len(due_indices)}")
+    print("=" * 70)
+
+    sender_map = {s["email"].lower(): s for s in config.SENDERS}
+    total_followups_sent = 0
+
+    for idx in due_indices:
+        lead = leads[idx]
+        recipient = lead["email"].strip()
+        original_sender_email = lead.get("sent_by", "").lower().strip()
+        sender = sender_map.get(original_sender_email) or config.SENDERS[0]
+
+        subject, plain, html = generate_followup_content(lead, sender)
+
+        print(f"[{total_followups_sent + 1}/{len(due_indices)}] Sending 7-day follow-up via {sender['first_name']} to {recipient} ({lead['business_name']})...")
+
+        try:
+            send_email_smtp(sender, recipient, subject, plain, html)
+            now_iso = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            leads[idx]["status"] = "followup_sent"
+            leads[idx]["sent_at"] = now_iso
+            save_leads(leads)
+            total_followups_sent += 1
+            print(f"  ✓ Follow-up delivered.")
+
+            if total_followups_sent < len(due_indices):
+                pause = random.randint(60, 120)
+                print(f"  Sleeping {pause} seconds to protect sender score...")
+                time.sleep(pause)
+
+        except Exception as e:
+            print(f"  ✗ Error sending follow-up to {recipient}: {e}")
+
+    print("\n" + "=" * 70)
+    print(f"Follow-up batch completed. Total follow-ups sent: {total_followups_sent}")
+    print("=" * 70)
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] == "--dry-run":
         run_dry_run()
     elif sys.argv[1] == "--send":
         run_live_send()
+    elif sys.argv[1] == "--followup":
+        run_followup_send()
     elif sys.argv[1] == "--test":
         recipient = sys.argv[2] if len(sys.argv) > 2 else "info@veltrixhub.ng"
         run_test_email(recipient)
@@ -389,5 +508,6 @@ if __name__ == "__main__":
         print("Usage:")
         print("  python send_outreach.py --dry-run")
         print("  python send_outreach.py --send")
+        print("  python send_outreach.py --followup")
         print("  python send_outreach.py --test <email>")
         print("  python send_outreach.py --stats")

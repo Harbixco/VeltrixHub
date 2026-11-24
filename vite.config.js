@@ -4,12 +4,14 @@ import chatHandler from './api/chat.js'
 import trackHandler from './api/track.js'
 import extractHandler from './api/extract.js'
 import dispatchHandler from './api/dispatch.js'
+import responsesHandler from './api/responses.js'
 
 const apiHandlers = {
   '/api/chat': chatHandler,
   '/api/track': trackHandler,
   '/api/extract': extractHandler,
   '/api/dispatch': dispatchHandler,
+  '/api/responses': responsesHandler,
 }
 
 export default defineConfig(({ mode }) => {

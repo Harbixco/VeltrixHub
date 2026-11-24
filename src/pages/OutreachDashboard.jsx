@@ -32,7 +32,10 @@ import {
   Zap,
   Loader2,
   AlertCircle,
-  RotateCw
+  RotateCw,
+  MessageSquare,
+  Phone,
+  Inbox
 } from "lucide-react";
 
 // Fallback seed leads matching leads_veltrixhub.csv
@@ -328,6 +331,7 @@ export default function OutreachDashboard() {
     total: 0,
     pending: 0,
     percent: 0,
+    followUpDue: 0,
     currentStep: "",
     currentSender: "",
     currentRecipient: "",
@@ -337,6 +341,17 @@ export default function OutreachDashboard() {
     isCompleted: false,
   });
   const logTerminalRef = useRef(null);
+
+  // Inbound Responses State
+  const [responses, setResponses] = useState([]);
+  const [responsesNotice, setResponsesNotice] = useState("");
+  const [showLogReplyModal, setShowLogReplyModal] = useState(false);
+  const [newReplyNote, setNewReplyNote] = useState({
+    email: "",
+    business_name: "",
+    message: "",
+    channel: "Email",
+  });
 
   const [newLead, setNewLead] = useState({
     business_name: "",
@@ -427,6 +442,42 @@ export default function OutreachDashboard() {
     }
   };
 
+  // 4. Fetch Inbound Responses
+  const fetchResponses = async () => {
+    try {
+      const res = await fetch(getApiUrl("/api/responses"));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setResponses(data.replies || []);
+          if (data.notice) setResponsesNotice(data.notice);
+        }
+      }
+    } catch (err) {
+      console.warn("Notice loading inbound responses:", err);
+    }
+  };
+
+  const handleLogResponse = async (e) => {
+    e?.preventDefault();
+    if (!newReplyNote.email) return;
+    try {
+      const res = await fetch(getApiUrl("/api/responses"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newReplyNote),
+      });
+      if (res.ok) {
+        setShowLogReplyModal(false);
+        setNewReplyNote({ email: "", business_name: "", message: "", channel: "Email" });
+        await fetchResponses();
+        await fetchLeads();
+      }
+    } catch (err) {
+      console.warn("Notice recording reply:", err);
+    }
+  };
+
   // Auto-scroll log terminal on update
   useEffect(() => {
     if (logTerminalRef.current) {
@@ -439,8 +490,12 @@ export default function OutreachDashboard() {
     fetchLeads();
     fetchTracking();
     fetchDispatchStatus();
+    fetchResponses();
 
-    const trackInterval = setInterval(fetchTracking, 15000);
+    const trackInterval = setInterval(() => {
+      fetchTracking();
+      fetchResponses();
+    }, 15000);
     return () => clearInterval(trackInterval);
   }, []);
 
@@ -729,7 +784,8 @@ export default function OutreachDashboard() {
                 <Server className="w-5 h-5 text-emerald-400" />
               </div>
               <div className="text-2xl font-bold text-white">3 Accounts</div>
-              <p className="text-xs text-emerald-400/90 mt-1">Zoho SSL (Kayode, Chris, William)</p>
+              <p className="text-xs text-emerald-400/90 mt-1">Zoho SSL (Kayode, Christopher, William)</p>
+              <p className="text-[10px] text-slate-400 mt-1">75 Daily Capacity &bull; Replies route to Kayode</p>
             </div>
 
             {/* Card 3: Email Opens */}
@@ -839,11 +895,11 @@ export default function OutreachDashboard() {
               </div>
 
               {/* Extraction Primary CTA */}
-              <div className="flex flex-col sm:self-end">
+              <div className="flex flex-wrap items-center gap-2 sm:self-end">
                 <button
                   onClick={handleExtractLeads}
                   disabled={isExtracting}
-                  className={`inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-white transition shadow-lg ${
+                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition shadow-lg ${
                     isExtracting
                       ? "bg-blue-600/60 cursor-not-allowed"
                       : "bg-blue-600 hover:bg-blue-500 shadow-blue-600/30 active:scale-95"
@@ -857,9 +913,23 @@ export default function OutreachDashboard() {
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4 text-blue-200" />
-                      <span>Extract Fresh Leads Now</span>
+                      <span>Extract Fresh Leads</span>
                     </>
                   )}
+                </button>
+
+                <button
+                  onClick={() => handleStartDispatch("daily")}
+                  disabled={isDispatching || dispatchRunning}
+                  className={`inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold border transition shadow-lg ${
+                    dispatchRunning
+                      ? "bg-slate-800/40 border-slate-700 text-slate-500 cursor-not-allowed"
+                      : "bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 border-emerald-600/50 active:scale-95"
+                  }`}
+                  title="Sources 75 targeted businesses with No Website or Outdated Sites across top buying niches (Contractors, Painting, Cleaning, Auto, Dental, Law, Solar, Pest)"
+                >
+                  <Clock className="w-4 h-4 text-emerald-400" />
+                  <span>Run 7:00 AM Daily Prospecting (75 Leads)</span>
                 </button>
               </div>
             </div>
@@ -923,6 +993,19 @@ export default function OutreachDashboard() {
 
             {/* Dispatch Action Buttons */}
             <div className="flex flex-wrap items-center gap-3">
+              {/* Follow-up Button */}
+              {dispatchProgress.followUpDue > 0 && (
+                <button
+                  onClick={() => handleStartDispatch("followup")}
+                  disabled={isDispatching || dispatchRunning}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold text-amber-200 bg-amber-950/60 hover:bg-amber-900/80 border border-amber-600/60 transition shadow-lg active:scale-95 animate-pulse"
+                  title="Dispatch 7-day follow-up pitches to prospects who have not yet replied"
+                >
+                  <Clock className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Send 7-Day Follow-Ups ({dispatchProgress.followUpDue})</span>
+                </button>
+              )}
+
               {/* Simulation (Dry-Run) Button */}
               <button
                 onClick={() => handleStartDispatch("dry-run")}
@@ -962,6 +1045,33 @@ export default function OutreachDashboard() {
               </button>
             </div>
           </div>
+
+          {/* 7-DAY FOLLOW-UP REMINDER BANNER */}
+          {dispatchProgress.followUpDue > 0 && (
+            <div className="mt-6 p-4 rounded-xl bg-amber-950/40 border border-amber-600/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-500/30 flex items-center justify-center shrink-0">
+                  <Clock className="w-5 h-5 text-amber-400" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-amber-200">
+                    {dispatchProgress.followUpDue} Prospects Due for 7-Day Follow-Up
+                  </h3>
+                  <p className="text-xs text-amber-300/80 mt-0.5">
+                    These businesses were pitched over 7 days ago and have not replied yet. High-converting 7-day gentle reminder ready.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => handleStartDispatch("followup")}
+                disabled={isDispatching || dispatchRunning}
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition shadow-md shadow-amber-600/30 whitespace-nowrap active:scale-95"
+              >
+                <Send className="w-3.5 h-3.5" />
+                <span>Dispatch Follow-Ups Now ({dispatchProgress.followUpDue})</span>
+              </button>
+            </div>
+          )}
 
           {/* REAL-TIME BATCH DISPATCH PROGRESS BAR */}
           <div className="mt-6 p-5 rounded-xl bg-slate-950/80 border border-slate-800 shadow-inner">
@@ -1195,6 +1305,175 @@ export default function OutreachDashboard() {
             )}
           </div>
         </div>
+
+        {/* SECTION 2.5: UNIFIED INBOUND RESPONSE CENTER */}
+        <div className="bg-slate-900/90 border border-blue-900/40 rounded-2xl p-6 sm:p-8 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase">
+                <Inbox className="w-3.5 h-3.5 text-blue-400" />
+                Unified Inbound Response Center
+              </div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white">
+                Prospect Inbound Replies
+              </h2>
+              <p className="text-xs text-slate-300">
+                All replies automatically route to <span className="text-blue-300 font-mono">kayode@veltrixhub.ng</span>. You never need to log into or switch between 3 mailboxes.
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2.5">
+              <button
+                onClick={fetchResponses}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition"
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                <span>Refresh Inbound</span>
+              </button>
+              <button
+                onClick={() => setShowLogReplyModal(true)}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition shadow-md shadow-blue-600/30"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Log Reply / Note</span>
+              </button>
+            </div>
+          </div>
+
+          {responses.length > 0 ? (
+            <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {responses.map((rep) => (
+                <div
+                  key={rep.id}
+                  className="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-2 hover:border-blue-700/60 transition"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-white truncate">{rep.business_name}</span>
+                    <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      {rep.channel || "Email"}
+                    </span>
+                  </div>
+                  <p className="text-[11px] font-mono text-slate-400 truncate">{rep.email}</p>
+                  <p className="text-xs text-slate-300 line-clamp-3 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800/80 italic">
+                    "{rep.message}"
+                  </p>
+                  <div className="flex items-center justify-between pt-1 text-[11px]">
+                    <span className="text-slate-500">
+                      {new Date(rep.received_at).toLocaleDateString()}
+                    </span>
+                    <a
+                      href={`https://wa.me/?text=Hello%20${encodeURIComponent(rep.business_name)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5" />
+                      Chat WhatsApp &rarr;
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-5 p-6 rounded-xl bg-slate-950/40 border border-slate-800/60 text-center space-y-2">
+              <Inbox className="w-8 h-8 text-slate-600 mx-auto" />
+              <p className="text-xs font-semibold text-slate-300">No unread prospect replies currently logged</p>
+              <p className="text-[11px] text-slate-500 max-w-md mx-auto">
+                {responsesNotice || "All prospect replies automatically land in kayode@veltrixhub.ng. When prospects reply to pitches, their messages or WhatsApp inquiries will stream directly into this dashboard."}
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* LOG INBOUND REPLY MODAL */}
+        {showLogReplyModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-md p-6 space-y-4 shadow-2xl">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <h3 className="text-base font-bold text-white">Log Prospect Inbound Response</h3>
+                <button
+                  onClick={() => setShowLogReplyModal(false)}
+                  className="text-slate-400 hover:text-white p-1"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <form onSubmit={handleLogResponse} className="space-y-3.5">
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Prospect Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="e.g. director@company.ng"
+                    value={newReplyNote.email}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, email: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Business Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Apex Construction LTD"
+                    value={newReplyNote.business_name}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, business_name: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Channel
+                  </label>
+                  <select
+                    value={newReplyNote.channel}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, channel: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  >
+                    <option value="Email">Email Reply</option>
+                    <option value="WhatsApp">WhatsApp Message</option>
+                    <option value="Phone Call">Phone Call</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-[11px] uppercase font-semibold text-slate-400 block mb-1">
+                    Message / Conversation Notes
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="Summary of prospect response, questions, or agreed call time..."
+                    value={newReplyNote.message}
+                    onChange={(e) => setNewReplyNote({ ...newReplyNote, message: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500"
+                  />
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={() => setShowLogReplyModal(false)}
+                    className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 text-xs font-semibold hover:bg-slate-700 transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition shadow-md shadow-blue-600/30"
+                  >
+                    Save & Mark Replied
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
 
         {/* SECTION 3: LIVE ENGAGEMENT ACTIVITY FEED (When Opens / Clicks Logged) */}
         {trackingRecords.length > 0 && (
