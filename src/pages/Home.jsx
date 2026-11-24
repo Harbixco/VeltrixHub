@@ -2,17 +2,12 @@ import PageTransition from "../components/PageTransition";
 import SEO from "../components/SEO";
 import HeroSection from "../components/home/HeroSection";
 import ValueStrip from "../components/home/ValueStrip";
-import ProblemSection from "../components/home/ProblemSection";
-import WhatsAppSection from "../components/home/WhatsAppSection";
-import ReadinessSection from "../components/home/ReadinessSection";
 import ServicesSection from "../components/home/ServicesSection";
-import ProcessSection from "../components/home/ProcessSection";
-import WhyVeltrixSection from "../components/home/WhyVeltrixSection";
+import IndustryDemosSection from "../components/home/IndustryDemosSection";
 import SelectedWorkSection from "../components/home/SelectedWorkSection";
 import TestimonialsSection from "../components/home/TestimonialsSection";
-import QualitativeProofSection from "../components/home/QualitativeProofSection";
-import AcademySection from "../components/home/AcademySection";
-import CACSection from "../components/home/CACSection";
+import ProcessSection from "../components/home/ProcessSection";
+import WhyVeltrixSection from "../components/home/WhyVeltrixSection";
 import FAQSection from "../components/home/FAQSection";
 import FinalCTA from "../components/home/FinalCTA";
 
@@ -30,41 +25,28 @@ export default function Home() {
       {/* VALUE STRIP */}
       <ValueStrip />
 
-      {/* 2. PROBLEM */}
-      <ProblemSection />
-
-      {/* 3. WHATSAPP */}
-      <WhatsAppSection />
-
-      {/* 4. BUSINESS READINESS */}
-      <ReadinessSection />
-
-      {/* 5. SERVICES */}
+      {/* 2. SERVICES OVERVIEW */}
       <ServicesSection />
 
-      {/* 6. PROCESS */}
+      {/* 3. DEDICATED INDUSTRY LIVE DEMOS */}
+      <IndustryDemosSection />
+
+      {/* 4. WORK & CASE STUDIES */}
+      <SelectedWorkSection />
+
+      {/* 5. CLIENT TESTIMONIALS & CASE IMPACT */}
+      <TestimonialsSection />
+
+      {/* 6. PROCESS & METHODOLOGY */}
       <ProcessSection />
 
       {/* 7. WHY VELTRIX HUB */}
       <WhyVeltrixSection />
 
-      {/* 8. PROJECTS */}
-      <SelectedWorkSection />
-
-      {/* 8.5. CLIENT TESTIMONIALS & CASE IMPACT */}
-      <TestimonialsSection />
-
-      {/* 9. QUALITATIVE PROOF / TRUST */}
-      <QualitativeProofSection />
-
-      {/* 10. ACADEMY & CAC SUPPORTING */}
-      <AcademySection />
-      <CACSection />
-
-      {/* 11. FAQ */}
+      {/* 8. FAQ */}
       <FAQSection />
 
-      {/* 12. FINAL CTA */}
+      {/* 9. FINAL CTA */}
       <FinalCTA />
     </PageTransition>
   );

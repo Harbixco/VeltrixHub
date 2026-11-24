@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import {
   Mail,
   Send,
@@ -35,7 +36,8 @@ import {
   RotateCw,
   MessageSquare,
   Phone,
-  Inbox
+  Inbox,
+  LogOut
 } from "lucide-react";
 
 // Fallback seed leads matching leads_veltrixhub.csv
@@ -210,6 +212,7 @@ export const getDemoUrl = (lead) => {
 };
 
 export default function OutreachDashboard() {
+  const { user, logout } = useAuth();
   const [leads, setLeads] = useState(INITIAL_LEADS);
   const [isLoadingLeads, setIsLoadingLeads] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -636,10 +639,25 @@ export default function OutreachDashboard() {
             <RefreshCw className={`w-3.5 h-3.5 ${isRefreshing || isLoadingLeads ? "animate-spin text-blue-400" : ""}`} />
             <span className="hidden sm:inline">Sync All Data</span>
           </button>
+          
+          <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-full border border-blue-500/20" title="Automatic 7:00 AM daily scheduled task registered">
+            <Clock className="w-3.5 h-3.5" />
+            <span>7:00 AM Auto-Run Active</span>
+          </span>
+
           <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            System Online
+            <span className="hidden sm:inline">Signed in as</span> {user?.username || "agbajeabodunkay"}
           </span>
+
+          <button
+            onClick={logout}
+            className="inline-flex items-center gap-1 text-xs text-slate-400 hover:text-rose-400 bg-slate-800/80 hover:bg-rose-500/10 px-2 py-1 rounded-md border border-slate-700/80 transition"
+            title="Sign Out"
+          >
+            <LogOut size={13} />
+            <span className="hidden sm:inline">Logout</span>
+          </button>
         </div>
       </header>
 

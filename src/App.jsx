@@ -9,6 +9,9 @@ import Training from "./pages/Training";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import OutreachDashboard from "./pages/OutreachDashboard";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
 import NotFound from "./pages/NotFound";
 import FashionDemoPage from "./pages/demos/fashion";
 import PerfumesDemoPage from "./pages/demos/perfumes";
@@ -78,7 +81,16 @@ function AnimatedRoutes() {
       <Route path="/training" element={<Training />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/outreach" element={<OutreachDashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/admin" element={<Navigate to="/login" replace />} />
+      <Route
+        path="/outreach"
+        element={
+          <ProtectedRoute>
+            <OutreachDashboard />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/pitching" element={<Navigate to="/outreach" replace />} />
       <Route path="/outreach-engine" element={<Navigate to="/outreach" replace />} />
 
@@ -210,7 +222,9 @@ function AppLayout() {
     currentPath === "/pitching" ||
     currentPath === "/outreach-engine";
 
-  const hideChrome = isDemo || isOutreach;
+  const isLogin = currentPath === "/login" || currentPath === "/admin";
+
+  const hideChrome = isDemo || isOutreach || isLogin;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -229,8 +243,10 @@ function AppLayout() {
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTopAndSection />
-      <AppLayout />
+      <AuthProvider>
+        <ScrollToTopAndSection />
+        <AppLayout />
+      </AuthProvider>
     </BrowserRouter>
   );
 }
