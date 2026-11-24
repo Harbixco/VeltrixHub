@@ -147,6 +147,16 @@ export default function DentalCare() {
               Your Comfort,<br />Our <span>Priority.</span>
             </h1>
             <p className="hero-location">Modern Family &amp; Cosmetic Dentistry</p>
+
+            {/* Mobile Hero Photo Frame */}
+            <div className="mobile-hero-image" style={{ margin: '1.25rem 0 1.5rem', borderRadius: '16px', overflow: 'hidden', height: '240px', boxShadow: '0 12px 30px rgba(11,25,44,0.12)', border: '2px solid rgba(255,255,255,0.8)' }}>
+              <img
+                src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=85"
+                alt="Bright, welcoming modern dental clinic"
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+
             <p className="hero-copy">
               Experience gentle, modern family and cosmetic dental care tailored for your comfort, from routine cleanings to advanced smile transformations.
             </p>
@@ -215,11 +225,16 @@ export default function DentalCare() {
 
         {/* ── ABOUT ── */}
         <section className="services section-wrap section-tint" id="services">
-          <div className="section-heading reveal">
-            <div>
-              <h2>Expert care, made personal.</h2>
-            </div>
-            <p>Whether it’s your twice-a-year visit or the smile you’ve been dreaming of, we make the next step feel simple.</p>
+          <div className="section-heading reveal" style={{ flexDirection: 'column', alignItems: 'flex-start', gap: '0.75rem', background: '#ffffff', padding: '1.75rem 1.5rem', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 4px 20px rgba(11,25,44,0.04)', marginBottom: '2rem' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: '9999px', background: '#e0f2fe', color: '#0284c7', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+              <i className="fa-solid fa-tooth"></i> Comprehensive Clinical Dentistry
+            </span>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>
+              Expert Care, <span style={{ color: '#0ea5e9' }}>Made Personal.</span>
+            </h2>
+            <p style={{ fontSize: '0.975rem', color: '#64748b', lineHeight: 1.6, margin: 0, maxWidth: '640px' }}>
+              Whether it’s your routine preventive cleaning or an advanced cosmetic smile transformation, we design every treatment around your comfort, schedule, and peace of mind.
+            </p>
           </div>
 
           <div className="services-grid">

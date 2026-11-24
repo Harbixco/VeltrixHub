@@ -971,7 +971,7 @@
 }
 
 .cleaning-demo .service-image-box {
-  height: 220px;
+  height: 280px;
   overflow: hidden;
   position: relative;
 }
@@ -1599,6 +1599,7 @@
 }
 
 .cleaning-demo .faq-item.active .faq-content {
+  max-height: 500px !important;
   padding-bottom: 1.5rem;
 }
 
@@ -2376,15 +2377,18 @@
     line-height: 1.55 !important;
   }
 
-  /* Service Card Images: Uniform aspect ratio, crisp display */
+  /* Service Card Images: Uniform aspect ratio, tall crisp display on mobile */
   .cleaning-demo .service-card img,
   .cleaning-demo .service-item img,
   .cleaning-demo .service-image-box img,
   .cleaning-demo .service-card-image img {
     width: 100% !important;
-    height: 190px !important;
+    height: 270px !important;
     object-fit: cover !important;
     display: block !important;
+  }
+  .cleaning-demo .service-image-box {
+    height: 270px !important;
   }
 
   /* Service Grids: 1 column on mobile */

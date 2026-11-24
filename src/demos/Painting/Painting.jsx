@@ -730,6 +730,16 @@ export default function Painting() {
                   </a>
                 </div>
 
+                {/* Hero Showcase Image */}
+                <div className="hero-showcase-image-box" style={{ margin: '1.25rem 0 1.5rem', borderRadius: '16px', overflow: 'hidden', height: '240px', boxShadow: '0 12px 30px rgba(16,42,67,0.12)', border: '2px solid rgba(255,255,255,0.9)' }}>
+                  <img
+                    src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000&q=85"
+                    alt="Professional interior painter applying precision finish"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    loading="lazy"
+                  />
+                </div>
+
                 {/* Trust Row */}
                 <div className="hero-trust-row">
                   <div className="trust-item">

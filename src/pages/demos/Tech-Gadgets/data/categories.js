@@ -5,7 +5,7 @@ export const CATEGORIES = [
     key: "Laptops",
     name: "Laptops",
     itemCount: "48 Models",
-    image: "/demos/gadgets/macbook-air-m3.jpg",
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
     badge: "M3 & Ultra AI",
     linkText: "Explore Laptops →",
   },
@@ -14,7 +14,7 @@ export const CATEGORIES = [
     key: "Smartphones",
     name: "Smartphones",
     itemCount: "64 Models",
-    image: "/demos/gadgets/iphone-15-pro-max.jpg",
+    image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badge: "5G Flagships",
     linkText: "Shop Phones →",
   },
@@ -23,7 +23,7 @@ export const CATEGORIES = [
     key: "Audio",
     name: "Audio",
     itemCount: "32 Items",
-    image: "/demos/gadgets/airpods-pro-2.jpg",
+    image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
     badge: "Lossless ANC",
     linkText: "Shop Audio →",
   },
@@ -32,7 +32,7 @@ export const CATEGORIES = [
     key: "Wearables",
     name: "Wearables",
     itemCount: "28 Styles",
-    image: "/demos/gadgets/smartwatch-flatlay.jpg",
+    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
     badge: "OLED & ECG",
     linkText: "Shop Wearables →",
   },
@@ -41,7 +41,7 @@ export const CATEGORIES = [
     key: "Gaming",
     name: "Gaming",
     itemCount: "55 Items",
-    image: "/demos/gadgets/gadget-67.jpg",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
     badge: "Haptic & 240Hz",
     linkText: "Upgrade Gaming →",
   },
@@ -50,7 +50,7 @@ export const CATEGORIES = [
     key: "Monitors",
     name: "Monitors",
     itemCount: "22 Models",
-    image: "/demos/gadgets/gadget-9.jpg",
+    image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
     badge: "4K Curved",
     linkText: "Shop Displays →",
   },
@@ -59,7 +59,7 @@ export const CATEGORIES = [
     key: "Smart Home",
     name: "Smart Home",
     itemCount: "36 Devices",
-    image: "/demos/gadgets/gadget-68.jpg",
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
     badge: "2K AI Vision",
     linkText: "Live Smarter →",
   },
@@ -74,7 +74,7 @@ export const CATEGORY_DETAILS = {
     tagline: "NEXT-GEN SILICON, LIQUID RETINA & ALL-DAY POWER",
     description:
       "Engineered for Nigerian software engineers, creatives, and executives. Featuring Ultra-AI cores, 120Hz Liquid Retina XDR displays, up to 22-hour battery endurance, and 1-Year local Ikeja warranty.",
-    bannerImage: "/demos/gadgets/gadget-38.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badgeText: "PRO WORKSTATIONS",
     stats: "48 High-Performance Models",
     specsHighlights: [
@@ -91,7 +91,7 @@ export const CATEGORY_DETAILS = {
     tagline: "AEROSPACE TITANIUM, 200MP OPTICS & MTN/AIRTEL 5G CERTIFIED",
     description:
       "Grade 5 titanium chassis, ultra-fast 4nm processors, 200MP sensor arrays with 5x optical telephoto, 2600 nits outdoor sunlight visibility, and dual physical SIM + eSIM support.",
-    bannerImage: "/demos/gadgets/gadget-38.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badgeText: "FLAGSHIP 5G PHONES",
     stats: "64 Certified Sealed Models",
     specsHighlights: [
@@ -108,7 +108,7 @@ export const CATEGORY_DETAILS = {
     tagline: "CUSTOM TITANIUM DRIVERS & 45dB ADAPTIVE HYBRID ANC",
     description:
       "Block out Lagos generator hum and street noise with cutting-edge 45dB Hybrid ANC. Hi-Res 96kHz/24-bit lossless playback, multipoint Bluetooth 5.3, and all-day battery life.",
-    bannerImage: "/demos/gadgets/gadget-38.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badgeText: "HI-RES AUDIO",
     stats: "32 Studio-Grade Devices",
     specsHighlights: [
@@ -125,7 +125,7 @@ export const CATEGORY_DETAILS = {
     tagline: "SAPPHIRE CRYSTAL, REAL-TIME ECG & DUAL-FREQUENCY GPS",
     description:
       "Rugged luxury smartwatches built for fitness tracking and productivity. Monitor ECG, blood oxygen, sleep phases, and receive WhatsApp/call notifications directly on your wrist with up to 14 days of battery.",
-    bannerImage: "/demos/gadgets/gadget-38.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badgeText: "SMART HEALTH & FITNESS",
     stats: "28 Premium Styles",
     specsHighlights: [
@@ -142,7 +142,7 @@ export const CATEGORY_DETAILS = {
     tagline: "ADAPTIVE HAPTIC TRIGGERS, 4K 120FPS & ULTRA-LOW LATENCY",
     description:
       "Immerse yourself in competitive gaming with adaptive trigger resistance, lightning-fast haptic actuators, 1ms wireless latency, and full compatibility across PS5, PC, and mobile.",
-    bannerImage: "/demos/gadgets/gadget-38.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badgeText: "ESPORTS & CONSOLES",
     stats: "55 Gaming Gear & Accessories",
     specsHighlights: [
@@ -159,7 +159,7 @@ export const CATEGORY_DETAILS = {
     tagline: "1500R CURVATURE, 165Hz REFRESH & 98% DCI-P3 COLOR ACCURACY",
     description:
       "Expand your productivity and coding workflow with panoramic curved displays. USB-C 90W single-cable power delivery to charge your laptop while driving dual 4K video.",
-    bannerImage: "/demos/gadgets/gadget-38.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     badgeText: "ULTRAWIDE WORKSPACE",
     stats: "22 Pro Displays",
     specsHighlights: [
@@ -176,7 +176,7 @@ export const CATEGORY_DETAILS = {
     tagline: "2K HDR VISION, MOTORIZED 360° AI TRACKING & REMOTE MOBILE APP",
     description:
       "Monitor your Nigerian home, office, or store from anywhere in the world on your smartphone. Full-color night vision, instant motion alerts, and two-way talk audio.",
-    bannerImage: "/demos/gadgets/gadget-8.jpg",
+    bannerImage: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
     badgeText: "CONNECTED HOME",
     stats: "36 Intelligent Devices",
     specsHighlights: [

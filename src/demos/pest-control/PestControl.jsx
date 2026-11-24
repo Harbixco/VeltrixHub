@@ -799,7 +799,13 @@ const runInit = () => {
         {/* Right Media with Floating Cards */}
         <div className="hero-media-wrapper reveal">
           <div className="hero-image-container">
-            <img src="/pest-control/assets/images/pest-hero.jpg" alt="Certified pest control technician conducting a property inspection" className="hero-image" width="600" height="490" />
+            <img 
+              src="https://images.unsplash.com/photo-1584744982491-665216d95f8b?auto=format&fit=crop&w=1200&q=85" 
+              alt="Certified pest control specialist conducting daylight property inspection" 
+              className="hero-image" 
+              width="600" 
+              height="490" 
+            />
           </div>
 
           {/* Floating Badge */}

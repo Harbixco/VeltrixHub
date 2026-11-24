@@ -12,7 +12,7 @@ export default function TopBrandsDeals() {
       badge: "Titanium",
       logo: <FaApple size={16} className="text-white" />,
       // Clean isolated studio render
-      image: "/demos/gadgets/iphone-15-pro-max.jpg",
+      image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     },
     {
       id: "samsung",
@@ -25,7 +25,7 @@ export default function TopBrandsDeals() {
         </span>
       ),
       // Clean frontal studio render from Konga
-      image: "/demos/gadgets/s24-ultra-main.jpg",
+      image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
     },
     {
       id: "oneplus",
@@ -39,7 +39,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean studio device render
-      image: "/demos/gadgets/oneplus-12.jpg",
+      image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
     },
     {
       id: "xiaomi",
@@ -52,7 +52,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean phone portrait
-      image: "/demos/gadgets/xiaomi-14-ultra.jpg",
+      image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
     },
     {
       id: "google",
@@ -66,7 +66,7 @@ export default function TopBrandsDeals() {
         </div>
       ),
       // Clean flagship camera bar device
-      image: "/demos/gadgets/pixel-8-pro.jpg",
+      image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=800&q=80",
     },
   ];
 

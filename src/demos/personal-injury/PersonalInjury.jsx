@@ -156,7 +156,11 @@ export default function PersonalInjury() {
       <header className="site-header">
         <div className="container header__inner">
           <a className="brand" href="#home" onClick={(e) => navigateTo('home', e)} aria-label="Veltrix Hub home">
-            <span className="brand__monogram" aria-hidden="true">A</span>
+            <span className="brand__monogram" aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 3v18M3 7l4 8M17 7l4 8M2 15h6M16 15h6M8 3h8" />
+              </svg>
+            </span>
             <span className="brand__name">
               VELTRIX HUB
               <span>PERSONAL INJURY COUNSEL</span>
@@ -276,24 +280,31 @@ export default function PersonalInjury() {
             <div className="hero__copy">
               <h1 id="hero-title">
                 When life takes<br />an unexpected turn,<br />
-                <em>you deserve a voice.</em>
+                <em>we stand with you.</em>
               </h1>
               <p className="hero__intro">
-                One attorney. One relationship. Steady, personal guidance for people navigating the aftermath of a serious injury.
+                Recovering from an accident is exhausting enough. You deserve compassionate listening, prompt answers, and relentless advocacy that treats you like family.
               </p>
               <div className="hero__actions">
-                <a className="button button--gold" href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>
-                  Request a Free Consultation <span aria-hidden="true">↗</span>
+                <a className="button button--gold" href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
+                  Speak with Counsel Directly <span aria-hidden="true">↗</span>
                 </a>
                 <a className="text-link text-link--light" href="#services" onClick={(e) => scrollTo(e, 'services')}>
-                  Explore how I can help <span aria-hidden="true">→</span>
+                  Explore how we help <span aria-hidden="true">→</span>
                 </a>
               </div>
-              <div className="hero__proof">
-                <div className="hero__initials" aria-hidden="true"><span>AM</span></div>
-                <p>
-                  <strong>Direct attorney access</strong><br />
-                  From our first conversation onward
+              <div className="hero__proof" style={{ display: 'flex', alignItems: 'center', gap: '14px', background: 'rgba(15, 23, 42, 0.75)', padding: '12px 18px', borderRadius: '14px', border: '1px solid rgba(212, 163, 89, 0.35)', backdropFilter: 'blur(10px)', maxWidth: '440px' }}>
+                <div style={{ position: 'relative', flexShrink: 0 }}>
+                  <img
+                    src="/demos/personal-injury/images/attorney-portrait.jpg"
+                    alt="Attorney Alex Morgan"
+                    style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #d4a359' }}
+                  />
+                  <span style={{ position: 'absolute', bottom: '1px', right: '1px', width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e', border: '2px solid #0f172a' }} title="Online for consultation"></span>
+                </div>
+                <p style={{ margin: 0, fontSize: '0.92rem', lineHeight: '1.35', color: '#f1f5f9' }}>
+                  <strong style={{ color: '#ffffff', display: 'block' }}>Direct Attorney Guidance</strong>
+                  Direct line to Alex Morgan. No paralegals, no screening runarounds.
                 </p>
               </div>
             </div>
@@ -304,15 +315,29 @@ export default function PersonalInjury() {
         <section className="welcome section-pad" id="welcome">
           <div className="container welcome__grid">
             <div className="welcome__body">
-              <h2>Big moments deserve <em>personal attention.</em></h2>
+              <h2>Every client matters. <em>Every story deserves respect.</em></h2>
               <p className="welcome__lead">
-                An injury can change the rhythm of your life. The legal process shouldn't make you feel like a number, too.
+                An unexpected injury turns everyday life upside down. You should never feel like just another file in a filing cabinet.
               </p>
               <p>
-                At Veltrix Hub, you work directly with dedicated counsel who takes the time to understand your concerns, explain your legal rights, and build a strategic path toward recovery.
+                At Veltrix Hub, we believe effective advocacy begins with genuine human empathy. Lead attorney Alex Morgan works with you directly, listening closely to your fears, protecting your family, and aggressively pursuing the full compensation you need to heal.
               </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '1.5rem', marginBottom: '1.25rem' }}>
+                <a className="button button--gold" href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.4rem' }}>
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.586 1.761.882 2.79.882 3.181 0 5.768-2.587 5.768-5.766.001-3.181-2.585-5.768-5.767-5.768zm0 10.375c-.93 0-1.637-.282-2.399-.738l-.172-.102-1.78.467.475-1.737-.113-.179c-.511-.814-.818-1.597-.818-2.32 0-2.527 2.057-4.584 4.587-4.584 2.527 0 4.584 2.057 4.584 4.584 0 2.527-2.057 4.584-4.584 4.584z"/>
+                  </svg>
+                  Chat with Alex on WhatsApp
+                </a>
+                <a className="button button--outline" href="tel:+2348087098270" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.4rem' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  Call +234 808 709 8270
+                </a>
+              </div>
               <a className="text-link" href="#about" onClick={(e) => scrollTo(e, 'about')}>
-                Meet your attorney <span aria-hidden="true">→</span>
+                Meet Alex Morgan <span aria-hidden="true">→</span>
               </a>
             </div>
             <div className="welcome__stamp" aria-hidden="true">
@@ -542,12 +567,16 @@ export default function PersonalInjury() {
               </p>
               <div className="credential-list">
                 <div>
-                  <span className="credential-list__icon">01</span>
-                  <p><strong>Education</strong><br />Juris Doctor, Atlantic State Law School</p>
+                  <span className="credential-list__icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  </span>
+                  <p><strong>Education & Bar Admittance</strong><br />Juris Doctor, Atlantic State Law School · Nigerian Bar Association</p>
                 </div>
                 <div>
-                  <span className="credential-list__icon">02</span>
-                  <p><strong>Approach</strong><br />Thoughtful preparation, plain-language counsel</p>
+                  <span className="credential-list__icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                  </span>
+                  <p><strong>Human Approach</strong><br />Compassionate preparation, transparent answers, zero intimidation</p>
                 </div>
               </div>
               <a className="button button--outline" href="#consultation" onClick={(e) => scrollTo(e, 'consultation')}>
@@ -564,10 +593,30 @@ export default function PersonalInjury() {
             <h2>You won't have to wonder<br /><em>who's handling your case.</em></h2>
             <p>When you work with our firm, the attorney who listens to your story is the attorney who represents you at every stage.</p>
             <ul className="difference__list">
-              <li><span>01</span><div><strong>Direct communication</strong><p>Speak with the attorney responsible for your matter.</p></div></li>
-              <li><span>02</span><div><strong>Personal attention</strong><p>Your recovery goals and priorities shape our litigation strategy.</p></div></li>
-              <li><span>03</span><div><strong>Clear next steps</strong><p>Always understand upcoming filings, depositions, and timelines.</p></div></li>
-              <li><span>04</span><div><strong>Focused case handling</strong><p>Careful investigation with your individual circumstances in view.</p></div></li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <div><strong>Direct communication</strong><p>Speak with Alex directly. No call screenings, no being passed around.</p></div>
+              </li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </span>
+                <div><strong>Genuine empathy</strong><p>Your physical and emotional recovery guides every legal decision.</p></div>
+              </li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </span>
+                <div><strong>Clear roadmaps</strong><p>Plain-language updates on investigations, medical filings, and settlements.</p></div>
+              </li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
+                <div><strong>Tenacious advocacy</strong><p>Tireless negotiation against big insurers until full justice is served.</p></div>
+              </li>
             </ul>
             <a className="text-link text-link--light" href="#process" onClick={(e) => scrollTo(e, 'process')}>
               See how the process works <span aria-hidden="true">→</span>
@@ -597,10 +646,30 @@ export default function PersonalInjury() {
             <h2>You won't have to wonder<br /><em>who's handling your case.</em></h2>
             <p>When you work with our firm, the attorney who listens to your story is the attorney who represents you at every stage.</p>
             <ul className="difference__list">
-              <li><span>01</span><div><strong>Direct communication</strong><p>Speak with the attorney responsible for your matter.</p></div></li>
-              <li><span>02</span><div><strong>Personal attention</strong><p>Your recovery goals and priorities shape our litigation strategy.</p></div></li>
-              <li><span>03</span><div><strong>Clear next steps</strong><p>Always understand upcoming filings, depositions, and timelines.</p></div></li>
-              <li><span>04</span><div><strong>Focused case handling</strong><p>Careful investigation with your individual circumstances in view.</p></div></li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <div><strong>Direct communication</strong><p>Speak with Alex directly. No call screenings, no being passed around.</p></div>
+              </li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                </span>
+                <div><strong>Genuine empathy</strong><p>Your physical and emotional recovery guides every legal decision.</p></div>
+              </li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                </span>
+                <div><strong>Clear roadmaps</strong><p>Plain-language updates on investigations, medical filings, and settlements.</p></div>
+              </li>
+              <li>
+                <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </span>
+                <div><strong>Tenacious advocacy</strong><p>Tireless negotiation against big insurers until full justice is served.</p></div>
+              </li>
             </ul>
             <a className="text-link text-link--light" href="#process" onClick={(e) => scrollTo(e, 'process')}>
               See how the process works <span aria-hidden="true">→</span>

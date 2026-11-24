@@ -9,11 +9,11 @@ export const DEAL_OF_THE_DAY = {
   rating: 5.0,
   reviewsCount: 310,
   badge: "SAVE ₦500,000 • 6 LEFT",
-  image: "/demos/gadgets/s24-ultra-main.jpg",
+  image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
   gallery: [
-    "/demos/gadgets/s24-ultra-main.jpg",
-    "/demos/gadgets/s24-ultra-angle1.jpg",
-    "/demos/gadgets/s24-ultra-angle2.jpg",
+    "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80",
   ],
   colors: [
     { name: "Titanium Deep Blue", hex: "#1A2E40" },

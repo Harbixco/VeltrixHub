@@ -9,11 +9,11 @@ export const DEAL_OF_THE_DAY = {
   rating: 5.0,
   reviewsCount: 184,
   badge: "LIMITED ATELIER DEAL",
-  image: "/demos/fashion/senator/senator-4.jpg",
+  image: "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=800&q=80",
   gallery: [
-    "/demos/fashion/senator/senator-4.jpg",
-    "/demos/fashion/senator/senator-35.jpg",
-    "/demos/fashion/senator/senator-36.jpg",
+    "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
   ],
   colors: [
     { name: "Royal Navy Blue", hex: "#122038" },

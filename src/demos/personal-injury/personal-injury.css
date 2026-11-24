@@ -69,7 +69,7 @@
 .personal-injury-demo .hero__slides, .personal-injury-demo .hero__overlay { position: absolute; inset: 0; }
 .personal-injury-demo .hero__slide { position: absolute; inset: 0; background-image: var(--hero-image); background-position: center 38%; background-size: cover; opacity: 0; transform: translateX(3%) scale(1.035); transition: opacity 1.2s ease, transform 7s ease; }
 .personal-injury-demo .hero__slide.is-active { opacity: 1; transform: translateX(0) scale(1); }
-.personal-injury-demo .hero__overlay { background: linear-gradient(90deg, rgba(10,20,30,.91) 0%, rgba(11,21,31,.81) 39%, rgba(11,21,31,.32) 76%, rgba(11,21,31,.1) 100%), linear-gradient(0deg, rgba(8,16,24,.35), transparent 34%); }
+.personal-injury-demo .hero__overlay { background: linear-gradient(90deg, rgba(10,20,30,0.65) 0%, rgba(11,21,31,0.45) 50%, rgba(11,21,31,0.15) 100%), linear-gradient(0deg, rgba(8,16,24,0.3), transparent 40%); }
 .personal-injury-demo .hero__content { position: relative; z-index: 1; display: flex; min-height: inherit; flex-direction: column; justify-content: center; padding-top: 42px; padding-bottom: 64px; }
 .personal-injury-demo .hero__copy { max-width: 695px; }
 .personal-injury-demo .eyebrow { display: flex; align-items: center; gap: 11px; margin: 0 0 20px; color: #8d744c; font-size: 0.8125rem; font-weight: 700; letter-spacing: .17em; line-height: 1.4; text-transform: uppercase; }
@@ -383,7 +383,7 @@
 }
 .personal-injury-demo .hero { min-height: 700px; min-height: min(740px, calc(100svh - 137px)); }
 .personal-injury-demo .hero__content { padding-top: 20px; padding-bottom: 79px; }
-.personal-injury-demo .hero__overlay { background: linear-gradient(90deg, rgba(10,20,30,.89), rgba(11,21,31,.57)), linear-gradient(0deg, rgba(8,16,24,.55), transparent 55%); }
+.personal-injury-demo .hero__overlay { background: linear-gradient(90deg, rgba(10,20,30,0.65), rgba(11,21,31,0.4)), linear-gradient(0deg, rgba(8,16,24,0.35), transparent 45%); }
 .personal-injury-demo .hero__slide { background-position: 58% center; }
 .personal-injury-demo .hero h1 { font-size: clamp(44px, 11vw, 68px); }
 .personal-injury-demo .hero__intro { max-width: 440px; font-size: 1.125rem; }

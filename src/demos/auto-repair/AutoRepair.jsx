@@ -252,13 +252,7 @@ export default function AutoRepair() {
           </div>
           <div className="hero__shade"></div>
 
-          <div className="hero__content container">
-            <h1>
-              Confidence in<br />every <em>mile.</em>
-            </h1>
-            <p>
-              Thoughtful people. Clear answers. Expert auto care that gets you back to what matters.
-            </p>
+          <div className="hero__content container" style={{ justifyContent: 'flex-end', paddingBottom: '3.5rem' }}>
             <div className="hero__actions">
               <a className="button button--accent" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
                 Schedule your visit <span aria-hidden="true">↗</span>
@@ -266,10 +260,6 @@ export default function AutoRepair() {
               <a className="text-link text-link--light" href="#services" onClick={(e) => scrollToSection(e, 'services')}>
                 Explore our services <span aria-hidden="true">↓</span>
               </a>
-            </div>
-            <div className="hero__proof">
-              <span className="proof-stars" aria-label="Five out of five stars">★★★★★</span>
-              <span>Care that keeps you moving</span>
             </div>
           </div>
 
@@ -457,6 +447,66 @@ export default function AutoRepair() {
               <a className="text-link" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
                 Tell us what's going on <span aria-hidden="true">↗</span>
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── WORKSHOP & DIAGNOSTICS VISUAL GALLERY ── */}
+        <section className="section" style={{ background: '#0e1724', padding: '4.5rem 0', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="container">
+            <div className="section-heading section-heading--split reveal" style={{ marginBottom: '2.5rem' }}>
+              <div>
+                <span style={{ color: '#f59e0b', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Facility & Equipment</span>
+                <h2 style={{ color: '#ffffff', marginTop: '0.35rem' }}>
+                  State-of-the-art bays.<br /><em>Certified hands.</em>
+                </h2>
+              </div>
+              <p style={{ color: '#94a3b8' }}>
+                Take an inside look at our modern diagnostics facility, certified mechanics, and specialized automotive tooling in active service.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              {[
+                {
+                  img: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80',
+                  title: 'Computer Diagnostics & ECU Analysis',
+                  tag: 'Diagnostics Bay'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
+                  title: 'Brake Disc & Hydraulic Calipers',
+                  tag: 'Safety Systems'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80',
+                  title: 'Laser Wheel Alignment & Balance',
+                  tag: 'Suspension'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=800&q=80',
+                  title: 'Certified Engine Overhauls & Tuning',
+                  tag: 'Powertrain'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+                  title: 'European & Luxury Sports Servicing',
+                  tag: 'Performance'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80',
+                  title: 'Multi-Point Inspection & Final Signoff',
+                  tag: 'Quality Control'
+                }
+              ].map((item, idx) => (
+                <div key={idx} style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '240px', boxShadow: '0 10px 25px rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <img src={item.img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} loading="lazy" />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(10,17,28,0.92) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1.25rem' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#f59e0b', marginBottom: '0.25rem' }}>{item.tag}</span>
+                    <strong style={{ color: '#ffffff', fontSize: '0.95rem', fontWeight: 700 }}>{item.title}</strong>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -750,6 +800,66 @@ export default function AutoRepair() {
               <a className="text-link" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
                 Tell us what's going on <span aria-hidden="true">↗</span>
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── WORKSHOP & DIAGNOSTICS VISUAL GALLERY ── */}
+        <section className="section" style={{ background: '#0e1724', padding: '4.5rem 0', borderTop: '1px solid rgba(255,255,255,0.08)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="container">
+            <div className="section-heading section-heading--split reveal" style={{ marginBottom: '2.5rem' }}>
+              <div>
+                <span style={{ color: '#f59e0b', fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em' }}>Facility & Equipment</span>
+                <h2 style={{ color: '#ffffff', marginTop: '0.35rem' }}>
+                  State-of-the-art bays.<br /><em>Certified hands.</em>
+                </h2>
+              </div>
+              <p style={{ color: '#94a3b8' }}>
+                Take an inside look at our modern diagnostics facility, certified mechanics, and specialized automotive tooling in active service.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              {[
+                {
+                  img: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80',
+                  title: 'Computer Diagnostics & ECU Analysis',
+                  tag: 'Diagnostics Bay'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
+                  title: 'Brake Disc & Hydraulic Calipers',
+                  tag: 'Safety Systems'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80',
+                  title: 'Laser Wheel Alignment & Balance',
+                  tag: 'Suspension'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1615906655593-ad0386982a0f?auto=format&fit=crop&w=800&q=80',
+                  title: 'Certified Engine Overhauls & Tuning',
+                  tag: 'Powertrain'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
+                  title: 'European & Luxury Sports Servicing',
+                  tag: 'Performance'
+                },
+                {
+                  img: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80',
+                  title: 'Multi-Point Inspection & Final Signoff',
+                  tag: 'Quality Control'
+                }
+              ].map((item, idx) => (
+                <div key={idx} style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', height: '240px', boxShadow: '0 10px 25px rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <img src={item.img} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s ease' }} loading="lazy" />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(10,17,28,0.92) 100%)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1.25rem' }}>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#f59e0b', marginBottom: '0.25rem' }}>{item.tag}</span>
+                    <strong style={{ color: '#ffffff', fontSize: '0.95rem', fontWeight: 700 }}>{item.title}</strong>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

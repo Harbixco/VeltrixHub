@@ -20,7 +20,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "2026",
     badgeFoot: "EDITION",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/hero-desk-pro.jpg",
+    image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=1200&q=80",
     alt: "Pro Laptop and Phones Workstation",
   },
   {
@@ -35,7 +35,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "₦150K",
     badgeFoot: "TODAY",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/macbook-air-m3.jpg",
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
     alt: "Pro Laptops and Workstations",
   },
   {
@@ -50,7 +50,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "25%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/s24-ultra-main.jpg",
+    image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
     alt: "Flagship 5G Smartphones",
   },
   {
@@ -65,7 +65,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "DEAL",
     badgeFoot: "LIMITED",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/gadget-4.jpg",
+    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
     alt: "Laptop and Smartphone Setup",
   },
   {
@@ -80,7 +80,7 @@ export const HERO_SLIDES = [
     badgeHighlight: "20%",
     badgeFoot: "OFF",
     ctaText: "SHOP NOW",
-    image: "/demos/gadgets/iphone-15-pro-max.jpg",
+    image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     alt: "Flagship Mobile Devices",
   },
 ];
@@ -91,31 +91,31 @@ export const CATEGORIES = [
     "id": "smartphones",
     "name": "Smartphones",
     "count": "48+ Models",
-    "image": "/demos/gadgets/iphone-15-pro-max.jpg"
+    "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": "laptops",
     "name": "Laptops & MacBooks",
     "count": "32+ Models",
-    "image": "/demos/gadgets/macbook-air-m3.jpg"
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": "earpods",
     "name": "Earpods & Audio",
     "count": "24+ Models",
-    "image": "/demos/gadgets/airpods-pro-2.jpg"
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": "powerbanks",
     "name": "Powerbanks & Charging",
     "count": "18+ Models",
-    "image": "/demos/gadgets/powerbank-1.jpg"
+    "image": "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80"
   },
   {
     "id": "smartwatches",
     "name": "Smartwatches",
     "count": "20+ Models",
-    "image": "/demos/gadgets/smartwatch-flatlay.jpg"
+    "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
@@ -124,31 +124,31 @@ export const TOP_BRANDS_DEALS = [
     brand: "Apple",
     logoText: "Apple",
     phoneName: "iPhone 15 Pro Max",
-    image: "/demos/gadgets/iphone-15-pro-max.jpg",
+    image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
   },
   {
     brand: "Samsung",
     logoText: "SAMSUNG",
     phoneName: "Galaxy S24 Ultra",
-    image: "/demos/gadgets/s24-ultra-main.jpg",
+    image: "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
   },
   {
     brand: "OnePlus",
     logoText: "ONEPLUS",
     phoneName: "OnePlus 12",
-    image: "/demos/gadgets/oneplus-12.jpg",
+    image: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
   },
   {
     brand: "Xiaomi",
     logoText: "Xiaomi",
     phoneName: "Xiaomi 14 Ultra",
-    image: "/demos/gadgets/xiaomi-14-ultra.jpg",
+    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
   },
   {
     brand: "Google",
     logoText: "Google",
     phoneName: "Pixel 8 Pro",
-    image: "/demos/gadgets/pixel-8-pro.jpg",
+    image: "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -167,11 +167,11 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 194,
     "stockCount": 5,
     "inStock": true,
-    "image": "/demos/gadgets/s24-ultra-main.jpg",
+    "image": "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/s24-ultra-main.jpg",
-      "/demos/gadgets/s24-ultra-angle1.jpg",
-      "/demos/gadgets/s24-ultra-angle2.jpg"
+      "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Titanium Armor Frame & Corning Gorilla Armor",
     "battery": "5000 mAh (45W Fast Charging)",
@@ -214,10 +214,10 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 218,
     "stockCount": 6,
     "inStock": true,
-    "image": "/demos/gadgets/iphone-15-pro-max.jpg",
+    "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/iphone-15-pro-max.jpg",
-      "/demos/gadgets/gadget-4.jpg"
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Grade 5 Titanium & Ceramic Shield",
     "battery": "4422 mAh (Up to 29 hrs video)",
@@ -260,9 +260,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 98,
     "stockCount": 8,
     "inStock": true,
-    "image": "/demos/gadgets/oneplus-12.jpg",
+    "image": "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/oneplus-12.jpg"
+      "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Aluminum Frame & 3D Curved Emerald Glass",
     "battery": "5400 mAh (100W SUPERVOOC Charge)",
@@ -296,9 +296,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 110,
     "stockCount": 4,
     "inStock": true,
-    "image": "/demos/gadgets/xiaomi-14-ultra.jpg",
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/xiaomi-14-ultra.jpg"
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Xiaomi Shield Glass & Nano-Tech Vegan Leather",
     "battery": "5000 mAh (90W HyperCharge)",
@@ -332,11 +332,11 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 215,
     "stockCount": 4,
     "inStock": true,
-    "image": "/demos/gadgets/gadget-7.jpg",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/gadget-7.jpg",
-      "/demos/gadgets/gadget-1.jpg",
-      "/demos/gadgets/gadget-2.jpg"
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "100% Recycled Aluminum Enclosure",
     "battery": "100Wh (Up to 22 hrs battery)",
@@ -371,9 +371,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 138,
     "stockCount": 5,
     "inStock": true,
-    "image": "/demos/gadgets/dell-xps-15.jpg",
+    "image": "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/dell-xps-15.jpg"
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "CNC Machined Aluminum & Carbon Fiber",
     "battery": "86Wh (Up to 13 hrs)",
@@ -403,9 +403,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 92,
     "stockCount": 6,
     "inStock": true,
-    "image": "/demos/gadgets/hp-spectre-x360.jpg",
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/hp-spectre-x360.jpg"
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Gem-Cut Aluminum Chassis",
     "battery": "68Wh (Up to 16 hrs)",
@@ -439,10 +439,10 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 240,
     "stockCount": 8,
     "inStock": true,
-    "image": "/demos/gadgets/macbook-air-m3.jpg",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/macbook-air-m3.jpg",
-      "/demos/gadgets/gadget-4.jpg"
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Unibody Recycled Aluminum",
     "battery": "66.5Wh (Up to 18 hrs battery)",
@@ -480,9 +480,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 280,
     "stockCount": 12,
     "inStock": true,
-    "image": "/demos/gadgets/airpods-pro-2.jpg",
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/airpods-pro-2.jpg"
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Gloss White Case with Lanyard Loop",
     "battery": "Up to 30 hours total with Case",
@@ -511,9 +511,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 165,
     "stockCount": 7,
     "inStock": true,
-    "image": "/demos/gadgets/sony-headphones.jpg",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/sony-headphones.jpg"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Soft Fit Leather & Stepless Slider",
     "battery": "30-Hour Playtime with Fast Charge",
@@ -546,11 +546,11 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 142,
     "stockCount": 8,
     "inStock": true,
-    "image": "/demos/gadgets/powerbank-1.jpg",
+    "image": "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/powerbank-1.jpg",
-      "/demos/gadgets/powerbank-2.jpg",
-      "/demos/gadgets/powerbank-3.jpg"
+      "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Fire-Proof Polycarbonate & Aluminum Core",
     "battery": "24,000 mAh (140W Two-Way Fast Charge)",
@@ -579,11 +579,11 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 188,
     "stockCount": 15,
     "inStock": true,
-    "image": "/demos/gadgets/powerbank-4.jpg",
+    "image": "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/powerbank-4.jpg",
-      "/demos/gadgets/powerbank-5.jpg",
-      "/demos/gadgets/powerbank-6.jpg"
+      "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1609592424369-1c9f80a42702?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Matte Anti-Scratch PC+ABS Alloy",
     "battery": "30,000 mAh (65W Type-C Max Output)",
@@ -616,9 +616,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 96,
     "stockCount": 4,
     "inStock": true,
-    "image": "/demos/gadgets/apple-watch-ultra.jpg",
+    "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/apple-watch-ultra.jpg"
+      "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "49mm Aerospace Titanium Case & Sapphire Glass",
     "battery": "Up to 72 hours in Low Power Mode",
@@ -647,9 +647,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 84,
     "stockCount": 6,
     "inStock": true,
-    "image": "/demos/gadgets/smartwatch-2.jpg",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/smartwatch-2.jpg"
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Stainless Steel & Rotating Physical Bezel",
     "battery": "425 mAh (Fast Wireless Charging)",
@@ -682,9 +682,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 88,
     "stockCount": 7,
     "inStock": true,
-    "image": "/demos/gadgets/pixel-8-pro.jpg",
+    "image": "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/pixel-8-pro.jpg"
+      "https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Polished Aluminum & Matte Glass Back",
     "battery": "5050 mAh (30W Fast Charging)",
@@ -718,9 +718,9 @@ export const POPULAR_PRODUCTS = [
     "reviewsCount": 76,
     "stockCount": 3,
     "inStock": true,
-    "image": "/demos/gadgets/galaxy-z-fold-5.jpg",
+    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "/demos/gadgets/galaxy-z-fold-5.jpg"
+      "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80"
     ],
     "material": "Armor Aluminum & Zero-Gap Flex Hinge",
     "battery": "4400 mAh (25W Fast Charge)",

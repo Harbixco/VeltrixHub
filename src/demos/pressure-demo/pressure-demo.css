@@ -1694,6 +1694,7 @@
 }
 
 .pressure-demo-demo .faq-item.active .faq-content {
+  max-height: 500px !important;
   padding-bottom: 1.5rem;
 }
 

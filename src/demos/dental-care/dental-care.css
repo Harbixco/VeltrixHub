@@ -203,8 +203,8 @@
 .dental-care-demo .tech-feature-item p { margin: 0; color: var(--slate); font-size: 0.9375rem; line-height: 1.7; }
 
 /* Reviews */
-.dental-care-demo .reviews-section { padding: 88px 0 95px; }
-.dental-care-demo .reviews-heading { margin-bottom: 32px; }
+.dental-care-demo .reviews-section { padding: 2.75rem 0 3rem; }
+.dental-care-demo .reviews-heading { margin-bottom: 24px; }
 .dental-care-demo .reviews-rating { display: grid; grid-template-columns: auto auto; column-gap: 8px; align-items: center; }
 .dental-care-demo .rating-stars { color: #d9a14d; font-size: 12px; letter-spacing: 2px; }
 .dental-care-demo .reviews-rating strong { color: var(--navy); font-size: 19px; }
@@ -287,25 +287,117 @@
 .dental-care-demo .footer-bottom a i { margin-left: 5px; color: #8bd1c7; }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .dental-care-demo .section-wrap { width: calc(100% - 40px); }
-  .dental-care-demo .nav-container { width: calc(100% - 40px); min-height: 70px; }
-  .dental-care-demo .menu-toggle { display: flex; width: 42px; height: 42px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 3px; background: var(--white); cursor: pointer; }
-  .dental-care-demo .menu-toggle span { display: block; width: 18px; height: 1.5px; background: var(--navy); transition: transform .2s ease; }
-  .dental-care-demo .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
-  .dental-care-demo .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
+@media (max-width: 1024px) {
+  .dental-care-demo .section-wrap { width: calc(100% - 32px); }
+  .dental-care-demo .nav-container { width: calc(100% - 32px); min-height: 68px; }
 
-  .dental-care-demo .nav-links { position: absolute; top: calc(100% - 1px); right: 0; left: 0; display: none; padding: 10px 22px 22px; flex-direction: column; align-items: stretch; gap: 0; background: var(--white); border-bottom: 1px solid var(--line); box-shadow: 0 16px 26px rgba(11, 25, 44, .08); }
-  .dental-care-demo .nav-links.active { display: flex; }
-  .dental-care-demo .nav-links > a:not(.button) { padding: 12px 2px; border-bottom: 1px solid #eff1f3; color: var(--navy); font-size: 15px; font-weight: 500; }
-  .dental-care-demo .nav-links .button { margin-top: 12px; }
-  .dental-care-demo .hero { grid-template-columns: 1fr; gap: 32px; padding-top: 50px; }
-  .dental-care-demo .about-section { grid-template-columns: 1fr; gap: 35px; padding-top: 60px; padding-bottom: 60px; }
+  /* Enforce visible hamburger toggle */
+  .dental-care-demo .menu-toggle,
+  .dental-care-demo .mobile-toggle,
+  .nav-toggle,
+  .menu-toggle {
+    display: flex !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    border: 1.5px solid #0f172a !important;
+    border-radius: 6px !important;
+    background: rgba(15, 23, 42, 0.06) !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    z-index: 1000 !important;
+    margin-left: auto !important;
+  }
+
+  .dental-care-demo .menu-toggle span,
+  .dental-care-demo .mobile-toggle span,
+  .nav-toggle span,
+  .menu-toggle span {
+    display: block !important;
+    width: 22px !important;
+    height: 2.5px !important;
+    background: #0f172a !important;
+    border-radius: 2px !important;
+    transition: transform 0.25s ease, opacity 0.2s ease !important;
+  }
+
+  .dental-care-demo .menu-toggle.active span:first-child,
+  .dental-care-demo .mobile-toggle.active span:first-child,
+  .menu-toggle.active span:first-child,
+  .menu-toggle.is-open span:first-child {
+    transform: translateY(7.5px) rotate(45deg) !important;
+  }
+
+  .dental-care-demo .menu-toggle.active span:nth-child(2),
+  .dental-care-demo .mobile-toggle.active span:nth-child(2),
+  .menu-toggle.active span:nth-child(2),
+  .menu-toggle.is-open span:nth-child(2) {
+    opacity: 0 !important;
+  }
+
+  .dental-care-demo .menu-toggle.active span:last-child,
+  .dental-care-demo .mobile-toggle.active span:last-child,
+  .menu-toggle.active span:last-child,
+  .menu-toggle.is-open span:last-child {
+    transform: translateY(-7.5px) rotate(-45deg) !important;
+  }
+
+  .dental-care-demo .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(340px, 85vw);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 24px 20px;
+    background: #ffffff !important;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+    border-left: 1px solid rgba(15, 23, 42, 0.1);
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dental-care-demo .nav-links.active {
+    transform: translateX(0);
+  }
+
+  .dental-care-demo .nav-links > a:not(.button) {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eff1f3;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .dental-care-demo .nav-links .button {
+    margin-top: auto;
+  }
+
+  /* Tightened mobile padding before and after reviews */
+  .dental-care-demo .services {
+    padding: 2rem 0 1rem !important;
+  }
+  .dental-care-demo .reviews-section {
+    padding: 1rem 0 1.5rem !important;
+  }
+  .dental-care-demo .reviews-heading {
+    margin-bottom: 1rem !important;
+  }
+
+  .dental-care-demo .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 30px; }
+  .dental-care-demo .about-section { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; padding-bottom: 40px; }
   .dental-care-demo .services-grid { grid-template-columns: 1fr; }
-  .dental-care-demo .technology-section { grid-template-columns: 1fr; gap: 35px; padding-top: 60px; padding-bottom: 60px; }
-  .dental-care-demo .reviews-grid { grid-template-columns: 1fr; }
-  .dental-care-demo .contact-panel { grid-template-columns: 1fr; padding: 30px 20px; gap: 30px; }
-  .dental-care-demo .footer-content { grid-template-columns: 1fr; gap: 30px; }
+  .dental-care-demo .technology-section { grid-template-columns: 1fr; gap: 28px; padding-top: 40px; padding-bottom: 40px; }
+  .dental-care-demo .reviews-grid { grid-template-columns: 1fr; gap: 14px; }
+  .dental-care-demo .contact-panel { grid-template-columns: 1fr; padding: 24px 18px; gap: 24px; }
+  .dental-care-demo .footer-content { grid-template-columns: 1fr; gap: 24px; }
 }
 
 
