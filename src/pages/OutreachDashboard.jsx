@@ -37,6 +37,7 @@ import {
   MessageSquare,
   Phone,
   Inbox,
+  Square,
   LogOut
 } from "lucide-react";
 
@@ -260,6 +261,7 @@ export default function OutreachDashboard() {
     isCompleted: false,
   });
   const logTerminalRef = useRef(null);
+  const dispatchStopRef = useRef(false);
 
   // Inbound Responses State
   const [responses, setResponses] = useState([]);
@@ -491,33 +493,138 @@ export default function OutreachDashboard() {
     }
   };
 
-  // Handle Outreach Pitch Dispatch
-  const handleStartDispatch = async (mode = "send") => {
-    if (isDispatching) return;
-    setIsDispatching(true);
-    setDispatchAlert(null);
-
+  // Stop Active Pitch Dispatch Engine
+  const handleStopDispatch = async () => {
+    dispatchStopRef.current = true;
+    setDispatchRunning(false);
+    setIsDispatching(false);
     try {
-      const res = await fetch(getApiUrl("/api/dispatch"), {
+      await fetch(getApiUrl("/api/dispatch"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mode }),
+        body: JSON.stringify({ mode: "stop" }),
       });
+      setDispatchAlert({
+        type: "success",
+        message: "Outreach dispatch paused successfully.",
+      });
+      await fetchDispatchStatus();
+      await fetchLeads();
+    } catch (err) {
+      console.warn("Notice stopping dispatch:", err);
+    }
+  };
 
-      const data = await res.json();
+  // Handle Outreach Pitch Dispatch with Continuous Streaming
+  const handleStartDispatch = async (mode = "send") => {
+    if (isDispatching || dispatchRunning) return;
+    setIsDispatching(true);
+    setDispatchAlert(null);
+    dispatchStopRef.current = false;
 
-      if (data.success) {
-        setDispatchRunning(true);
-        setDispatchAlert({
-          type: "success",
-          message: data.message || `Outreach engine active in ${mode} mode. Live progress streaming below.`,
+    // Mode 1: Dry Run (Simulation)
+    if (mode === "dry-run") {
+      try {
+        const res = await fetch(getApiUrl("/api/dispatch"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ mode: "dry-run" }),
         });
-        await fetchDispatchStatus();
-      } else {
+        const data = await res.json();
+        if (data.success) {
+          setDispatchAlert({
+            type: "success",
+            message: `Simulation complete: ${data.previews?.length || 3} sample emails generated with live tracking links.`,
+          });
+          if (Array.isArray(data.previews)) {
+            const formatted = data.previews.map(
+              (p, i) =>
+                `[SAMPLE ${i + 1}] To: ${p.recipient}\nSubject: ${p.subject}\nPixel: ${p.trackingPixel}`
+            );
+            setDispatchLogs((prev) => [...prev, ...formatted]);
+          }
+          await fetchDispatchStatus();
+        } else {
+          setDispatchAlert({
+            type: "error",
+            message: data.error || "Simulation encountered an error.",
+          });
+        }
+      } catch (err) {
         setDispatchAlert({
           type: "error",
-          message: data.error || "Failed to launch outreach engine.",
+          message: `Simulation error: ${err.message}`,
         });
+      } finally {
+        setIsDispatching(false);
+      }
+      return;
+    }
+
+    // Mode 2: Live Send & Follow-ups Continuous Engine
+    setDispatchRunning(true);
+    setIsDispatching(false);
+
+    try {
+      let isRunning = true;
+      let totalDispatched = 0;
+
+      while (isRunning && !dispatchStopRef.current) {
+        const res = await fetch(getApiUrl("/api/dispatch"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            mode,
+            batchSize: 3,
+            niche: selectedNiche === "all" ? null : selectedNiche,
+          }),
+        });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || `Server returned ${res.status}`);
+        }
+
+        const data = await res.json();
+        if (data.success) {
+          const batchCount = data.dispatched?.length || 0;
+          totalDispatched += batchCount;
+
+          if (data.progress) {
+            setDispatchProgress((prev) => ({
+              ...prev,
+              ...data.progress,
+              isCompleted: Boolean(data.isCompleted),
+            }));
+          }
+
+          await fetchDispatchStatus();
+          await fetchLeads();
+
+          if (data.isDailyLimitReached) {
+            setDispatchAlert({
+              type: "success",
+              message:
+                "Daily safety limit of 75 emails reached for today across all 3 Zoho mailboxes.",
+            });
+            isRunning = false;
+            break;
+          }
+
+          if (data.isCompleted || !data.isRunning) {
+            setDispatchAlert({
+              type: "success",
+              message: `Dispatch finished! Successfully delivered ${totalDispatched} pitches across rotating mailboxes.`,
+            });
+            isRunning = false;
+            break;
+          }
+
+          // Delay 2 seconds between batch calls to maintain clean human rhythm
+          await new Promise((r) => setTimeout(r, 2000));
+        } else {
+          throw new Error(data.error || "Failed to process dispatch batch.");
+        }
       }
     } catch (err) {
       setDispatchAlert({
@@ -525,7 +632,10 @@ export default function OutreachDashboard() {
         message: `Dispatch error: ${err.message}`,
       });
     } finally {
+      setDispatchRunning(false);
       setIsDispatching(false);
+      await fetchDispatchStatus();
+      await fetchLeads();
     }
   };
 
@@ -941,7 +1051,7 @@ export default function OutreachDashboard() {
                 onClick={() => handleStartDispatch("dry-run")}
                 disabled={isDispatching || dispatchRunning}
                 className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold border transition ${
-                  dispatchRunning
+                  dispatchRunning || isDispatching
                     ? "bg-slate-800/40 border-slate-700/40 text-slate-500 cursor-not-allowed"
                     : "bg-slate-800 hover:bg-slate-700 text-slate-200 border-slate-700 active:scale-95"
                 }`}
@@ -951,20 +1061,39 @@ export default function OutreachDashboard() {
                 <span>Simulate Run (Dry-Run)</span>
               </button>
 
+              {/* Stop Dispatch Button (Visible when Running) */}
+              {dispatchRunning && (
+                <button
+                  onClick={handleStopDispatch}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold text-rose-200 bg-rose-950/80 hover:bg-rose-900 border border-rose-600/60 transition shadow-lg active:scale-95"
+                  title="Pause current dispatch loop safely"
+                >
+                  <Square className="w-3.5 h-3.5 fill-rose-300 text-rose-300" />
+                  <span>Stop Dispatch</span>
+                </button>
+              )}
+
               {/* Live Send Button */}
               <button
                 onClick={() => handleStartDispatch("send")}
                 disabled={isDispatching || dispatchRunning}
                 className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-white transition shadow-lg ${
                   dispatchRunning
-                    ? "bg-emerald-600/60 cursor-not-allowed"
+                    ? "bg-emerald-600 border border-emerald-400/50 shadow-emerald-600/40 cursor-not-allowed"
+                    : isDispatching
+                    ? "bg-emerald-700/80 cursor-wait"
                     : "bg-emerald-600 hover:bg-emerald-500 shadow-emerald-600/30 active:scale-95"
                 }`}
               >
                 {dispatchRunning ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-white" />
-                    <span>Dispatch Engine Running...</span>
+                    <span>Dispatch Engine Active ({dispatchProgress.sentToday || 0} / 75 Sent)</span>
+                  </>
+                ) : isDispatching ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin text-white" />
+                    <span>Launching Engine...</span>
                   </>
                 ) : (
                   <>
@@ -975,6 +1104,47 @@ export default function OutreachDashboard() {
               </button>
             </div>
           </div>
+
+          {/* Prominent Live Alert directly under buttons for Instant Mobile Visibility */}
+          {dispatchAlert && (
+            <div
+              className={`mt-4 p-3.5 rounded-xl border flex items-center justify-between text-xs transition shadow-lg ${
+                dispatchAlert.type === "success"
+                  ? "bg-emerald-950/80 border-emerald-600/70 text-emerald-200"
+                  : "bg-rose-950/80 border-rose-600/70 text-rose-200"
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                {dispatchAlert.type === "success" ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                ) : (
+                  <AlertCircle className="w-4 h-4 text-rose-400 shrink-0" />
+                )}
+                <span className="font-medium">{dispatchAlert.message}</span>
+              </div>
+              <button
+                onClick={() => setDispatchAlert(null)}
+                className="text-slate-400 hover:text-white p-1 ml-2 shrink-0"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+
+          {/* Live Dispatch Status Strip */}
+          {dispatchRunning && (
+            <div className="mt-4 p-3 rounded-xl bg-slate-950/90 border border-emerald-500/40 flex items-center justify-between text-xs text-emerald-200">
+              <div className="flex items-center gap-2">
+                <Radio className="w-4 h-4 text-emerald-400 animate-pulse shrink-0" />
+                <span className="truncate">
+                  {dispatchProgress.statusDetail || "Connecting to Zoho SMTP across Kayode, Christopher & William..."}
+                </span>
+              </div>
+              <span className="text-[11px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30 shrink-0 ml-2">
+                {dispatchProgress.sentToday || 0} / 75 Daily Ceil
+              </span>
+            </div>
+          )}
 
           {/* 7-DAY FOLLOW-UP REMINDER BANNER */}
           {dispatchProgress.followUpDue > 0 && (
