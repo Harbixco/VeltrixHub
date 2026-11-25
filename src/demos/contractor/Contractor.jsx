@@ -217,14 +217,14 @@ export default function Contractor() {
       {/* Section Header Banner */}
       {currentView !== 'home' && (
         <section className="view-page-banner" style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-          padding: '2.25rem 1.5rem',
-          color: '#ffffff',
+          background: 'linear-gradient(135deg, #F8FAFC 0%, #EDF2F7 100%)',
+          padding: '2.5rem 1.5rem',
+          color: '#0F172A',
           textAlign: 'center',
-          borderBottom: '1px solid rgba(255,255,255,0.08)'
+          borderBottom: '1px solid #E2E8F0'
         }}>
           <div style={{ maxWidth: '850px', margin: '0 auto' }}>
-            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#0F172A' }}>
               {currentView === 'services' && 'General Contracting & Remodeling Services'}
               {currentView === 'about' && 'About Veltrix Hub Construction'}
               {(currentView === 'why-us' || currentView === 'difference' || currentView === 'technology') && 'Why Homeowners Choose Veltrix Hub Construction'}
@@ -233,7 +233,7 @@ export default function Contractor() {
               {currentView === 'faq' && 'Frequently Asked Questions'}
               {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && 'Discuss Your Project & Get an Estimate'}
             </h1>
-            </div>
+          </div>
         </section>
       )}
 
@@ -751,7 +751,7 @@ export default function Contractor() {
             <div className="why-heading">
               <h2>Good people.<br /><span>Good building.</span></h2>
               <p>We make the complex feel clear, and the important things stay important.</p>
-              <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+              <a className="button button-gold" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
                 Let's talk about your project <span>↗</span>
               </a>
             </div>
@@ -803,7 +803,7 @@ export default function Contractor() {
             <div className="why-heading">
               <h2>Good people.<br /><span>Good building.</span></h2>
               <p>We make the complex feel clear, and the important things stay important.</p>
-              <a className="button button-outline-light" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
+              <a className="button button-gold" href="#contact" onClick={(e) => scrollTo(e, 'contact')}>
                 Let's talk about your project <span>↗</span>
               </a>
             </div>
