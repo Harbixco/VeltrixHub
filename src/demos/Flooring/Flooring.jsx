@@ -4,6 +4,8 @@ import './flooring.css';
 
 export default function Flooring() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+  const toggleFaq = (idx) => setOpenFaq(prev => prev === idx ? null : idx);
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
@@ -523,42 +525,8 @@ const runInit = () => {
   startAutoplay();
 
   /* ==========================================================================
-     8. FAQ ACCORDION (SMOOTH HEIGHT TOGGLE)
+     8. FAQ ACCORDION - Handled via React state (openFaq / toggleFaq)
      ========================================================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-button');
-    const content = item.querySelector('.faq-content');
-
-    if (button && content) {
-      button.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-
-        // Close others
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-            const otherBtn = otherItem.querySelector('.faq-button');
-            const otherContent = otherItem.querySelector('.faq-content');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-            if (otherContent) otherContent.style.maxHeight = '0px';
-          }
-        });
-
-        // Toggle current
-        if (isActive) {
-          item.classList.remove('active');
-          button.setAttribute('aria-expanded', 'false');
-          content.style.maxHeight = '0px';
-        } else {
-          item.classList.add('active');
-          button.setAttribute('aria-expanded', 'true');
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }
-      });
-    }
-  });
 
   // Open first FAQ item by default
   if (faqItems.length > 0) {
@@ -1868,8 +1836,8 @@ const runInit = () => {
 
         <div className="faq-container reveal stagger-1">
           {/* Item 1 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 0 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 0} onClick={() => toggleFaq(0)}>
               <span>How long does hardwood need to acclimate inside my home?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1881,8 +1849,8 @@ const runInit = () => {
           </div>
 
           {/* Item 2 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 1 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 1} onClick={() => toggleFaq(1)}>
               <span>Can Luxury Vinyl Plank (LVP) be installed in wet areas like basements?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1894,8 +1862,8 @@ const runInit = () => {
           </div>
 
           {/* Item 3 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 2 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 2} onClick={() => toggleFaq(2)}>
               <span>How truly "dustless" is your hardwood sanding and refinishing system?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1907,8 +1875,8 @@ const runInit = () => {
           </div>
 
           {/* Item 4 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 3 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 3} onClick={() => toggleFaq(3)}>
               <span>Do you move furniture and haul away our existing flooring?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1920,8 +1888,8 @@ const runInit = () => {
           </div>
 
           {/* Item 5 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 4 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 4} onClick={() => toggleFaq(4)}>
               <span>What is the difference between solid hardwood and engineered hardwood?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1933,8 +1901,8 @@ const runInit = () => {
           </div>
 
           {/* Item 6 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 5 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 5} onClick={() => toggleFaq(5)}>
               <span>Why is subfloor leveling so critical for wide-plank and LVP floors?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1946,8 +1914,8 @@ const runInit = () => {
           </div>
 
           {/* Item 7 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 6 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 6} onClick={() => toggleFaq(6)}>
               <span>How do I schedule an in-home estimate with your mobile showroom?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>

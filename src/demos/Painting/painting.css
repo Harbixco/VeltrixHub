@@ -1832,11 +1832,15 @@
 .painting-demo .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease;
+  transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.3s ease;
   padding: 0 1.5rem;
+  opacity: 0;
 }
 
-.painting-demo .faq-item.active .faq-answer {
+.painting-demo .faq-item.active .faq-answer,
+.painting-demo .faq-item.is-open .faq-answer {
+  max-height: 600px !important;
+  opacity: 1 !important;
   padding-bottom: 1.5rem;
 }
 

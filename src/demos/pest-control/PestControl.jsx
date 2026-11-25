@@ -4,6 +4,8 @@ import './pest-control.css';
 
 export default function PestControl() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+  const toggleFaq = (idx) => setOpenFaq(prev => prev === idx ? null : idx);
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
@@ -465,42 +467,8 @@ const runInit = () => {
   }
 
   /* ==========================================================================
-     8. FAQ ACCORDION (7 ITEMS)
+     8. FAQ ACCORDION - Handled via React state (openFaq / toggleFaq)
      ========================================================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-button');
-    const content = item.querySelector('.faq-content');
-
-    if (button && content) {
-      button.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-
-        // Close all other items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-            const otherBtn = otherItem.querySelector('.faq-button');
-            const otherContent = otherItem.querySelector('.faq-content');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-            if (otherContent) otherContent.style.maxHeight = null;
-          }
-        });
-
-        // Toggle current item
-        if (isOpen) {
-          item.classList.remove('active');
-          button.setAttribute('aria-expanded', 'false');
-          content.style.maxHeight = null;
-        } else {
-          item.classList.add('active');
-          button.setAttribute('aria-expanded', 'true');
-          content.style.maxHeight = content.scrollHeight + 32 + 'px';
-        }
-      });
-    }
-  });
 
   /* ==========================================================================
      9. INSPECTION REQUEST FORM VALIDATION & WHATSAPP GENERATION
@@ -1805,8 +1773,8 @@ const runInit = () => {
         <div className="faq-container">
           
           {/* Question 1 */}
-          <div className="faq-item reveal">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 0 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 0} onClick={() => toggleFaq(0)}>
               <span>What types of pests does Veltrix Hub treat?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1820,8 +1788,8 @@ const runInit = () => {
           </div>
 
           {/* Question 2 */}
-          <div className="faq-item reveal stagger-1">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 1 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 1} onClick={() => toggleFaq(1)}>
               <span>Are your pest control treatments safe for pets and children?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1835,8 +1803,8 @@ const runInit = () => {
           </div>
 
           {/* Question 3 */}
-          <div className="faq-item reveal stagger-2">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 2 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 2} onClick={() => toggleFaq(2)}>
               <span>What should I do before the technician arrives for an inspection?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1850,8 +1818,8 @@ const runInit = () => {
           </div>
 
           {/* Question 4 */}
-          <div className="faq-item reveal">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 3 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 3} onClick={() => toggleFaq(3)}>
               <span>How quickly can Veltrix Hub respond to an urgent pest situation?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1865,8 +1833,8 @@ const runInit = () => {
           </div>
 
           {/* Question 5 */}
-          <div className="faq-item reveal stagger-1">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 4 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 4} onClick={() => toggleFaq(4)}>
               <span>What is the difference between a one-time treatment and ongoing perimeter protection?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1880,8 +1848,8 @@ const runInit = () => {
           </div>
 
           {/* Question 6 */}
-          <div className="faq-item reveal stagger-2">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 5 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 5} onClick={() => toggleFaq(5)}>
               <span>Do you provide commercial pest management for businesses and food establishments?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -1895,8 +1863,8 @@ const runInit = () => {
           </div>
 
           {/* Question 7 */}
-          <div className="faq-item reveal stagger-3">
-            <button type="button" className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 6 ? 'active is-open' : ''}`}>
+            <button type="button" className="faq-button" aria-expanded={openFaq === 6} onClick={() => toggleFaq(6)}>
               <span>How can I schedule an inspection or request a quote?</span>
               <div className="faq-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

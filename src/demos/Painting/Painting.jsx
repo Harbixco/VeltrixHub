@@ -3,6 +3,8 @@ import DemoTopBar from '../DemoTopBar';
 import './painting.css';
 
 export default function Painting() {
+  const [openFaq, setOpenFaq] = useState(null);
+  const toggleFaq = (idx) => setOpenFaq(prev => prev === idx ? null : idx);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -516,43 +518,7 @@ export default function Painting() {
           startAutoplay();
         }
 
-        /* ==========================================================================
-           10. FAQ ACCORDION
-           ========================================================================== */
-        const faqItems = document.querySelectorAll('.faq-item');
-
-        faqItems.forEach(item => {
-          const button = item.querySelector('.faq-button');
-          const answer = item.querySelector('.faq-answer');
-
-          if (button && answer) {
-            button.addEventListener('click', () => {
-              const isOpen = item.classList.contains('active');
-
-              // Close all other items
-              faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                  otherItem.classList.remove('active');
-                  const otherBtn = otherItem.querySelector('.faq-button');
-                  const otherAns = otherItem.querySelector('.faq-answer');
-                  if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-                  if (otherAns) otherAns.style.maxHeight = null;
-                }
-              });
-
-              // Toggle current item
-              if (isOpen) {
-                item.classList.remove('active');
-                button.setAttribute('aria-expanded', 'false');
-                answer.style.maxHeight = null;
-              } else {
-                item.classList.add('active');
-                button.setAttribute('aria-expanded', 'true');
-                answer.style.maxHeight = `${answer.scrollHeight + 30}px`;
-              }
-            });
-          }
-        });
+        /* FAQ Accordion handled via React state (openFaq / toggleFaq) */
 
         /* ==========================================================================
            11. ESTIMATE REQUEST FORM VALIDATION & WHATSAPP REDIRECT
@@ -1960,8 +1926,8 @@ export default function Painting() {
 
             <div className="faq-container reveal stagger-1">
               {/* FAQ 1 */}
-              <div className="faq-item">
-                <button className="faq-button" aria-expanded="false">
+              <div className={`faq-item ${openFaq === 0 ? 'active is-open' : ''}`}>
+                <button className="faq-button" aria-expanded={openFaq === 0} onClick={() => toggleFaq(0)}>
                   <span>How long does a typical interior or exterior painting project take?</span>
                   <div className="faq-icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1973,8 +1939,8 @@ export default function Painting() {
               </div>
 
               {/* FAQ 2 */}
-              <div className="faq-item">
-                <button className="faq-button" aria-expanded="false">
+              <div className={`faq-item ${openFaq === 1 ? 'active is-open' : ''}`}>
+                <button className="faq-button" aria-expanded={openFaq === 1} onClick={() => toggleFaq(1)}>
                   <span>Do I need to move all of my furniture before your crew arrives?</span>
                   <div className="faq-icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1986,8 +1952,8 @@ export default function Painting() {
               </div>
 
               {/* FAQ 3 */}
-              <div className="faq-item">
-                <button className="faq-button" aria-expanded="false">
+              <div className={`faq-item ${openFaq === 2 ? 'active is-open' : ''}`}>
+                <button className="faq-button" aria-expanded={openFaq === 2} onClick={() => toggleFaq(2)}>
                   <span>What brand and quality level of paint do you use?</span>
                   <div className="faq-icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1999,8 +1965,8 @@ export default function Painting() {
               </div>
 
               {/* FAQ 4 */}
-              <div className="faq-item">
-                <button className="faq-button" aria-expanded="false">
+              <div className={`faq-item ${openFaq === 3 ? 'active is-open' : ''}`}>
+                <button className="faq-button" aria-expanded={openFaq === 3} onClick={() => toggleFaq(3)}>
                   <span>How do you handle kitchen cabinet refinishing?</span>
                   <div className="faq-icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -2012,8 +1978,8 @@ export default function Painting() {
               </div>
 
               {/* FAQ 5 */}
-              <div className="faq-item">
-                <button className="faq-button" aria-expanded="false">
+              <div className={`faq-item ${openFaq === 4 ? 'active is-open' : ''}`}>
+                <button className="faq-button" aria-expanded={openFaq === 4} onClick={() => toggleFaq(4)}>
                   <span>Are your paints safe and low-odor for children and pets?</span>
                   <div className="faq-icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -2025,8 +1991,8 @@ export default function Painting() {
               </div>
 
               {/* FAQ 6 */}
-              <div className="faq-item">
-                <button className="faq-button" aria-expanded="false">
+              <div className={`faq-item ${openFaq === 5 ? 'active is-open' : ''}`}>
+                <button className="faq-button" aria-expanded={openFaq === 5} onClick={() => toggleFaq(5)}>
                   <span>What is covered under your 2-Year Workmanship Warranty?</span>
                   <div className="faq-icon">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>

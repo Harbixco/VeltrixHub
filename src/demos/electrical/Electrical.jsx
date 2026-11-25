@@ -4,6 +4,8 @@ import './electrical.css';
 
 export default function Electrical() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+  const toggleFaq = (idx) => setOpenFaq(prev => prev === idx ? null : idx);
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
       const hash = (window.location.hash || '').replace('#', '').toLowerCase();
@@ -446,40 +448,8 @@ const runInit = () => {
   }
 
   /* ==========================================================================
-     9. FAQ ACCORDION
+     9. FAQ ACCORDION - Handled via React state (openFaq / toggleFaq)
      ========================================================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-button');
-    const answer = item.querySelector('.faq-answer');
-
-    if (button && answer) {
-      button.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-            const otherBtn = otherItem.querySelector('.faq-button');
-            const otherAns = otherItem.querySelector('.faq-answer');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-            if (otherAns) otherAns.style.maxHeight = null;
-          }
-        });
-
-        if (isOpen) {
-          item.classList.remove('active');
-          button.setAttribute('aria-expanded', 'false');
-          answer.style.maxHeight = null;
-        } else {
-          item.classList.add('active');
-          button.setAttribute('aria-expanded', 'true');
-          answer.style.maxHeight = `${answer.scrollHeight + 30}px`;
-        }
-      });
-    }
-  });
 
   /* ==========================================================================
      10. EMERGENCY & ESTIMATE DISPATCH FORM
@@ -1796,8 +1766,8 @@ const runInit = () => {
 
         <div className="faq-container reveal stagger-1">
           {/* FAQ 1 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 0 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 0} onClick={() => toggleFaq(0)}>
               <span>How do I know if my home needs a 200-Amp panel heavy-up?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1809,8 +1779,8 @@ const runInit = () => {
           </div>
 
           {/* FAQ 2 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 1 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 1} onClick={() => toggleFaq(1)}>
               <span>Can my electrical system support a Level 2 EV charging station?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1822,8 +1792,8 @@ const runInit = () => {
           </div>
 
           {/* FAQ 3 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 2 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 2} onClick={() => toggleFaq(2)}>
               <span>What causes circuit breakers to repeatedly trip?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1835,8 +1805,8 @@ const runInit = () => {
           </div>
 
           {/* FAQ 4 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 3 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 3} onClick={() => toggleFaq(3)}>
               <span>What should I do during an urgent electrical emergency?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1848,8 +1818,8 @@ const runInit = () => {
           </div>
 
           {/* FAQ 5 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 4 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 4} onClick={() => toggleFaq(4)}>
               <span>How does an automatic standby generator operate during an outage?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1861,8 +1831,8 @@ const runInit = () => {
           </div>
 
           {/* FAQ 6 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 5 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 5} onClick={() => toggleFaq(5)}>
               <span>Do you pull municipal permits and schedule inspections?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>

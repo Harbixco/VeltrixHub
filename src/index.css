@@ -422,6 +422,27 @@
   visibility: visible !important;
 }
 
+[class*="-demo"] .faq-item .faq-content,
+[class*="-demo"] .faq-item .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+[class*="-demo"] .faq-item.active .faq-content,
+[class*="-demo"] .faq-item.active .faq-answer,
+[class*="-demo"] .faq-item.is-open .faq-content,
+[class*="-demo"] .faq-item.is-open .faq-answer {
+  max-height: 800px !important;
+  opacity: 1 !important;
+}
+
+[class*="-demo"] .faq-item.active .faq-icon,
+[class*="-demo"] .faq-item.is-open .faq-icon {
+  transform: rotate(180deg) !important;
+}
+
 /* Universal Grid Stagger Cascades */
 [class*="-demo"] .services-grid > *:nth-child(1),
 [class*="-demo"] .pf-services-grid > *:nth-child(1),

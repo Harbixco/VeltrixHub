@@ -3,6 +3,8 @@ import DemoTopBar from '../DemoTopBar';
 import './landscaping.css';
 
 export default function Landscaping() {
+  const [openFaq, setOpenFaq] = useState(null);
+  const toggleFaq = (idx) => setOpenFaq(prev => prev === idx ? null : idx);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentView, setCurrentView] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -536,55 +538,7 @@ const runInit = () => {
 
   startAutoplay();
 
-  /* ==========================================================================
-     8. FAQ ACCORDION (SMOOTH HEIGHT TOGGLE)
-     ========================================================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-button');
-    const content = item.querySelector('.faq-content');
-
-    if (button && content) {
-      button.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-
-        // Close other FAQ items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-            const otherBtn = otherItem.querySelector('.faq-button');
-            const otherContent = otherItem.querySelector('.faq-content');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-            if (otherContent) otherContent.style.maxHeight = '0px';
-          }
-        });
-
-        // Toggle current FAQ item
-        if (isActive) {
-          item.classList.remove('active');
-          button.setAttribute('aria-expanded', 'false');
-          content.style.maxHeight = '0px';
-        } else {
-          item.classList.add('active');
-          button.setAttribute('aria-expanded', 'true');
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }
-      });
-    }
-  });
-
-  // Open first FAQ item by default
-  if (faqItems.length > 0) {
-    const firstItem = faqItems[0];
-    const firstBtn = firstItem.querySelector('.faq-button');
-    const firstContent = firstItem.querySelector('.faq-content');
-    firstItem.classList.add('active');
-    if (firstBtn) firstBtn.setAttribute('aria-expanded', 'true');
-    if (firstContent) {
-      firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
-    }
-  }
+  /* FAQ Accordion handled via React state (openFaq / toggleFaq) */
 
   /* ==========================================================================
      9. ESTIMATE REQUEST FORM VALIDATION & DIRECT WHATSAPP INTEGRATION
@@ -1798,8 +1752,8 @@ const runInit = () => {
 
         <div className="faq-container reveal stagger-1">
           {/* Item 1 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 0 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 0} onClick={() => toggleFaq(0)}>
               <span>How does your 3D landscape design process work?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1811,8 +1765,8 @@ const runInit = () => {
           </div>
 
           {/* Item 2 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 1 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 1} onClick={() => toggleFaq(1)}>
               <span>What type of paver base do you use to prevent sinking or shifting?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1824,8 +1778,8 @@ const runInit = () => {
           </div>
 
           {/* Item 3 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 2 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 2} onClick={() => toggleFaq(2)}>
               <span>Do you offer ongoing seasonal maintenance after construction?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1837,8 +1791,8 @@ const runInit = () => {
           </div>
 
           {/* Item 4 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 3 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 3} onClick={() => toggleFaq(3)}>
               <span>Is Veltrix Hub fully licensed, bonded, and insured?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1850,8 +1804,8 @@ const runInit = () => {
           </div>
 
           {/* Item 5 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 4 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 4} onClick={() => toggleFaq(4)}>
               <span>How long does a typical hardscape or patio project take?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1863,8 +1817,8 @@ const runInit = () => {
           </div>
 
           {/* Item 6 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 5 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 5} onClick={() => toggleFaq(5)}>
               <span>Can you solve yard drainage or foundation standing water problems?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
@@ -1876,8 +1830,8 @@ const runInit = () => {
           </div>
 
           {/* Item 7 */}
-          <div className="faq-item">
-            <button className="faq-button" aria-expanded="false">
+          <div className={`faq-item ${openFaq === 6 ? 'active is-open' : ''}`}>
+            <button className="faq-button" aria-expanded={openFaq === 6} onClick={() => toggleFaq(6)}>
               <span>How do I get an estimate or schedule an initial consultation?</span>
               <div className="faq-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
