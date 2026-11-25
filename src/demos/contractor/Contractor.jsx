@@ -310,9 +310,9 @@ export default function Contractor() {
         </section>
 
         {/* ── ABOUT SECTION ── */}
-        <section className="services-section section-pad section-dark" id="services">
+        <section className="services-section section-pad" id="services">
           <div className="container">
-            <div className="section-heading heading-light reveal">
+            <div className="section-heading reveal">
               <div>
                 <h2>Built around your <span>ambition.</span></h2>
               </div>
@@ -568,9 +568,9 @@ export default function Contractor() {
       {/* SERVICES VIEW */}
       {currentView === 'services' && (
         <>
-        <section className="services-section section-pad section-dark" id="services">
+        <section className="services-section section-pad" id="services">
           <div className="container">
-            <div className="section-heading heading-light reveal">
+            <div className="section-heading reveal">
               <div>
                 <h2>Built around your <span>ambition.</span></h2>
               </div>
