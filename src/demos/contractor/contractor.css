@@ -43,58 +43,59 @@
 .contractor-demo .banner-close { position: absolute; top: 50%; right: max(24px, calc((100% - var(--container)) / 2)); display: grid; width: 28px; height: 28px; place-items: center; border: 0; background: transparent; transform: translateY(-50%); cursor: pointer; color: white; }
 .contractor-demo .banner-close svg { width: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; }
 
-.contractor-demo .site-header { position: relative; z-index: 50; color: var(--white); background: var(--navy); border-bottom: 1px solid rgba(255,255,255,.15); }
+.contractor-demo .site-header { position: relative; z-index: 50; color: var(--ink); background: #FFFFFF; border-bottom: 1px solid #E2E8F0; box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04); }
 .contractor-demo .nav-shell { display: flex; min-height: 80px; align-items: center; justify-content: space-between; gap: 32px; }
 .contractor-demo .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 10px; }
-.contractor-demo .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; color: var(--gold); }
+.contractor-demo .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; color: #D97706; }
 .contractor-demo .brand-mark svg { width: 100%; fill: currentColor; }
-.contractor-demo .brand-mark .mark-cut { fill: none; stroke: var(--navy); stroke-width: 2; }
-.contractor-demo .brand-name { display: block; white-space: nowrap; font: 800 20px/1 var(--font-display); letter-spacing: -.06em; }
-.contractor-demo .brand-name span { color: var(--gold-light); }
-.contractor-demo .brand-name small { display: block; margin-top: 6px; color: rgba(255,255,255,.67); font: 600 0.75rem/1 var(--font-body); letter-spacing: .19em; }
+.contractor-demo .brand-mark .mark-cut { fill: none; stroke: #FFFFFF; stroke-width: 2; }
+.contractor-demo .brand-name { display: block; white-space: nowrap; font: 800 20px/1 var(--font-display); letter-spacing: -.06em; color: #0F172A; }
+.contractor-demo .brand-name span { color: #D97706; }
+.contractor-demo .brand-name small { display: block; margin-top: 6px; color: #64748B; font: 600 0.75rem/1 var(--font-body); letter-spacing: .19em; }
 
 .contractor-demo .nav-panel { display: flex; align-items: center; gap: 28px; }
 .contractor-demo .nav-links { display: flex; align-items: center; gap: clamp(13px, 1.5vw, 23px); }
-.contractor-demo .nav-links a { position: relative; padding: 9px 0; color: rgba(255,255,255,.88); font-size: 0.9375rem; font-weight: 600; transition: color .2s ease; cursor: pointer; }
-.contractor-demo .nav-links a::after { position: absolute; right: 0; bottom: 3px; left: 0; height: 1px; background: var(--gold); content: ""; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
-.contractor-demo .nav-links a:hover { color: var(--gold-light); }
+.contractor-demo .nav-links a { position: relative; padding: 9px 0; color: #334155; font-size: 0.9375rem; font-weight: 600; transition: color .2s ease; cursor: pointer; }
+.contractor-demo .nav-links a::after { position: absolute; right: 0; bottom: 3px; left: 0; height: 2px; background: #D97706; content: ""; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.contractor-demo .nav-links a:hover { color: #D97706; }
 .contractor-demo .nav-links a:hover::after { transform: scaleX(1); }
 
-.contractor-demo .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 23px; border: 1px solid transparent; font-size: 0.95rem; font-weight: 700; letter-spacing: .035em; transition: all .25s ease; cursor: pointer; }
-.contractor-demo .button:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(0,0,0,.14); }
+.contractor-demo .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 23px; border: 1px solid transparent; font-size: 0.95rem; font-weight: 700; letter-spacing: .035em; transition: all .25s ease; cursor: pointer; border-radius: 6px; }
+.contractor-demo .button:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(15,23,42,.12); }
 .contractor-demo .button span { font-size: 15px; transition: transform .25s ease; }
 .contractor-demo .button:hover span { transform: translate(2px,-2px); }
-.contractor-demo .button-gold { color: var(--navy); background: var(--gold); }
-.contractor-demo .button-gold:hover { background: var(--gold-light); }
-.contractor-demo .button-outline-light { color: var(--white); border-color: rgba(255,255,255,.54); background: transparent; }
-.contractor-demo .button-outline-light:hover { color: var(--navy); border-color: var(--white); background: var(--white); }
-.contractor-demo .button-dark { color: var(--white); background: var(--navy); }
-.contractor-demo .button-dark:hover { background: #263745; }
-.contractor-demo .nav-cta { min-height: 43px; padding-inline: 16px; font-size: 0.875rem; white-space: nowrap; }
+.contractor-demo .button-gold { color: #0F172A; background: var(--gold); border: 1px solid #D97706; }
+.contractor-demo .button-gold:hover { background: #D97706; color: #FFFFFF; }
+.contractor-demo .button-outline-light { color: #0F172A; border-color: #CBD5E1; background: #FFFFFF; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05); }
+.contractor-demo .button-outline-light:hover { color: #0F172A; border-color: #94A3B8; background: #F1F5F9; }
+.contractor-demo .button-dark { color: #FFFFFF; background: #0F172A; }
+.contractor-demo .button-dark:hover { background: #1E293B; }
+.contractor-demo .nav-cta { min-height: 43px; padding-inline: 18px; font-size: 0.875rem; white-space: nowrap; }
 .contractor-demo .menu-toggle { display: none; }
 
-/* Hero */
-.contractor-demo .hero { position: relative; min-height: min(720px, calc(100svh - 43px)); overflow: hidden; color: var(--white); background: var(--navy); }
+/* Hero (Option 1: Crisp Architectural Light) */
+.contractor-demo .hero { position: relative; min-height: min(720px, calc(100svh - 43px)); overflow: hidden; color: #0F172A; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; }
 .contractor-demo .hero-image, .contractor-demo .hero-shade { position: absolute; inset: 0; }
-.contractor-demo .hero-image { background: url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2200&q=90") center 48% / cover no-repeat; }
-.contractor-demo .hero-shade { background: linear-gradient(90deg, rgba(10,17,24,.87) 0%, rgba(12,19,26,.67) 43%, rgba(12,19,26,.18) 100%), linear-gradient(0deg, rgba(9,16,22,.55), transparent 34%); }
+.contractor-demo .hero-image { background: url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2200&q=90") center 48% / cover no-repeat; opacity: 0.28; filter: saturate(0.85); }
+.contractor-demo .hero-shade { background: linear-gradient(90deg, rgba(248, 250, 252, 0.98) 0%, rgba(248, 250, 252, 0.90) 45%, rgba(248, 250, 252, 0.38) 100%), linear-gradient(0deg, #F8FAFC 0%, transparent 40%); }
 .contractor-demo .hero-grid { position: relative; z-index: 1; display: flex; min-height: inherit; align-items: center; justify-content: space-between; padding-top: 40px; padding-bottom: 40px; }
 .contractor-demo .hero-content { max-width: 770px; padding: 45px 0 28px; }
-.contractor-demo .eyebrow { display: inline-flex; align-items: center; gap: 11px; color: #8d744e; font-size: 0.8125rem; font-weight: 700; letter-spacing: .17em; line-height: 1.4; }
-.contractor-demo .eyebrow-light { color: rgba(255,255,255,.75); }
-.contractor-demo .eyebrow-line { display: inline-block; width: 28px; height: 1px; background: var(--gold); }
-.contractor-demo .hero h1 { margin: 26px 0 21px; font: 600 clamp(42px, 5.5vw, 70px)/1.12 var(--font-display); letter-spacing: -.065em; text-transform: capitalize; }
-.contractor-demo .hero h1 span { color: var(--gold-light); }
-.contractor-demo .hero-copy { max-width: 550px; margin: 0; color: rgba(255,255,255,.78); font-size: 15px; line-height: 1.8; }
-.contractor-demo .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.contractor-demo .hero-aside { align-self: flex-end; display: flex; align-items: center; gap: 14px; margin-bottom: 60px; color: rgba(255,255,255,.78); font-size: 0.875rem; line-height: 1.65; letter-spacing: .08em; }
-.contractor-demo .aside-rule { width: 34px; height: 1px; background: var(--gold); }
+.contractor-demo .eyebrow { display: inline-flex; align-items: center; gap: 11px; color: #D97706; font-size: 0.8125rem; font-weight: 700; letter-spacing: .17em; line-height: 1.4; }
+.contractor-demo .eyebrow-light { color: #64748B; }
+.contractor-demo .eyebrow-line { display: inline-block; width: 28px; height: 2px; background: #D97706; }
+.contractor-demo .hero h1 { margin: 26px 0 21px; font: 700 clamp(42px, 5.5vw, 68px)/1.12 var(--font-display); letter-spacing: -.05em; text-transform: capitalize; color: #0F172A; }
+.contractor-demo .hero h1 span { color: #D97706; }
+.contractor-demo .hero-copy { max-width: 550px; margin: 0; color: #475569; font-size: 16px; line-height: 1.8; font-weight: 450; }
+.contractor-demo .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.contractor-demo .hero-aside { align-self: flex-end; display: flex; align-items: center; gap: 14px; margin-bottom: 60px; color: #475569; font-size: 0.875rem; line-height: 1.65; letter-spacing: .08em; font-weight: 500; }
+.contractor-demo .aside-rule { width: 34px; height: 2px; background: #D97706; }
 .contractor-demo .hero-aside p { margin: 0; }
-.contractor-demo .scroll-cue { position: absolute; z-index: 2; bottom: 25px; left: max(32px, calc((100% - var(--container)) / 2)); display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.74); font-size: 0.75rem; font-weight: 600; letter-spacing: .18em; }
-.contractor-demo .scroll-cue-line { width: 35px; height: 1px; background: var(--gold); }
-.contractor-demo .hero-index { position: absolute; right: max(32px, calc((100% - var(--container)) / 2)); bottom: 27px; display: flex; align-items: center; gap: 9px; color: rgba(255,255,255,.65); font-size: 0.8125rem; }
-.contractor-demo .hero-index span:first-child { color: var(--gold-light); }
-.contractor-demo .hero-index i { width: 42px; height: 1px; background: rgba(255,255,255,.42); }
+.contractor-demo .scroll-cue { position: absolute; z-index: 2; bottom: 25px; left: max(32px, calc((100% - var(--container)) / 2)); display: flex; align-items: center; gap: 12px; color: #64748B; font-size: 0.75rem; font-weight: 700; letter-spacing: .18em; transition: color .2s ease; }
+.contractor-demo .scroll-cue:hover { color: #0F172A; }
+.contractor-demo .scroll-cue-line { width: 35px; height: 2px; background: #D97706; }
+.contractor-demo .hero-index { position: absolute; right: max(32px, calc((100% - var(--container)) / 2)); bottom: 27px; display: flex; align-items: center; gap: 9px; color: #64748B; font-size: 0.8125rem; font-weight: 600; }
+.contractor-demo .hero-index span:first-child { color: #D97706; font-weight: 700; }
+.contractor-demo .hero-index i { width: 42px; height: 1px; background: #CBD5E1; }
 
 /* Stats (Option 1: Crisp Architectural Light) */
 .contractor-demo .stats-section {
@@ -521,7 +522,7 @@
   .contractor-demo .section-pad { padding: 60px 0; }
   .contractor-demo .nav-shell { min-height: 68px; }
 
-  /* High-visibility, prominent Amber Hamburger Button */
+  /* High-visibility, prominent Architectural Hamburger Button */
   .contractor-demo .menu-toggle,
   .contractor-demo .mobile-toggle,
   .nav-toggle,
@@ -533,13 +534,20 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 5px !important;
-    border: 1.5px solid rgba(245, 158, 11, 0.7) !important;
-    background: rgba(245, 158, 11, 0.15) !important;
+    border: 1.5px solid #CBD5E1 !important;
+    background: #F8FAFC !important;
     border-radius: 8px !important;
     cursor: pointer !important;
     padding: 8px !important;
     z-index: 1000 !important;
     margin-left: auto !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .contractor-demo .menu-toggle:hover,
+  .contractor-demo .mobile-toggle:hover {
+    border-color: #D97706 !important;
+    background: #FEF3C7 !important;
   }
 
   .contractor-demo .menu-toggle span,
@@ -549,9 +557,14 @@
     display: block !important;
     width: 22px !important;
     height: 2.5px !important;
-    background: #F59E0B !important;
+    background: #0F172A !important;
     border-radius: 2px !important;
-    transition: transform 0.25s ease, opacity 0.2s ease !important;
+    transition: transform 0.25s ease, opacity 0.2s ease, background-color 0.2s ease !important;
+  }
+
+  .contractor-demo .menu-toggle:hover span,
+  .contractor-demo .mobile-toggle:hover span {
+    background: #D97706 !important;
   }
 
   .contractor-demo .menu-toggle.active span:first-child,
@@ -559,6 +572,7 @@
   .menu-toggle.active span:first-child,
   .menu-toggle.is-open span:first-child {
     transform: translateY(7.5px) rotate(45deg) !important;
+    background: #D97706 !important;
   }
 
   .contractor-demo .menu-toggle.active span:nth-child(2),
@@ -573,6 +587,7 @@
   .menu-toggle.active span:last-child,
   .menu-toggle.is-open span:last-child {
     transform: translateY(-7.5px) rotate(-45deg) !important;
+    background: #D97706 !important;
   }
 
   .contractor-demo .nav-panel {
@@ -586,9 +601,9 @@
     align-items: stretch !important;
     gap: 15px !important;
     padding: 24px 20px !important;
-    background: #0A1120 !important;
-    box-shadow: -10px 0 40px rgba(0,0,0,0.7) !important;
-    border-left: 1px solid rgba(245, 158, 11, 0.25) !important;
+    background: #FFFFFF !important;
+    box-shadow: -10px 0 40px rgba(15, 23, 42, 0.15) !important;
+    border-left: 1px solid #E2E8F0 !important;
     z-index: 999999 !important;
     transform: translateX(100%) !important;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -604,7 +619,7 @@
   .contractor-demo .mobile-nav-overlay {
     position: fixed !important;
     inset: 0 !important;
-    background: rgba(5, 10, 20, 0.8) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     filter: none !important;
@@ -622,7 +637,7 @@
     margin-top: 4.25rem !important; /* Clears DemoTopBar cleanly with breathing room */
     padding-bottom: 0.85rem !important;
     margin-bottom: 0.75rem !important;
-    border-bottom: 1px solid rgba(245, 158, 11, 0.25) !important;
+    border-bottom: 1px solid #E2E8F0 !important;
     width: 100% !important;
     flex-shrink: 0 !important;
   }
@@ -632,19 +647,19 @@
     font-weight: 800 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.08em !important;
-    color: #FBBF24 !important;
+    color: #0F172A !important;
   }
 
   .contractor-demo .mobile-drawer-close {
-    background: rgba(255, 255, 255, 0.12) !important;
-    border: 1.5px solid rgba(245, 158, 11, 0.6) !important;
+    background: #F1F5F9 !important;
+    border: 1px solid #CBD5E1 !important;
     border-radius: 8px !important;
     font-size: 1.75rem !important;
     line-height: 1 !important;
     cursor: pointer !important;
     width: 40px !important;
     height: 40px !important;
-    color: #FBBF24 !important;
+    color: #475569 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -654,9 +669,9 @@
 
   .contractor-demo .mobile-drawer-close:hover,
   .contractor-demo .mobile-drawer-close:active {
-    background: rgba(245, 158, 11, 0.25) !important;
-    border-color: #F59E0B !important;
-    color: #ffffff !important;
+    background: #FEF3C7 !important;
+    border-color: #D97706 !important;
+    color: #D97706 !important;
     transform: scale(1.05) !important;
   }
 
@@ -670,16 +685,16 @@
   .contractor-demo .nav-links a {
     padding: 12px 14px !important;
     border-radius: 6px !important;
-    border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+    border-bottom: 1px solid #F1F5F9 !important;
     font-size: 15px !important;
     font-weight: 600 !important;
-    color: #E2E8F0 !important;
+    color: #1E293B !important;
     transition: all 0.2s ease !important;
   }
 
   .contractor-demo .nav-links a:hover {
-    background: rgba(245, 158, 11, 0.12) !important;
-    color: #FBBF24 !important;
+    background: #FEF3C7 !important;
+    color: #D97706 !important;
   }
 
   .contractor-demo .nav-cta {
@@ -687,11 +702,12 @@
     min-height: 46px !important;
     font-size: 0.95rem !important;
     font-weight: 700 !important;
-    color: #0A1120 !important;
+    color: #0F172A !important;
     background: #F59E0B !important;
+    border: 1px solid #D97706 !important;
     border-radius: 8px !important;
     justify-content: center !important;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35) !important;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.25) !important;
   }
 
   .desktop-only-btn {
