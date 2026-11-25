@@ -1319,3 +1319,112 @@
   }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   PROFLOW PLUMBING — INTERACTIVE ANIMATIONS & MICRO-INTERACTIONS
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Scroll Reveal Base */
+.plumbing-demo .reveal,
+.plumbing-demo .pf-service-card,
+.plumbing-demo .pf-why-card,
+.plumbing-demo .pf-testi-card,
+.plumbing-demo .pf-hero-card,
+.plumbing-demo .pf-trust-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.plumbing-demo .reveal.active,
+.plumbing-demo .reveal.is-visible,
+.plumbing-demo .reveal.visible,
+.plumbing-demo .pf-service-card.active,
+.plumbing-demo .pf-service-card.is-visible,
+.plumbing-demo .pf-service-card.visible,
+.plumbing-demo .pf-why-card.active,
+.plumbing-demo .pf-why-card.is-visible,
+.plumbing-demo .pf-why-card.visible,
+.plumbing-demo .pf-testi-card.active,
+.plumbing-demo .pf-testi-card.is-visible,
+.plumbing-demo .pf-testi-card.visible,
+.plumbing-demo .pf-hero-card.active,
+.plumbing-demo .pf-hero-card.is-visible,
+.plumbing-demo .pf-trust-item.active,
+.plumbing-demo .pf-trust-item.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Grid Cascade Delays */
+.plumbing-demo .pf-services-grid .pf-service-card:nth-child(1) { transition-delay: 0.04s; }
+.plumbing-demo .pf-services-grid .pf-service-card:nth-child(2) { transition-delay: 0.10s; }
+.plumbing-demo .pf-services-grid .pf-service-card:nth-child(3) { transition-delay: 0.16s; }
+.plumbing-demo .pf-services-grid .pf-service-card:nth-child(4) { transition-delay: 0.22s; }
+.plumbing-demo .pf-services-grid .pf-service-card:nth-child(5) { transition-delay: 0.28s; }
+.plumbing-demo .pf-services-grid .pf-service-card:nth-child(6) { transition-delay: 0.34s; }
+
+.plumbing-demo .pf-why-grid .pf-why-card:nth-child(1) { transition-delay: 0.05s; }
+.plumbing-demo .pf-why-grid .pf-why-card:nth-child(2) { transition-delay: 0.12s; }
+.plumbing-demo .pf-why-grid .pf-why-card:nth-child(3) { transition-delay: 0.19s; }
+.plumbing-demo .pf-why-grid .pf-why-card:nth-child(4) { transition-delay: 0.26s; }
+
+/* Enhanced Hover Physics */
+.plumbing-demo .pf-service-card.active:hover,
+.plumbing-demo .pf-service-card.is-visible:hover {
+  transform: translateY(-6px) !important;
+  border-color: var(--amber) !important;
+  box-shadow: 0 18px 40px -8px rgba(10, 22, 40, 0.2) !important;
+}
+
+.plumbing-demo .pf-service-card:hover .pf-service-icon {
+  transform: scale(1.1) rotate(4deg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.plumbing-demo .pf-why-card.active:hover,
+.plumbing-demo .pf-why-card.is-visible:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px rgba(10, 22, 40, 0.12) !important;
+}
+
+/* Button Shimmer Effect */
+.plumbing-demo .pf-btn-primary,
+.plumbing-demo .pf-btn-accent,
+.plumbing-demo .pf-nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.plumbing-demo .pf-btn-primary::before,
+.plumbing-demo .pf-btn-accent::before,
+.plumbing-demo .pf-nav-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.65s ease;
+}
+
+.plumbing-demo .pf-btn-primary:hover::before,
+.plumbing-demo .pf-btn-accent:hover::before,
+.plumbing-demo .pf-nav-cta:hover::before {
+  left: 100%;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .plumbing-demo *,
+  .plumbing-demo *::before,
+  .plumbing-demo *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+

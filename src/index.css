@@ -242,3 +242,388 @@
     linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   VELTRIX HUB — UNIFIED CLIENT DEMO ANIMATION ENGINE (ALL 15 TEMPLATES)
+   Provides high-end senior frontend animations, scroll reveals, stagger
+   cascades, card hover physics, and accessibility reduced-motion.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Keyframe Physics */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ambientZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+@keyframes scrollIndicator {
+  0% { transform: translateY(0); opacity: 0.85; }
+  50% { transform: translateY(8px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 0.85; }
+}
+
+@keyframes testimonialSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.93) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+  }
+}
+
+@keyframes successSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatStamp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+/* Universal Scroll Reveal Base */
+[class*="-demo"] .reveal,
+[class*="-demo"] .reveal-on-scroll,
+[class*="-demo"] .animate-on-scroll,
+[class*="-demo"] .service-card,
+[class*="-demo"] .pf-service-card,
+[class*="-demo"] .pf-why-card,
+[class*="-demo"] .pf-testi-card,
+[class*="-demo"] .pf-hero-card,
+[class*="-demo"] .difference-card,
+[class*="-demo"] .result-card,
+[class*="-demo"] .review-card,
+[class*="-demo"] .feature-card,
+[class*="-demo"] .benefit-card,
+[class*="-demo"] .why-benefit-card,
+[class*="-demo"] .prep-step-card,
+[class*="-demo"] .step-item,
+[class*="-demo"] .trust-item,
+[class*="-demo"] .metric-card,
+[class*="-demo"] .gallery-card,
+[class*="-demo"] .gallery-item,
+[class*="-demo"] .process-step,
+[class*="-demo"] .stat-item,
+[class*="-demo"] .why-item,
+[class*="-demo"] .project-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+/* Universal Scroll Reveal Active State */
+[class*="-demo"] .reveal.active,
+[class*="-demo"] .reveal.is-visible,
+[class*="-demo"] .reveal.visible,
+[class*="-demo"] .reveal-on-scroll.active,
+[class*="-demo"] .reveal-on-scroll.is-visible,
+[class*="-demo"] .reveal-on-scroll.visible,
+[class*="-demo"] .animate-on-scroll.active,
+[class*="-demo"] .animate-on-scroll.is-visible,
+[class*="-demo"] .service-card.active,
+[class*="-demo"] .service-card.is-visible,
+[class*="-demo"] .service-card.visible,
+[class*="-demo"] .pf-service-card.active,
+[class*="-demo"] .pf-service-card.is-visible,
+[class*="-demo"] .pf-service-card.visible,
+[class*="-demo"] .pf-why-card.active,
+[class*="-demo"] .pf-why-card.is-visible,
+[class*="-demo"] .pf-why-card.visible,
+[class*="-demo"] .pf-testi-card.active,
+[class*="-demo"] .pf-testi-card.is-visible,
+[class*="-demo"] .pf-hero-card.active,
+[class*="-demo"] .pf-hero-card.is-visible,
+[class*="-demo"] .difference-card.active,
+[class*="-demo"] .difference-card.is-visible,
+[class*="-demo"] .result-card.active,
+[class*="-demo"] .result-card.is-visible,
+[class*="-demo"] .review-card.active,
+[class*="-demo"] .review-card.is-visible,
+[class*="-demo"] .feature-card.active,
+[class*="-demo"] .feature-card.is-visible,
+[class*="-demo"] .benefit-card.active,
+[class*="-demo"] .benefit-card.is-visible,
+[class*="-demo"] .why-benefit-card.active,
+[class*="-demo"] .why-benefit-card.is-visible,
+[class*="-demo"] .prep-step-card.active,
+[class*="-demo"] .prep-step-card.is-visible,
+[class*="-demo"] .step-item.active,
+[class*="-demo"] .step-item.is-visible,
+[class*="-demo"] .trust-item.active,
+[class*="-demo"] .trust-item.is-visible,
+[class*="-demo"] .metric-card.active,
+[class*="-demo"] .metric-card.is-visible,
+[class*="-demo"] .gallery-card.active,
+[class*="-demo"] .gallery-card.is-visible,
+[class*="-demo"] .gallery-item.active,
+[class*="-demo"] .gallery-item.is-visible,
+[class*="-demo"] .process-step.active,
+[class*="-demo"] .process-step.is-visible,
+[class*="-demo"] .stat-item.active,
+[class*="-demo"] .stat-item.is-visible,
+[class*="-demo"] .why-item.active,
+[class*="-demo"] .why-item.is-visible,
+[class*="-demo"] .project-card.active,
+[class*="-demo"] .project-card.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Universal Grid Stagger Cascades */
+[class*="-demo"] .services-grid > *:nth-child(1),
+[class*="-demo"] .pf-services-grid > *:nth-child(1),
+[class*="-demo"] .trust-grid > *:nth-child(1),
+[class*="-demo"] .metrics-grid > *:nth-child(1),
+[class*="-demo"] .service-grid > *:nth-child(1),
+[class*="-demo"] .projects-grid > *:nth-child(1),
+[class*="-demo"] .difference__grid > *:nth-child(1),
+[class*="-demo"] .features-grid > *:nth-child(1) { transition-delay: 0.04s; }
+
+[class*="-demo"] .services-grid > *:nth-child(2),
+[class*="-demo"] .pf-services-grid > *:nth-child(2),
+[class*="-demo"] .trust-grid > *:nth-child(2),
+[class*="-demo"] .metrics-grid > *:nth-child(2),
+[class*="-demo"] .service-grid > *:nth-child(2),
+[class*="-demo"] .projects-grid > *:nth-child(2),
+[class*="-demo"] .difference__grid > *:nth-child(2),
+[class*="-demo"] .features-grid > *:nth-child(2) { transition-delay: 0.10s; }
+
+[class*="-demo"] .services-grid > *:nth-child(3),
+[class*="-demo"] .pf-services-grid > *:nth-child(3),
+[class*="-demo"] .trust-grid > *:nth-child(3),
+[class*="-demo"] .metrics-grid > *:nth-child(3),
+[class*="-demo"] .service-grid > *:nth-child(3),
+[class*="-demo"] .projects-grid > *:nth-child(3),
+[class*="-demo"] .difference__grid > *:nth-child(3),
+[class*="-demo"] .features-grid > *:nth-child(3) { transition-delay: 0.16s; }
+
+[class*="-demo"] .services-grid > *:nth-child(4),
+[class*="-demo"] .pf-services-grid > *:nth-child(4),
+[class*="-demo"] .trust-grid > *:nth-child(4),
+[class*="-demo"] .metrics-grid > *:nth-child(4),
+[class*="-demo"] .service-grid > *:nth-child(4),
+[class*="-demo"] .projects-grid > *:nth-child(4),
+[class*="-demo"] .difference__grid > *:nth-child(4),
+[class*="-demo"] .features-grid > *:nth-child(4) { transition-delay: 0.22s; }
+
+[class*="-demo"] .services-grid > *:nth-child(5),
+[class*="-demo"] .pf-services-grid > *:nth-child(5),
+[class*="-demo"] .trust-grid > *:nth-child(5),
+[class*="-demo"] .metrics-grid > *:nth-child(5),
+[class*="-demo"] .service-grid > *:nth-child(5),
+[class*="-demo"] .projects-grid > *:nth-child(5),
+[class*="-demo"] .difference__grid > *:nth-child(5) { transition-delay: 0.28s; }
+
+[class*="-demo"] .services-grid > *:nth-child(6),
+[class*="-demo"] .pf-services-grid > *:nth-child(6),
+[class*="-demo"] .trust-grid > *:nth-child(6),
+[class*="-demo"] .metrics-grid > *:nth-child(6),
+[class*="-demo"] .service-grid > *:nth-child(6),
+[class*="-demo"] .projects-grid > *:nth-child(6),
+[class*="-demo"] .difference__grid > *:nth-child(6) { transition-delay: 0.34s; }
+
+[class*="-demo"] .services-grid > *:nth-child(7),
+[class*="-demo"] .service-grid > *:nth-child(7),
+[class*="-demo"] .projects-grid > *:nth-child(7) { transition-delay: 0.40s; }
+
+[class*="-demo"] .services-grid > *:nth-child(8),
+[class*="-demo"] .service-grid > *:nth-child(8),
+[class*="-demo"] .projects-grid > *:nth-child(8) { transition-delay: 0.46s; }
+
+[class*="-demo"] .services-grid > *:nth-child(9),
+[class*="-demo"] .service-grid > *:nth-child(9) { transition-delay: 0.52s; }
+
+/* Card Hover Physics - Smooth Lift & Shadow Bloom */
+[class*="-demo"] .service-card.active:hover,
+[class*="-demo"] .service-card.is-visible:hover,
+[class*="-demo"] .pf-service-card.active:hover,
+[class*="-demo"] .pf-service-card.is-visible:hover,
+[class*="-demo"] .pf-why-card.active:hover,
+[class*="-demo"] .pf-why-card.is-visible:hover,
+[class*="-demo"] .difference-card.active:hover,
+[class*="-demo"] .difference-card.is-visible:hover,
+[class*="-demo"] .result-card.active:hover,
+[class*="-demo"] .result-card.is-visible:hover,
+[class*="-demo"] .review-card.active:hover,
+[class*="-demo"] .review-card.is-visible:hover,
+[class*="-demo"] .feature-card.active:hover,
+[class*="-demo"] .metric-card.active:hover,
+[class*="-demo"] .project-card.active:hover,
+[class*="-demo"] .gallery-card.active:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.16) !important;
+}
+
+/* Image Scale Physics inside Cards */
+[class*="-demo"] .service-card img,
+[class*="-demo"] .pf-service-card img,
+[class*="-demo"] .project-card img,
+[class*="-demo"] .gallery-card img,
+[class*="-demo"] .gallery-item img,
+[class*="-demo"] .service-image img,
+[class*="-demo"] .service-photo img,
+[class*="-demo"] .service-card__image img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform;
+}
+
+[class*="-demo"] .service-card:hover img,
+[class*="-demo"] .pf-service-card:hover img,
+[class*="-demo"] .project-card:hover img,
+[class*="-demo"] .gallery-card:hover img,
+[class*="-demo"] .gallery-item:hover img,
+[class*="-demo"] .service-image:hover img,
+[class*="-demo"] .service-photo:hover img,
+[class*="-demo"] .service-card:hover .service-card__image img,
+[class*="-demo"] .service-card:hover .service-photo img {
+  transform: scale(1.06) !important;
+}
+
+/* Icon Badge Micro-spring on Card Hover */
+[class*="-demo"] .service-card:hover .service-icon,
+[class*="-demo"] .service-card:hover .icon-box,
+[class*="-demo"] .service-card:hover .service-badge,
+[class*="-demo"] .pf-service-card:hover .pf-logo-icon,
+[class*="-demo"] .trust-item:hover .trust-icon-box {
+  transform: scale(1.08) rotate(3deg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Arrow / Link shift on Hover */
+[class*="-demo"] .service-card:hover .card-arrow,
+[class*="-demo"] .service-card:hover .arrow-icon,
+[class*="-demo"] .service-card:hover a span {
+  transform: translate(3px, -3px);
+  transition: transform 0.25s ease;
+}
+
+/* Button Shimmer Sweep Effect */
+[class*="-demo"] .button-gold,
+[class*="-demo"] .button-primary,
+[class*="-demo"] .btn-primary,
+[class*="-demo"] .pf-btn-primary,
+[class*="-demo"] .pf-btn-accent,
+[class*="-demo"] .cta-btn,
+[class*="-demo"] .hero-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[class*="-demo"] .button-gold::before,
+[class*="-demo"] .button-primary::before,
+[class*="-demo"] .btn-primary::before,
+[class*="-demo"] .pf-btn-primary::before,
+[class*="-demo"] .pf-btn-accent::before,
+[class*="-demo"] .cta-btn::before,
+[class*="-demo"] .hero-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transition: left 0.65s ease;
+  pointer-events: none;
+}
+
+[class*="-demo"] .button-gold:hover::before,
+[class*="-demo"] .button-primary:hover::before,
+[class*="-demo"] .btn-primary:hover::before,
+[class*="-demo"] .pf-btn-primary:hover::before,
+[class*="-demo"] .pf-btn-accent:hover::before,
+[class*="-demo"] .cta-btn:hover::before,
+[class*="-demo"] .hero-btn:hover::before {
+  left: 100%;
+}
+
+[class*="-demo"] .button:active,
+[class*="-demo"] .btn:active,
+[class*="-demo"] .pf-btn:active {
+  transform: scale(0.98);
+}
+
+/* Interactive Form Input Focus Glow */
+[class*="-demo"] input:focus,
+[class*="-demo"] select:focus,
+[class*="-demo"] textarea:focus {
+  outline: none;
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Universal Modal Pop-in & Backdrop Blur */
+[class*="-demo"] .modal-overlay,
+[class*="-demo"] [class*="modal-backdrop"],
+[class*="-demo"] [class*="overlay-backdrop"] {
+  animation: backdropFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  backdrop-filter: blur(8px);
+}
+
+[class*="-demo"] .modal-dialog,
+[class*="-demo"] [class*="modal-content"],
+[class*="-demo"] [class*="modal-box"],
+[class*="-demo"] .project-modal-container {
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Universal Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  [class*="-demo"] *,
+  [class*="-demo"] *::before,
+  [class*="-demo"] *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

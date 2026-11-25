@@ -22,7 +22,9 @@ export default function DemoTopBar({ demoName = 'Client Template Demo' }) {
       '.pf-service-card', '.pf-why-card', '.pf-testi-card', '.pf-hero-card',
       '.difference-card', '.result-card', '.review-card', '.feature-card',
       '.benefit-card', '.why-benefit-card', '.prep-step-card', '.step-item',
-      '.trust-item', '.metric-card', '.gallery-card', '.gallery-item', '.process-step'
+      '.trust-item', '.metric-card', '.gallery-card', '.gallery-item', '.process-step',
+      '.stat-item', '.why-item', '.project-card', '.step-card', '.testimonial-item',
+      '.tech-feature-item', '.resource-card', '.feature-box'
     ].join(', ');
 
     const activate = (el) => {

@@ -809,3 +809,114 @@
     transform: translateY(-7px) rotate(-45deg) !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   AUTO REPAIR — INTERACTIVE ANIMATIONS & MICRO-INTERACTIONS
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Scroll Reveal Base */
+.auto-repair-demo .reveal,
+.auto-repair-demo .service-card,
+.auto-repair-demo .difference-card,
+.auto-repair-demo .step-card,
+.auto-repair-demo .stat-item,
+.auto-repair-demo .testimonial-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.auto-repair-demo .reveal.active,
+.auto-repair-demo .reveal.is-visible,
+.auto-repair-demo .reveal.visible,
+.auto-repair-demo .service-card.active,
+.auto-repair-demo .service-card.is-visible,
+.auto-repair-demo .service-card.visible,
+.auto-repair-demo .difference-card.active,
+.auto-repair-demo .difference-card.is-visible,
+.auto-repair-demo .difference-card.visible,
+.auto-repair-demo .step-card.active,
+.auto-repair-demo .step-card.is-visible,
+.auto-repair-demo .stat-item.active,
+.auto-repair-demo .stat-item.is-visible,
+.auto-repair-demo .testimonial-item.active,
+.auto-repair-demo .testimonial-item.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Grid Cascade Delays */
+.auto-repair-demo .services-grid .service-card:nth-child(1) { transition-delay: 0.04s; }
+.auto-repair-demo .services-grid .service-card:nth-child(2) { transition-delay: 0.10s; }
+.auto-repair-demo .services-grid .service-card:nth-child(3) { transition-delay: 0.16s; }
+.auto-repair-demo .services-grid .service-card:nth-child(4) { transition-delay: 0.22s; }
+.auto-repair-demo .services-grid .service-card:nth-child(5) { transition-delay: 0.28s; }
+.auto-repair-demo .services-grid .service-card:nth-child(6) { transition-delay: 0.34s; }
+
+.auto-repair-demo .difference-grid .difference-card:nth-child(1) { transition-delay: 0.05s; }
+.auto-repair-demo .difference-grid .difference-card:nth-child(2) { transition-delay: 0.12s; }
+.auto-repair-demo .difference-grid .difference-card:nth-child(3) { transition-delay: 0.19s; }
+.auto-repair-demo .difference-grid .difference-card:nth-child(4) { transition-delay: 0.26s; }
+
+/* Enhanced Hover Physics */
+.auto-repair-demo .service-card.active:hover,
+.auto-repair-demo .service-card.is-visible:hover {
+  transform: translateY(-6px) !important;
+  background: var(--white) !important;
+  box-shadow: 0 20px 42px -6px rgba(30, 34, 31, 0.14) !important;
+  border-color: var(--accent) !important;
+}
+
+.auto-repair-demo .service-card:hover .service-icon {
+  transform: scale(1.1) rotate(4deg);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auto-repair-demo .difference-card.active:hover,
+.auto-repair-demo .difference-card.is-visible:hover {
+  transform: translateY(-4px) !important;
+  background: var(--white) !important;
+  box-shadow: 0 14px 32px rgba(30, 34, 31, 0.1) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* Button Shimmer Effect */
+.auto-repair-demo .button-primary,
+.auto-repair-demo .button-accent,
+.auto-repair-demo .nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.auto-repair-demo .button-primary::before,
+.auto-repair-demo .button-accent::before,
+.auto-repair-demo .nav-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.65s ease;
+}
+
+.auto-repair-demo .button-primary:hover::before,
+.auto-repair-demo .button-accent:hover::before,
+.auto-repair-demo .nav-cta:hover::before {
+  left: 100%;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .auto-repair-demo *,
+  .auto-repair-demo *::before,
+  .auto-repair-demo *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

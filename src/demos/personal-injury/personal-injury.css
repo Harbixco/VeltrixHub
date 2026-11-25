@@ -314,15 +314,81 @@
 .personal-injury-demo .footer__bottom a:hover { color: var(--gold-light); }
 .personal-injury-demo .mobile-consult-ct.personal-injury-demo a { display: none; }
 
-.personal-injury-demo .js-enabled .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }
-.personal-injury-demo .js-enabled .reveal.is-visible { opacity: 1; transform: translateY(0); }
-.personal-injury-demo .js-enabled .service-card:nth-child(4n + 2), .personal-injury-demo .js-enabled .resource-card:nth-child(2) { transition-delay: .08s; }
-.personal-injury-demo .js-enabled .service-card:nth-child(4n + 3), .personal-injury-demo .js-enabled .resource-card:nth-child(3) { transition-delay: .16s; }
-.personal-injury-demo .js-enabled .service-card:nth-child(4n + 4) { transition-delay: .24s; }
-.personal-injury-demo .js-enabled .process-step:nth-child(2) { transition-delay: .06s; }
-.personal-injury-demo .js-enabled .process-step:nth-child(3) { transition-delay: .12s; }
-.personal-injury-demo .js-enabled .process-step:nth-child(4) { transition-delay: .18s; }
-.personal-injury-demo .js-enabled .process-step:nth-child(5) { transition-delay: .24s; }
+/* Scroll Reveal Base */
+.personal-injury-demo .reveal,
+.personal-injury-demo .service-card,
+.personal-injury-demo .result-card,
+.personal-injury-demo .resource-card,
+.personal-injury-demo .process-step {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.personal-injury-demo .reveal.active,
+.personal-injury-demo .reveal.is-visible,
+.personal-injury-demo .reveal.visible,
+.personal-injury-demo .service-card.active,
+.personal-injury-demo .service-card.is-visible,
+.personal-injury-demo .service-card.visible,
+.personal-injury-demo .result-card.active,
+.personal-injury-demo .result-card.is-visible,
+.personal-injury-demo .resource-card.active,
+.personal-injury-demo .resource-card.is-visible,
+.personal-injury-demo .process-step.active,
+.personal-injury-demo .process-step.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Stagger Delays */
+.personal-injury-demo .service-card:nth-child(4n + 2), .personal-injury-demo .resource-card:nth-child(2) { transition-delay: .08s; }
+.personal-injury-demo .service-card:nth-child(4n + 3), .personal-injury-demo .resource-card:nth-child(3) { transition-delay: .16s; }
+.personal-injury-demo .service-card:nth-child(4n + 4) { transition-delay: .24s; }
+.personal-injury-demo .process-step:nth-child(2) { transition-delay: .06s; }
+.personal-injury-demo .process-step:nth-child(3) { transition-delay: .12s; }
+.personal-injury-demo .process-step:nth-child(4) { transition-delay: .18s; }
+.personal-injury-demo .process-step:nth-child(5) { transition-delay: .24s; }
+
+/* Enhanced Hover Physics */
+.personal-injury-demo .service-card.active:hover,
+.personal-injury-demo .service-card.is-visible:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 42px -6px rgba(16, 29, 43, 0.16) !important;
+}
+
+.personal-injury-demo .service-card:hover .service-card__image img {
+  transform: scale(1.08) !important;
+}
+
+/* Button Shimmer */
+.personal-injury-demo .button-gold,
+.personal-injury-demo .button-dark,
+.personal-injury-demo .consult-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.personal-injury-demo .button-gold::before,
+.personal-injury-demo .button-dark::before,
+.personal-injury-demo .consult-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.65s ease;
+}
+
+.personal-injury-demo .button-gold:hover::before,
+.personal-injury-demo .button-dark:hover::before,
+.personal-injury-demo .consult-cta:hover::before {
+  left: 100%;
+}
+
 
 @media (max-width: 1000px) {
 .personal-injury-demo .container { width: min(var(--container), calc(100% - 48px)); }

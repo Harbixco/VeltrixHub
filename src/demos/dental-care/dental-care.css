@@ -565,3 +565,107 @@
     transform: translateY(-7px) rotate(-45deg) !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   DENTAL CARE — INTERACTIVE ANIMATIONS & MICRO-INTERACTIONS
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Scroll Reveal Base */
+.dental-care-demo .reveal,
+.dental-care-demo .service-card,
+.dental-care-demo .review-card,
+.dental-care-demo .tech-feature-item,
+.dental-care-demo .stat-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: opacity, transform;
+}
+
+.dental-care-demo .reveal.active,
+.dental-care-demo .reveal.is-visible,
+.dental-care-demo .reveal.visible,
+.dental-care-demo .service-card.active,
+.dental-care-demo .service-card.is-visible,
+.dental-care-demo .service-card.visible,
+.dental-care-demo .review-card.active,
+.dental-care-demo .review-card.is-visible,
+.dental-care-demo .review-card.visible,
+.dental-care-demo .tech-feature-item.active,
+.dental-care-demo .tech-feature-item.is-visible,
+.dental-care-demo .stat-item.active,
+.dental-care-demo .stat-item.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Grid Cascade Delays */
+.dental-care-demo .services-grid .service-card:nth-child(1) { transition-delay: 0.04s; }
+.dental-care-demo .services-grid .service-card:nth-child(2) { transition-delay: 0.10s; }
+.dental-care-demo .services-grid .service-card:nth-child(3) { transition-delay: 0.16s; }
+.dental-care-demo .services-grid .service-card:nth-child(4) { transition-delay: 0.22s; }
+.dental-care-demo .services-grid .service-card:nth-child(5) { transition-delay: 0.28s; }
+.dental-care-demo .services-grid .service-card:nth-child(6) { transition-delay: 0.34s; }
+
+.dental-care-demo .reviews-grid .review-card:nth-child(1) { transition-delay: 0.05s; }
+.dental-care-demo .reviews-grid .review-card:nth-child(2) { transition-delay: 0.12s; }
+.dental-care-demo .reviews-grid .review-card:nth-child(3) { transition-delay: 0.19s; }
+
+/* Enhanced Hover Physics */
+.dental-care-demo .service-card.active:hover,
+.dental-care-demo .service-card.is-visible:hover {
+  transform: translateY(-7px) !important;
+  border-color: #72c9bf !important;
+  box-shadow: 0 20px 40px -8px rgba(11, 25, 44, 0.12) !important;
+}
+
+.dental-care-demo .service-card:hover .service-photo img {
+  transform: scale(1.06) !important;
+}
+
+.dental-care-demo .review-card.active:hover,
+.dental-care-demo .review-card.is-visible:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 18px 38px rgba(11, 25, 44, 0.1) !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Button Shimmer Effect */
+.dental-care-demo .button,
+.dental-care-demo .button-outline,
+.dental-care-demo .nav-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.dental-care-demo .button::before,
+.dental-care-demo .button-outline::before,
+.dental-care-demo .nav-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transition: left 0.65s ease;
+}
+
+.dental-care-demo .button:hover::before,
+.dental-care-demo .button-outline:hover::before,
+.dental-care-demo .nav-cta:hover::before {
+  left: 100%;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .dental-care-demo *,
+  .dental-care-demo *::before,
+  .dental-care-demo *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
