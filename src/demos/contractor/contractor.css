@@ -60,40 +60,110 @@
 .contractor-demo .nav-links a:hover { color: #D97706; }
 .contractor-demo .nav-links a:hover::after { transform: scaleX(1); }
 
-.contractor-demo .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 20px; padding: 0 23px; border: 1px solid transparent; font-size: 0.95rem; font-weight: 700; letter-spacing: .035em; transition: all .25s ease; cursor: pointer; border-radius: 6px; }
-.contractor-demo .button:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(15,23,42,.12); }
-.contractor-demo .button span { font-size: 15px; transition: transform .25s ease; }
-.contractor-demo .button:hover span { transform: translate(2px,-2px); }
-.contractor-demo .button-gold { color: #0F172A; background: var(--gold); border: 1px solid #D97706; }
-.contractor-demo .button-gold:hover { background: #D97706; color: #FFFFFF; }
-.contractor-demo .button-outline-light { color: #0F172A; border-color: #CBD5E1; background: #FFFFFF; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05); }
-.contractor-demo .button-outline-light:hover { color: #0F172A; border-color: #94A3B8; background: #F1F5F9; }
-.contractor-demo .button-dark { color: #FFFFFF; background: #0F172A; }
-.contractor-demo .button-dark:hover { background: #1E293B; }
-.contractor-demo .nav-cta { min-height: 43px; padding-inline: 18px; font-size: 0.875rem; white-space: nowrap; }
+.contractor-demo .button {
+  position: relative;
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 23px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: .035em;
+  transition: all .28s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.contractor-demo .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 22px rgba(15,23,42,.12);
+}
+.contractor-demo .button:active {
+  transform: translateY(0);
+}
+.contractor-demo .button span {
+  font-size: 15px;
+  transition: transform .25s ease;
+  display: inline-block;
+}
+.contractor-demo .button:hover span {
+  transform: translate(3px,-2px);
+}
+.contractor-demo .button-gold {
+  color: #0F172A;
+  background: var(--gold);
+  border: 1px solid #D97706;
+}
+.contractor-demo .button-gold::before {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  content: "";
+  transition: left 0.65s ease;
+}
+.contractor-demo .button-gold:hover::before {
+  left: 100%;
+}
+.contractor-demo .button-gold:hover {
+  background: #D97706;
+  color: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(217, 119, 6, 0.32);
+}
+.contractor-demo .button-outline-light {
+  color: #0F172A;
+  border-color: #CBD5E1;
+  background: #FFFFFF;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+}
+.contractor-demo .button-outline-light:hover {
+  color: #0F172A;
+  border-color: #94A3B8;
+  background: #F1F5F9;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+}
+.contractor-demo .button-dark {
+  color: #FFFFFF;
+  background: #0F172A;
+}
+.contractor-demo .button-dark:hover {
+  background: #1E293B;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+}
+.contractor-demo .nav-cta {
+  min-height: 43px;
+  padding-inline: 18px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
 .contractor-demo .menu-toggle { display: none; }
 
 /* Hero (Option 1: Crisp Architectural Light) */
 .contractor-demo .hero { position: relative; min-height: min(720px, calc(100svh - 43px)); overflow: hidden; color: #0F172A; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; }
 .contractor-demo .hero-image, .contractor-demo .hero-shade { position: absolute; inset: 0; }
-.contractor-demo .hero-image { background: url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2200&q=90") center 48% / cover no-repeat; opacity: 0.28; filter: saturate(0.85); }
+.contractor-demo .hero-image { background: url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2200&q=90") center 48% / cover no-repeat; opacity: 0.28; filter: saturate(0.85); animation: ambientZoom 20s ease-in-out infinite alternate; }
 .contractor-demo .hero-shade { background: linear-gradient(90deg, rgba(248, 250, 252, 0.98) 0%, rgba(248, 250, 252, 0.90) 45%, rgba(248, 250, 252, 0.38) 100%), linear-gradient(0deg, #F8FAFC 0%, transparent 40%); }
 .contractor-demo .hero-grid { position: relative; z-index: 1; display: flex; min-height: inherit; align-items: center; justify-content: space-between; padding-top: 40px; padding-bottom: 40px; }
 .contractor-demo .hero-content { max-width: 770px; padding: 45px 0 28px; }
 .contractor-demo .eyebrow { display: inline-flex; align-items: center; gap: 11px; color: #D97706; font-size: 0.8125rem; font-weight: 700; letter-spacing: .17em; line-height: 1.4; }
 .contractor-demo .eyebrow-light { color: #64748B; }
 .contractor-demo .eyebrow-line { display: inline-block; width: 28px; height: 2px; background: #D97706; }
-.contractor-demo .hero h1 { margin: 26px 0 21px; font: 700 clamp(42px, 5.5vw, 68px)/1.12 var(--font-display); letter-spacing: -.05em; text-transform: capitalize; color: #0F172A; }
+.contractor-demo .hero h1 { margin: 26px 0 21px; font: 700 clamp(42px, 5.5vw, 68px)/1.12 var(--font-display); letter-spacing: -.05em; text-transform: capitalize; color: #0F172A; animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .contractor-demo .hero h1 span { color: #D97706; }
-.contractor-demo .hero-copy { max-width: 550px; margin: 0; color: #475569; font-size: 16px; line-height: 1.8; font-weight: 450; }
-.contractor-demo .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
-.contractor-demo .hero-aside { align-self: flex-end; display: flex; align-items: center; gap: 14px; margin-bottom: 60px; color: #475569; font-size: 0.875rem; line-height: 1.65; letter-spacing: .08em; font-weight: 500; }
+.contractor-demo .hero-copy { max-width: 550px; margin: 0; color: #475569; font-size: 16px; line-height: 1.8; font-weight: 450; animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
+.contractor-demo .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+.contractor-demo .hero-aside { align-self: flex-end; display: flex; align-items: center; gap: 14px; margin-bottom: 60px; color: #475569; font-size: 0.875rem; line-height: 1.65; letter-spacing: .08em; font-weight: 500; animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; }
 .contractor-demo .aside-rule { width: 34px; height: 2px; background: #D97706; }
 .contractor-demo .hero-aside p { margin: 0; }
-.contractor-demo .scroll-cue { position: absolute; z-index: 2; bottom: 25px; left: max(32px, calc((100% - var(--container)) / 2)); display: flex; align-items: center; gap: 12px; color: #64748B; font-size: 0.75rem; font-weight: 700; letter-spacing: .18em; transition: color .2s ease; }
+.contractor-demo .scroll-cue { position: absolute; z-index: 2; bottom: 25px; left: max(32px, calc((100% - var(--container)) / 2)); display: flex; align-items: center; gap: 12px; color: #64748B; font-size: 0.75rem; font-weight: 700; letter-spacing: .18em; transition: color .2s ease; animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both; }
 .contractor-demo .scroll-cue:hover { color: #0F172A; }
-.contractor-demo .scroll-cue-line { width: 35px; height: 2px; background: #D97706; }
-.contractor-demo .hero-index { position: absolute; right: max(32px, calc((100% - var(--container)) / 2)); bottom: 27px; display: flex; align-items: center; gap: 9px; color: #64748B; font-size: 0.8125rem; font-weight: 600; }
+.contractor-demo .scroll-cue-line { width: 35px; height: 2px; background: #D97706; animation: scrollIndicator 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+.contractor-demo .hero-index { position: absolute; right: max(32px, calc((100% - var(--container)) / 2)); bottom: 27px; display: flex; align-items: center; gap: 9px; color: #64748B; font-size: 0.8125rem; font-weight: 600; animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
 .contractor-demo .hero-index span:first-child { color: #D97706; font-weight: 700; }
 .contractor-demo .hero-index i { width: 42px; height: 1px; background: #CBD5E1; }
 
@@ -108,8 +178,25 @@
 .contractor-demo .stats-grid { display: grid; grid-template-columns: 1.25fr repeat(4, 1fr); align-items: center; gap: 28px; }
 .contractor-demo .stats-intro .eyebrow { color: #D97706; font-size: 0.8125rem; font-weight: 700; letter-spacing: .08em; }
 .contractor-demo .stats-intro p { margin: 7px 0 0; font: 600 17px/1.35 var(--font-display); color: #0F172A; }
-.contractor-demo .stat-item { display: flex; min-height: 65px; flex-direction: column; justify-content: center; padding-left: 27px; border-left: 1px solid #E2E8F0; }
-.contractor-demo .stat-item strong { font: 600 31px/1.1 var(--font-display); letter-spacing: -.05em; color: #0F172A; }
+.contractor-demo .stat-item {
+  display: flex;
+  min-height: 65px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 12px 8px 24px;
+  border-left: 2px solid #E2E8F0;
+  border-radius: 6px;
+  transition: all .28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contractor-demo .stat-item:hover {
+  transform: translateY(-3px);
+  background: #F8FAFC;
+  border-left-color: #D97706;
+}
+.contractor-demo .stat-item:hover strong {
+  color: #D97706;
+}
+.contractor-demo .stat-item strong { font: 600 31px/1.1 var(--font-display); letter-spacing: -.05em; color: #0F172A; transition: color .2s ease; }
 .contractor-demo .stat-item em { color: #D97706; font-style: normal; font-size: 22px; font-weight: 800; }
 .contractor-demo .stat-item > span { margin-top: 6px; color: #475569; font-size: 0.875rem; font-weight: 500; }
 .contractor-demo .stats-note { margin-top: 10px; color: #94A3B8; font-size: 0.8125rem; text-align: right; }
@@ -118,14 +205,32 @@
 .contractor-demo .about-section { overflow: hidden; background: var(--paper); }
 .contractor-demo .about-grid { display: grid; grid-template-columns: .92fr 1fr; align-items: center; gap: clamp(65px, 9vw, 125px); }
 .contractor-demo .about-visual { position: relative; min-height: 540px; }
-.contractor-demo .about-photo { position: absolute; inset: 0 50px 38px 0; overflow: hidden; }
+.contractor-demo .about-photo { position: absolute; inset: 0 50px 38px 0; overflow: hidden; border-radius: 8px; }
 .contractor-demo .image-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
-.contractor-demo .about-stamp { position: absolute; right: 0; bottom: 85px; display: flex; width: 175px; height: 175px; flex-direction: column; justify-content: center; padding: 24px; color: var(--navy); background: var(--gold); box-shadow: 0 12px 35px rgba(0,0,0,.14); }
+.contractor-demo .about-photo:hover img { transform: scale(1.05); }
+.contractor-demo .about-stamp {
+  position: absolute;
+  right: 0;
+  bottom: 85px;
+  display: flex;
+  width: 175px;
+  height: 175px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  color: #0F172A;
+  background: var(--gold);
+  box-shadow: 0 12px 35px rgba(217, 119, 6, 0.25);
+  border-radius: 8px;
+  animation: floatStamp 6s ease-in-out infinite alternate;
+  transition: transform .3s ease;
+}
+.contractor-demo .about-stamp:hover { transform: translateY(-6px) scale(1.03); }
 .contractor-demo .about-stamp > span { font-size: 0.75rem; font-weight: 700; letter-spacing: .18em; }
 .contractor-demo .about-stamp strong { margin-top: 8px; font: 800 24px/1.06 var(--font-display); letter-spacing: -.045em; }
 .contractor-demo .about-stamp i { margin-top: 13px; font-size: 0.7rem; font-style: normal; font-weight: 600; letter-spacing: .09em; }
 .contractor-demo .about-caption { position: absolute; bottom: 0; left: 0; display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 0.8125rem; font-weight: 600; letter-spacing: .045em; }
-.contractor-demo .caption-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.contractor-demo .caption-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); display: inline-block; animation: pulseDot 2s ease-in-out infinite; }
 .contractor-demo .about-copy h2, 
 .contractor-demo .section-heading h2, 
 .contractor-demo .why-heading h2, 
@@ -178,14 +283,14 @@
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  transition: transform .38s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow .38s cubic-bezier(0.2, 0.8, 0.2, 1), border-color .3s ease;
   border-radius: 8px;
   overflow: hidden;
 }
 .contractor-demo .service-card:hover {
-  transform: translateY(-6px);
-  border-color: #CBD5E1;
-  box-shadow: 0 20px 32px -8px rgba(15, 23, 42, 0.12);
+  transform: translateY(-8px);
+  border-color: #D97706;
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(217, 119, 6, 0.2);
 }
 .contractor-demo .service-image { position: relative; height: 180px; overflow: hidden; }
 .contractor-demo .service-image::after {
@@ -194,8 +299,8 @@
   background: linear-gradient(0deg, rgba(15, 23, 42, 0.35), transparent 60%);
   content: "";
 }
-.contractor-demo .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
-.contractor-demo .service-card:hover .service-image img { transform: scale(1.07); }
+.contractor-demo .service-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.contractor-demo .service-card:hover .service-image img { transform: scale(1.08); }
 .contractor-demo .service-number {
   position: absolute;
   z-index: 1;
@@ -207,6 +312,10 @@
   border-radius: 4px;
   backdrop-filter: blur(4px);
   font: 600 0.8125rem var(--font-display);
+  transition: background-color .2s ease;
+}
+.contractor-demo .service-card:hover .service-number {
+  background: #D97706;
 }
 .contractor-demo .service-body {
   position: relative;
@@ -226,6 +335,11 @@
   background: #F59E0B;
   border-radius: 8px;
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+  transition: transform .35s cubic-bezier(0.2, 0.8, 0.2, 1), background-color .35s ease, box-shadow .35s ease;
+}
+.contractor-demo .service-card:hover .service-icon {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.4);
 }
 .contractor-demo .service-icon svg { width: 25px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
 .contractor-demo .service-body h3 {
@@ -234,6 +348,10 @@
   color: #0F172A;
   font: 700 1.3rem/1.35 var(--font-display);
   letter-spacing: -0.01em;
+  transition: color .2s ease;
+}
+.contractor-demo .service-card:hover .service-body h3 {
+  color: #D97706;
 }
 .contractor-demo .service-body p {
   min-height: 52px;
@@ -252,11 +370,11 @@
   font-weight: 700;
   letter-spacing: .02em;
   cursor: pointer;
-  transition: color .2s ease;
+  transition: all .2s ease;
 }
 .contractor-demo .service-body a:hover { color: #B45309; }
-.contractor-demo .service-body a span { transition: transform .2s ease; display: inline-block; }
-.contractor-demo .service-body a:hover span { transform: translate(3px,-3px); }
+.contractor-demo .service-body a span { transition: transform .25s ease; display: inline-block; }
+.contractor-demo .service-card:hover .service-body a span { transform: translate(4px,-4px); }
 
 /* Projects (Option 1: Crisp Architectural Light) */
 .contractor-demo .projects-section { background: #FFFFFF; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; }
@@ -264,21 +382,53 @@
 .contractor-demo .project-toolbar > p { margin: 0; color: #64748B; font-size: 0.8125rem; font-weight: 700; letter-spacing: .15em; }
 .contractor-demo .project-toolbar > p span { padding-inline: 5px; color: #D97706; }
 .contractor-demo .project-toolbar > p b { color: #0F172A; font-weight: 700; }
-.contractor-demo .project-filters { display: flex; flex-wrap: gap; gap: 8px; }
-.contractor-demo .filter-button { padding: 7px 14px; color: #475569; border: 1px solid #E2E8F0; background: #FFFFFF; font-size: 0.875rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all .2s; }
-.contractor-demo .filter-button:hover, 
-.contractor-demo .filter-button.is-active { color: #0F172A; border-color: #D97706; background: #FEF3C7; }
+.contractor-demo .project-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.contractor-demo .filter-button {
+  padding: 7px 16px;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contractor-demo .filter-button:hover {
+  transform: translateY(-2px);
+  color: #0F172A;
+  border-color: #D97706;
+  background: #FEF3C7;
+}
+.contractor-demo .filter-button.is-active {
+  color: #0F172A;
+  border-color: #D97706;
+  background: #FEF3C7;
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2);
+}
 .contractor-demo .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 285px; gap: 18px; }
-.contractor-demo .project-card { min-width: 0; overflow: hidden; background: #F8FAFC; border: 1px solid #E2E8F0; transition: opacity .25s, transform .25s, box-shadow .25s; border-radius: 8px; }
-.contractor-demo .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 28px -6px rgba(15,23,42,0.12); }
+.contractor-demo .project-card {
+  min-width: 0;
+  overflow: hidden;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  transition: opacity .35s, transform .35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow .35s, border-color .3s;
+  border-radius: 8px;
+}
+.contractor-demo .project-card:hover {
+  transform: translateY(-6px);
+  border-color: #CBD5E1;
+  box-shadow: 0 20px 32px -6px rgba(15,23,42,0.14);
+}
 .contractor-demo .project-feature { grid-column: span 2; grid-row: span 2; }
 .contractor-demo .project-open { position: relative; display: flex; width: 100%; height: 100%; flex-direction: column; padding: 0; overflow: hidden; border: 0; background: transparent; text-align: left; cursor: pointer; }
 .contractor-demo .project-image { position: absolute; inset: 0; overflow: hidden; }
 .contractor-demo .project-image::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(11,17,23,.84) 0%, rgba(11,17,23,.15) 52%, rgba(11,17,23,.02) 100%); content: ""; transition: background .3s; }
 .contractor-demo .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .75s cubic-bezier(.2,.7,.2,1); }
-.contractor-demo .project-open:hover .project-image img { transform: scale(1.06); }
-.contractor-demo .project-overlay { position: absolute; z-index: 1; inset: 0; display: grid; place-items: center; color: var(--white); opacity: 0; transition: opacity .3s; }
-.contractor-demo .project-overlay > span { display: inline-flex; align-items: center; gap: 11px; padding: 12px 18px; border: 1px solid rgba(255,255,255,.65); font-size: 0.875rem; font-weight: 700; letter-spacing: .1em; }
+.contractor-demo .project-open:hover .project-image img { transform: scale(1.08); }
+.contractor-demo .project-overlay { position: absolute; z-index: 1; inset: 0; display: grid; place-items: center; color: var(--white); opacity: 0; transition: opacity .3s ease; }
+.contractor-demo .project-overlay > span { display: inline-flex; align-items: center; gap: 11px; padding: 12px 18px; border: 1px solid rgba(255,255,255,.65); font-size: 0.875rem; font-weight: 700; letter-spacing: .1em; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); border-radius: 6px; }
 .contractor-demo .project-overlay i { color: var(--gold-light); font-size: 15px; font-style: normal; }
 .contractor-demo .project-open:hover .project-overlay { opacity: 1; }
 .contractor-demo .project-info { position: relative; z-index: 2; display: flex; width: 100%; align-items: flex-end; justify-content: space-between; gap: 16px; margin-top: auto; padding: 22px 23px; color: var(--white); }
@@ -286,8 +436,22 @@
 .contractor-demo .project-info small { color: var(--gold-light); font-size: 0.8125rem; font-weight: 700; letter-spacing: .12em; }
 .contractor-demo .project-info strong { margin-top: 4px; font: 600 18px var(--font-display); letter-spacing: -.035em; }
 .contractor-demo .project-feature .project-info strong { font-size: 23px; }
-.contractor-demo .project-arrow { display: grid; width: 35px; height: 35px; flex: 0 0 auto; place-items: center; border: 1px solid rgba(255,255,255,.48); transition: color .2s, background .2s; }
-.contractor-demo .project-open:hover .project-arrow { color: var(--navy); background: var(--gold); border-color: var(--gold); }
+.contractor-demo .project-arrow {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.48);
+  border-radius: 4px;
+  transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contractor-demo .project-open:hover .project-arrow {
+  color: #0A1120;
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: translate(2px, -2px) rotate(45deg);
+}
 .contractor-demo .portfolio-note { margin: 17px 0 0; color: #879097; font-size: 0.8125rem; text-align: right; }
 
 /* Why Us (Option 1: Crisp Architectural Light) */
@@ -304,7 +468,21 @@
 .contractor-demo .why-heading > p { max-width: 280px; margin: 0 0 26px; color: #475569; font-size: 1.0625rem; line-height: 1.7; }
 .contractor-demo .why-heading .button { min-height: 46px; padding-inline: 15px; font-size: 0.875rem; }
 .contractor-demo .why-list { border-top: 1px solid #E2E8F0; }
-.contractor-demo .why-item { display: grid; grid-template-columns: 48px 1fr 30px; align-items: start; gap: 18px; padding: 23px 0; border-bottom: 1px solid #E2E8F0; }
+.contractor-demo .why-item {
+  display: grid;
+  grid-template-columns: 48px 1fr 30px;
+  align-items: start;
+  gap: 18px;
+  padding: 23px 18px;
+  border-bottom: 1px solid #E2E8F0;
+  border-radius: 8px;
+  transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.contractor-demo .why-item:hover {
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.05);
+  transform: translateY(-2px);
+}
 .contractor-demo .why-icon {
   display: grid;
   width: 42px;
@@ -315,9 +493,17 @@
   background: #FFFFFF;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: all .25s ease;
 }
 .contractor-demo .why-icon svg { width: 24px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
-.contractor-demo .why-item h3 { margin: 1px 0 5px; font: 700 1.1875rem var(--font-display); color: #0F172A; }
+.contractor-demo .why-item:hover .why-icon {
+  background: #D97706;
+  color: #FFFFFF;
+  border-color: #D97706;
+  transform: scale(1.08);
+}
+.contractor-demo .why-item h3 { margin: 1px 0 5px; font: 700 1.1875rem var(--font-display); color: #0F172A; transition: color .2s ease; }
+.contractor-demo .why-item:hover h3 { color: #D97706; }
 .contractor-demo .why-item p { margin: 0; color: #475569; font-size: 0.9375rem; line-height: 1.7; }
 .contractor-demo .why-item > b { padding-top: 4px; color: #94A3B8; font: 600 0.8125rem var(--font-display); }
 
@@ -325,11 +511,12 @@
 .contractor-demo .process-section { background: #FFFFFF; }
 .contractor-demo .process-grid { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 65px; }
 .contractor-demo .process-grid::before { position: absolute; top: 31px; right: 9%; left: 9%; height: 1px; background: #E2E8F0; content: ""; }
-.contractor-demo .process-step { position: relative; z-index: 1; }
+.contractor-demo .process-step { position: relative; z-index: 1; transition: transform .3s ease; }
+.contractor-demo .process-step:hover { transform: translateY(-4px); }
 .contractor-demo .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 29px; }
 .contractor-demo .step-number { color: #D97706; font: 700 0.875rem var(--font-display); letter-spacing: .1em; }
 .contractor-demo .step-icon { display: grid; width: 62px; height: 62px; place-items: center; color: #0A1120; border: 1px solid #E2E8F0; border-radius: 50%; background: #F8FAFC; transition: all .25s ease; box-shadow: 0 2px 6px rgba(15,23,42,0.04); }
-.contractor-demo .process-step:hover .step-icon { color: #0A1120; border-color: #F59E0B; background: #F59E0B; transform: rotate(-6deg); }
+.contractor-demo .process-step:hover .step-icon { color: #0A1120; border-color: #F59E0B; background: #F59E0B; transform: rotate(-6deg) scale(1.05); }
 .contractor-demo .step-icon svg { width: 29px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.45; }
 .contractor-demo .process-step h3 { margin: 0 0 9px; font: 700 15px var(--font-display); color: #0F172A; }
 .contractor-demo .process-step p { max-width: 225px; margin: 0; color: #475569; font-size: 0.95rem; line-height: 1.7; }
@@ -349,8 +536,8 @@
 .contractor-demo .slider-controls { display: flex; align-items: center; gap: 15px; margin-top: 28px; }
 .contractor-demo .slider-button {
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   place-items: center;
   color: #0F172A;
   border: 1px solid #E2E8F0;
@@ -358,12 +545,17 @@
   font-size: 17px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all .2s;
+  transition: all .25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .contractor-demo .slider-button:hover {
   color: #FFFFFF;
   border-color: #D97706;
   background: #D97706;
+  transform: scale(1.08);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.25);
+}
+.contractor-demo .slider-button:active {
+  transform: scale(0.92);
 }
 .contractor-demo .slider-count { color: #64748B; font-size: 0.875rem; }
 .contractor-demo .slider-count b { color: #D97706; }
@@ -426,15 +618,41 @@
 .contractor-demo .inquiry-form label { display: flex; flex-direction: column; gap: 7px; margin-bottom: 15px; color: #1E293B; font-size: 0.875rem; font-weight: 700; }
 .contractor-demo .inquiry-form input, 
 .contractor-demo .inquiry-form select, 
-.contractor-demo .inquiry-form textarea { width: 100%; min-height: 43px; padding: 10px 12px; color: #0F172A; border: 1px solid #CBD5E1; border-radius: 6px; outline: 0; background: #FFFFFF; font-size: 0.95rem; font-weight: 400; transition: border-color .2s, box-shadow .2s; }
+.contractor-demo .inquiry-form textarea {
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 14px;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  outline: 0;
+  background: #FFFFFF;
+  font-size: 0.95rem;
+  font-weight: 400;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease;
+}
 .contractor-demo .inquiry-form textarea { min-height: 93px; resize: vertical; }
 .contractor-demo .inquiry-form input:focus, 
 .contractor-demo .inquiry-form select:focus, 
-.contractor-demo .inquiry-form textarea:focus { border-color: #D97706; box-shadow: 0 0 0 3px rgba(217,119,6,.15); }
+.contractor-demo .inquiry-form textarea:focus {
+  border-color: #D97706 !important;
+  box-shadow: 0 0 0 4px rgba(217,119,6,.14) !important;
+  transform: translateY(-1px);
+}
 .contractor-demo .form-footer { display: flex; align-items: center; justify-content: space-between; gap: 13px; margin-top: 2px; }
 .contractor-demo .form-footer p { max-width: 205px; margin: 0; color: #8a9297; font-size: 0.8125rem; }
 .contractor-demo .form-footer .button { min-height: 44px; padding-inline: 15px; font-size: 0.9375rem; }
-.contractor-demo .form-message { padding: 11px 13px; margin-top: 14px; color: #245c3e; border-left: 3px solid #4d9b6b; background: #edf6ef; font-size: 0.9375rem; }
+.contractor-demo .form-message {
+  padding: 13px 16px;
+  margin-top: 14px;
+  color: #065F46;
+  border-left: 4px solid #10B981;
+  background: #ECFDF5;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  animation: successSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
 
 /* Footer */
 .contractor-demo .site-footer { color: var(--white); background: #101820; }
@@ -458,48 +676,52 @@
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: rgba(8, 14, 19, 0.85);
-  backdrop-filter: blur(4px);
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
+  animation: backdropFadeIn 0.3s ease-out both;
 }
 .contractor-modal-box {
   position: relative;
   width: min(760px, 100%);
   max-height: 90vh;
   overflow-y: auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 25px 100px rgba(15,23,42,.25);
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 25px 80px -10px rgba(15, 23, 42, 0.35);
   border: 1px solid #E2E8F0;
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .contractor-modal-box .dialog-close {
   position: absolute;
   top: 14px;
   right: 14px;
   z-index: 10;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  background: rgba(15, 23, 42, 0.75);
-  color: #fff;
-  border: 0;
+  background: rgba(15, 23, 42, 0.8);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
-  transition: background .2s;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .contractor-modal-box .dialog-close:hover {
   background: #D97706;
+  transform: rotate(90deg) scale(1.08);
 }
 .contractor-modal-box .dialog-image img {
   width: 100%;
   max-height: 420px;
   object-fit: cover;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
 }
 .contractor-modal-box .dialog-content {
   padding: 24px 28px 30px;
@@ -514,6 +736,43 @@
   color: #475569;
   line-height: 1.65;
   margin-bottom: 24px;
+}
+
+/* Floating Scroll-to-Top Button */
+.contractor-demo .scroll-to-top-btn {
+  position: fixed;
+  z-index: 9999;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  color: #0F172A;
+  border-radius: 50%;
+  font-size: 19px;
+  font-weight: 800;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.14);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: heroFadeUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.contractor-demo .scroll-to-top-btn:hover {
+  background: #F59E0B;
+  border-color: #D97706;
+  color: #0F172A;
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.35);
+}
+.contractor-demo .scroll-to-top-btn:active {
+  transform: scale(0.95);
+}
+
+/* Page Banner Entrance */
+.contractor-demo .view-page-banner {
+  animation: bannerFadeDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Responsive */
@@ -731,4 +990,190 @@
   .contractor-demo .contact-grid { grid-template-columns: 1fr; gap: 32px; }
   .contractor-demo .form-row { grid-template-columns: 1fr; gap: 0; }
   .contractor-demo .footer-main { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* --------------------------------------------------------------------------
+   INTERACTIVE ANIMATIONS & SCROLL REVEALS
+   -------------------------------------------------------------------------- */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ambientZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes scrollIndicator {
+  0% { transform: scaleX(0.2); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.1% { transform: scaleX(1); transform-origin: right; }
+  100% { transform: scaleX(0.2); transform-origin: right; }
+}
+
+@keyframes testimonialSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(6px);
+  }
+}
+
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatStamp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+@keyframes successSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bannerFadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll Reveal Base */
+.contractor-demo .reveal,
+.contractor-demo .service-card,
+.contractor-demo .stat-item,
+.contractor-demo .project-card,
+.contractor-demo .why-item,
+.contractor-demo .about-visual,
+.contractor-demo .about-copy,
+.contractor-demo .testimonial-stage,
+.contractor-demo .inquiry-form,
+.contractor-demo .contact-copy {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.contractor-demo .reveal.is-visible,
+.contractor-demo .reveal.active,
+.contractor-demo .reveal.visible,
+.contractor-demo .service-card.is-visible,
+.contractor-demo .service-card.active,
+.contractor-demo .service-card.visible,
+.contractor-demo .stat-item.is-visible,
+.contractor-demo .stat-item.active,
+.contractor-demo .stat-item.visible,
+.contractor-demo .project-card.is-visible,
+.contractor-demo .project-card.active,
+.contractor-demo .project-card.visible,
+.contractor-demo .why-item.is-visible,
+.contractor-demo .why-item.active,
+.contractor-demo .why-item.visible,
+.contractor-demo .about-visual.is-visible,
+.contractor-demo .about-visual.active,
+.contractor-demo .about-copy.is-visible,
+.contractor-demo .about-copy.active,
+.contractor-demo .testimonial-stage.is-visible,
+.contractor-demo .testimonial-stage.active,
+.contractor-demo .inquiry-form.is-visible,
+.contractor-demo .inquiry-form.active,
+.contractor-demo .contact-copy.is-visible,
+.contractor-demo .contact-copy.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays for Grid Cascades */
+.contractor-demo .services-grid .service-card:nth-child(1) { transition-delay: 0.04s; }
+.contractor-demo .services-grid .service-card:nth-child(2) { transition-delay: 0.10s; }
+.contractor-demo .services-grid .service-card:nth-child(3) { transition-delay: 0.16s; }
+.contractor-demo .services-grid .service-card:nth-child(4) { transition-delay: 0.22s; }
+.contractor-demo .services-grid .service-card:nth-child(5) { transition-delay: 0.28s; }
+.contractor-demo .services-grid .service-card:nth-child(6) { transition-delay: 0.34s; }
+.contractor-demo .services-grid .service-card:nth-child(7) { transition-delay: 0.40s; }
+.contractor-demo .services-grid .service-card:nth-child(8) { transition-delay: 0.46s; }
+.contractor-demo .services-grid .service-card:nth-child(9) { transition-delay: 0.52s; }
+
+.contractor-demo .stats-grid .stat-item:nth-child(2) { transition-delay: 0.08s; }
+.contractor-demo .stats-grid .stat-item:nth-child(3) { transition-delay: 0.16s; }
+.contractor-demo .stats-grid .stat-item:nth-child(4) { transition-delay: 0.24s; }
+.contractor-demo .stats-grid .stat-item:nth-child(5) { transition-delay: 0.32s; }
+
+.contractor-demo .projects-grid .project-card:nth-child(1) { transition-delay: 0.05s; }
+.contractor-demo .projects-grid .project-card:nth-child(2) { transition-delay: 0.11s; }
+.contractor-demo .projects-grid .project-card:nth-child(3) { transition-delay: 0.17s; }
+.contractor-demo .projects-grid .project-card:nth-child(4) { transition-delay: 0.23s; }
+.contractor-demo .projects-grid .project-card:nth-child(5) { transition-delay: 0.29s; }
+.contractor-demo .projects-grid .project-card:nth-child(6) { transition-delay: 0.35s; }
+.contractor-demo .projects-grid .project-card:nth-child(7) { transition-delay: 0.41s; }
+
+.contractor-demo .why-list .why-item:nth-child(1) { transition-delay: 0.05s; }
+.contractor-demo .why-list .why-item:nth-child(2) { transition-delay: 0.11s; }
+.contractor-demo .why-list .why-item:nth-child(3) { transition-delay: 0.17s; }
+.contractor-demo .why-list .why-item:nth-child(4) { transition-delay: 0.23s; }
+.contractor-demo .why-list .why-item:nth-child(5) { transition-delay: 0.29s; }
+.contractor-demo .why-list .why-item:nth-child(6) { transition-delay: 0.35s; }
+
+/* Testimonial Active Slide Animation */
+.contractor-demo .testimonial-slide {
+  animation: testimonialSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .contractor-demo *,
+  .contractor-demo *::before,
+  .contractor-demo *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -40,12 +40,70 @@ export default function Contractor() {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const [bannerDismissed, setBannerDismissed] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [formSubmitted, setFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetSelectors = '.reveal, .service-card, .stat-item, .project-card, .why-item, .testimonial-stage, .inquiry-form, .about-visual, .about-copy, .contact-copy';
+
+    const activate = (el) => {
+      el.classList.add('is-visible');
+      el.classList.add('active');
+    };
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      document.querySelectorAll(targetSelectors).forEach(activate);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    const scanAndObserve = () => {
+      const elements = document.querySelectorAll(targetSelectors);
+      elements.forEach(el => {
+        if (!el.classList.contains('is-visible')) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            activate(el);
+          } else {
+            observer.observe(el);
+          }
+        }
+      });
+    };
+
+    scanAndObserve();
+    const timer = setTimeout(scanAndObserve, 120);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [currentView, activeFilter]);
 
   const projectsData = [
     {
@@ -444,7 +502,7 @@ export default function Contractor() {
             </div>
 
             <div className="testimonial-stage">
-              <article className="testimonial-slide">
+              <article key={activeTestimonial} className="testimonial-slide">
                 <div className="quote-mark">“</div>
                 <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
                 <blockquote>{testimonials[activeTestimonial].quote}</blockquote>
@@ -880,7 +938,7 @@ export default function Contractor() {
             <div className="projects-grid">
               {filteredProjects.map((proj) => (
                 <article
-                  key={proj.id}
+                  key={`${proj.id}-${activeFilter}`}
                   className={`project-card reveal ${proj.isFeature && activeFilter === 'all' ? 'project-feature' : ''}`}
                 >
                   <button
@@ -955,7 +1013,7 @@ export default function Contractor() {
             </div>
 
             <div className="testimonial-stage">
-              <article className="testimonial-slide">
+              <article key={activeTestimonial} className="testimonial-slide">
                 <div className="quote-mark">“</div>
                 <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
                 <blockquote>{testimonials[activeTestimonial].quote}</blockquote>
@@ -1343,12 +1401,13 @@ export default function Contractor() {
 
       {/* ── PROJECT DETAILS MODAL ── */}
       {selectedProject && (
-        <div className="contractor-modal-backdrop">
-          <div className="contractor-modal-box">
+        <div className="contractor-modal-backdrop" onClick={() => setSelectedProject(null)}>
+          <div className="contractor-modal-box" onClick={(e) => e.stopPropagation()}>
             <button
               className="dialog-close"
               type="button"
               aria-label="Close project details"
+              onClick={() => setSelectedProject(null)}
             >
               ×
             </button>
@@ -1356,18 +1415,33 @@ export default function Contractor() {
               <img src={selectedProject.image} alt={selectedProject.title} />
             </div>
             <div className="dialog-content">
-              
               <h2>{selectedProject.title}</h2>
               <p>{selectedProject.description}</p>
               <a
-                className="button button-dark"
-                href="#contact" onClick={(e) => navigateTo('contact', e)}
+                className="button button-gold"
+                href="#contact"
+                onClick={(e) => {
+                  setSelectedProject(null);
+                  navigateTo('contact', e);
+                }}
               >
                 Discuss a similar project <span>↗</span>
               </a>
             </div>
           </div>
         </div>
+      )}
+
+      {/* ── FLOATING QUICK-ACTION / SCROLL TO TOP ── */}
+      {showScrollTop && (
+        <button
+          className="scroll-to-top-btn"
+          type="button"
+          aria-label="Scroll to top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          ↑
+        </button>
       )}
     </div>
   );
