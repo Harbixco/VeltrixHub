@@ -420,6 +420,37 @@ export default function OutreachDashboard() {
     return () => clearInterval(trackInterval);
   }, []);
 
+  // Automated 2:00 PM Daily Pitching Batch Trigger (Active Tab Auto-Runner)
+  const autoTriggered2pmRef = useRef(false);
+  useEffect(() => {
+    const check2pmSchedule = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+
+      // Trigger daily at 2:00 PM (14:00 - 14:05 window)
+      if (hours === 14 && minutes <= 5 && !autoTriggered2pmRef.current) {
+        if (!dispatchRunning && !isDispatching && (dispatchProgress?.sentToday || 0) < 75) {
+          autoTriggered2pmRef.current = true;
+          setDispatchAlert({
+            type: "success",
+            message: "Automated 2:00 PM schedule reached: launching daily 75 pitching batch.",
+          });
+          handleStartDispatch("send");
+        }
+      }
+
+      // Reset trigger lock outside 2:00 PM
+      if (hours !== 14) {
+        autoTriggered2pmRef.current = false;
+      }
+    };
+
+    const scheduleInterval = setInterval(check2pmSchedule, 30000);
+    check2pmSchedule();
+    return () => clearInterval(scheduleInterval);
+  }, [dispatchRunning, isDispatching, dispatchProgress]);
+
   // Dispatch polling when active
   useEffect(() => {
     let dispatchInterval = null;
@@ -1027,9 +1058,15 @@ export default function OutreachDashboard() {
         <div className="bg-gradient-to-r from-slate-900 via-[#0D1525] to-slate-900 border border-emerald-900/40 rounded-2xl p-6 sm:p-8 shadow-xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-slate-800/80">
             <div className="space-y-2 max-w-xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wide uppercase">
-                <Zap className="w-3.5 h-3.5 text-emerald-400" />
-                Live Dispatch Control Center
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold tracking-wide uppercase">
+                  <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                  Live Dispatch Control Center
+                </div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs font-medium">
+                  <Clock className="w-3.5 h-3.5 text-blue-400" />
+                  Daily Auto Triggers: 7:00 AM (Prospecting) &bull; 2:00 PM (Pitching Batch)
+                </div>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-white">
                 One-Click Pitch Dispatcher

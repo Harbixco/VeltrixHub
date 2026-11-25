@@ -412,8 +412,14 @@ export default async function handler(req, res) {
     console.warn("MongoDB connection notice:", err.message);
   }
 
-  // 1. GET STATUS & LOGS
-  if (req.query.status === "true" || req.query.status === true || req.method === "GET") {
+  // 1. GET STATUS & LOGS (Unless an explicit action mode like mode=send or dry-run is requested via query or cron)
+  const queryMode = req.query?.mode;
+  const isStatusRequest =
+    req.query.status === "true" ||
+    req.query.status === true ||
+    (req.method === "GET" && !queryMode);
+
+  if (isStatusRequest) {
     const progress = await calculateProgress(db);
 
     let stateDoc = null;

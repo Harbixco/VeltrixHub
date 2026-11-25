@@ -3,6 +3,10 @@
     {
       "path": "/api/dispatch?mode=send",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/dispatch?mode=send",
+      "schedule": "0 13 * * *"
     }
   ],
   "rewrites": [
