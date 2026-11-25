@@ -415,6 +415,13 @@
   transform: translateY(0) !important;
 }
 
+/* Universal FAQ Accordion Stability - Prevents cards from vanishing on toggle */
+[class*="-demo"] .faq-item {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
 /* Universal Grid Stagger Cascades */
 [class*="-demo"] .services-grid > *:nth-child(1),
 [class*="-demo"] .pf-services-grid > *:nth-child(1),

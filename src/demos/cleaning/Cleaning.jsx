@@ -398,42 +398,8 @@ const runInit = () => {
   }
 
   /* ==========================================================================
-     8. FAQ ACCORDION
+     8. FAQ ACCORDION - Handled via React state (openFaq / toggleFaq)
      ========================================================================== */
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const button = item.querySelector('.faq-button');
-    const content = item.querySelector('.faq-content');
-
-    if (button && content) {
-      button.addEventListener('click', () => {
-        const isOpen = item.classList.contains('active');
-
-        // Close all other items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('active');
-            const otherBtn = otherItem.querySelector('.faq-button');
-            const otherContent = otherItem.querySelector('.faq-content');
-            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-            if (otherContent) otherContent.style.maxHeight = null;
-          }
-        });
-
-        // Toggle current item
-        if (isOpen) {
-          item.classList.remove('active');
-          button.setAttribute('aria-expanded', 'false');
-          content.style.maxHeight = null;
-        } else {
-          item.classList.add('active');
-          button.setAttribute('aria-expanded', 'true');
-          content.style.maxHeight = content.scrollHeight + 32 + 'px';
-        }
-      });
-    }
-  });
 
   /* ==========================================================================
      9. CONTACT FORM VALIDATION & WHATSAPP REDIRECTION
@@ -2171,7 +2137,7 @@ const runInit = () => {
         <div className="faq-container">
           
           {/* FAQ 1 */}
-          <div className={`faq-item reveal ${openFaq === 0 ? 'active' : ''}`}>
+          <div className={`faq-item ${openFaq === 0 ? 'active is-open' : ''}`}>
             <button type="button" className="faq-button" aria-expanded={openFaq === 0} onClick={() => toggleFaq(0)}>
               <span>What cleaning services does Veltrix Hub offer?</span>
               <div className="faq-icon">
@@ -2186,7 +2152,7 @@ const runInit = () => {
           </div>
 
           {/* FAQ 2 */}
-          <div className={`faq-item reveal stagger-1 ${openFaq === 1 ? 'active' : ''}`}>
+          <div className={`faq-item ${openFaq === 1 ? 'active is-open' : ''}`}>
             <button type="button" className="faq-button" aria-expanded={openFaq === 1} onClick={() => toggleFaq(1)}>
               <span>Do you provide residential and commercial cleaning?</span>
               <div className="faq-icon">
@@ -2201,7 +2167,7 @@ const runInit = () => {
           </div>
 
           {/* FAQ 3 */}
-          <div className={`faq-item reveal stagger-2 ${openFaq === 2 ? 'active' : ''}`}>
+          <div className={`faq-item ${openFaq === 2 ? 'active is-open' : ''}`}>
             <button type="button" className="faq-button" aria-expanded={openFaq === 2} onClick={() => toggleFaq(2)}>
               <span>How can I request a cleaning quote?</span>
               <div className="faq-icon">
@@ -2216,7 +2182,7 @@ const runInit = () => {
           </div>
 
           {/* FAQ 4 */}
-          <div className={`faq-item reveal ${openFaq === 3 ? 'active' : ''}`}>
+          <div className={`faq-item ${openFaq === 3 ? 'active is-open' : ''}`}>
             <button type="button" className="faq-button" aria-expanded={openFaq === 3} onClick={() => toggleFaq(3)}>
               <span>Can I request a specific cleaning service?</span>
               <div className="faq-icon">
@@ -2231,7 +2197,7 @@ const runInit = () => {
           </div>
 
           {/* FAQ 5 */}
-          <div className={`faq-item reveal stagger-1 ${openFaq === 4 ? 'active' : ''}`}>
+          <div className={`faq-item ${openFaq === 4 ? 'active is-open' : ''}`}>
             <button type="button" className="faq-button" aria-expanded={openFaq === 4} onClick={() => toggleFaq(4)}>
               <span>How can I contact Veltrix Hub?</span>
               <div className="faq-icon">
@@ -2246,7 +2212,7 @@ const runInit = () => {
           </div>
 
           {/* FAQ 6 */}
-          <div className={`faq-item reveal stagger-2 ${openFaq === 5 ? 'active' : ''}`}>
+          <div className={`faq-item ${openFaq === 5 ? 'active is-open' : ''}`}>
             <button type="button" className="faq-button" aria-expanded={openFaq === 5} onClick={() => toggleFaq(5)}>
               <span>How do I schedule a cleaning service?</span>
               <div className="faq-icon">

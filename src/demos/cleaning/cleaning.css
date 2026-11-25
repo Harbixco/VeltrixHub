@@ -1540,14 +1540,18 @@
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-xs);
   overflow: hidden;
-  transition: all var(--transition-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
 }
 
 .cleaning-demo .faq-item:hover {
   border-color: var(--color-border-hover);
 }
 
-.cleaning-demo .faq-item.active {
+.cleaning-demo .faq-item.active,
+.cleaning-demo .faq-item.is-open {
   border-color: var(--color-blue);
   box-shadow: var(--shadow-md);
 }
@@ -1573,8 +1577,8 @@
 }
 
 .cleaning-demo .faq-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1582,10 +1586,11 @@
   background-color: var(--color-bg-light);
   color: var(--color-navy);
   flex-shrink: 0;
-  transition: all var(--transition-fast);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease;
 }
 
-.cleaning-demo .faq-item.active .faq-icon {
+.cleaning-demo .faq-item.active .faq-icon,
+.cleaning-demo .faq-item.is-open .faq-icon {
   background-color: var(--color-blue);
   color: var(--color-white);
   transform: rotate(180deg);
@@ -1594,13 +1599,16 @@
 .cleaning-demo .faq-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.35s ease-out, padding 0.35s ease;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease, opacity 0.3s ease;
   padding: 0 1.75rem;
+  opacity: 0;
 }
 
-.cleaning-demo .faq-item.active .faq-content {
-  max-height: 500px !important;
+.cleaning-demo .faq-item.active .faq-content,
+.cleaning-demo .faq-item.is-open .faq-content {
+  max-height: 600px !important;
   padding-bottom: 1.5rem;
+  opacity: 1;
 }
 
 .cleaning-demo .faq-content p {
