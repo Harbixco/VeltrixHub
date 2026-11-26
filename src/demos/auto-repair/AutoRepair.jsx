@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import DemoTopBar from '../DemoTopBar';
 import CountUpNumber from '../../components/CountUpNumber';
+import {
+  Gauge,
+  Disc,
+  Droplets,
+  Cog,
+  CircleDot,
+  Zap,
+  Sliders,
+  Wrench,
+  CheckCircle2,
+  Calendar,
+  Clock,
+  MapPin,
+  Phone,
+  Mail,
+  ArrowRight,
+  ChevronDown
+} from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import './auto-repair.css';
 
 /**
@@ -51,18 +70,73 @@ export default function AutoRepair() {
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState('');
 
+  const servicesList = [
+    {
+      id: '01',
+      title: 'Engine diagnostics',
+      desc: 'Clear answers for check engine lights, strange sounds, and rough idling. We identify the exact issue before quoting any work.',
+      icon: <Gauge size={24} strokeWidth={2} />,
+    },
+    {
+      id: '02',
+      title: 'Brake repair',
+      desc: 'Reliable stopping power with ceramic pad installation, rotor resurfacing, and complete hydraulic fluid inspection.',
+      icon: <Disc size={24} strokeWidth={2} />,
+    },
+    {
+      id: '03',
+      title: 'Oil & filter',
+      desc: 'Premium full synthetic and blend motor oils paired with OEM filters, topped off with a courtesy multi-point safety check.',
+      icon: <Droplets size={24} strokeWidth={2} />,
+    },
+    {
+      id: '04',
+      title: 'Transmission',
+      desc: 'Complete fluid exchange, diagnostic solenoid checks, and thorough clutch or gearbox service for smooth gear shifts.',
+      icon: <Cog size={24} strokeWidth={2} />,
+    },
+    {
+      id: '05',
+      title: 'Tires & alignment',
+      desc: 'Computerized four-wheel laser alignment, wheel balancing, and tire rotations to ensure stable highway tracking and even tread wear.',
+      icon: <CircleDot size={24} strokeWidth={2} />,
+    },
+    {
+      id: '06',
+      title: 'Battery care',
+      desc: 'High-accuracy digital charge testing, terminal cleaning, and dependable AGM battery replacements with long-term warranties.',
+      icon: <Zap size={24} strokeWidth={2} />,
+    },
+    {
+      id: '07',
+      title: 'Suspension',
+      desc: 'Shock absorbers, struts, ball joints, and control arms replaced to restore comfortable road handling and cornering control.',
+      icon: <Sliders size={24} strokeWidth={2} />,
+    },
+    {
+      id: '08',
+      title: 'Vehicle maintenance',
+      desc: 'Scheduled 30,000 / 60,000 / 90,000 mile milestone inspections to keep your vehicle running smoothly and protect manufacturer warranties.',
+      icon: <Wrench size={24} strokeWidth={2} />,
+    },
+  ];
+
   const heroSlides = [
     {
+      image: '/demos/auto-repair/images/workshop.jpg',
+      alt: 'Bright, modern automotive workshop bay with car on lift',
+    },
+    {
+      image: '/demos/auto-repair/images/technician.jpg',
+      alt: 'Certified master technician running advanced computer diagnostics',
+    },
+    {
+      image: '/demos/auto-repair/images/alt-service.jpg',
+      alt: 'Precision engine servicing and maintenance',
+    },
+    {
       image: '/demos/auto-repair/images/alt-workshop.jpg',
-      alt: 'Automotive workshop with technician inspecting vehicle',
-    },
-    {
-      image: '/demos/auto-repair/images/sports-car.jpg',
-      alt: 'Precision sports car performance tuning',
-    },
-    {
-      image: '/demos/auto-repair/images/night-car.jpg',
-      alt: 'Luxury vehicle headlights at dusk',
+      alt: 'Clean automotive service center with certified mechanics',
     },
   ];
 
@@ -116,6 +190,93 @@ export default function AutoRepair() {
     setContactSubmitted(true);
   };
 
+  const renderContactSection = () => (
+    <section className="contact-section" id="contact">
+      <div className="container contact-unified-container">
+        {/* Left Column: Contact details (5th image) */}
+        <div className="contact-sidebar">
+          <div className="contact-sidebar__header">
+            <span className="contact-badge">GET IN TOUCH</span>
+            <h2>Visit or Message Us</h2>
+            <p>Drop by our shop, call our service desk, or send us a quick note below. We reply promptly.</p>
+          </div>
+
+          <div className="contact-details-grid">
+            <div className="contact-detail-card">
+              <span className="contact-detail-label">PHONE & WHATSAPP</span>
+              <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" className="contact-detail-val">
+                +234 808 709 8270
+              </a>
+            </div>
+            <div className="contact-detail-card">
+              <span className="contact-detail-label">SEND US A NOTE</span>
+              <a href="mailto:info@veltrixhub.ng" className="contact-detail-val">
+                info@veltrixhub.ng
+              </a>
+            </div>
+            <div className="contact-detail-card">
+              <span className="contact-detail-label">FIND THE SHOP</span>
+              <p className="contact-detail-text">
+                124 Industrial Parkway<br />
+                Metro District, Suite 100
+              </p>
+            </div>
+            <div className="contact-detail-card">
+              <span className="contact-detail-label">WHEN WE'RE HERE</span>
+              <p className="contact-detail-text">
+                Monday–Friday <b>8:00 am – 6:00 pm</b><br />
+                Saturday <b>9:00 am – 2:00 pm</b><br />
+                Sunday <b>Closed</b>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Contact form */}
+        <div className="contact-form-wrapper">
+          <form className="contact-form" id="contact-form" onSubmit={handleContactSubmit}>
+            <div className="contact-form__heading">
+              <h3 style={{ margin: '0 0 0.5rem', color: '#ffffff', fontSize: '1.4rem', fontWeight: 800 }}>Send a Direct Message</h3>
+              <p style={{ margin: '0 0 1.5rem', color: '#94a3b8', fontSize: '0.9rem' }}>Have a question about a sound or estimate? Send us your message and we'll get right back to you.</p>
+            </div>
+
+            <div className="contact-form-row">
+              <label className="field">
+                <span>Your name <b>*</b></span>
+                <input name="name" type="text" placeholder="John Doe" autoComplete="name" required minLength="2" />
+              </label>
+              <label className="field">
+                <span>Email address <b>*</b></span>
+                <input name="email" type="email" placeholder="john@example.com" autoComplete="email" required />
+              </label>
+            </div>
+
+            <label className="field contact-form__message">
+              <span>Your message <b>*</b></span>
+              <textarea name="message" rows="4" placeholder="Tell us about your vehicle, model year, or any symptoms you've noticed..." required minLength="5"></textarea>
+            </label>
+
+            <div className="contact-form__submit">
+              <button className="button button--accent" type="submit">
+                Send Message <span>↗</span>
+              </button>
+            </div>
+
+            {contactSubmitted && (
+              <div className="form-success contact-form__success" role="status">
+                <span>✓</span>
+                <div>
+                  <b>Message received!</b>
+                  <p>In this demonstration preview, your message has been logged. In production, our service advisor receives immediate notification.</p>
+                </div>
+              </div>
+            )}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+
   const scrollToSection = (e, id) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -160,7 +321,7 @@ export default function AutoRepair() {
               <a href="#about" onClick={(e) => navigateTo('about', e)} className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>Our Story</a>
               <a href="#difference" onClick={(e) => navigateTo('difference', e)} className={`nav-link ${currentView === 'difference' || currentView === 'why-us' ? 'active' : ''}`}>Why Veltrix Hub</a>
               <a href="#reviews" onClick={(e) => navigateTo('reviews', e)} className={`nav-link ${currentView === 'reviews' ? 'active' : ''}`}>Reviews</a>
-              <a href="#faq" onClick={(e) => navigateTo('faq', e)} className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQs</a>
+              <a href="#faq" onClick={(e) => navigateTo('faq', e)} className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
               <a href="#contact" onClick={(e) => navigateTo('contact', e)} className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact</a>
             </nav>
 
@@ -205,7 +366,7 @@ export default function AutoRepair() {
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }} href="#about" className={`nav-link ${currentView === 'about' ? 'active' : ''}`}>Our Story</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('difference', e); }} href="#difference" className={`nav-link ${currentView === 'difference' || currentView === 'why-us' ? 'active' : ''}`}>Why Veltrix Hub</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('reviews', e); }} href="#reviews" className={`nav-link ${currentView === 'reviews' ? 'active' : ''}`}>Customer Reviews</a>
-        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>Frequently Asked Questions</a>
+        <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }} href="#faq" className={`nav-link ${currentView === 'faq' ? 'active' : ''}`}>FAQ</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }} href="#contact" className={`nav-link ${currentView === 'contact' ? 'active' : ''}`}>Contact & Location</a>
         <a onClick={(e) => { setMobileMenuOpen(false); navigateTo('appointment', e); }} href="#appointment" className="btn btn-primary nav-cta">
           Book Appointment
@@ -252,22 +413,33 @@ export default function AutoRepair() {
           </div>
           <div className="hero__shade"></div>
 
-          <div className="hero__content container" style={{ justifyContent: 'flex-end', paddingBottom: '3.5rem' }}>
+          <div className="hero__content container">
+            <div className="hero__badge">
+              <span className="hero__badge-dot"></span>
+              <span>CERTIFIED MECHANICS • SAME-DAY DIAGNOSTICS</span>
+            </div>
+            <h1>
+              Precision Care for<br />
+              <span>Every Single Mile.</span>
+            </h1>
+            <p className="hero-copy">
+              Honest diagnostics, upfront transparent estimates, and certified technicians who treat your vehicle with genuine care. From routine fluid changes to complex engine rebuilds, we get you safely back on the road.
+            </p>
             <div className="hero__actions">
               <a className="button button--accent" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
-                Schedule your visit <span aria-hidden="true">↗</span>
+                Schedule Your Visit <span aria-hidden="true">↗</span>
               </a>
-              <a className="text-link text-link--light" href="#services" onClick={(e) => scrollToSection(e, 'services')}>
-                Explore our services <span aria-hidden="true">↓</span>
+              <a className="button button--outline-hero" href="#services" onClick={(e) => scrollToSection(e, 'services')}>
+                Explore Services <span aria-hidden="true">↓</span>
               </a>
+            </div>
+            <div className="hero__proof">
+              <span className="proof-stars" aria-label="Five out of five stars">★★★★★</span>
+              <span>Rated 5.0 by local drivers • 12-Month / 12,000-Mile Parts & Labor Warranty</span>
             </div>
           </div>
 
           <div className="hero__bottom container">
-            <span className="hero__index">
-              <b>{String(heroIndex + 1).padStart(2, '0')}</b>
-              <span className="hero__index-line"></span> 03
-            </span>
             <div className="hero__controls">
               <button
                 type="button"
@@ -330,99 +502,7 @@ export default function AutoRepair() {
             </div>
 
             <div className="services-grid">
-              {[
-                {
-                  id: '01',
-                  title: 'Engine diagnostics',
-                  desc: 'Clear answers for warning lights, strange sounds and performance issues.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M9 20h5l4-6h13l5 6h4v17h-4l-3 4H17l-3-4H9V20Z" />
-                      <path d="M19 14V9h11v5m-13 9h15m-4 5 4 3-4 3" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '02',
-                  title: 'Brake repair',
-                  desc: 'Confident stopping starts with a thorough inspection and expert care.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <circle cx="24" cy="25" r="15" />
-                      <circle cx="24" cy="25" r="7" />
-                      <path d="M19 8h10v5H19zM11 13l4 4m18-4-4 4" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '03',
-                  title: 'Oil & filter',
-                  desc: 'Routine maintenance made easy, with the right oil for your vehicle.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M18 8h12l-1 8 7 8v14H12V24l7-8-1-8Z" />
-                      <path d="M19 28h10m-5-8v13" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '04',
-                  title: 'Transmission',
-                  desc: 'Careful diagnostics and repair to keep every gear change smooth.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M9 14h30v21H9zM15 14V9m18 5V9M9 23h30m-20 0v12m10-12v12" />
-                      <circle cx="16" cy="19" r="1" />
-                      <circle cx="24" cy="19" r="1" />
-                      <circle cx="32" cy="19" r="1" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '05',
-                  title: 'Tires & alignment',
-                  desc: 'Balanced handling and a confident ride, mile after mile.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <circle cx="24" cy="24" r="16" />
-                      <circle cx="24" cy="24" r="8" />
-                      <path d="M24 8v8m0 16v8M8 24h8m16 0h8M13 13l6 6m10 10 6 6m0-22-6 6m-10 10-6 6" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '06',
-                  title: 'Battery care',
-                  desc: 'Testing and replacement so you can count on a strong start.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <rect x="9" y="15" width="30" height="23" rx="2" />
-                      <path d="M17 15v-4h14v4m-7 5v13m-6-6h12" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '07',
-                  title: 'Suspension',
-                  desc: 'Smoother, steadier driving with suspension care tailored to your car.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M15 9v8l-4 3 8 6-8 6 8 7m14-30v8l4 3-8 6 8 6-8 7" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '08',
-                  title: 'Vehicle maintenance',
-                  desc: 'Proactive care that helps protect your vehicle and your plans.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="m24 7 4 4 6-1 1 6 5 4-3 5 1 6-6 2-3 6-6-2-6 2-3-6-6-2 1-6-3-5 5-4 1-6 6 1 6-4Z" />
-                      <circle cx="24" cy="24" r="6" />
-                    </svg>
-                  ),
-                },
-              ].map((service) => (
+              {servicesList.map((service) => (
                 <div
                   key={service.id}
                   className="service-card reveal"
@@ -433,7 +513,7 @@ export default function AutoRepair() {
                 >
                   <span className="service-card__number">{service.id}</span>
                   <span className="service-icon" aria-hidden="true">
-                    {service.svg}
+                    {service.icon}
                   </span>
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
@@ -474,7 +554,7 @@ export default function AutoRepair() {
                   tag: 'Diagnostics Bay'
                 },
                 {
-                  img: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
+                  img: '/demos/auto-repair/images/brake-disc-caliper.jpg',
                   title: 'Brake Disc & Hydraulic Calipers',
                   tag: 'Safety Systems'
                 },
@@ -582,87 +662,8 @@ export default function AutoRepair() {
           </div>
         </section>
 
-        {/* ── APPOINTMENT SECTION ── */}
-        <section className="contact-section" id="contact">
-          <div className="container contact-layout">
-            <div className="contact-copy">
-              <h2>
-                Good people.<br /><em>Good roads ahead.</em>
-              </h2>
-              <p>Questions, a curious noise, or just need a place to start? We’re here for you.</p>
-              <a className="button button--outline-light" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
-                Book a visit <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            <div className="contact-details">
-              <div className="contact-detail">
-                <span>PHONE & WHATSAPP</span>
-                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
-                  +234 808 709 8270
-                </a>
-              </div>
-              <div className="contact-detail">
-                <span>SEND US A NOTE</span>
-                <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
-              </div>
-              <div className="contact-detail">
-                <span>FIND THE SHOP</span>
-                <p>124 Industrial Parkway<br />Metro District, Suite 100</p>
-              </div>
-              <div className="contact-detail">
-                <span>WHEN WE'RE HERE</span>
-                <p>
-                  Monday–Friday <b>8:00 am – 6:00 pm</b><br />
-                  Saturday <b>9:00 am – 2:00 pm</b><br />
-                  Sunday <b>Closed</b>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="container">
-            <form className="contact-form" id="contact-form" onSubmit={handleContactSubmit}>
-              <div className="contact-form__heading">
-                <p>We’d love to hear from you.</p>
-              </div>
-
-              <label className="field">
-                Your name <b>*</b>
-                <input name="name" type="text" autoComplete="name" required minLength="2" />
-              </label>
-              <label className="field">
-                Email address <b>*</b>
-                <input name="email" type="email" autoComplete="email" required />
-              </label>
-              <label className="field contact-form__message">
-                Your message <b>*</b>
-                <textarea name="message" rows="3" required minLength="5"></textarea>
-              </label>
-
-              <div className="contact-form__submit">
-                <button className="button button--accent" type="submit">
-                  Send a message <span aria-hidden="true">↗</span>
-                </button>
-              </div>
-
-              {contactSubmitted && (
-                <div className="form-success contact-form__success" role="status">
-                  <span>✓</span>
-                  <div>
-                    <b>Message sent in demo mode!</b>
-                    <p>In a live website, the Veltrix Hub automated customer inbox routes this message directly to your staff's mobile devices.</p>
-                  </div>
-                </div>
-              )}
-            </form>
-          </div>
-
-          <div className="contact-bottom container">
-            <span>VELTRIX HUB — PRECISION AUTO CARE</span>
-            <span>LOCAL CARE. LONG-HAUL TRUST.</span>
-          </div>
-        </section>
+        {/* ── CONTACT & LOCATION SECTION ── */}
+        {renderContactSection()}
         </>
       )}
 
@@ -683,99 +684,7 @@ export default function AutoRepair() {
             </div>
 
             <div className="services-grid">
-              {[
-                {
-                  id: '01',
-                  title: 'Engine diagnostics',
-                  desc: 'Clear answers for warning lights, strange sounds and performance issues.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M9 20h5l4-6h13l5 6h4v17h-4l-3 4H17l-3-4H9V20Z" />
-                      <path d="M19 14V9h11v5m-13 9h15m-4 5 4 3-4 3" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '02',
-                  title: 'Brake repair',
-                  desc: 'Confident stopping starts with a thorough inspection and expert care.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <circle cx="24" cy="25" r="15" />
-                      <circle cx="24" cy="25" r="7" />
-                      <path d="M19 8h10v5H19zM11 13l4 4m18-4-4 4" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '03',
-                  title: 'Oil & filter',
-                  desc: 'Routine maintenance made easy, with the right oil for your vehicle.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M18 8h12l-1 8 7 8v14H12V24l7-8-1-8Z" />
-                      <path d="M19 28h10m-5-8v13" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '04',
-                  title: 'Transmission',
-                  desc: 'Careful diagnostics and repair to keep every gear change smooth.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M9 14h30v21H9zM15 14V9m18 5V9M9 23h30m-20 0v12m10-12v12" />
-                      <circle cx="16" cy="19" r="1" />
-                      <circle cx="24" cy="19" r="1" />
-                      <circle cx="32" cy="19" r="1" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '05',
-                  title: 'Tires & alignment',
-                  desc: 'Balanced handling and a confident ride, mile after mile.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <circle cx="24" cy="24" r="16" />
-                      <circle cx="24" cy="24" r="8" />
-                      <path d="M24 8v8m0 16v8M8 24h8m16 0h8M13 13l6 6m10 10 6 6m0-22-6 6m-10 10-6 6" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '06',
-                  title: 'Battery care',
-                  desc: 'Testing and replacement so you can count on a strong start.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <rect x="9" y="15" width="30" height="23" rx="2" />
-                      <path d="M17 15v-4h14v4m-7 5v13m-6-6h12" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '07',
-                  title: 'Suspension',
-                  desc: 'Smoother, steadier driving with suspension care tailored to your car.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="M15 9v8l-4 3 8 6-8 6 8 7m14-30v8l4 3-8 6 8 6-8 7" />
-                    </svg>
-                  ),
-                },
-                {
-                  id: '08',
-                  title: 'Vehicle maintenance',
-                  desc: 'Proactive care that helps protect your vehicle and your plans.',
-                  svg: (
-                    <svg viewBox="0 0 48 48">
-                      <path d="m24 7 4 4 6-1 1 6 5 4-3 5 1 6-6 2-3 6-6-2-6 2-3-6-6-2 1-6-3-5 5-4 1-6 6 1 6-4Z" />
-                      <circle cx="24" cy="24" r="6" />
-                    </svg>
-                  ),
-                },
-              ].map((service) => (
+              {servicesList.map((service) => (
                 <div
                   key={service.id}
                   className="service-card reveal"
@@ -786,7 +695,7 @@ export default function AutoRepair() {
                 >
                   <span className="service-card__number">{service.id}</span>
                   <span className="service-icon" aria-hidden="true">
-                    {service.svg}
+                    {service.icon}
                   </span>
                   <h3>{service.title}</h3>
                   <p>{service.desc}</p>
@@ -827,7 +736,7 @@ export default function AutoRepair() {
                   tag: 'Diagnostics Bay'
                 },
                 {
-                  img: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
+                  img: '/demos/auto-repair/images/brake-disc-caliper.jpg',
                   title: 'Brake Disc & Hydraulic Calipers',
                   tag: 'Safety Systems'
                 },
@@ -1257,46 +1166,6 @@ export default function AutoRepair() {
             </div>
           </div>
         </section>
-
-        {/* ── CONTACT SECTION (HOMEPAGE) ── */}
-        <section className="contact-section" id="contact">
-          <div className="container contact-layout">
-            <div className="contact-copy">
-              <h2>
-                Good people.<br /><em>Good roads ahead.</em>
-              </h2>
-              <p>Questions, a curious noise, or just need a place to start? We’re here for you.</p>
-              <a className="button button--outline-light" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
-                Book a visit <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            <div className="contact-details">
-              <div className="contact-detail">
-                <span>PHONE & WHATSAPP</span>
-                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
-                  +234 808 709 8270
-                </a>
-              </div>
-              <div className="contact-detail">
-                <span>SEND US A NOTE</span>
-                <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
-              </div>
-              <div className="contact-detail">
-                <span>FIND THE SHOP</span>
-                <p>124 Industrial Parkway<br />Metro District, Suite 100</p>
-              </div>
-              <div className="contact-detail">
-                <span>WHEN WE'RE HERE</span>
-                <p>
-                  Monday–Friday <b>8:00 am – 6:00 pm</b><br />
-                  Saturday <b>9:00 am – 2:00 pm</b><br />
-                  Sunday <b>Closed</b>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
         </>
       )}
 
@@ -1321,86 +1190,7 @@ export default function AutoRepair() {
       {/* CONTACT / APPOINTMENT / CONSULTATION VIEW */}
       {(currentView === 'contact' || currentView === 'appointment' || currentView === 'consultation') && (
         <>
-        <section className="contact-section" id="contact">
-          <div className="container contact-layout">
-            <div className="contact-copy">
-              <h2>
-                Good people.<br /><em>Good roads ahead.</em>
-              </h2>
-              <p>Questions, a curious noise, or just need a place to start? We’re here for you.</p>
-              <a className="button button--outline-light" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
-                Book a visit <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-
-            <div className="contact-details">
-              <div className="contact-detail">
-                <span>PHONE & WHATSAPP</span>
-                <a href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer">
-                  +234 808 709 8270
-                </a>
-              </div>
-              <div className="contact-detail">
-                <span>SEND US A NOTE</span>
-                <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
-              </div>
-              <div className="contact-detail">
-                <span>FIND THE SHOP</span>
-                <p>124 Industrial Parkway<br />Metro District, Suite 100</p>
-              </div>
-              <div className="contact-detail">
-                <span>WHEN WE'RE HERE</span>
-                <p>
-                  Monday–Friday <b>8:00 am – 6:00 pm</b><br />
-                  Saturday <b>9:00 am – 2:00 pm</b><br />
-                  Sunday <b>Closed</b>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="container">
-            <form className="contact-form" id="contact-form" onSubmit={handleContactSubmit}>
-              <div className="contact-form__heading">
-                <p>We’d love to hear from you.</p>
-              </div>
-
-              <label className="field">
-                Your name <b>*</b>
-                <input name="name" type="text" autoComplete="name" required minLength="2" />
-              </label>
-              <label className="field">
-                Email address <b>*</b>
-                <input name="email" type="email" autoComplete="email" required />
-              </label>
-              <label className="field contact-form__message">
-                Your message <b>*</b>
-                <textarea name="message" rows="3" required minLength="5"></textarea>
-              </label>
-
-              <div className="contact-form__submit">
-                <button className="button button--accent" type="submit">
-                  Send a message <span aria-hidden="true">↗</span>
-                </button>
-              </div>
-
-              {contactSubmitted && (
-                <div className="form-success contact-form__success" role="status">
-                  <span>✓</span>
-                  <div>
-                    <b>Message sent in demo mode!</b>
-                    <p>In a live website, the Veltrix Hub automated customer inbox routes this message directly to your staff's mobile devices.</p>
-                  </div>
-                </div>
-              )}
-            </form>
-          </div>
-
-          <div className="contact-bottom container">
-            <span>VELTRIX HUB — PRECISION AUTO CARE</span>
-            <span>LOCAL CARE. LONG-HAUL TRUST.</span>
-          </div>
-        </section>
+        {renderContactSection()}
         </>
       )}
 
