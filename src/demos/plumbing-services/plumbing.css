@@ -1596,3 +1596,9 @@
     font-size: 1.05rem !important;
   }
 }
+
+/* Ensure all overlay badges on images are completely removed */
+.plumbing-demo .pf-activity-tag,
+.plumbing-demo .pf-img-badge {
+  display: none !important;
+}

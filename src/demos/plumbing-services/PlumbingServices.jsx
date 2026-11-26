@@ -519,7 +519,6 @@ export default function PlumbingServices() {
                     alt="Plumber repairing brass and copper kitchen pipe fittings"
                     loading="lazy"
                   />
-                  <span className="pf-activity-tag">Emergency Dispatch</span>
                 </div>
                 <div className="pf-activity-body">
                   <div className="pf-activity-meta">
@@ -539,7 +538,6 @@ export default function PlumbingServices() {
                     alt="Plumber installing chrome mixer tap on luxury marble vanity"
                     loading="lazy"
                   />
-                  <span className="pf-activity-tag">Remodel &amp; Upgrade</span>
                 </div>
                 <div className="pf-activity-body">
                   <div className="pf-activity-meta">
@@ -559,7 +557,6 @@ export default function PlumbingServices() {
                     alt="Plumber operating compact motorized drain auger snake on clean tile floor"
                     loading="lazy"
                   />
-                  <span className="pf-activity-tag">Same-Day Clearing</span>
                 </div>
                 <div className="pf-activity-body">
                   <div className="pf-activity-meta">
@@ -579,7 +576,6 @@ export default function PlumbingServices() {
                     alt="Commercial tankless water heater manifolds and brass valves"
                     loading="lazy"
                   />
-                  <span className="pf-activity-tag">Commercial Heating</span>
                 </div>
                 <div className="pf-activity-body">
                   <div className="pf-activity-meta">
@@ -599,7 +595,6 @@ export default function PlumbingServices() {
                     alt="Plumber soldering brass elbow joint connecting copper pipes in utility room"
                     loading="lazy"
                   />
-                  <span className="pf-activity-tag">Master Pipe Fitting</span>
                 </div>
                 <div className="pf-activity-body">
                   <div className="pf-activity-meta">
@@ -619,7 +614,6 @@ export default function PlumbingServices() {
                     alt="Plumber using video pipe inspection camera monitor system"
                     loading="lazy"
                   />
-                  <span className="pf-activity-tag">Advanced Diagnostics</span>
                 </div>
                 <div className="pf-activity-body">
                   <div className="pf-activity-meta">
@@ -1062,7 +1056,6 @@ export default function PlumbingServices() {
  alt="Plumber repairing pipes beneath a sink"
  loading="lazy"
  />
- <div className="pf-img-badge">Trusted by 2,000+ Homeowners</div>
  </div>
  </div>
  </div>
@@ -1153,7 +1146,6 @@ export default function PlumbingServices() {
  alt="Commercial plumbing pipes and valves"
  loading="lazy"
  />
- <div className="pf-img-badge">Serving 500+ Local Businesses</div>
  </div>
  </div>
  </div>
@@ -1244,7 +1236,6 @@ export default function PlumbingServices() {
  alt="Plumber repairing a toilet"
  loading="lazy"
  />
- <div className="pf-img-badge">Same-Day Drain Clearing</div>
  </div>
  </div>
  </div>
@@ -1342,7 +1333,6 @@ export default function PlumbingServices() {
  alt="Plumber repairing pipes inside a wall"
  loading="lazy"
  />
- <div className="pf-img-badge">60-Min Emergency Response</div>
  </div>
  </div>
  </div>
