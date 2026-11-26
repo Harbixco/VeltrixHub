@@ -58,16 +58,92 @@ export default function PersonalInjury() {
   // Hero carousel slides
   const heroSlides = [
     {
-      image: '/demos/personal-injury/images/attorney-hero.jpg',
-      caption: 'Direct attorney access, at every step'
+      image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1920&q=85',
+      caption: 'Direct attorney access at every step'
     },
     {
-      image: '/demos/personal-injury/images/courthouse.jpg',
-      caption: 'Dedicated courtroom advocacy and preparation'
+      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1920&q=85',
+      caption: 'Relentless legal preparation & courtroom advocacy'
     },
     {
-      image: '/demos/personal-injury/images/client-meeting-alt.jpg',
-      caption: 'Compassionate, one-to-one consultation'
+      image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1920&q=85',
+      caption: 'Compassionate, one-on-one personal injury counsel'
+    }
+  ];
+
+  // Practice Areas with targeted, highly appropriate legal imagery
+  const practiceAreas = [
+    {
+      title: 'Car Accidents',
+      desc: 'Understand the critical steps to take after a collision and how our counsel moves your recovery forward.',
+      img: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
+      num: '01'
+    },
+    {
+      title: 'Truck Accidents',
+      desc: 'Navigate complex commercial carrier regulations, driver logs, black-box evidence, and multi-party liability.',
+      img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80',
+      num: '02'
+    },
+    {
+      title: 'Motorcycle Accidents',
+      desc: 'Aggressive advocacy following motorcycle collisions, prioritizing maximum medical recovery and long-term care.',
+      img: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80',
+      num: '03'
+    },
+    {
+      title: 'Pedestrian Accidents',
+      desc: 'Protect your legal rights after being struck while walking, jogging, or crossing intersections.',
+      img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+      num: '04'
+    },
+    {
+      title: 'Bicycle Accidents',
+      desc: 'Hold distracted and negligent motorists accountable for roadway collisions with cyclists.',
+      img: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80',
+      num: '05'
+    },
+    {
+      title: 'Slip & Fall Injuries',
+      desc: 'Examine commercial premises hazards, spill maintenance records, code violations, and property owner neglect.',
+      img: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=800&q=80',
+      num: '06'
+    },
+    {
+      title: 'Workplace Injuries',
+      desc: 'Secure full third-party liability compensation alongside traditional workers compensation benefits.',
+      img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+      num: '07'
+    },
+    {
+      title: 'Medical Malpractice',
+      desc: 'Investigate deviations from medical standards of care alongside independent clinical physicians.',
+      img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80',
+      num: '08'
+    },
+    {
+      title: 'Wrongful Death',
+      desc: 'Compassionate, dignified counsel helping families seek justice, accountability, and financial security.',
+      img: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=800&q=80',
+      num: '09'
+    },
+    {
+      title: 'Catastrophic Injuries',
+      desc: 'Comprehensive accounting of lifelong medical care, adaptive housing, and long-term lost earnings.',
+      img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+      num: '10'
+    },
+    {
+      title: 'Dog Bite Injuries',
+      desc: 'Proven legal recovery for puncture trauma, reconstructive procedures, and premises liability.',
+      img: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=800&q=80',
+      num: '11'
+    },
+    {
+      title: 'Product Liability',
+      desc: 'Hold manufacturing conglomerates accountable for dangerous defects, design flaws, or failure to warn.',
+      img: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80',
+      num: '12'
     }
   ];
 
@@ -172,7 +248,7 @@ export default function PersonalInjury() {
             <a href="#about" onClick={(e) => navigateTo('about', e)}>The Attorney</a>
             <a href="#services" onClick={(e) => navigateTo('services', e)}>How I Help</a>
             <a href="#process" onClick={(e) => scrollTo(e, 'process')}>Your Case</a>
-            <a href="#resources" onClick={(e) => scrollTo(e, 'resources')}>Resources</a>
+            <a href="#faq" onClick={(e) => navigateTo('faq', e)}>FAQ</a>
             <a href="#contact" onClick={(e) => navigateTo('contact', e)}>Contact</a>
             <a className="button button--small button--gold nav-cta" href="#consultation" onClick={(e) => navigateTo('consultation', e)}>
               Free Consultation <span aria-hidden="true">↗</span>
@@ -216,7 +292,7 @@ export default function PersonalInjury() {
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>The Attorney</a>
             <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>How I Help</a>
             <a href="#process" onClick={(e) => { setMobileMenuOpen(false); scrollTo(e, 'process'); }}>Your Case</a>
-            <a href="#resources" onClick={(e) => { setMobileMenuOpen(false); scrollTo(e, 'resources'); }}>Resources</a>
+            <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }}>FAQ</a>
             <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
             <div className="mobile-drawer-cta">
               <a className="button button--gold button--block" href="#consultation" onClick={(e) => { setMobileMenuOpen(false); navigateTo('consultation', e); }}>
@@ -296,7 +372,7 @@ export default function PersonalInjury() {
               <div className="hero__proof" style={{ display: 'flex', alignItems: 'center', gap: '14px', background: 'rgba(15, 23, 42, 0.75)', padding: '12px 18px', borderRadius: '14px', border: '1px solid rgba(212, 163, 89, 0.35)', backdropFilter: 'blur(10px)', maxWidth: '440px' }}>
                 <div style={{ position: 'relative', flexShrink: 0 }}>
                   <img
-                    src="/demos/personal-injury/images/attorney-portrait.jpg"
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=85"
                     alt="Attorney Alex Morgan"
                     style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #d4a359' }}
                   />
@@ -322,28 +398,48 @@ export default function PersonalInjury() {
               <p>
                 At Veltrix Hub, we believe effective advocacy begins with genuine human empathy. Lead attorney Alex Morgan works with you directly, listening closely to your fears, protecting your family, and aggressively pursuing the full compensation you need to heal.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '1.5rem', marginBottom: '1.25rem' }}>
-                <a className="button button--gold" href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.4rem' }}>
+
+              <div className="welcome__highlights" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem', margin: '2rem 0' }}>
+                <div style={{ background: '#ffffff', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e7ded0', boxShadow: '0 4px 15px rgba(23,43,77,0.04)' }}>
+                  <div style={{ color: '#a77f46', fontSize: '1.4rem', marginBottom: '0.65rem' }}>
+                    <i className="fa-solid fa-handshake-angle"></i>
+                  </div>
+                  <strong style={{ color: '#0e1626', fontSize: '1.1rem', display: 'block', marginBottom: '0.35rem' }}>Direct Legal Access</strong>
+                  <span style={{ color: '#64748b', fontSize: '0.93rem', lineHeight: 1.55 }}>You work with Alex Morgan directly from first consultation to settlement—no case screening runarounds.</span>
+                </div>
+                <div style={{ background: '#ffffff', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e7ded0', boxShadow: '0 4px 15px rgba(23,43,77,0.04)' }}>
+                  <div style={{ color: '#a77f46', fontSize: '1.4rem', marginBottom: '0.65rem' }}>
+                    <i className="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <strong style={{ color: '#0e1626', fontSize: '1.1rem', display: 'block', marginBottom: '0.35rem' }}>Zero Upfront Legal Fees</strong>
+                  <span style={{ color: '#64748b', fontSize: '0.93rem', lineHeight: 1.55 }}>We operate strictly on contingency. You pay zero legal fees unless we achieve a successful financial recovery.</span>
+                </div>
+                <div style={{ background: '#ffffff', padding: '1.5rem', borderRadius: '12px', border: '1px solid #e7ded0', boxShadow: '0 4px 15px rgba(23,43,77,0.04)' }}>
+                  <div style={{ color: '#a77f46', fontSize: '1.4rem', marginBottom: '0.65rem' }}>
+                    <i className="fa-solid fa-clock-rotate-left"></i>
+                  </div>
+                  <strong style={{ color: '#0e1626', fontSize: '1.1rem', display: 'block', marginBottom: '0.35rem' }}>Immediate 24/7 Response</strong>
+                  <span style={{ color: '#64748b', fontSize: '0.93rem', lineHeight: 1.55 }}>Direct telephone and WhatsApp lines open for emergency injury triage, hospital reviews, and advice.</span>
+                </div>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
+                <a className="button button--gold" href="https://wa.me/2348087098270" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.85rem 1.6rem', fontWeight: 700 }}>
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.586 1.761.882 2.79.882 3.181 0 5.768-2.587 5.768-5.766.001-3.181-2.585-5.768-5.767-5.768zm0 10.375c-.93 0-1.637-.282-2.399-.738l-.172-.102-1.78.467.475-1.737-.113-.179c-.511-.814-.818-1.597-.818-2.32 0-2.527 2.057-4.584 4.587-4.584 2.527 0 4.584 2.057 4.584 4.584 0 2.527-2.057 4.584-4.584 4.584z"/>
                   </svg>
                   Chat with Alex on WhatsApp
                 </a>
-                <a className="button button--outline" href="tel:+2348087098270" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.4rem' }}>
+                <a className="button button--outline" href="tel:+2348087098270" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.85rem 1.6rem', fontWeight: 700 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                   Call +234 808 709 8270
                 </a>
+                <a className="text-link" href="#about" onClick={(e) => scrollTo(e, 'about')} style={{ marginLeft: '0.5rem', fontWeight: 700 }}>
+                  Meet Alex Morgan <span aria-hidden="true">→</span>
+                </a>
               </div>
-              <a className="text-link" href="#about" onClick={(e) => scrollTo(e, 'about')}>
-                Meet Alex Morgan <span aria-hidden="true">→</span>
-              </a>
-            </div>
-            <div className="welcome__stamp" aria-hidden="true">
-              <span>ONE ATTORNEY</span>
-              <b>ONE<br />CLIENT<br />AT A<br />TIME</b>
-              <span>PERSONAL BY DESIGN</span>
             </div>
           </div>
         </section>
@@ -359,23 +455,10 @@ export default function PersonalInjury() {
             </div>
 
             <div className="services__grid">
-              {[
-                { title: 'Car Accidents', desc: 'Understand the steps to take after a collision and how an injury claim moves forward.', img: 'car-accident.jpg', num: '01' },
-                { title: 'Truck Accidents', desc: 'Review complex questions involving commercial carrier regulations, evidence, and multiple parties.', img: 'truck.jpg', num: '02' },
-                { title: 'Motorcycle Accidents', desc: 'Get clear guidance after a crash, with your recovery and long-term care in focus.', img: 'motorcycle.jpg', num: '03' },
-                { title: 'Pedestrian Accidents', desc: 'Explore your options after being injured while walking, jogging, or crossing the road.', img: 'pedestrian.jpg', num: '04' },
-                { title: 'Bicycle Accidents', desc: 'Learn how an injury claim protects cyclists against distracted and negligent motorists.', img: 'bicycle.jpg', num: '05' },
-                { title: 'Slip & Fall Injuries', desc: 'Examine property hazard conditions, maintenance logs, and commercial liability.', img: 'slip-fall.jpg', num: '06' },
-                { title: 'Workplace Injuries', desc: 'Navigate third-party claims and workers compensation recovery routes with confidence.', img: 'workplace.jpg', num: '07' },
-                { title: 'Medical Malpractice', desc: 'Investigate standard of care breaches with independent expert clinical reviewers.', img: 'medical.jpg', num: '08' },
-                { title: 'Wrongful Death', desc: 'Compassionate counsel for surviving families seeking accountability and answers.', img: 'care.jpg', num: '09' },
-                { title: 'Catastrophic Injuries', desc: 'Account for life-care plans, future therapy, and lifetime income loss support.', img: 'medical.jpg', num: '10' },
-                { title: 'Dog Bite Injuries', desc: 'Practical guidance regarding veterinary documentation, medical expenses, and premises liability.', img: 'dog.jpg', num: '11' },
-                { title: 'Product Liability', desc: 'Hold manufacturers accountable for defective design, failure to warn, or faulty components.', img: 'product.jpg', num: '12' },
-              ].map((item, idx) => (
+              {practiceAreas.map((item, idx) => (
                 <article key={idx} className="service-card reveal">
                   <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')} className="service-card__image">
-                    <img src={`/demos/personal-injury/images/${item.img}`} alt={item.title} loading="lazy" width="720" height="480" />
+                    <img src={item.img} alt={item.title} loading="lazy" width="720" height="480" />
                     <span className="service-card__number">{item.num}</span>
                   </a>
                   <div className="service-card__body">
@@ -493,23 +576,10 @@ export default function PersonalInjury() {
             </div>
 
             <div className="services__grid">
-              {[
-                { title: 'Car Accidents', desc: 'Understand the steps to take after a collision and how an injury claim moves forward.', img: 'car-accident.jpg', num: '01' },
-                { title: 'Truck Accidents', desc: 'Review complex questions involving commercial carrier regulations, evidence, and multiple parties.', img: 'truck.jpg', num: '02' },
-                { title: 'Motorcycle Accidents', desc: 'Get clear guidance after a crash, with your recovery and long-term care in focus.', img: 'motorcycle.jpg', num: '03' },
-                { title: 'Pedestrian Accidents', desc: 'Explore your options after being injured while walking, jogging, or crossing the road.', img: 'pedestrian.jpg', num: '04' },
-                { title: 'Bicycle Accidents', desc: 'Learn how an injury claim protects cyclists against distracted and negligent motorists.', img: 'bicycle.jpg', num: '05' },
-                { title: 'Slip & Fall Injuries', desc: 'Examine property hazard conditions, maintenance logs, and commercial liability.', img: 'slip-fall.jpg', num: '06' },
-                { title: 'Workplace Injuries', desc: 'Navigate third-party claims and workers compensation recovery routes with confidence.', img: 'workplace.jpg', num: '07' },
-                { title: 'Medical Malpractice', desc: 'Investigate standard of care breaches with independent expert clinical reviewers.', img: 'medical.jpg', num: '08' },
-                { title: 'Wrongful Death', desc: 'Compassionate counsel for surviving families seeking accountability and answers.', img: 'care.jpg', num: '09' },
-                { title: 'Catastrophic Injuries', desc: 'Account for life-care plans, future therapy, and lifetime income loss support.', img: 'medical.jpg', num: '10' },
-                { title: 'Dog Bite Injuries', desc: 'Practical guidance regarding veterinary documentation, medical expenses, and premises liability.', img: 'dog.jpg', num: '11' },
-                { title: 'Product Liability', desc: 'Hold manufacturers accountable for defective design, failure to warn, or faulty components.', img: 'product.jpg', num: '12' },
-              ].map((item, idx) => (
+              {practiceAreas.map((item, idx) => (
                 <article key={idx} className="service-card reveal">
                   <a href="#consultation" onClick={(e) => scrollTo(e, 'consultation')} className="service-card__image">
-                    <img src={`/demos/personal-injury/images/${item.img}`} alt={item.title} loading="lazy" width="720" height="480" />
+                    <img src={item.img} alt={item.title} loading="lazy" width="720" height="480" />
                     <span className="service-card__number">{item.num}</span>
                   </a>
                   <div className="service-card__body">
@@ -546,7 +616,7 @@ export default function PersonalInjury() {
             <div className="about__portrait-wrap">
               <div className="about__portrait">
                 <img
-                  src="/demos/personal-injury/images/attorney-portrait.jpg"
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=85"
                   alt="Attorney Alex Morgan in a professional portrait"
                   loading="lazy"
                   width="760"
@@ -956,8 +1026,8 @@ export default function PersonalInjury() {
             <h2>Explore</h2>
             <a href="#about" onClick={(e) => navigateTo('about', e)}>The Attorney</a>
             <a href="#services" onClick={(e) => navigateTo('services', e)}>How I Help</a>
-            <a href="#process">Your Case</a>
-            <a href="#resources">Resources</a>
+            <a href="#process" onClick={(e) => scrollTo(e, 'process')}>Your Case</a>
+            <a href="#faq" onClick={(e) => navigateTo('faq', e)}>FAQ</a>
           </div>
 
           <div className="footer__column">
