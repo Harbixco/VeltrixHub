@@ -41,6 +41,75 @@ export default function DentalCare() {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [selectedService, setSelectedService] = useState('');
+  const [reviewIndex, setReviewIndex] = useState(0);
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const toggleFaq = (idx) => setOpenFaq((prev) => (prev === idx ? null : idx));
+
+  const dentalReviews = [
+    {
+      quote: "I've always had dental anxiety, but everyone at Apex made me feel so comfortable. I actually look forward to my cleanings now.",
+      author: "Sarah M.",
+      role: "Patient since 2022",
+      avatar: "SM",
+      avatarClass: ""
+    },
+    {
+      quote: "My new smile looks so natural. The whole process was thoughtfully explained, and the team was wonderful from day one.",
+      author: "David K.",
+      role: "Patient since 2023",
+      avatar: "DK",
+      avatarClass: "avatar-sage"
+    },
+    {
+      quote: "They fit me in the same day when I had an emergency. Kind, professional, and genuinely caring—exactly what you hope for.",
+      author: "Jessica R.",
+      role: "Patient since 2021",
+      avatar: "JR",
+      avatarClass: "avatar-blue"
+    },
+    {
+      quote: "Gentle cleanings, transparent treatment plans, and modern equipment. Truly the best dental experience our family has had.",
+      author: "Michael T.",
+      role: "Patient since 2020",
+      avatar: "MT",
+      avatarClass: ""
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setReviewIndex((prev) => (prev + 1) % dentalReviews.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [dentalReviews.length]);
+
+  const dentalFaqs = [
+    {
+      q: "Do you accept new patients and handle same-day dental emergencies?",
+      a: "Yes, we are always welcoming new patients of all ages. We keep daily reserved appointment slots specifically for dental emergencies such as chipped or broken teeth, acute toothache, lost fillings, and swollen gums. Contact us immediately or send a WhatsApp message for same-day emergency relief."
+    },
+    {
+      q: "What should I expect during my first dental examination and cleaning?",
+      a: "Your first appointment takes about 60 minutes. We conduct a gentle comprehensive oral exam, low-radiation 3D digital imaging, periodontal gum health screening, and a preventative ultrasonic cleaning. Our dentists discuss any findings with you openly and answer all questions before proposing any treatment plan."
+    },
+    {
+      q: "I experience dental anxiety. What comfort and sedation options do you offer?",
+      a: "Our clinic is specifically designed to eliminate dental fear. We offer warm aromatherapy, noise-cancelling headphones, gentle warm blankets, and painless micro-anesthesia. For patients needing additional relaxation, we provide nitrous oxide (laughing gas) and mild oral conscious sedation."
+    },
+    {
+      q: "Which dental insurance plans do you accept, and do you have payment options?",
+      a: "We work with all major PPO dental insurances and file all paperwork directly on your behalf to maximize your benefits. For patients without insurance, we offer an affordable in-house Dental Wellness Plan and flexible monthly financing with 0% interest through CareCredit."
+    },
+    {
+      q: "How often should I have my teeth checked and cleaned?",
+      a: "The American Dental Association recommends a checkup and professional cleaning at least twice a year (every 6 months) for most healthy individuals. Patients with a history of periodontal disease, heavy plaque formation, or diabetes may benefit from visits every 3 to 4 months."
+    },
+    {
+      q: "How does professional teeth whitening compare to over-the-counter kits?",
+      a: "Professional in-office whitening delivers dramatic results—often 4 to 8 shades brighter in a single 60-minute visit—using concentrated, enamel-safe bleaching gel activated by clinical LED light, protected by custom gum barriers to prevent sensitivity. We also provide customized take-home trays with medical-grade gel."
+    }
+  ];
 
   const scrollTo = (e, id) => {
     e.preventDefault();
@@ -104,7 +173,7 @@ export default function DentalCare() {
             <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
             <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
             <a href="#technology" onClick={(e) => { setMobileMenuOpen(false); navigateTo('technology', e); }}>Technology</a>
-            <a href="#reviews" onClick={(e) => { setMobileMenuOpen(false); navigateTo('reviews', e); }}>Patient Reviews</a>
+            <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }}>FAQ</a>
             <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
             <a className="button button-small nav-cta glowing-btn" href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>
               Book an Appointment <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
@@ -206,21 +275,6 @@ export default function DentalCare() {
               01 <span></span> 03
             </div>
           </div>
-
-          <div className="hero-trust" aria-label="Practice highlights">
-            <span><i className="fa-solid fa-circle-check" aria-hidden="true"></i> 5-Star Rated on Google</span>
-            <span><i className="fa-solid fa-circle-check" aria-hidden="true"></i> Same-Day Emergency Care</span>
-            <span><i className="fa-solid fa-circle-check" aria-hidden="true"></i> Accepting New Patients</span>
-          </div>
-        </section>
-
-        {/* ── INTRO STRIP ── */}
-        <section className="intro-strip" aria-label="Our promise">
-          <div className="intro-strip-inner">
-            <span>Care with intention</span><i className="fa-solid fa-plus" aria-hidden="true"></i>
-            <span>Comfort without compromise</span><i className="fa-solid fa-plus" aria-hidden="true"></i>
-            <span>Confidence that lasts</span>
-          </div>
         </section>
 
         {/* ── ABOUT ── */}
@@ -314,45 +368,64 @@ export default function DentalCare() {
                 <small>Patient-rated care</small>
               </div>
             </div>
-            <div className="reviews-grid">
-              <article className="review-card reveal">
-                <div className="review-top">
-                  <span className="rating-stars">★★★★★</span>
-                  <i className="fa-brands fa-google" aria-hidden="true"></i>
-                </div>
-                <blockquote>“I’ve always had dental anxiety, but everyone at Apex made me feel so comfortable. I actually look forward to my cleanings now.”</blockquote>
-                <div className="reviewer">
-                  <span className="reviewer-avatar">SM</span>
-                  <div><strong>Sarah M.</strong><small>Patient since 2022</small></div>
-                  <i className="fa-solid fa-circle-check"></i>
-                </div>
-              </article>
 
-              <article className="review-card reveal">
-                <div className="review-top">
-                  <span className="rating-stars">★★★★★</span>
-                  <i className="fa-brands fa-google" aria-hidden="true"></i>
-                </div>
-                <blockquote>“My new smile looks so natural. The whole process was thoughtfully explained, and the team was wonderful from day one.”</blockquote>
-                <div className="reviewer">
-                  <span className="reviewer-avatar avatar-sage">DK</span>
-                  <div><strong>David K.</strong><small>Patient since 2023</small></div>
-                  <i className="fa-solid fa-circle-check"></i>
-                </div>
-              </article>
+            <div className="dental-reviews-slider-wrap">
+              <div className="dental-reviews-slider">
+                {dentalReviews.map((rev, idx) => (
+                  <article
+                    key={idx}
+                    className={`dental-review-slide ${idx === reviewIndex ? 'is-active' : ''}`}
+                    aria-hidden={idx !== reviewIndex}
+                  >
+                    <div className="review-top">
+                      <span className="rating-stars">★★★★★</span>
+                      <i className="fa-brands fa-google" aria-hidden="true"></i>
+                    </div>
+                    <blockquote>“{rev.quote}”</blockquote>
+                    <div className="reviewer">
+                      <span className={`reviewer-avatar ${rev.avatarClass || ''}`}>{rev.avatar}</span>
+                      <div>
+                        <strong>{rev.author}</strong>
+                        <small>{rev.role}</small>
+                      </div>
+                      <i className="fa-solid fa-circle-check" aria-hidden="true"></i>
+                    </div>
+                  </article>
+                ))}
+              </div>
 
-              <article className="review-card reveal">
-                <div className="review-top">
-                  <span className="rating-stars">★★★★★</span>
-                  <i className="fa-brands fa-google" aria-hidden="true"></i>
+              {/* Slider Controls */}
+              <div className="dental-slider-controls">
+                <div className="dental-slider-dots">
+                  {dentalReviews.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      type="button"
+                      className={`dental-slider-dot ${dotIdx === reviewIndex ? 'is-active' : ''}`}
+                      aria-label={`Go to slide ${dotIdx + 1}`}
+                      onClick={() => setReviewIndex(dotIdx)}
+                    />
+                  ))}
                 </div>
-                <blockquote>“They fit me in the same day when I had an emergency. Kind, professional, and genuinely caring—exactly what you hope for.”</blockquote>
-                <div className="reviewer">
-                  <span className="reviewer-avatar avatar-blue">JR</span>
-                  <div><strong>Jessica R.</strong><small>Patient since 2021</small></div>
-                  <i className="fa-solid fa-circle-check"></i>
+                <div className="dental-slider-arrows">
+                  <button
+                    type="button"
+                    className="dental-slider-arrow"
+                    aria-label="Previous review"
+                    onClick={() => setReviewIndex((prev) => (prev - 1 + dentalReviews.length) % dentalReviews.length)}
+                  >
+                    <i className="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    type="button"
+                    className="dental-slider-arrow"
+                    aria-label="Next review"
+                    onClick={() => setReviewIndex((prev) => (prev + 1) % dentalReviews.length)}
+                  >
+                    <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                  </button>
                 </div>
-              </article>
+              </div>
             </div>
           </div>
         </section>
@@ -856,94 +929,77 @@ export default function DentalCare() {
       {/* FAQ VIEW */}
       {currentView === 'faq' && (
         <>
-        <section className="contact-section section-wrap" id="contact">
-          <div className="contact-panel">
-            <div className="contact-info">
-              <h2>Let’s make room for a brighter smile.</h2>
-              <p>Tell us a little about what you need. Our friendly team will be in touch to find a time that works for you.</p>
-              <p className="contact-phone">
-                <i className="fa-brands fa-whatsapp" aria-hidden="true"></i>{' '}
+          <section className="dental-faq-view section-wrap" style={{ padding: '3.5rem 1.5rem 4.5rem', maxWidth: '880px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '4px 12px', borderRadius: '9999px', background: '#e0f2fe', color: '#0284c7', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>
+                <i className="fa-solid fa-circle-question"></i> Help & Patient Guidance
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: '0 0 0.75rem' }}>
+                Frequently Asked <span style={{ color: '#0ea5e9' }}>Questions</span>
+              </h2>
+              <p style={{ fontSize: '1rem', color: '#64748b', lineHeight: 1.6, margin: 0, maxWidth: '600px', marginInline: 'auto' }}>
+                Clear answers to common questions about dental visits, treatments, insurance coverage, comfort options, and emergency care.
+              </p>
+            </div>
+
+            <div className="dental-faq-list">
+              {dentalFaqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div key={idx} className={`dental-faq-item ${isOpen ? 'is-open' : ''}`}>
+                    <button
+                      type="button"
+                      className="dental-faq-trigger"
+                      aria-expanded={isOpen}
+                      onClick={() => toggleFaq(idx)}
+                    >
+                      <span className="dental-faq-question">{faq.q}</span>
+                      <span className="dental-faq-icon">
+                        <i className={`fa-solid ${isOpen ? 'fa-minus' : 'fa-plus'}`} aria-hidden="true"></i>
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <div className="dental-faq-content">
+                        <p>{faq.a}</p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Quick WhatsApp / Consultation Support Card */}
+            <div className="dental-faq-cta-box" style={{ marginTop: '3rem', padding: '2.25rem 2rem', background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', borderRadius: '16px', color: '#ffffff', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '1.25rem', boxShadow: '0 10px 30px rgba(15,23,42,0.12)' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#0ea5e9', display: 'grid', placeItems: 'center', fontSize: '1.25rem', color: '#ffffff' }}>
+                <i className="fa-solid fa-comments"></i>
+              </div>
+              <div>
+                <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.35rem', fontWeight: 700, color: '#ffffff' }}>Still have questions or need emergency dental care?</h3>
+                <p style={{ margin: 0, color: '#94a3b8', fontSize: '0.95rem', maxWidth: '540px', lineHeight: 1.6 }}>
+                  Our team is ready to assist you directly with scheduling, insurance verification, treatment estimates, and same-day emergency triage.
+                </p>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
                 <a
                   href="https://wa.me/2348087098270"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'inherit', textDecoration: 'none' }}
+                  className="button"
+                  style={{ background: '#25D366', color: '#ffffff', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.75rem', fontWeight: 700, borderRadius: '8px' }}
                 >
-                  +234 808 709 8270
+                  <i className="fa-brands fa-whatsapp"></i> Chat on WhatsApp
                 </a>
-              </p>
-              <div className="office-details">
-                <p>
-                  <i className="fa-solid fa-location-dot" aria-hidden="true"></i>
-                  <span>240 Medical Plaza, Suite 300, Metro Health District</span>
-                </p>
-                <p>
-                  <i className="fa-regular fa-clock" aria-hidden="true"></i>
-                  <span>Monday–Friday, 8:00 am–5:00 pm<br />Saturday by appointment</span>
-                </p>
-                <p>
-                  <i className="fa-regular fa-envelope" aria-hidden="true"></i>
-                  <span>info@veltrixhub.ng</span>
-                </p>
-              </div>
-              <p className="emergency-note">
-                <i className="fa-solid fa-heart-pulse" aria-hidden="true"></i> Dental emergency? Message us on WhatsApp for same-day care.
-              </p>
-            </div>
-
-            <form id="bookingForm" className="booking-form" onSubmit={handleBookingSubmit}>
-              <div className="form-heading">
-                <h3>Request an appointment</h3>
-                <p>Share a few details and we’ll be in touch soon.</p>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="fullName">Full Name <span>*</span></label>
-                <input type="text" id="fullName" name="name" required placeholder="Your name" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">WhatsApp / Phone Number <span>*</span></label>
-                <input type="tel" id="phone" name="phone" required placeholder="Your WhatsApp or phone number" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address <span>*</span></label>
-                <input type="email" id="email" name="email" required placeholder="you@example.com" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="service">Service Needed <span>*</span></label>
-                <select
-                  id="service"
-                  name="service"
-                  required
-                  value={selectedService}
-                  onChange={(e) => setSelectedService(e.target.value)}
+                <button
+                  type="button"
+                  onClick={(e) => navigateTo('contact', e)}
+                  className="button"
+                  style={{ background: '#ffffff', color: '#0f172a', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.75rem 1.75rem', fontWeight: 700, borderRadius: '8px' }}
                 >
-                  <option value="">Select a service</option>
-                  <option>Preventive Care & Cleanings</option>
-                  <option>Cosmetic Dentistry</option>
-                  <option>Implants & Restorations</option>
-                  <option>Orthodontics & Aligners</option>
-                  <option>Emergency Dental Care</option>
-                  <option>Not sure yet</option>
-                </select>
+                  Request Appointment <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </div>
-
-              <button type="submit" className="button form-submit">
-                Request my appointment <i className="fa-solid fa-arrow-right" aria-hidden="true"></i>
-              </button>
-              <p className="form-disclaimer">
-                Demonstration appointment form. In live deployment, synced with your practice management software.
-              </p>
-
-              {formSubmitted && (
-                <div className="success-message" role="status">
-                  <i className="fa-solid fa-circle-check" aria-hidden="true"></i>
-                  <span><strong>Thank you!</strong> Your appointment request has been logged in this demonstration preview.</span>
-                </div>
-              )}
-            </form>
-          </div>
-        </section>
+            </div>
+          </section>
         </>
       )}
 
@@ -1061,7 +1117,7 @@ export default function DentalCare() {
             <a href="#about" onClick={(e) => navigateTo('about', e)}>About us</a>
             <a href="#services" onClick={(e) => navigateTo('services', e)}>Our services</a>
             <a href="#technology" onClick={(e) => navigateTo('technology', e)}>Our approach</a>
-            <a href="#reviews" onClick={(e) => navigateTo('reviews', e)}>Patient reviews</a>
+            <a href="#faq" onClick={(e) => navigateTo('faq', e)}>FAQ</a>
           </div>
           <div className="footer-col">
             <h2>Visit us</h2>
