@@ -11,6 +11,7 @@ import {
   formatNigerianWhatsApp,
   generateWhatsAppPitchMessage,
   buildWhatsAppPitchUrl,
+  buildWhatsAppFollowUpUrl,
   normalizeLead,
 } from "../api/_outreachCore.js";
 
@@ -101,7 +102,11 @@ function escapeCsv(val) {
 }
 
 async function main() {
+  const refreshLinksOnly = process.argv.includes("--refresh-links");
   console.log("=== NO-WEBSITE SME WHATSAPP CONTACT HARVESTER ===");
+  if (refreshLinksOnly) {
+    console.log("Mode: Refreshing stored WhatsApp links & CSV without new Places crawl.");
+  }
   const client = new MongoClient(MONGODB_URI, { serverSelectionTimeoutMS: 5000 });
   await client.connect();
   const db = client.db(DB_NAME);
@@ -186,7 +191,7 @@ async function main() {
   let addedNew = 0;
   const maxPerNiche = 12;
 
-  for (const niche of SERVICE_NICHES) {
+  for (const niche of refreshLinksOnly ? [] : SERVICE_NICHES) {
     let nicheAdded = 0;
     console.log(`\nScanning Google Places (No Website Filter) for ${niche.label}...`);
 
@@ -287,6 +292,7 @@ async function main() {
     .toArray();
 
   const readyWaLeads = [];
+  const refreshOps = [];
   for (const l of preReady) {
     const cname = normalizeLead({ business_name: l.business_name || l.businessName }).business_name;
     const web = (l.website_url || "").trim();
@@ -303,10 +309,47 @@ async function main() {
       await col.updateOne({ _id: l._id }, { $set: { status: "skipped_enterprise", is_deliverable: false } });
       continue;
     }
-    readyWaLeads.push({ ...l, business_name: cname });
+
+    const waLead = {
+      business_name: cname,
+      niche: l.niche,
+      city: l.city || "Lagos",
+      demo_url: l.demo_url,
+      whatsapp_number: l.whatsapp_number || l.phone || l.whatsapp_digits,
+      whatsapp_digits: l.whatsapp_digits,
+    };
+    const nextWaLink = buildWhatsAppPitchUrl(waLead);
+    const nextWaDemoLink = buildWhatsAppFollowUpUrl(waLead);
+
+    if (nextWaLink && nextWaLink !== l.wa_link) {
+      refreshOps.push({
+        updateOne: {
+          filter: { _id: l._id },
+          update: {
+            $set: {
+              wa_link: nextWaLink,
+              wa_demo_link: nextWaDemoLink,
+              updatedAt: new Date().toISOString(),
+            },
+          },
+        },
+      });
+    }
+
+    readyWaLeads.push({
+      ...l,
+      business_name: cname,
+      wa_link: nextWaLink,
+      wa_demo_link: nextWaDemoLink,
+    });
   }
 
-  const header = "business_name,niche,city,whatsapp_number,wa_link,demo_url,audit_status,status,address\n";
+  if (refreshOps.length > 0) {
+    await col.bulkWrite(refreshOps);
+    console.log(`Updated stored WhatsApp links in MongoDB: ${refreshOps.length}`);
+  }
+
+  const header = "business_name,niche,city,whatsapp_number,wa_link,wa_demo_link,demo_url,audit_status,status,address\n";
   const rows = readyWaLeads
     .map((l) =>
       [
@@ -315,6 +358,7 @@ async function main() {
         escapeCsv(l.city || "Lagos"),
         escapeCsv(l.whatsapp_number || l.phone),
         escapeCsv(l.wa_link || buildWhatsAppPitchUrl(l)),
+        escapeCsv(l.wa_demo_link || buildWhatsAppFollowUpUrl(l)),
         escapeCsv(l.demo_url),
         escapeCsv(l.audit_status || "No Website Listed"),
         escapeCsv(l.status),

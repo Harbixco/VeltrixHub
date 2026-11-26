@@ -1,7 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { generatePitchContent, buildWhatsAppPitchUrl } from "../../api/_outreachCore.js";
+import {
+  generatePitchContent,
+  buildWhatsAppPitchUrl,
+  buildWhatsAppFollowUpUrl,
+} from "../../api/_outreachCore.js";
 import { FaWhatsapp } from "react-icons/fa";
 import {
   Mail,
@@ -773,10 +777,10 @@ export default function OutreachDashboard() {
 
   const handleDownloadCSV = () => {
     if (activeTab === "whatsapp") {
-      const header = "business_name,niche,city,whatsapp_number,wa_link,demo_url,audit_status,status,address\n";
+      const header = "business_name,niche,city,whatsapp_number,wa_link,wa_demo_link,demo_url,audit_status,status,address\n";
       const rows = filteredWhatsappLeads
         .map((l) =>
-          `"${(l.business_name || "").replace(/"/g, '""')}","${l.niche || ""}","${l.city || ""}","${l.whatsapp_number || ""}","${(l.wa_link || buildWhatsAppPitchUrl(l)).replace(/"/g, '""')}","${l.demo_url || ""}","${(l.audit_status || "").replace(/"/g, '""')}","${l.status || ""}","${(l.address || "").replace(/"/g, '""')}"`
+          `"${(l.business_name || "").replace(/"/g, '""')}","${l.niche || ""}","${l.city || ""}","${l.whatsapp_number || ""}","${buildWhatsAppPitchUrl(l).replace(/"/g, '""')}","${buildWhatsAppFollowUpUrl(l).replace(/"/g, '""')}","${l.demo_url || ""}","${(l.audit_status || "").replace(/"/g, '""')}","${l.status || ""}","${(l.address || "").replace(/"/g, '""')}"`
         )
         .join("\n");
       const blob = new Blob([header + rows], { type: "text/csv;charset=utf-8;" });
@@ -2022,7 +2026,7 @@ export default function OutreachDashboard() {
               </div>
               <p className="text-xs text-slate-400 mt-0.5">
                 {activeTab === "whatsapp"
-                  ? "SMEs with no website listed — tap 'Pitch on WhatsApp' to send a personalized message with your industry demo link."
+                  ? "No-website SMEs — Step 1 opens a link-free intro ('Pitch on WhatsApp'); Step 2 sends the preview URL ('Send Demo Link') once they reply."
                   : "Targeted Nigerian businesses matched with dedicated industry demo websites."}
               </p>
             </div>
@@ -2085,7 +2089,8 @@ export default function OutreachDashboard() {
                 <tbody className="divide-y divide-slate-800/60">
                   {filteredWhatsappLeads.map((lead, index) => {
                     const isSent = lead.status === "whatsapp_sent";
-                    const waHref = lead.wa_link || buildWhatsAppPitchUrl(lead);
+                    const waHref = buildWhatsAppPitchUrl(lead);
+                    const waDemoHref = buildWhatsAppFollowUpUrl(lead);
 
                     return (
                       <tr key={lead.id || lead.whatsapp_digits || index} className="hover:bg-slate-800/40 transition">
@@ -2151,9 +2156,24 @@ export default function OutreachDashboard() {
                               if (!isSent) handleMarkWhatsappStatus(lead, "whatsapp_sent");
                             }}
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition"
+                            title="Step 1: Send link-free permission opener"
                           >
                             <FaWhatsapp className="w-3.5 h-3.5" />
                             Pitch on WhatsApp
+                          </a>
+                          <a
+                            href={waDemoHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-semibold border transition ${
+                              isSent
+                                ? "bg-blue-600 hover:bg-blue-500 border-blue-500 text-white"
+                                : "bg-slate-800/80 hover:bg-slate-700 border-slate-700 text-blue-300"
+                            }`}
+                            title="Step 2: Send demo link after prospect replies"
+                          >
+                            <Send className="w-3 h-3" />
+                            Send Demo Link
                           </a>
                           <button
                             onClick={() => handleMarkWhatsappStatus(lead, isSent ? "whatsapp_ready" : "whatsapp_sent")}

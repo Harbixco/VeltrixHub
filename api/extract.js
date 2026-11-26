@@ -12,6 +12,7 @@ import {
   classifyLeadPitchTrack,
   formatNigerianWhatsApp,
   buildWhatsAppPitchUrl,
+  buildWhatsAppFollowUpUrl,
   normalizeLead,
 } from "./_outreachCore.js";
 
@@ -235,7 +236,13 @@ export default async function handler(req, res) {
 
       const leads = waDocs.map((doc) => {
         const norm = normalizeLead(doc);
-        const waLink = doc.wa_link || buildWhatsAppPitchUrl(norm);
+        const waLead = {
+          ...norm,
+          whatsapp_number: doc.whatsapp_number || doc.phone || doc.whatsapp_digits,
+          whatsapp_digits: doc.whatsapp_digits,
+        };
+        const waLink = buildWhatsAppPitchUrl(waLead);
+        const waDemoLink = buildWhatsAppFollowUpUrl(waLead);
         return {
           id: doc._id?.toString() || doc.whatsapp_digits,
           business_name: norm.business_name,
@@ -244,6 +251,7 @@ export default async function handler(req, res) {
           whatsapp_number: doc.whatsapp_number || doc.phone,
           whatsapp_digits: doc.whatsapp_digits,
           wa_link: waLink,
+          wa_demo_link: waDemoLink,
           demo_url: norm.demo_url,
           audit_status: doc.audit_status || "No Website Listed",
           address: doc.address || "",

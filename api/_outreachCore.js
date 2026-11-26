@@ -762,28 +762,57 @@ export function formatNigerianWhatsApp(rawPhone = "") {
   };
 }
 
-/** Generates a concise, natural WhatsApp outreach DM tailored for businesses with no website. */
+/** Generates a clean, link-free opening WhatsApp DM (Step 1) tailored for businesses with no website. */
 export function generateWhatsAppPitchMessage(rawLead) {
   const lead = normalizeLead(rawLead);
   const nicheSlug = normalizeNicheSlug(lead.niche || lead.industry) || lead.niche || "fashion";
   const nicheLabel = getNicheDisplayLabel(nicheSlug);
+
+  return [
+    `Hello ${lead.business_name},`,
+    "",
+    `I found your ${nicheLabel} business in ${lead.city} on Google Maps and noticed you do not have a website linked yet.`,
+    "",
+    `I put together a quick mobile sample website showing how customers can browse your services and message you on WhatsApp directly.`,
+    "",
+    `May I share the preview link for you to check out?`,
+    "",
+    `Kayode | Veltrix Hub`,
+  ].join("\n");
+}
+
+/** Generates the Step 2 WhatsApp follow-up containing the live demo URL after the prospect replies. */
+export function generateWhatsAppFollowUpDemoMessage(rawLead) {
+  const lead = normalizeLead(rawLead);
+  const nicheSlug = normalizeNicheSlug(lead.niche || lead.industry) || lead.niche || "fashion";
   const demoUrl = lead.demo_url && lead.demo_url.startsWith("http")
     ? lead.demo_url
     : `https://veltrixhub.ng/${nicheSlug}`;
 
-  return (
-    `Hello ${lead.business_name} Team, I came across your ${nicheLabel} business in ${lead.city} on Google Maps and noticed you do not have a website linked yet.\n\n` +
-    `Most customers searching on their phones prefer viewing services/prices on a clean mobile page with a 1-click WhatsApp order button before booking. ` +
-    `We built a live mobile demo specifically for ${nicheLabel} businesses you can check out here: ${demoUrl}\n\n` +
-    `Would you like us to customize a version for ${lead.business_name} within 3 to 5 days? (Kayode | Veltrix Hub)`
-  );
+  return [
+    `Thank you! Here is the live mobile sample page for ${lead.business_name}:`,
+    "",
+    demoUrl,
+    "",
+    `Let me know what you think — we can customize one with your business name, photos, and services within 3 to 5 days.`,
+  ].join("\n");
 }
 
-/** Builds a direct https://wa.me clickable pitch URL with pre-filled personalized message. */
-export function buildWhatsAppPitchUrl(rawLead) {
-  const phoneInfo = formatNigerianWhatsApp(rawLead?.whatsapp_number || rawLead?.phone || "");
+function buildEncodedWhatsAppUrl(rawLead, messageBuilder) {
+  const phoneInfo = formatNigerianWhatsApp(
+    rawLead?.whatsapp_number || rawLead?.whatsapp_digits || rawLead?.phone || ""
+  );
   if (!phoneInfo) return "";
-  const msg = generateWhatsAppPitchMessage(rawLead);
-  return `https://wa.me/${phoneInfo.waDigits}?text=${encodeURIComponent(msg)}`;
+  return `https://wa.me/${phoneInfo.waDigits}?text=${encodeURIComponent(messageBuilder(rawLead))}`;
+}
+
+/** Builds a direct https://wa.me URL pre-filled with the link-free Step 1 permission opener. */
+export function buildWhatsAppPitchUrl(rawLead) {
+  return buildEncodedWhatsAppUrl(rawLead, generateWhatsAppPitchMessage);
+}
+
+/** Builds a direct https://wa.me URL pre-filled with Step 2 (live demo URL) for replied prospects. */
+export function buildWhatsAppFollowUpUrl(rawLead) {
+  return buildEncodedWhatsAppUrl(rawLead, generateWhatsAppFollowUpDemoMessage);
 }
 
