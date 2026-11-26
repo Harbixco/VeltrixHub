@@ -31,10 +31,9 @@
 
 /* ── HEADER ── */
 .plumbing-demo .pf-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   z-index: 1000;
   background: var(--navy);
   padding-top: var(--safe-top);
@@ -503,8 +502,7 @@
 
 /* ── TRUST BAR ── */
 .plumbing-demo .pf-trust-bar {
-  background: var(--navy);
-  padding: 20px 24px;
+  display: none !important;
 }
 
 .plumbing-demo .pf-trust-inner {
@@ -595,6 +593,30 @@
 
 .plumbing-demo .pf-section-head.center .pf-section-sub {
   margin: 0 auto;
+}
+
+
+/* ── VIEW BANNER (Clean zero-overlap page header) ── */
+.plumbing-demo .pf-view-banner {
+  background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
+  padding: 3rem 1.5rem 2.5rem;
+  color: #ffffff;
+  text-align: center;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 10;
+}
+
+/* ── FAQ STYLES ── */
+.plumbing-demo .pf-faq-container {
+  max-width: 840px;
+  margin: 0 auto;
+}
+.plumbing-demo .pf-faq-item {
+  transition: all 0.25s ease;
+}
+.plumbing-demo .pf-faq-item:hover {
+  border-color: rgba(245, 158, 11, 0.6) !important;
 }
 
 /* ── SERVICES GRID ── */

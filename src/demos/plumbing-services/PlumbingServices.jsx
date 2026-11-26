@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
+import {
+  Wrench,
+  Droplets,
+  Flame,
+  Search,
+  Bath,
+  Siren,
+  ChevronDown,
+} from 'lucide-react';
 import CountUpNumber from '../../components/CountUpNumber';
 import DemoTopBar from '../DemoTopBar';
+import heroPlumbingImg from '../../assets/plumbing/plumbing-hero.jpg';
+import residentialPlumbingImg from '../../assets/plumbing/plumbing-residential.jpg';
+import drainPlumbingImg from '../../assets/plumbing/plumbing-drain.jpg';
+import heaterCommercialPlumbingImg from '../../assets/plumbing/plumbing-heater-commercial.jpg';
 import './plumbing.css';
 
 /**
@@ -10,87 +23,116 @@ import './plumbing.css';
  * Accessible at: http://localhost:3000/plumbing-services
  */
 export default function PlumbingServices() {
- const [mobileNavOpen, setMobileNavOpen] = useState(false);
- const [currentView, setCurrentView] = useState(() => {
- if (typeof window !== 'undefined') {
- const hash = (window.location.hash || '').replace('#', '').toLowerCase();
- if (['services', 'residential', 'commercial', 'drain', 'water-damage', 'about', 'contact'].includes(hash)) {
- return hash;
- }
- }
- return 'home';
- });
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [currentView, setCurrentView] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['services', 'residential', 'commercial', 'drain', 'water-damage', 'faq', 'about', 'contact'].includes(hash)) {
+        return hash === 'about' ? 'faq' : hash;
+      }
+    }
+    return 'home';
+  });
 
- const navigateTo = (view, e) => {
- if (e && e.preventDefault) e.preventDefault();
- setCurrentView(view);
- if (typeof window !== 'undefined') {
- window.location.hash = view === 'home' ? '' : view;
- window.scrollTo({ top: 0, behavior: 'smooth' });
- }
- setMobileNavOpen(false);
- };
+  const navigateTo = (view, e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const target = view === 'about' ? 'faq' : view;
+    setCurrentView(target);
+    if (typeof window !== 'undefined') {
+      window.location.hash = target === 'home' ? '' : target;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileNavOpen(false);
+  };
 
- useEffect(() => {
- const handleHash = () => {
- const hash = (window.location.hash || '').replace('#', '').toLowerCase();
- if (['services', 'residential', 'commercial', 'drain', 'water-damage', 'about', 'contact'].includes(hash)) {
- setCurrentView(hash);
- } else {
- setCurrentView('home');
- }
- window.scrollTo({ top: 0, behavior: 'smooth' });
- };
- window.addEventListener('hashchange', handleHash);
- return () => window.removeEventListener('hashchange', handleHash);
- }, []);
- const [activeSlide, setActiveSlide] = useState(0);
- const [isPaused, setIsPaused] = useState(false);
- const [formSubmitted, setFormSubmitted] = useState(false);
- const [formData, setFormData] = useState({
- firstName: '',
- lastName: '',
- phone: '',
- email: '',
- service: '',
- problem: '',
- });
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = (window.location.hash || '').replace('#', '').toLowerCase();
+      if (['services', 'residential', 'commercial', 'drain', 'water-damage', 'faq', 'about', 'contact'].includes(hash)) {
+        setCurrentView(hash === 'about' ? 'faq' : hash);
+      } else {
+        setCurrentView('home');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [openFaq, setOpenFaq] = useState(0);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    service: '',
+    problem: '',
+  });
 
- const slides = [
- {
- badge: 'Emergency service, day or night',
- title: 'Plumbing trouble?',
- titleEm: "We're on our way.",
- desc: 'Fast, dependable help for leaks, burst pipes, and urgent repairs. Reach a real technician directly on WhatsApp and get help moving quickly.',
- ctaPrimary: 'WhatsApp for Emergency Help',
- ctaPrimaryHref: 'https://wa.me/2348087098270',
- ctaSecondary: 'Request a Quote',
- ctaSecondaryHref: '#contact',
- image: 'https://cdn.pixabay.com/photo/2013/12/13/21/13/plumber-228010_1280.jpg',
- },
- {
- badge: 'Built right, from the pipes up',
- title: 'Reliable work.',
- titleEm: 'Lasting results.',
- desc: 'From pipe repairs to new installations, our plumbing team gets the details right and keeps your home or business flowing.',
- ctaPrimary: 'Explore Our Services',
- ctaPrimaryHref: '#services',
- ctaSecondary: 'Get a Free Estimate',
- ctaSecondaryHref: '#contact',
- image: 'https://cdn.pixabay.com/photo/2017/08/23/10/22/pipes-2672184_1280.jpg',
- },
- {
- badge: 'Comfort starts at home',
- title: 'Small drips?',
- titleEm: "We'll make them stop.",
- desc: 'Get help with faucets, fixtures, and everyday plumbing repairs—with friendly service and clear, upfront estimates.',
- ctaPrimary: 'Schedule a Home Visit',
- ctaPrimaryHref: '#contact',
- ctaSecondary: 'WhatsApp a Plumber',
- ctaSecondaryHref: 'https://wa.me/2348087098270',
- image: 'https://cdn.pixabay.com/photo/2015/05/31/11/24/tap-791172_1280.jpg',
- },
- ];
+  const faqs = [
+    {
+      q: 'How fast can a plumber arrive in an emergency?',
+      a: 'We average under 60 minutes for emergency response across the metro area. Our dispatch crew is on call 24 hours a day, 7 days a week, including weekends and holidays. For burst pipes or active flooding, reach out immediately on WhatsApp.',
+    },
+    {
+      q: 'Do you provide upfront pricing before starting work?',
+      a: 'Yes, 100%. Before turning a wrench, our technician inspects the issue and gives you a clear, flat-rate quote. There are zero hidden fees, overtime surcharges, or surprises when the job is done.',
+    },
+    {
+      q: 'Are your plumbers licensed, bonded, and insured?',
+      a: 'Every plumber on our team is state-licensed and covered by comprehensive liability insurance. All our repairs and installations come with a full 1-year workmanship warranty for total peace of mind.',
+    },
+    {
+      q: 'What should I do immediately if a pipe bursts in my house?',
+      a: 'First, locate your main water shut-off valve (usually in the utility room, garage, or outside near the meter) and turn it completely clockwise. Then shut off electricity to the affected area if water is near outlets, and message our WhatsApp emergency dispatch immediately.',
+    },
+    {
+      q: 'Do you handle both residential and commercial properties?',
+      a: 'Yes. We service single-family homes, apartments, restaurants, office complexes, and retail facilities with tailored preventive maintenance agreements, backflow testing, and commercial drain jetting.',
+    },
+    {
+      q: 'Can I send photos or videos of the plumbing issue on WhatsApp?',
+      a: 'Yes! Sending a quick video or photo of your leaking pipe, water heater, or fixture to our WhatsApp line helps our technicians diagnose the issue and bring the exact replacement parts on their first trip.',
+    },
+  ];
+
+  const slides = [
+    {
+      badge: 'Emergency service, day or night',
+      title: 'Plumbing trouble?',
+      titleEm: "We're on our way.",
+      desc: 'Fast, dependable help for leaks, burst pipes, and urgent repairs. Reach a real technician directly on WhatsApp and get help moving quickly.',
+      ctaPrimary: 'WhatsApp for Emergency Help',
+      ctaPrimaryHref: 'https://wa.me/2348087098270',
+      ctaSecondary: 'Request a Quote',
+      ctaSecondaryHref: '#contact',
+      image: heroPlumbingImg,
+    },
+    {
+      badge: 'Built right, from the pipes up',
+      title: 'Reliable work.',
+      titleEm: 'Lasting results.',
+      desc: 'From pipe repairs to new installations, our plumbing team gets the details right and keeps your home or business flowing.',
+      ctaPrimary: 'Explore Our Services',
+      ctaPrimaryHref: '#services',
+      ctaSecondary: 'Get a Free Estimate',
+      ctaSecondaryHref: '#contact',
+      image: heaterCommercialPlumbingImg,
+    },
+    {
+      badge: 'Comfort starts at home',
+      title: 'Small drips?',
+      titleEm: "We'll make them stop.",
+      desc: 'Get help with faucets, fixtures, and everyday plumbing repairs—with friendly service and clear, upfront estimates.',
+      ctaPrimary: 'Schedule a Home Visit',
+      ctaPrimaryHref: '#contact',
+      ctaSecondary: 'WhatsApp a Plumber',
+      ctaSecondaryHref: 'https://wa.me/2348087098270',
+      image: residentialPlumbingImg,
+    },
+  ];
 
  // Carousel autoplay
  useEffect(() => {
@@ -160,69 +202,63 @@ export default function PlumbingServices() {
  </div>
  </a>
 
- <nav className="pf-nav">
- <a href="#top" onClick={(e) => navigateTo('home', e)} style={{ fontWeight: currentView === 'home' ? '700' : 'normal', color: '#f59e0b' }}>Home</a>
- <a href="#residential" onClick={(e) => navigateTo('residential', e)} style={{ fontWeight: currentView === 'residential' ? '700' : 'normal', color: '#f59e0b' }}>Residential</a>
- <a href="#commercial" onClick={(e) => navigateTo('commercial', e)} style={{ fontWeight: currentView === 'commercial' ? '700' : 'normal', color: '#f59e0b' }}>Commercial</a>
- <a href="#drain" onClick={(e) => navigateTo('drain', e)} style={{ fontWeight: currentView === 'drain' ? '700' : 'normal', color: '#f59e0b' }}>Drain Cleaning</a>
- <a href="#water-damage" onClick={(e) => navigateTo('water-damage', e)} style={{ fontWeight: currentView === 'water-damage' ? '700' : 'normal', color: '#f59e0b' }}>Water Damage</a>
- <a href="#about" onClick={(e) => navigateTo('about', e)} style={{ fontWeight: currentView === 'about' ? '700' : 'normal', color: '#f59e0b' }}>About</a>
- <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="pf-nav-cta" style={{ color: "#ffffff", background: "#f59e0b" }}>
- <span style={{ color: "#ffffff", fontWeight: "700" }}>Get Free Quote</span>
- </a>
- </nav>
+          <nav className="pf-nav">
+            <a href="#top" onClick={(e) => navigateTo('home', e)} style={{ fontWeight: currentView === 'home' ? '700' : 'normal', color: '#f59e0b' }}>Home</a>
+            <a href="#residential" onClick={(e) => navigateTo('residential', e)} style={{ fontWeight: currentView === 'residential' ? '700' : 'normal', color: '#f59e0b' }}>Residential</a>
+            <a href="#commercial" onClick={(e) => navigateTo('commercial', e)} style={{ fontWeight: currentView === 'commercial' ? '700' : 'normal', color: '#f59e0b' }}>Commercial</a>
+            <a href="#drain" onClick={(e) => navigateTo('drain', e)} style={{ fontWeight: currentView === 'drain' ? '700' : 'normal', color: '#f59e0b' }}>Drain Cleaning</a>
+            <a href="#water-damage" onClick={(e) => navigateTo('water-damage', e)} style={{ fontWeight: currentView === 'water-damage' ? '700' : 'normal', color: '#f59e0b' }}>Water Damage</a>
+            <a href="#faq" onClick={(e) => navigateTo('faq', e)} style={{ fontWeight: (currentView === 'faq' || currentView === 'about') ? '700' : 'normal', color: '#f59e0b' }}>FAQ</a>
+            <a href="#contact" onClick={(e) => navigateTo('contact', e)} className="pf-nav-cta" style={{ color: "#ffffff", background: "#f59e0b" }}>
+              <span style={{ color: "#ffffff", fontWeight: "700" }}>Get Free Quote</span>
+            </a>
+          </nav>
 
- <button
- className={`pf-hamburger mobile-toggle ${mobileNavOpen ? 'is-open' : ''}`}
- onClick={() => setMobileNavOpen(!mobileNavOpen)}
- aria-label="Toggle navigation menu"
- aria-expanded={mobileNavOpen}
- >
- <span></span>
- <span></span>
- <span></span>
- </button>
- </div>
+          <button
+            className={`pf-hamburger mobile-toggle ${mobileNavOpen ? 'is-open' : ''}`}
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileNavOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
 
- {/* Mobile Navigation Drawer */}
- <div className={`pf-mobile-nav ${mobileNavOpen ? 'is-open' : ''}`}>
- <div className="pf-mobile-nav-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.85rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-   <span style={{ fontWeight: 800, textTransform: 'uppercase', fontSize: '0.95rem', color: '#f59e0b', letterSpacing: '0.06em' }}>Plumbing Menu</span>
-   <button type="button" onClick={() => setMobileNavOpen(false)} style={{ background: 'rgba(255,255,255,0.12)', border: '1.5px solid rgba(245,158,11,0.6)', borderRadius: '8px', color: '#f59e0b', fontSize: '1.75rem', cursor: 'pointer', lineHeight: 1, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Close menu">&times;</button>
- </div>
- <a href="#top" onClick={(e) => { setMobileNavOpen(false); navigateTo('home', e); }}>Home</a>
- <a href="#residential" onClick={(e) => { setMobileNavOpen(false); navigateTo('residential', e); }}>Residential Plumbing</a>
- <a href="#commercial" onClick={(e) => { setMobileNavOpen(false); navigateTo('commercial', e); }}>Commercial Plumbing</a>
- <a href="#drain" onClick={(e) => { setMobileNavOpen(false); navigateTo('drain', e); }}>Drain & Sewer Cleaning</a>
- <a href="#water-damage" onClick={(e) => { setMobileNavOpen(false); navigateTo('water-damage', e); }}>Water Damage Mitigation</a>
- <a href="#about" onClick={(e) => { setMobileNavOpen(false); navigateTo('about', e); }}>About ProFlow</a>
- <a href="#contact" onClick={(e) => { setMobileNavOpen(false); navigateTo('contact', e); }} className="pf-mobile-cta" style={{ color: "#ffffff", background: "#f59e0b" }}>
- <span style={{ color: "#ffffff", fontWeight: "700" }}>Get Free Quote</span>
- </a>
- </div>
- </header>
+        {/* Mobile Navigation Drawer */}
+        <div className={`pf-mobile-nav ${mobileNavOpen ? 'is-open' : ''}`}>
+        <div className="pf-mobile-nav-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.85rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+          <span style={{ fontWeight: 800, textTransform: 'uppercase', fontSize: '0.95rem', color: '#f59e0b', letterSpacing: '0.06em' }}>Plumbing Menu</span>
+          <button type="button" onClick={() => setMobileNavOpen(false)} style={{ background: 'rgba(255,255,255,0.12)', border: '1.5px solid rgba(245,158,11,0.6)', borderRadius: '8px', color: '#f59e0b', fontSize: '1.75rem', cursor: 'pointer', lineHeight: 1, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} aria-label="Close menu">&times;</button>
+        </div>
+        <a href="#top" onClick={(e) => { setMobileNavOpen(false); navigateTo('home', e); }}>Home</a>
+        <a href="#residential" onClick={(e) => { setMobileNavOpen(false); navigateTo('residential', e); }}>Residential Plumbing</a>
+        <a href="#commercial" onClick={(e) => { setMobileNavOpen(false); navigateTo('commercial', e); }}>Commercial Plumbing</a>
+        <a href="#drain" onClick={(e) => { setMobileNavOpen(false); navigateTo('drain', e); }}>Drain & Sewer Cleaning</a>
+        <a href="#water-damage" onClick={(e) => { setMobileNavOpen(false); navigateTo('water-damage', e); }}>Water Damage Mitigation</a>
+        <a href="#faq" onClick={(e) => { setMobileNavOpen(false); navigateTo('faq', e); }}>FAQ</a>
+        <a href="#contact" onClick={(e) => { setMobileNavOpen(false); navigateTo('contact', e); }} className="pf-mobile-cta" style={{ color: "#ffffff", background: "#f59e0b" }}>
+          <span style={{ color: "#ffffff", fontWeight: "700" }}>Get Free Quote</span>
+        </a>
+        </div>
+      </header>
 
- {/* Section Header Banner */}
+      {/* Section Header Banner */}
       {currentView !== 'home' && (
- <section className="pf-view-banner" style={{
- background: 'linear-gradient(135deg, #0A192F 0%, #172A45 100%)',
- padding: '2.25rem 1.5rem',
- color: '#ffffff',
- textAlign: 'center',
- borderBottom: '2px solid rgba(255,255,255,0.08)'
- }}>
- <div style={{ maxWidth: '850px', margin: '0 auto' }}>
- <h1 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
- {currentView === 'residential' && 'Residential Plumbing Services'}
- {currentView === 'commercial' && 'Commercial Plumbing & Facility Maintenance'}
- {currentView === 'drain' && 'Emergency Drain Cleaning & Sewer Line Repairs'}
- {currentView === 'water-damage' && 'Emergency Water Damage & Flood Mitigation'}
- {currentView === 'about' && 'About ProFlow Plumbing'}
- {currentView === 'contact' && 'Request Your Free Estimate & Dispatch'}
- </h1>
- </div>
- </section>
- )}
+        <section className="pf-view-banner">
+          <div style={{ maxWidth: '850px', margin: '0 auto' }}>
+            <h1 style={{ fontSize: 'clamp(1.85rem, 4vw, 2.75rem)', fontWeight: 800, margin: '0', letterSpacing: '-0.02em', color: '#ffffff' }}>
+              {currentView === 'residential' && 'Residential Plumbing Services'}
+              {currentView === 'commercial' && 'Commercial Plumbing & Facility Maintenance'}
+              {currentView === 'drain' && 'Emergency Drain Cleaning & Sewer Line Repairs'}
+              {currentView === 'water-damage' && 'Emergency Water Damage & Flood Mitigation'}
+              {(currentView === 'faq' || currentView === 'about') && 'Frequently Asked Questions & Answers'}
+              {currentView === 'contact' && 'Request Your Free Estimate & Dispatch'}
+            </h1>
+          </div>
+        </section>
+      )}
 
  {/* HOMEPAGE VIEW: Clean, customer-centric essentials */}
  {currentView === 'home' && (
@@ -358,45 +394,7 @@ export default function PlumbingServices() {
  </div>
  </section>
 
- {/* ════════════════════════════════════════
- TRUST BAR
- ════════════════════════════════════════ */}
- <div className="pf-trust-bar">
- <div className="pf-trust-inner">
- <div className="pf-trust-item">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
- </svg>
- <span>Licensed &amp; Insured</span>
- </div>
- <div className="pf-trust-item">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <circle cx="12" cy="12" r="10" />
- <polyline points="12 6 12 12 16 14" />
- </svg>
- <span>24/7 Emergency Service</span>
- </div>
- <div className="pf-trust-item">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <polyline points="20 6 9 17 4 12" />
- </svg>
- <span>Free Estimates</span>
- </div>
- <div className="pf-trust-item">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
- </svg>
- <span>5-Star Rated Service</span>
- </div>
- <div className="pf-trust-item">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
- <polyline points="9 22 9 12 15 12 15 22" />
- </svg>
- <span>Family Owned Since 2008</span>
- </div>
- </div>
- </div>
+
 
  <section className="pf-section pf-section-alt" id="services">
  <div className="pf-container">
@@ -408,75 +406,68 @@ export default function PlumbingServices() {
  </div>
 
  <div className="pf-services-grid">
- <div className="pf-service-card reveal">
- <div className="pf-svc-icon">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
- </svg>
- </div>
- <h3>Emergency Repair</h3>
- <p>Burst pipes, major leaks, or no water — we respond fast, 24 hours a day, 7 days a week. Same-day service guaranteed.</p>
- </div>
+          <div className="pf-service-card reveal">
+            <div className="pf-svc-icon">
+              <Siren className="w-6 h-6 text-amber-500" />
+            </div>
+            <div className="pf-svc-content">
+              <h3>Emergency Repair</h3>
+              <p>Burst pipes, major leaks, or no water — we respond fast, 24 hours a day, 7 days a week. Same-day service guaranteed.</p>
+            </div>
+          </div>
 
- <div className="pf-service-card reveal">
- <div className="pf-svc-icon">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 6v4m0 4h.01" />
- </svg>
- </div>
- <h3>Drain Cleaning</h3>
- <p>Slow or blocked drains cleared using professional-grade hydro-jetting and snake equipment — no mess, no damage.</p>
- </div>
+          <div className="pf-service-card reveal">
+            <div className="pf-svc-icon">
+              <Droplets className="w-6 h-6 text-amber-500" />
+            </div>
+            <div className="pf-svc-content">
+              <h3>Drain Cleaning</h3>
+              <p>Slow or blocked drains cleared using professional-grade hydro-jetting and snake equipment — no mess, no damage.</p>
+            </div>
+          </div>
 
- <div className="pf-service-card reveal">
- <div className="pf-svc-icon">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <path d="M18 8h1a4 4 0 010 8h-1" />
- <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z" />
- <line x1="6" y1="1" x2="6" y2="4" />
- <line x1="10" y1="1" x2="10" y2="4" />
- <line x1="14" y1="1" x2="14" y2="4" />
- </svg>
- </div>
- <h3>Water Heater Services</h3>
- <p>Installation, repair, and replacement of all water heater types including tankless systems. Hot water restored fast.</p>
- </div>
+          <div className="pf-service-card reveal">
+            <div className="pf-svc-icon">
+              <Flame className="w-6 h-6 text-amber-500" />
+            </div>
+            <div className="pf-svc-content">
+              <h3>Water Heater Services</h3>
+              <p>Installation, repair, and replacement of all water heater types including tankless systems. Hot water restored fast.</p>
+            </div>
+          </div>
 
- <div className="pf-service-card reveal">
- <div className="pf-svc-icon">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <rect x="2" y="7" width="20" height="14" rx="2" />
- <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
- </svg>
- </div>
- <h3>Pipe Installation</h3>
- <p>New construction, remodeling, or pipe replacement. We install copper, PVC, and PEX piping to code — every time.</p>
- </div>
+          <div className="pf-service-card reveal">
+            <div className="pf-svc-icon">
+              <Wrench className="w-6 h-6 text-amber-500" />
+            </div>
+            <div className="pf-svc-content">
+              <h3>Pipe Installation</h3>
+              <p>New construction, remodeling, or pipe replacement. We install copper, PVC, and PEX piping to code — every time.</p>
+            </div>
+          </div>
 
- <div className="pf-service-card reveal">
- <div className="pf-svc-icon">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <circle cx="11" cy="11" r="8" />
- <line x1="21" y1="21" x2="16.65" y2="16.65" />
- </svg>
- </div>
- <h3>Leak Detection</h3>
- <p>Advanced non-invasive technology to locate hidden leaks behind walls and under slabs before they cause serious damage.</p>
- </div>
+          <div className="pf-service-card reveal">
+            <div className="pf-svc-icon">
+              <Search className="w-6 h-6 text-amber-500" />
+            </div>
+            <div className="pf-svc-content">
+              <h3>Leak Detection</h3>
+              <p>Advanced non-invasive technology to locate hidden leaks behind walls and under slabs before they cause serious damage.</p>
+            </div>
+          </div>
 
- <div className="pf-service-card reveal">
- <div className="pf-svc-icon">
- <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
- <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
- <polyline points="9 22 9 12 15 12 15 22" />
- </svg>
- </div>
- <h3>Bathroom &amp; Kitchen</h3>
- <p>Full bathroom and kitchen plumbing — toilets, faucets, sinks, garbage disposals, and remodel plumbing support.</p>
- </div>
- </div>
+          <div className="pf-service-card reveal">
+            <div className="pf-svc-icon">
+              <Bath className="w-6 h-6 text-amber-500" />
+            </div>
+            <div className="pf-svc-content">
+              <h3>Bathroom & Kitchen</h3>
+              <p>Full bathroom and kitchen plumbing — toilets, faucets, sinks, garbage disposals, and remodel plumbing support.</p>
+            </div>
+          </div>
+        </div>
 
- {/* Stats Row */}
+        {/* Stats Row */}
  <div className="pf-stats-row">
  <div className="pf-stat-box">
  <div className="pf-stat-num">
@@ -883,7 +874,7 @@ export default function PlumbingServices() {
 
  <div className="pf-col-img">
  <img
- src="https://images.unsplash.com/photo-1676210133055-eab6ef033ce3?w=800&q=80"
+ src={residentialPlumbingImg}
  alt="Plumber repairing pipes beneath a sink"
  loading="lazy"
  />
@@ -974,7 +965,7 @@ export default function PlumbingServices() {
 
  <div className="pf-col-img">
  <img
- src="https://images.unsplash.com/photo-1650551182991-b07558247564?w=800&q=80"
+ src={heaterCommercialPlumbingImg}
  alt="Commercial plumbing pipes and valves"
  loading="lazy"
  />
@@ -1065,7 +1056,7 @@ export default function PlumbingServices() {
 
  <div className="pf-col-img">
  <img
- src="https://images.unsplash.com/photo-1676210134050-6f12c6898395?w=800&q=80"
+ src={drainPlumbingImg}
  alt="Plumber repairing a toilet"
  loading="lazy"
  />
@@ -1163,7 +1154,7 @@ export default function PlumbingServices() {
 
  <div className="pf-col-img">
  <img
- src="https://images.unsplash.com/photo-1676210134188-4c05dd172f89?w=800&q=80"
+ src={heroPlumbingImg}
  alt="Plumber repairing pipes inside a wall"
  loading="lazy"
  />
@@ -1207,138 +1198,132 @@ export default function PlumbingServices() {
  </>
  )}
 
- {/* ABOUT VIEW */}
- {currentView === 'about' && (
- <>
- <section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
- <div className="pf-container">
- <div className="pf-section-head center reveal">
- <h2 className="pf-section-title" style={{ color: 'var(--white)' }}>Why Homeowners Choose Us</h2>
- <p className="pf-section-sub" style={{ color: 'rgba(255,255,255,.6)' }}>
- We built our reputation one job at a time — by showing up on time, being honest about pricing, and doing work we're proud to put our name on.
- </p>
- </div>
+ {/* FAQ VIEW */}
+      {(currentView === 'faq' || currentView === 'about') && (
+        <>
+          <section className="pf-section pf-section-alt" id="faq">
+            <div className="pf-container">
+              <div className="pf-section-head center reveal">
+                <h2 className="pf-section-title">Frequently Asked Questions</h2>
+                <p className="pf-section-sub">
+                  Quick answers to common questions about our emergency response times, upfront pricing, warranties, and scheduling.
+                </p>
+              </div>
 
- <div className="pf-why-grid">
- <div className="pf-why-card reveal">
- <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
- <h3>Fast Response Time</h3>
- <p>We average under 60 minutes to reach your location for emergencies — because we know time is critical when it comes to water damage.</p>
- </div>
+              <div className="pf-faq-container" style={{ maxWidth: '840px', margin: '0 auto' }}>
+                {faqs.map((faq, fIdx) => {
+                  const isOpen = openFaq === fIdx;
+                  return (
+                    <div
+                      key={fIdx}
+                      className={`pf-faq-item reveal ${isOpen ? 'is-open' : ''}`}
+                      style={{
+                        background: '#ffffff',
+                        borderRadius: '12px',
+                        border: isOpen ? '1.5px solid var(--amber)' : '1px solid #e2e8f0',
+                        marginBottom: '1rem',
+                        overflow: 'hidden',
+                        boxShadow: isOpen ? '0 8px 24px -4px rgba(245, 158, 11, 0.12)' : '0 2px 8px rgba(0,0,0,0.03)',
+                        transition: 'all 0.25s ease',
+                      }}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaq(isOpen ? -1 : fIdx)}
+                        style={{
+                          width: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '16px',
+                          padding: '1.25rem 1.5rem',
+                          background: 'none',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                        }}
+                        aria-expanded={isOpen}
+                      >
+                        <span style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.4 }}>
+                          {faq.q}
+                        </span>
+                        <ChevronDown
+                          className="w-5 h-5"
+                          style={{
+                            color: isOpen ? 'var(--amber)' : '#94a3b8',
+                            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.25s ease, color 0.25s ease',
+                            flexShrink: 0,
+                          }}
+                        />
+                      </button>
+                      {isOpen && (
+                        <div
+                          style={{
+                            padding: '0 1.5rem 1.25rem',
+                            color: '#475569',
+                            fontSize: '0.95rem',
+                            lineHeight: 1.65,
+                            borderTop: '1px solid #f1f5f9',
+                            paddingTop: '1rem',
+                          }}
+                        >
+                          <p style={{ margin: 0 }}>{faq.a}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
 
- <div className="pf-why-card reveal">
- <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
- <h3>Licensed &amp; Fully Insured</h3>
- <p>Every technician on our team is state-licensed and fully insured. You're protected — and so is your home — on every single job.</p>
- </div>
+              {/* Still have questions WhatsApp block */}
+              <div
+                className="reveal"
+                style={{
+                  maxWidth: '840px',
+                  margin: '2.5rem auto 0',
+                  padding: '2rem',
+                  borderRadius: '16px',
+                  background: 'linear-gradient(135deg, #0A1628 0%, #112240 100%)',
+                  color: '#ffffff',
+                  textAlign: 'center',
+                  boxShadow: '0 12px 32px rgba(10, 22, 40, 0.15)',
+                }}
+              >
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, margin: '0 0 0.5rem', color: '#ffffff' }}>
+                  Have a Question Not Listed Here?
+                </h3>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', margin: '0 0 1.5rem' }}>
+                  Speak directly with an on-duty master plumber. We answer WhatsApp inquiries within minutes.
+                </p>
+                <a
+                  href="https://wa.me/2348087098270?text=Hello%20ProFlow%20Plumbing%2C%20I%20have%20a%20question%20about%20your%20services"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pf-btn pf-btn-primary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.85rem 2rem' }}
+                >
+                  <FaWhatsapp size={18} />
+                  <span>Ask on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </section>
 
- <div className="pf-why-card reveal">
- <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></svg>
- <h3>Upfront, Flat Pricing</h3>
- <p>We give you a clear price before any work begins. No hidden fees, no surprise charges on the final bill — ever.</p>
- </div>
+          {/* FAQ Bottom CTA */}
+          <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
+              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Ready to Schedule Plumbing Service?</h2>
+              <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Transparent estimates, clean work areas, and warranties on all parts and labor.</p>
+              <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
+                Request Free Quote &rarr;
+              </button>
+            </div>
+          </section>
+        </>
+      )}
 
- <div className="pf-why-card reveal">
- <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></svg>
- <h3>Workmanship Guarantee</h3>
- <p>All repairs and installations come with a 1-year labor guarantee. If something isn't right, we come back and fix it — no charge.</p>
- </div>
-
- <div className="pf-why-card reveal">
- <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>
- <h3>Experienced Local Team</h3>
- <p>Our plumbers average 12 years of hands-on experience. We've seen every plumbing problem imaginable and know exactly how to fix it.</p>
- </div>
-
- <div className="pf-why-card reveal">
- <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" /></svg>
- <h3>Clear Communication</h3>
- <p>We explain what we find, what needs to be done, and why — in plain language, not plumber jargon. You're always in control.</p>
- </div>
- </div>
- </div>
- </section>
-
- <section className="pf-section pf-section-alt">
- <div className="pf-container">
- <div className="pf-section-head center reveal">
- <h2 className="pf-section-title">What Our Clients Say</h2>
- <p className="pf-section-sub">
- Don't just take our word for it — here's what real customers have to say about ProFlow Plumbing.
- </p>
- </div>
-
- <div className="pf-testi-grid">
- <div className="pf-testi-card reveal">
- <div className="pf-stars">
- {[...Array(5)].map((_, i) => (
- <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
- ))}
- </div>
- <blockquote>
- "Pipe burst at 11pm on a Sunday. ProFlow had someone at my door in 45 minutes. They stopped the flooding, fixed the pipe, and even cleaned up the mess. Absolutely incredible service — I won't call anyone else."
- </blockquote>
- <div className="pf-reviewer">
- <div className="pf-avatar" style={{ background: '#1a3a5c' }}>MR</div>
- <div className="pf-reviewer-info">
- <strong>Michael R.</strong>
- <span>Homeowner — Austin, TX</span>
- </div>
- </div>
- </div>
-
- <div className="pf-testi-card reveal">
- <div className="pf-stars">
- {[...Array(5)].map((_, i) => (
- <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
- ))}
- </div>
- <blockquote>
- "We use ProFlow for all three of our restaurant locations. They understand that our business can't afford downtime. Always responsive, always professional, and their preventive maintenance contract has saved us twice."
- </blockquote>
- <div className="pf-reviewer">
- <div className="pf-avatar" style={{ background: '#7c3aed' }}>SL</div>
- <div className="pf-reviewer-info">
- <strong>Sandra L.</strong>
- <span>Restaurant Owner — Denver, CO</span>
- </div>
- </div>
- </div>
-
- <div className="pf-testi-card reveal">
- <div className="pf-stars">
- {[...Array(5)].map((_, i) => (
- <svg key={i} viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>
- ))}
- </div>
- <blockquote>
- "Had a slow drain that two other plumbers couldn't fix. ProFlow came in with a camera, found a root intrusion 30 feet down the line, and cleared it the same day. The pricing was completely upfront — no surprises. Highly recommend."
- </blockquote>
- <div className="pf-reviewer">
- <div className="pf-avatar" style={{ background: '#065f46' }}>JT</div>
- <div className="pf-reviewer-info">
- <strong>James T.</strong>
- <span>Homeowner — Charlotte, NC</span>
- </div>
- </div>
- </div>
- </div>
- </div>
- </section>
-  {/* About Bottom CTA */}
-  <section className="pf-section text-center" style={{ backgroundColor: '#f8fafc', padding: '3.5rem 1.5rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-    <div style={{ maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
-      <h2 style={{ fontSize: '1.75rem', fontWeight: 800, marginBottom: '0.75rem', color: 'var(--navy)' }}>Work With Licensed, Insured Master Plumbers</h2>
-      <p style={{ margin: '0 0 1.75rem', color: '#64748b', fontSize: '1rem', lineHeight: 1.6 }}>Transparent estimates, clean work areas, and warranties on all parts and labor.</p>
-      <button onClick={(e) => navigateTo('contact', e)} className="pf-btn pf-btn-primary" style={{ padding: '0.85rem 2.25rem', fontSize: '0.95rem' }}>
-        Work With Our Master Plumbers &rarr;
-      </button>
-    </div>
-  </section>
- </>
- )}
-
- {/* CONTACT VIEW */}
+      {/* CONTACT VIEW */}
  {currentView === 'contact' && (
  <>
  <section className="pf-section" id="contact">
@@ -1578,7 +1563,7 @@ export default function PlumbingServices() {
  </a>
  <a href="mailto:info@veltrixhub.ng">info@veltrixhub.ng</a>
  <a href="#contact" onClick={(e) => navigateTo('contact', e)} >Get Free Quote</a>
- <a href="#about" onClick={(e) => navigateTo('about', e)} >About Us</a>
+ <a href="#faq" onClick={(e) => navigateTo('faq', e)} >FAQ</a>
           <div className="footer-social-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '1.25rem' }}>
             <a
               href="https://facebook.com"
