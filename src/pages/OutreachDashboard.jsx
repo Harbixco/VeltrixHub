@@ -711,15 +711,17 @@ export default function OutreachDashboard() {
     }
   };
 
-  const niches = [
+  const emailNiches = [
     "all",
-    ...Array.from(
-      new Set([
-        ...leads.map((l) => l.niche),
-        ...whatsappLeads.map((l) => l.niche),
-      ].filter(Boolean))
-    ),
+    ...Array.from(new Set(leads.map((l) => l.niche).filter(Boolean))),
   ];
+
+  const waNiches = [
+    "all",
+    ...Array.from(new Set(whatsappLeads.map((l) => l.niche).filter(Boolean))),
+  ];
+
+  const niches = activeTab === "whatsapp" ? waNiches : emailNiches;
 
   const getTrackingForLead = (email) => {
     if (!email || !trackingRecords.length) return null;
@@ -829,6 +831,26 @@ export default function OutreachDashboard() {
   const emailPendingCount = dispatchProgress.pending || leads.filter((l) => l.status === "pending").length;
   const waReadyCount = whatsappLeads.filter((l) => l.status !== "whatsapp_sent").length;
   const waSentCount = whatsappLeads.filter((l) => l.status === "whatsapp_sent").length;
+  const totalDatabaseLeads = leads.length + whatsappLeads.length;
+
+  const industryBreakdown = (() => {
+    const counts = new Map();
+    for (const l of leads) {
+      const key = (l.niche || "other").toLowerCase();
+      const entry = counts.get(key) || { niche: key, emailCount: 0, waCount: 0 };
+      entry.emailCount += 1;
+      counts.set(key, entry);
+    }
+    for (const l of whatsappLeads) {
+      const key = (l.niche || "other").toLowerCase();
+      const entry = counts.get(key) || { niche: key, emailCount: 0, waCount: 0 };
+      entry.waCount += 1;
+      counts.set(key, entry);
+    }
+    return Array.from(counts.values())
+      .map((item) => ({ ...item, total: item.emailCount + item.waCount }))
+      .sort((a, b) => b.total - a.total);
+  })();
 
   const dashboardTabs = [
     { id: "overview", label: "Overview", icon: LayoutDashboard },
@@ -841,6 +863,8 @@ export default function OutreachDashboard() {
   const handleSelectTab = (tabId) => {
     setActiveTab(tabId);
     setMenuOpen(false);
+    setSearchTerm("");
+    setSelectedNiche("all");
   };
 
   return (
@@ -851,11 +875,12 @@ export default function OutreachDashboard() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMenuOpen((prev) => !prev)}
-              className="inline-flex items-center justify-center p-2 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700/70 transition"
-              aria-label="Toggle outreach sections menu"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700/70 transition text-xs font-semibold"
+              aria-label="Toggle outreach tabs menu"
               aria-expanded={menuOpen}
             >
               {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              <span>Tabs</span>
             </button>
             <Link
               to="/"
@@ -864,7 +889,7 @@ export default function OutreachDashboard() {
               &larr; Veltrix Hub
             </Link>
             <span className="hidden sm:inline text-slate-700">|</span>
-            <span className="hidden sm:inline text-xs font-semibold text-slate-300 capitalize">
+            <span className="hidden sm:inline text-xs font-semibold text-white">
               {dashboardTabs.find((t) => t.id === activeTab)?.label || "Overview"}
             </span>
           </div>
@@ -872,15 +897,24 @@ export default function OutreachDashboard() {
           <div className="flex items-center gap-2.5">
             <button
               onClick={() => {
-                fetchTracking();
-                fetchLeads();
-                fetchWhatsappLeads();
-                fetchDispatchStatus();
-                fetchResponses();
+                if (activeTab === "overview") {
+                  fetchLeads();
+                  fetchWhatsappLeads();
+                  fetchTracking();
+                  fetchResponses();
+                } else if (activeTab === "emails") {
+                  fetchLeads();
+                  fetchDispatchStatus();
+                } else if (activeTab === "whatsapp") {
+                  fetchWhatsappLeads();
+                } else if (activeTab === "analytics") {
+                  fetchTracking();
+                  fetchResponses();
+                }
               }}
               disabled={isRefreshing || isLoadingLeads || isLoadingWhatsapp}
               className="inline-flex items-center gap-1.5 text-xs text-slate-300 bg-slate-800/90 hover:bg-slate-700 px-2.5 py-1.5 rounded-md border border-slate-700 transition"
-              title="Sync database and analytics"
+              title="Refresh active tab data"
             >
               <RefreshCw
                 className={`w-3.5 h-3.5 ${
@@ -949,182 +983,82 @@ export default function OutreachDashboard() {
         )}
       </header>
 
-      {/* Clean Compact Header & Desktop Tab Bar */}
-      <section className="pt-8 pb-6 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-gradient-to-b from-[#0B1527] to-[#070D18]">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                Veltrix Hub Outreach
-              </h1>
-              <p className="mt-1.5 text-sm text-slate-400 max-w-2xl">
-                Manage audited SME email outreach, no-website WhatsApp contacts, and engagement analytics.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2.5">
-              <button
-                onClick={handleDownloadCSV}
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition"
-              >
-                <Download className="w-4 h-4" />
-                {activeTab === "whatsapp" ? "Export WhatsApp CSV" : "Export Email CSV"}
-              </button>
-              <button
-                onClick={() => setShowAddModal(true)}
-                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 transition"
-              >
-                <Plus className="w-4 h-4" />
-                Add Lead
-              </button>
-            </div>
-          </div>
-
-          {/* Horizontal Tab Strip */}
-          <div className="mt-6 flex items-center gap-2 overflow-x-auto pb-1">
-            {dashboardTabs.map((tab) => {
-              const IconComp = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => handleSelectTab(tab.id)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold border whitespace-nowrap transition ${
-                    isActive
-                      ? tab.id === "whatsapp"
-                        ? "bg-emerald-950/60 border-emerald-500/50 text-emerald-200"
-                        : "bg-blue-950/60 border-blue-500/50 text-white"
-                      : "bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700"
-                  }`}
-                >
-                  <IconComp
-                    className={`w-4 h-4 ${
-                      tab.id === "whatsapp" ? "text-emerald-400" : isActive ? "text-blue-400" : "text-slate-400"
-                    }`}
-                  />
-                  <span>{tab.label}</span>
-                  {typeof tab.count === "number" && (
-                    <span className="px-1.5 py-0.5 rounded bg-slate-950/80 text-[11px] font-mono text-slate-300 border border-slate-800">
-                      {tab.count}
-                    </span>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* TAB 1: OVERVIEW */}
         {activeTab === "overview" && (
           <div className="space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {/* Card 1: Email Queue */}
-              <div
-                onClick={() => handleSelectTab("emails")}
-                className="cursor-pointer bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 rounded-xl p-5 shadow-sm transition"
-              >
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider">Email Queue</span>
-                  <Mail className="w-5 h-5 text-blue-400" />
-                </div>
-                <div className="text-2xl font-bold text-white">{emailPendingCount} Pending</div>
-                <p className="text-xs text-slate-400 mt-1">{sentCount} delivered &bull; MX &amp; Audit verified</p>
-              </div>
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                Outreach Overview
+              </h1>
+              <p className="mt-1 text-sm text-slate-400">
+                High-level database summary and niche distribution across target industries. Open the Tabs menu to manage a specific channel.
+              </p>
+            </div>
 
-              {/* Card 2: WhatsApp Queue */}
-              <div
-                onClick={() => handleSelectTab("whatsapp")}
-                className="cursor-pointer bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-xl p-5 shadow-sm transition"
-              >
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider">WhatsApp Queue</span>
-                  <FaWhatsapp className="w-5 h-5 text-emerald-400" />
-                </div>
-                <div className="text-2xl font-bold text-emerald-300">{waReadyCount} Ready</div>
-                <p className="text-xs text-slate-400 mt-1">
-                  {waSentCount} pitched &bull; No-website SME contacts
-                </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  Total Prospect Records
+                </span>
+                <div className="text-2xl font-bold text-white mt-2">{totalDatabaseLeads}</div>
+                <p className="text-xs text-slate-400 mt-1">Qualified businesses across all outreach channels</p>
               </div>
-
-              {/* Card 3: Email Opens */}
-              <div
-                onClick={() => handleSelectTab("analytics")}
-                className="cursor-pointer bg-slate-900/80 border border-slate-800 hover:border-emerald-500/40 rounded-xl p-5 shadow-sm transition"
-              >
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider">Email Opens</span>
-                  <Eye className="w-5 h-5 text-emerald-400" />
-                </div>
-                <div className="text-2xl font-bold text-white">
-                  {trackingSummary.unique_opened}{" "}
-                  <span className="text-sm font-normal text-slate-400">({openRate}%)</span>
-                </div>
-                <p className="text-xs text-slate-400 mt-1">{trackingSummary.total_opens} total opens recorded</p>
+              <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  Focus Industries Active
+                </span>
+                <div className="text-2xl font-bold text-white mt-2">{industryBreakdown.length}</div>
+                <p className="text-xs text-slate-400 mt-1">Service and retail verticals indexed</p>
               </div>
-
-              {/* Card 4: Demo Clicks & Replies */}
-              <div
-                onClick={() => handleSelectTab("analytics")}
-                className="cursor-pointer bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-5 shadow-sm transition"
-              >
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider">Demo Clicks</span>
-                  <MousePointerClick className="w-5 h-5 text-blue-400" />
-                </div>
-                <div className="text-2xl font-bold text-white">
-                  {trackingSummary.unique_clicked}{" "}
-                  <span className="text-sm font-normal text-slate-400">({clickRate}%)</span>
-                </div>
-                <p className="text-xs text-slate-400 mt-1">
-                  {trackingSummary.total_clicks} visits &bull; {responses.length} replies logged
-                </p>
+              <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  Automated Schedule
+                </span>
+                <div className="text-2xl font-bold text-white mt-2">07:00 / 14:00 WAT</div>
+                <p className="text-xs text-slate-400 mt-1">Daily lead extraction and batch window</p>
               </div>
             </div>
 
-            {/* Quick Channel Launch Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between gap-4">
-                <div>
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Mail className="w-5 h-5 text-blue-400" />
-                    <span>Email Outreach ({emailPendingCount} Pending)</span>
-                  </h3>
-                  <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
-                    Dual-track pitching sends website redesign &amp; WhatsApp conversion upgrades to official company domains and launch pitches to no-website email leads.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2.5">
-                  <button
-                    onClick={() => handleSelectTab("emails")}
-                    className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition"
-                  >
-                    Open Email Workspace &rarr;
-                  </button>
-                </div>
+            {/* Industry Breakdown Matrix */}
+            <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden">
+              <div className="p-5 border-b border-slate-800">
+                <h2 className="text-lg font-bold text-white">Industry Coverage Breakdown</h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Side-by-side distribution of leads per focus industry.
+                </p>
               </div>
-
-              <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between gap-4">
-                <div>
-                  <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                    <FaWhatsapp className="w-5 h-5 text-emerald-400" />
-                    <span>WhatsApp Outreach ({waReadyCount} No-Website SMEs)</span>
-                  </h3>
-                  <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">
-                    Direct Nigerian mobile contacts (+234) of businesses with no website listed, pre-filled with a personalized pitch and industry demo URL.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2.5">
-                  <button
-                    onClick={() => handleSelectTab("whatsapp")}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition"
-                  >
-                    <FaWhatsapp className="w-4 h-4" />
-                    <span>Open WhatsApp Queue &rarr;</span>
-                  </button>
-                </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm text-slate-300">
+                  <thead className="bg-slate-950/70 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+                    <tr>
+                      <th className="py-3 px-4 font-semibold">Industry / Niche</th>
+                      <th className="py-3 px-4 font-semibold">Email Contacts</th>
+                      <th className="py-3 px-4 font-semibold">WhatsApp No-Website</th>
+                      <th className="py-3 px-4 font-semibold text-right">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60">
+                    {industryBreakdown.map((row) => (
+                      <tr key={row.niche} className="hover:bg-slate-800/30 transition">
+                        <td className="py-3 px-4 font-medium text-white capitalize">
+                          {row.niche.replace("-", " ")}
+                        </td>
+                        <td className="py-3 px-4 font-mono text-blue-300">{row.emailCount}</td>
+                        <td className="py-3 px-4 font-mono text-emerald-300">{row.waCount}</td>
+                        <td className="py-3 px-4 font-mono font-bold text-white text-right">{row.total}</td>
+                      </tr>
+                    ))}
+                    {industryBreakdown.length === 0 && (
+                      <tr>
+                        <td colSpan={4} className="py-8 text-center text-xs text-slate-500">
+                          No industry records loaded yet.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -1133,6 +1067,14 @@ export default function OutreachDashboard() {
         {/* TAB 2: EMAIL OUTREACH */}
         {activeTab === "emails" && (
           <div className="space-y-8">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                Email Outreach
+              </h1>
+              <p className="mt-1 text-sm text-slate-400">
+                Extract audited leads, dispatch email pitches, and manage your email prospect pipeline.
+              </p>
+            </div>
 
         {/* SECTION 1: LEAD EXTRACTION */}
         <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-sm">
@@ -1281,7 +1223,7 @@ export default function OutreachDashboard() {
                 Pitch Dispatcher
               </h2>
               <p className="text-sm text-slate-300 leading-relaxed">
-                Rotates outbound emails across your 3 Zoho mailboxes (`kayode`, `christopher`, `william`). Automated schedule: 7:00 AM prospecting, 2:00 PM batch dispatch.
+                Rotates outbound pitches automatically on the 7:00 AM and 2:00 PM schedule with delivery rate limiting.
               </p>
             </div>
 
@@ -1382,21 +1324,6 @@ export default function OutreachDashboard() {
               >
                 <X className="w-4 h-4" />
               </button>
-            </div>
-          )}
-
-          {/* Live Dispatch Status Strip */}
-          {dispatchRunning && (
-            <div className="mt-4 p-3 rounded-xl bg-slate-950/90 border border-emerald-500/40 flex items-center justify-between text-xs text-emerald-200">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                <span className="truncate">
-                  {dispatchProgress.statusDetail || "Connecting to Zoho SMTP across Kayode, Christopher & William..."}
-                </span>
-              </div>
-              <span className="text-[11px] font-mono font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30 shrink-0 ml-2">
-                {dispatchProgress.sentToday || 0} / 75 Daily Ceil
-              </span>
             </div>
           )}
 
@@ -1632,15 +1559,16 @@ export default function OutreachDashboard() {
         {/* TAB 4: ANALYTICS & REPLIES */}
         {activeTab === "analytics" && (
           <div className="space-y-8">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                Engagement Analytics &amp; Replies
+              </h1>
+              <p className="mt-1 text-sm text-slate-400">
+                Email open rates, demo link visits, and logged prospect replies.
+              </p>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-                <div className="flex items-center justify-between text-slate-400 mb-2">
-                  <span className="text-xs font-semibold uppercase tracking-wider">Emails Delivered</span>
-                  <Send className="w-4 h-4 text-blue-400" />
-                </div>
-                <div className="text-2xl font-bold text-white">{sentCount}</div>
-                <p className="text-xs text-slate-400 mt-1">{emailPendingCount} still in queue</p>
-              </div>
               <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
                 <div className="flex items-center justify-between text-slate-400 mb-2">
                   <span className="text-xs font-semibold uppercase tracking-wider">Unique Opens</span>
@@ -1650,7 +1578,15 @@ export default function OutreachDashboard() {
                   {trackingSummary.unique_opened}{" "}
                   <span className="text-sm font-normal text-slate-400">({openRate}%)</span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1">{trackingSummary.total_opens} total opens</p>
+                <p className="text-xs text-slate-400 mt-1">Unique recipients who opened</p>
+              </div>
+              <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                <div className="flex items-center justify-between text-slate-400 mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider">Total Opens</span>
+                  <Eye className="w-4 h-4 text-blue-400" />
+                </div>
+                <div className="text-2xl font-bold text-white">{trackingSummary.total_opens}</div>
+                <p className="text-xs text-slate-400 mt-1">Cumulative email opens recorded</p>
               </div>
               <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
                 <div className="flex items-center justify-between text-slate-400 mb-2">
@@ -1681,7 +1617,7 @@ export default function OutreachDashboard() {
                 Prospect Inbound Replies
               </h2>
               <p className="text-xs text-slate-300">
-                All replies automatically route to <span className="text-blue-300 font-mono">kayode@veltrixhub.ng</span>. You never need to log into or switch between 3 mailboxes.
+                All replies automatically route to <span className="text-blue-300 font-mono">kayode@veltrixhub.ng</span>.
               </p>
             </div>
 
@@ -1724,15 +1660,6 @@ export default function OutreachDashboard() {
                     <span className="text-slate-500">
                       {new Date(rep.received_at).toLocaleDateString()}
                     </span>
-                    <a
-                      href={`https://wa.me/?text=Hello%20${encodeURIComponent(rep.business_name)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"
-                    >
-                      <FaWhatsapp className="w-3.5 h-3.5" />
-                      Chat WhatsApp &rarr;
-                    </a>
                   </div>
                 </div>
               ))}
@@ -1742,7 +1669,7 @@ export default function OutreachDashboard() {
               <Inbox className="w-8 h-8 text-slate-600 mx-auto" />
               <p className="text-xs font-semibold text-slate-300">No unread prospect replies currently logged</p>
               <p className="text-[11px] text-slate-500 max-w-md mx-auto">
-                {responsesNotice || "All prospect replies automatically land in kayode@veltrixhub.ng. When prospects reply to pitches, their messages or WhatsApp inquiries will stream directly into this dashboard."}
+                {responsesNotice || "Prospect replies routed to kayode@veltrixhub.ng appear here when logged."}
               </p>
             </div>
           )}
@@ -1894,6 +1821,14 @@ export default function OutreachDashboard() {
         {/* TAB 5: SENDER MAILBOXES */}
         {activeTab === "mailboxes" && (
           <div className="space-y-8">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                Sender Mailboxes
+              </h1>
+              <p className="mt-1 text-sm text-slate-400">
+                SMTP configuration, daily sending quotas, and manual CLI runner commands.
+              </p>
+            </div>
 
         {/* SECTION 4: 3 SENDER MAILBOXES */}
         <div>
@@ -1901,7 +1836,7 @@ export default function OutreachDashboard() {
             <div>
               <h2 className="text-xl font-bold text-white">Authenticated Zoho Sender Mailboxes</h2>
               <p className="text-sm text-slate-400">
-                Outreach emails rotate through these 3 accounts to maintain sender reputation and clean inbox placement.
+                Rotating pool configured for clean domain reputation and inbox placement.
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-2 text-xs text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-md border border-emerald-500/20">
@@ -1977,36 +1912,48 @@ export default function OutreachDashboard() {
           </div>
         )}
 
-        {/* SECTION 5: PROSPECT DATABASE TABLE (EMAILS & WHATSAPP) */}
+        {/* SECTION 5: PROSPECT DATABASE TABLE (EMAILS OR WHATSAPP) */}
         {(activeTab === "emails" || activeTab === "whatsapp") && (
           <div className="space-y-6">
             {activeTab === "whatsapp" && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-                  <div className="flex items-center justify-between text-slate-400 mb-1.5">
-                    <span className="text-xs font-semibold uppercase tracking-wider">Ready to Pitch</span>
-                    <FaWhatsapp className="w-4 h-4 text-emerald-400" />
-                  </div>
-                  <div className="text-2xl font-bold text-emerald-300">{waReadyCount}</div>
-                  <p className="text-xs text-slate-400 mt-1">Businesses without a website</p>
+              <>
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center gap-2.5">
+                    <FaWhatsapp className="w-7 h-7 text-emerald-400" />
+                    <span>WhatsApp Outreach</span>
+                  </h1>
+                  <p className="mt-1 text-sm text-slate-400">
+                    Two-step WhatsApp outreach for verified Nigerian businesses with no website listed.
+                  </p>
                 </div>
-                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-                  <div className="flex items-center justify-between text-slate-400 mb-1.5">
-                    <span className="text-xs font-semibold uppercase tracking-wider">WhatsApp Sent</span>
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                    <div className="flex items-center justify-between text-slate-400 mb-1.5">
+                      <span className="text-xs font-semibold uppercase tracking-wider">Ready to Pitch</span>
+                      <FaWhatsapp className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div className="text-2xl font-bold text-emerald-300">{waReadyCount}</div>
+                    <p className="text-xs text-slate-400 mt-1">Businesses without a website</p>
                   </div>
-                  <div className="text-2xl font-bold text-white">{waSentCount}</div>
-                  <p className="text-xs text-slate-400 mt-1">Pitched via WhatsApp queue</p>
-                </div>
-                <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
-                  <div className="flex items-center justify-between text-slate-400 mb-1.5">
-                    <span className="text-xs font-semibold uppercase tracking-wider">Showing Results</span>
-                    <Users className="w-4 h-4 text-blue-400" />
+                  <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                    <div className="flex items-center justify-between text-slate-400 mb-1.5">
+                      <span className="text-xs font-semibold uppercase tracking-wider">WhatsApp Sent</span>
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div className="text-2xl font-bold text-white">{waSentCount}</div>
+                    <p className="text-xs text-slate-400 mt-1">Pitched via WhatsApp queue</p>
                   </div>
-                  <div className="text-2xl font-bold text-white">{filteredWhatsappLeads.length}</div>
-                  <p className="text-xs text-slate-400 mt-1">Of {whatsappLeads.length} verified mobile numbers</p>
+                  <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                    <div className="flex items-center justify-between text-slate-400 mb-1.5">
+                      <span className="text-xs font-semibold uppercase tracking-wider">Showing Results</span>
+                      <Users className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <div className="text-2xl font-bold text-white">{filteredWhatsappLeads.length}</div>
+                    <p className="text-xs text-slate-400 mt-1">Of {whatsappLeads.length} verified mobile numbers</p>
+                  </div>
                 </div>
-              </div>
+              </>
             )}
 
         <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
@@ -2022,7 +1969,9 @@ export default function OutreachDashboard() {
                       : `Email Prospects Pipeline (${filteredLeads.length})`}
                   </span>
                 </h3>
-                {(isLoadingLeads || isLoadingWhatsapp) && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}
+                {(activeTab === "whatsapp" ? isLoadingWhatsapp : isLoadingLeads) && (
+                  <Loader2 className="w-4 h-4 animate-spin text-blue-400" />
+                )}
               </div>
               <p className="text-xs text-slate-400 mt-0.5">
                 {activeTab === "whatsapp"
@@ -2031,18 +1980,46 @@ export default function OutreachDashboard() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
+              {/* Tab-specific CSV Export */}
+              <button
+                onClick={handleDownloadCSV}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-950 hover:bg-slate-800 text-slate-200 text-xs font-semibold border border-slate-800 transition"
+              >
+                <Download className="w-3.5 h-3.5" />
+                Export CSV
+              </button>
+
+              {activeTab === "emails" && (
+                <button
+                  onClick={() => setShowAddModal(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  Add Lead
+                </button>
+              )}
+
               {/* Force Refresh Button */}
               <button
                 onClick={() => {
-                  fetchLeads();
-                  fetchWhatsappLeads();
+                  if (activeTab === "whatsapp") {
+                    fetchWhatsappLeads();
+                  } else {
+                    fetchLeads();
+                  }
                 }}
-                disabled={isLoadingLeads || isLoadingWhatsapp}
+                disabled={activeTab === "whatsapp" ? isLoadingWhatsapp : isLoadingLeads}
                 className="p-2 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg text-slate-400 hover:text-white transition"
-                title="Reload leads from database"
+                title={activeTab === "whatsapp" ? "Reload WhatsApp contacts" : "Reload email leads"}
               >
-                <RotateCw className={`w-4 h-4 ${isLoadingLeads || isLoadingWhatsapp ? "animate-spin text-blue-400" : ""}`} />
+                <RotateCw
+                  className={`w-4 h-4 ${
+                    (activeTab === "whatsapp" ? isLoadingWhatsapp : isLoadingLeads)
+                      ? "animate-spin text-blue-400"
+                      : ""
+                  }`}
+                />
               </button>
 
               {/* Search */}
