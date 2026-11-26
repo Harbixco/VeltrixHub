@@ -1450,3 +1450,149 @@
 }
 
 
+
+
+/* ── FIELD ACTIVITIES SHOWCASE ── */
+.plumbing-demo .pf-activities-section {
+  background: var(--white);
+  padding: 80px 24px;
+}
+
+.plumbing-demo .pf-activities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.plumbing-demo .pf-activity-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--light-gray);
+  box-shadow: 0 4px 20px rgba(10, 22, 40, 0.05);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.plumbing-demo .pf-activity-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(10, 22, 40, 0.12);
+  border-color: var(--amber);
+}
+
+.plumbing-demo .pf-activity-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.plumbing-demo .pf-activity-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.plumbing-demo .pf-activity-card:hover .pf-activity-img-wrap img {
+  transform: scale(1.06);
+}
+
+.plumbing-demo .pf-activity-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--amber);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.plumbing-demo .pf-activity-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.plumbing-demo .pf-activity-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+}
+
+.plumbing-demo .pf-activity-location {
+  color: var(--gray);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plumbing-demo .pf-activity-status {
+  color: #10B981;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.plumbing-demo .pf-activity-status::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+}
+
+.plumbing-demo .pf-activity-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 8px 0;
+  line-height: 1.35;
+}
+
+.plumbing-demo .pf-activity-card p {
+  color: var(--gray);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+@media (max-width: 992px) {
+  .plumbing-demo .pf-activities-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .plumbing-demo .pf-activities-section {
+    padding: 48px 16px !important;
+  }
+  .plumbing-demo .pf-activities-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+  .plumbing-demo .pf-activity-img-wrap {
+    height: 200px !important;
+  }
+  .plumbing-demo .pf-activity-body {
+    padding: 16px !important;
+  }
+  .plumbing-demo .pf-activity-card h3 {
+    font-size: 1.05rem !important;
+  }
+}

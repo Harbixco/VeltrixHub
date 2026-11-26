@@ -15,6 +15,8 @@ import heroPlumbingImg from '../../assets/plumbing/plumbing-hero.jpg';
 import residentialPlumbingImg from '../../assets/plumbing/plumbing-residential.jpg';
 import drainPlumbingImg from '../../assets/plumbing/plumbing-drain.jpg';
 import heaterCommercialPlumbingImg from '../../assets/plumbing/plumbing-heater-commercial.jpg';
+import solderingPlumbingImg from '../../assets/plumbing/plumbing-soldering.jpg';
+import inspectionPlumbingImg from '../../assets/plumbing/plumbing-inspection.jpg';
 import './plumbing.css';
 
 /**
@@ -493,8 +495,190 @@ export default function PlumbingServices() {
  </div>
  </div>
  </div>
- </section>
- <section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
+ </section>
+
+        {/* ════════════════════════════════════════
+        FIELD ACTIVITIES & PLUMBING IN ACTION
+        ════════════════════════════════════════ */}
+        <section className="pf-section pf-activities-section" id="activities">
+          <div className="pf-container">
+            <div className="pf-section-head center reveal">
+              <div className="pf-section-label">Real Field Workmanship</div>
+              <h2 className="pf-section-title">Plumbing Activities in Action</h2>
+              <p className="pf-section-sub">
+                Authentic field photos of our certified plumbers completing emergency repairs, fixture installations, and system diagnostics across residential and commercial sites.
+              </p>
+            </div>
+
+            <div className="pf-activities-grid">
+              {/* Activity 1 */}
+              <div className="pf-activity-card reveal">
+                <div className="pf-activity-img-wrap">
+                  <img
+                    src={heroPlumbingImg}
+                    alt="Plumber repairing brass and copper kitchen pipe fittings"
+                    loading="lazy"
+                  />
+                  <span className="pf-activity-tag">Emergency Dispatch</span>
+                </div>
+                <div className="pf-activity-body">
+                  <div className="pf-activity-meta">
+                    <span className="pf-activity-location">Residential • Sink Repair</span>
+                    <span className="pf-activity-status">Completed</span>
+                  </div>
+                  <h3>Under-Sink Leak Detection &amp; Repiping</h3>
+                  <p>Diagnosed a hidden compression fitting failure, replaced corroded brass lines, and restored proper water flow with zero water damage.</p>
+                </div>
+              </div>
+
+              {/* Activity 2 */}
+              <div className="pf-activity-card reveal">
+                <div className="pf-activity-img-wrap">
+                  <img
+                    src={residentialPlumbingImg}
+                    alt="Plumber installing chrome mixer tap on luxury marble vanity"
+                    loading="lazy"
+                  />
+                  <span className="pf-activity-tag">Remodel &amp; Upgrade</span>
+                </div>
+                <div className="pf-activity-body">
+                  <div className="pf-activity-meta">
+                    <span className="pf-activity-location">Bathroom • Fixture Setup</span>
+                    <span className="pf-activity-status">Completed</span>
+                  </div>
+                  <h3>Luxury Vanity &amp; Mixer Faucet Installation</h3>
+                  <p>Installed modern chrome mixer faucet with reinforced stainless braided supply lines and high-pressure shut-off valves.</p>
+                </div>
+              </div>
+
+              {/* Activity 3 */}
+              <div className="pf-activity-card reveal">
+                <div className="pf-activity-img-wrap">
+                  <img
+                    src={drainPlumbingImg}
+                    alt="Plumber operating compact motorized drain auger snake on clean tile floor"
+                    loading="lazy"
+                  />
+                  <span className="pf-activity-tag">Same-Day Clearing</span>
+                </div>
+                <div className="pf-activity-body">
+                  <div className="pf-activity-meta">
+                    <span className="pf-activity-location">Utility Floor • Drain Line</span>
+                    <span className="pf-activity-status">Completed</span>
+                  </div>
+                  <h3>Motorized Drain Snaking &amp; Clog Removal</h3>
+                  <p>Deployed heavy-duty motorized auger to clear stubborn grease and sediment buildup from the main utility drain line.</p>
+                </div>
+              </div>
+
+              {/* Activity 4 */}
+              <div className="pf-activity-card reveal">
+                <div className="pf-activity-img-wrap">
+                  <img
+                    src={heaterCommercialPlumbingImg}
+                    alt="Commercial tankless water heater manifolds and brass valves"
+                    loading="lazy"
+                  />
+                  <span className="pf-activity-tag">Commercial Heating</span>
+                </div>
+                <div className="pf-activity-body">
+                  <div className="pf-activity-meta">
+                    <span className="pf-activity-location">Facility • Water Heating</span>
+                    <span className="pf-activity-status">Completed</span>
+                  </div>
+                  <h3>Commercial Tankless Water Heater Manifold</h3>
+                  <p>Configured high-efficiency tankless water heating system with calibrated pressure relief valves and isolated copper manifolds.</p>
+                </div>
+              </div>
+
+              {/* Activity 5 */}
+              <div className="pf-activity-card reveal">
+                <div className="pf-activity-img-wrap">
+                  <img
+                    src={solderingPlumbingImg}
+                    alt="Plumber soldering brass elbow joint connecting copper pipes in utility room"
+                    loading="lazy"
+                  />
+                  <span className="pf-activity-tag">Master Pipe Fitting</span>
+                </div>
+                <div className="pf-activity-body">
+                  <div className="pf-activity-meta">
+                    <span className="pf-activity-location">Supply Lines • Soldering</span>
+                    <span className="pf-activity-status">Completed</span>
+                  </div>
+                  <h3>High-Temperature Copper Joint Soldering</h3>
+                  <p>Precision torch brazing and soldering of heavy-duty copper lines ensuring airtight seals tested under 120 PSI pressure.</p>
+                </div>
+              </div>
+
+              {/* Activity 6 */}
+              <div className="pf-activity-card reveal">
+                <div className="pf-activity-img-wrap">
+                  <img
+                    src={inspectionPlumbingImg}
+                    alt="Plumber using video pipe inspection camera monitor system"
+                    loading="lazy"
+                  />
+                  <span className="pf-activity-tag">Advanced Diagnostics</span>
+                </div>
+                <div className="pf-activity-body">
+                  <div className="pf-activity-meta">
+                    <span className="pf-activity-location">Sewer Line • Video Scan</span>
+                    <span className="pf-activity-status">Completed</span>
+                  </div>
+                  <h3>HD Video Pipeline &amp; Root Inspection</h3>
+                  <p>Inserted flexible diagnostic camera through cleanout to locate underground tree root intrusion without digging up property.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom activities action card */}
+            <div
+              className="pf-activities-cta reveal"
+              style={{
+                marginTop: '3rem',
+                padding: '2rem 1.5rem',
+                borderRadius: '16px',
+                background: 'linear-gradient(135deg, #0A1628 0%, #172A45 100%)',
+                color: '#ffffff',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                textAlign: 'center',
+                gap: '1rem',
+                boxShadow: '0 16px 36px rgba(10, 22, 40, 0.15)',
+              }}
+            >
+              <h3 style={{ fontSize: '1.4rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+                Need Similar Plumbing Work Handled at Your Property?
+              </h3>
+              <p style={{ margin: 0, color: 'rgba(255, 255, 255, 0.75)', maxWidth: '600px', fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Share pictures or a description of your issue directly on WhatsApp. Our master dispatchers respond in under 5 minutes with upfront estimates.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5rem' }}>
+                <a
+                  href="https://wa.me/2348087098270?text=Hello%20ProFlow%20Plumbing%2C%20I%20saw%20your%20recent%20plumbing%20work%20and%20I%20need%20a%20quote"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pf-btn pf-btn-primary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.85rem 2rem' }}
+                >
+                  <FaWhatsapp size={18} />
+                  <span>Send Job Photos on WhatsApp</span>
+                </a>
+                <button
+                  onClick={(e) => navigateTo('contact', e)}
+                  className="pf-btn pf-btn-outline"
+                  style={{ padding: '0.85rem 2rem' }}
+                >
+                  Request Online Quote &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+<section className="pf-section" style={{ background: 'var(--navy)' }} id="about">
  <div className="pf-container">
  <div className="pf-section-head center reveal">
  <h2 className="pf-section-title" style={{ color: 'var(--white)' }}>Why Homeowners Choose Us</h2>
