@@ -4,6 +4,13 @@ import dns from "dns";
 import { promisify } from "util";
 import fs from "fs";
 import path from "path";
+import {
+  cleanEmail,
+  isSocialOrDirectoryUrl,
+  isEnterpriseOrSkipLead,
+  auditWebsiteHtml,
+  classifyLeadPitchTrack,
+} from "./_outreachCore.js";
 
 const resolveMx = promisify(dns.resolveMx);
 
@@ -123,21 +130,61 @@ async function getDb() {
   return cachedClient.db(DB_NAME);
 }
 
-// Scrape email from website and contact pages with fast timeout
-async function scrapeEmailsFromWebsite(websiteUrl) {
-  if (!websiteUrl) return [];
+function extractEmailsIntoSet(html, emailSet) {
+  if (!html) return;
+  const mailtos = html.match(/mailto:([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)/gi) || [];
+  for (const m of mailtos) {
+    const clean = cleanEmail(m);
+    if (clean) emailSet.add(clean);
+  }
+  const matches = html.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g) || [];
+  for (const e of matches) {
+    const clean = cleanEmail(e);
+    if (clean) emailSet.add(clean);
+  }
+}
+
+// Audit website for conversion gaps and scrape email from website and contact pages
+async function auditAndScrapeWebsite(websiteUrl) {
+  if (!websiteUrl || isSocialOrDirectoryUrl(websiteUrl)) {
+    return { audit: { isQualified: false, reasons: [] }, emails: [] };
+  }
   const emails = new Set();
   let parsed;
   try {
     parsed = new URL(websiteUrl);
   } catch {
-    return [];
+    return { audit: { isQualified: false, reasons: [] }, emails: [] };
+  }
+
+  let homepageHtml = "";
+  let homepageErr = "";
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 2500);
+    const resp = await fetch(websiteUrl, {
+      headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) VeltrixScraper/1.0" },
+      signal: controller.signal,
+    });
+    clearTimeout(timeout);
+    if (!resp.ok) {
+      homepageErr = `HTTP ${resp.status}`;
+    } else {
+      homepageHtml = await resp.text();
+      extractEmailsIntoSet(homepageHtml, emails);
+    }
+  } catch (err) {
+    homepageErr = err.message || "Timeout";
+  }
+
+  const audit = auditWebsiteHtml(websiteUrl, homepageHtml, homepageErr);
+  if (!audit.isQualified) {
+    return { audit, emails: [] };
   }
 
   const base = `${parsed.protocol}//${parsed.host}`;
-  const testUrls = [websiteUrl, `${base}/contact`, `${base}/contact-us`];
-
-  for (const u of testUrls) {
+  for (const u of [`${base}/contact`, `${base}/contact-us`]) {
+    if (emails.size > 0) break;
     try {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 2000);
@@ -146,43 +193,15 @@ async function scrapeEmailsFromWebsite(websiteUrl) {
         signal: controller.signal,
       });
       clearTimeout(timeout);
-
       if (!resp.ok) continue;
       const html = await resp.text();
-
-      // Mailto matches
-      const mailtos = html.match(/mailto:([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)/gi) || [];
-      for (const m of mailtos) {
-        const clean = cleanEmail(m.replace(/^mailto:/i, ""));
-        if (clean) emails.add(clean);
-      }
-
-      // Regex text matches
-      const matches = html.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g) || [];
-      for (const e of matches) {
-        const clean = cleanEmail(e);
-        if (clean) emails.add(clean);
-      }
-
-      if (emails.size > 0) break;
+      extractEmailsIntoSet(html, emails);
     } catch {
       continue;
     }
   }
 
-  return Array.from(emails);
-}
-
-function cleanEmail(e) {
-  if (!e) return null;
-  e = e.trim().replace(/[.,;:)'"]+$/, "");
-  const low = e.toLowerCase();
-  const badExts = [".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif", ".css", ".js"];
-  if (badExts.some((ext) => low.endsWith(ext))) return null;
-  const badTerms = ["wixpress", "sentry", "example", "schema", "wordpress", "yourdomain", "domain.com"];
-  if (badTerms.some((term) => low.includes(term))) return null;
-  if (!e.includes("@") || !e.split("@")[1].includes(".")) return null;
-  return e;
+  return { audit, emails: Array.from(emails) };
 }
 
 export default async function handler(req, res) {
@@ -265,6 +284,12 @@ export default async function handler(req, res) {
               niche: niche,
               city: doc.city || existing?.city || "Lagos",
               demo_url: demoUrl,
+              website_url: doc.website_url || doc.website || existing?.website_url || "",
+              pitch_track: doc.pitch_track || existing?.pitch_track || "",
+              audit_reasons: doc.audit_reasons || existing?.audit_reasons || [],
+              audit_status: doc.audit_status || existing?.audit_status || "",
+              hasWebsite: doc.hasWebsite,
+              is_deliverable: doc.is_deliverable,
               status: doc.status || existing?.status || "pending",
               sent_at: doc.sent_at || existing?.sent_at || "",
               sent_by: doc.sent_by || existing?.sent_by || "",
@@ -379,13 +404,17 @@ export default async function handler(req, res) {
                 const phone = p.nationalPhoneNumber || "";
 
                 if (!bizName || !website) continue;
+                if (isEnterpriseOrSkipLead(bizName, "", website, "Google Places")) continue;
 
-                const foundEmails = await scrapeEmailsFromWebsite(website);
+                const { audit, emails: foundEmails } = await auditAndScrapeWebsite(website);
+                if (!audit.isQualified || foundEmails.length === 0) continue;
+
                 const freshEmails = foundEmails.filter((e) => !existingEmails.has(e.toLowerCase()));
 
                 if (freshEmails.length > 0) {
                   let primaryEmail = null;
                   for (const candidate of freshEmails) {
+                    if (isEnterpriseOrSkipLead(bizName, candidate, website, "Google Places")) continue;
                     const hasMx = await isDomainDeliverable(candidate);
                     if (hasMx) {
                       primaryEmail = candidate;
@@ -396,6 +425,14 @@ export default async function handler(req, res) {
                   if (!primaryEmail) continue; // Skip domain if it has no MX mail server
                   existingEmails.add(primaryEmail.toLowerCase());
 
+                  const hasWorkingSite = !audit.isBrokenOrDead;
+                  const pitchTrack = classifyLeadPitchTrack({
+                    email: primaryEmail,
+                    website_url: website,
+                    hasWebsite: hasWorkingSite,
+                    audit_reasons: audit.reasons,
+                  });
+
                   const leadRecord = {
                     business_name: bizName,
                     contact_name: "The Managing Director",
@@ -404,8 +441,15 @@ export default async function handler(req, res) {
                     niche: nicheKey,
                     city: city,
                     demo_url: nicheInfo.demo_url,
+                    website_url: website,
+                    hasWebsite: hasWorkingSite,
+                    pitch_track: pitchTrack,
+                    audit_reasons: audit.reasons,
+                    audit_status: audit.auditSummary,
+                    is_deliverable: true,
+                    mx_verified: true,
                     status: "pending",
-                    source: "Google Places Automated Extraction",
+                    source: "Google Places + Conversion Audit + MX Verification",
                     createdAt: new Date(),
                   };
 

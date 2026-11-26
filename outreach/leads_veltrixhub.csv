@@ -1,77 +1,119 @@
 business_name,contact_name,email,niche,city,demo_url,status,sent_at,sent_by
-Apex Painting Services,Mr. Adebayo,adebayo@apexpaint.ng,painting,Lagos,https://veltrixhub.ng/painting,invalid_domain,,
-Sparkle Cleaning Pro,Mrs. Fatima,fatima@sparklepro.ng,cleaning,Abuja,https://veltrixhub.ng/cleaning,invalid_domain,,
-Crown Auto Specialists,Mr. Tunde,tunde@crownauto.ng,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,invalid_domain,,
-Solid Rock Construction,Engr. Kola,kola@solidrockconst.ng,contractor,Ibadan,https://veltrixhub.ng/contractor,invalid_domain,,
-Pearl Smiles Dental,Dr. Funke,funke@pearlsmiles.ng,dental-care,Abuja,https://veltrixhub.ng/dental-care,invalid_domain,,
-Heritage Legal Partners,Barr. Nnamdi,nnamdi@heritagelegal.ng,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,invalid_domain,,
-Volt Electrical Solutions,Engr. Uche,uche@voltelectrical.ng,electrical,Port Harcourt,https://veltrixhub.ng/electrical,invalid_domain,,
-Shield Pest Control,Mr. Hassan,hassan@shieldpest.ng,pest-control,Abuja,https://veltrixhub.ng/pest-control,invalid_domain,,
-Zarah Luxury Boutique,Zarah,zarah@zarahboutique.ng,fashion,Lagos,https://veltrixhub.ng/fashion,invalid_domain,,
-Aroma Royale Parfums,Aisha,aisha@aromaroyale.ng,perfumes,Abuja,https://veltrixhub.ng/perfumes,invalid_domain,,
-TechNexus Gadgets,Mr. Dayo,dayo@technexus.ng,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,invalid_domain,,
-So-Kleen Limited | Cleaning Company Lagos Nigeria,The Managing Director,office@so-kleen.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
-Prestine Cleaning Company,The Managing Director,support@prestinee.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
-Ese Cleaning Services LTD,The Managing Director,brunnelpedro1@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
-De-Cleaners Consult Pro Nigeria Limited,The Managing Director,decleanersng@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
-JOECOLO FACILITIES SERVICES,The Managing Director,info@Joecolofacilitiesservices.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
-CIENT ATALIA PAINTING SERVICES (Home and office Painting services),The Managing Director,cientataliaconcepts@gmail.com,painting,Lagos,https://veltrixhub.ng/painting,pending,,
-Opengate AutoSpray Lekki,The Managing Director,info@opengateautospray.com,painting,Lagos,https://veltrixhub.ng/painting,pending,,
-Jedha Engineering and Construction Company Ltd - Construction Company,The Managing Director,info@jeccl.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-EMPEROR buildings Constructions Expect.,The Managing Director,info@emperorbuildingsconstructions.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-Ridgewell Construction Co. Ltd,The Managing Director,info@ridgewell.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Buckhead Construction Nigeria limited,The Managing Director,info@buckheadconstructionnigeria.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-SAS Constructions Ltd/SATO DREDGING & ENERGY SUPPORT SYSTEMS LTD,The Managing Director,info@sasconstructionsltdsato.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-Lakia Construction Company,The Managing Director,info@lakiaconstructioncompany.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-Construction Kaiser Limited,The Managing Director,info@constructionkaiser.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Carrillion Construction,The Managing Director,info@carrillionng.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Craneburg Construction Company,The Managing Director,projects@craneburg.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Laralek Ultimate Limited,The Managing Director,info@brossette.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Aceafrik Construction,The Managing Director,info@aceafrikconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-Elbuns Engineering Construction Limited,The Managing Director,info@elbunsengineeringconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-Construction company in Lagos | Construction companies in Lagos | Leigh and Lloyd Limited,The Managing Director,info@leighandlloyd.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Shel&Co Construction Limited- Construction Company Ikeja,The Managing Director,shelandco2016@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+SoHo Silk & Linen Boutique,The Managing Director,sohosilklinen@gmail.com,Fashion and Boutique,New York,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:38,william@veltrixhub.ng
+Greenpoint Artisan Roasters,The Managing Director,hello@greenpointroasters.com,Cafe and Coffee Roaster,New York,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:40:08,kayode@veltrixhub.ng
+DUMBO Vintage Timepieces,The Managing Director,dumbovintagewatches@gmail.com,Luxury Accessories & Watches,New York,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:28,william@veltrixhub.ng
+Beverly Hills Glow & Spa Studio,The Managing Director,contact@beverlyhillsglowspa.com,"Hair Salon, Spa and Beauty",Los Angeles,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:40:10,christopher@veltrixhub.ng
+Melrose Velvet & Denim Co,The Managing Director,melrosevelvetdenim@gmail.com,Fashion and Boutique,Los Angeles,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:44,kayode@veltrixhub.ng
+Venice Beach Pilates & Movement,The Managing Director,studio@venicepilatesmovement.com,Fitness and Wellness,Los Angeles,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:39:24,kayode@veltrixhub.ng
+Wynwood Artisanal Fragrances,The Managing Director,wynwoodfragrances@gmail.com,Perfume and Cosmetics,Miami,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:45,christopher@veltrixhub.ng
+Brickell Dolce Gelato & Bakery,The Managing Director,orders@brickelldolcegelato.com,Hospitality and Dining,Miami,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:40:01,william@veltrixhub.ng
+South Congress Leather & Goods,The Managing Director,socoleathercraft@gmail.com,Handmade Goods & Leathercraft,Austin,https://veltrixhub.ng/painting,sent,2026-11-24 15:40:11,william@veltrixhub.ng
+East Austin Botanicals & Succulents,The Managing Director,plants@eastaustinbotanicals.com,"Home, Garden & Plants",Austin,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:39:46,william@veltrixhub.ng
+West Loop Modern Furnishings,The Managing Director,westloopfurnishings@gmail.com,Home Decor & Furniture,Chicago,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:36,kayode@veltrixhub.ng
+River North Grooming Club,The Managing Director,info@rivernorthgrooming.com,Barber & Men Grooming,Chicago,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:39:37,christopher@veltrixhub.ng
+Buckhead Luxe Esthetics,The Managing Director,buckheadluxeesthetics@gmail.com,Beauty & Skincare,Atlanta,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:52,kayode@veltrixhub.ng
+Inman Park Vintage Threads,The Managing Director,inmanparkthreads@gmail.com,Fashion and Boutique,Atlanta,https://veltrixhub.ng/painting,sent,2026-11-24 15:40:17,kayode@veltrixhub.ng
+Ballard Craft Ceramics & Pottery,The Managing Director,ballardceramics@gmail.com,Art & Home Decor,Seattle,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:53,christopher@veltrixhub.ng
+Mission Craft Coffee & Roasters,The Managing Director,missioncraftcoffeesf@gmail.com,Cafe and Coffee Roaster,San Francisco,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:26,christopher@veltrixhub.ng
+RiNo Custom Woodcrafts,The Managing Director,rinowoodcrafts@gmail.com,Custom Furniture & Home Decor,Denver,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:54,william@veltrixhub.ng
+Old Town Scottsdale Fine Jewelers,The Managing Director,scottsdalejewelers@gmail.com,Jewelry & Watches,Scottsdale,https://veltrixhub.ng/painting,sent,2026-11-24 15:40:18,christopher@veltrixhub.ng
+The Gulch Leather & Custom Boots,The Managing Director,gulchbootsnashville@gmail.com,Footwear & Apparel,Nashville,https://veltrixhub.ng/painting,sent,2026-11-24 15:39:59,kayode@veltrixhub.ng
+Deep Ellum Artisan Bakery,The Managing Director,deepellumbakery@gmail.com,Artisan Bakery & Desserts,Dallas,https://veltrixhub.ng/painting,sent,2026-11-24 15:40:00,christopher@veltrixhub.ng
+Eva Best Cleaning Service,The Managing Director,you@email.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:25,kayode@veltrixhub.ng
+Palmacedar Cleaning Services,The Managing Director,enquiries@palmacedarcleaning.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:27,christopher@veltrixhub.ng
+AIMPRO GLOBALIZED LIMITED,The Managing Director,info.aimpro234@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:34,william@veltrixhub.ng
+Ese Cleaning Services LTD,The Managing Director,nofficialesecleaningservices@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:35,kayode@veltrixhub.ng
+Ut Victor Enterprises,The Managing Director,Utvictorenterprise4@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:42,christopher@veltrixhub.ng
+FICHAYA - Property Care Company,The Managing Director,Contact@fichaya.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:43,william@veltrixhub.ng
+Crystalclean Solutions Ltd,The Managing Director,info@crystalcleanng.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:50,kayode@veltrixhub.ng
+Palmacedar Cleaning Services,The Managing Director,enquiries@palmacedarcleaning.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:52,christopher@veltrixhub.ng
+Ese Cleaning Services LTD,The Managing Director,officialesecleaningservices@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:57,william@veltrixhub.ng
+ROA CLEANING SERVICES,The Managing Director,roacleaning@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:40:58,kayode@veltrixhub.ng
+Signature Integrated General Services Ltd,The Managing Director,info@signaturecleaningpro.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:05,christopher@veltrixhub.ng
+Unique pro cleaning service and fumigation,The Managing Director,info@uniqueprocleaningserviceandfumigation.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:06,william@veltrixhub.ng
+STEAMASTERS CLEANING SERVICES,The Managing Director,info@steamasterscleaningservices.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:13,kayode@veltrixhub.ng
+As Snow Cleaning & Pest Control Services Lagos,The Managing Director,assnowcleaningservicescompany@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:15,christopher@veltrixhub.ng
+Chi-Unique Clean Haven Ltd - Professional cleaning service in Lagos.,The Managing Director,cu.cleanhaven@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:22,william@veltrixhub.ng
+GC Cleaning Services Limited,The Managing Director,info@gccleaningservicesltd.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:23,kayode@veltrixhub.ng
+Unique pro cleaning service and fumigation,The Managing Director,info@huniqueprocleaningserviceandfumigation.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,invalid_domain,2026-11-24 15:41:30,christopher@veltrixhub.ng
+Queen Touch for Cleaning services,The Managing Director,hello@queentouchcleaning.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,invalid_domain,2026-11-24 15:41:31,william@veltrixhub.ng
+NTC cleaning Company,The Managing Director,ntccleaningservice@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:37,kayode@veltrixhub.ng
+Cleanon Global Enterprises,The Managing Director,Info@cleanon.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:39,christopher@veltrixhub.ng
+Midag Cleaning Services (MCS),The Managing Director,midagcleaningservice@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:45,william@veltrixhub.ng
+Sparkles Facilities & Maintenance Company Limited,The Managing Director,info@sparkles-ng.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:46,kayode@veltrixhub.ng
+SAINT Racheal Cleaning Services,The Managing Director,saintrachealcleaning@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:53,christopher@veltrixhub.ng
+Pure Cleaning Victoria,The Managing Director,info@purecleaningvictoria.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:41:55,william@veltrixhub.ng
+Midag Cleaning Services (MCS),The Managing Director,info@midagcleaningservice.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:42:03,kayode@veltrixhub.ng
+CIENT ATALIA PAINTING SERVICES (Home and office Painting services),The Managing Director,cientataliaconcepts@gmail.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-24 15:42:05,christopher@veltrixhub.ng
+Opengate AutoSpray Lekki,The Managing Director,info@opengateautospray.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-24 15:42:12,william@veltrixhub.ng
+Apex Painting Services,Mr. Adebayo,adebayo@apexpaint.ng,painting,Lagos,https://veltrixhub.ng/painting,invalid_domain,2026-11-24 15:42:13,kayode@veltrixhub.ng
+Sparkle Cleaning Pro,Mrs. Fatima,fatima@sparklepro.ng,cleaning,Abuja,https://veltrixhub.ng/cleaning,invalid_domain,2026-11-24 15:42:20,christopher@veltrixhub.ng
+Crown Auto Specialists,Mr. Tunde,tunde@crownauto.ng,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,invalid_domain,2026-11-24 15:42:21,william@veltrixhub.ng
+Solid Rock Construction,Engr. Kola,kola@solidrockconst.ng,contractor,Ibadan,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:42:28,kayode@veltrixhub.ng
+Pearl Smiles Dental,Dr. Funke,funke@pearlsmiles.ng,dental-care,Abuja,https://veltrixhub.ng/dental-care,invalid_domain,2026-11-24 15:42:29,christopher@veltrixhub.ng
+Heritage Legal Partners,Barr. Nnamdi,nnamdi@heritagelegal.ng,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,invalid_domain,2026-11-24 15:42:36,william@veltrixhub.ng
+Volt Electrical Solutions,Engr. Uche,uche@voltelectrical.ng,electrical,Port Harcourt,https://veltrixhub.ng/electrical,invalid_domain,2026-11-24 15:42:37,kayode@veltrixhub.ng
+Shield Pest Control,Mr. Hassan,hassan@shieldpest.ng,pest-control,Abuja,https://veltrixhub.ng/pest-control,invalid_domain,2026-11-24 15:42:43,christopher@veltrixhub.ng
+Zarah Luxury Boutique,Zarah,zarah@zarahboutique.ng,fashion,Lagos,https://veltrixhub.ng/fashion,invalid_domain,2026-11-24 15:42:44,william@veltrixhub.ng
+Aroma Royale Parfums,Aisha,aisha@aromaroyale.ng,perfumes,Abuja,https://veltrixhub.ng/perfumes,invalid_domain,2026-11-24 15:42:51,kayode@veltrixhub.ng
+TechNexus Gadgets,Mr. Dayo,dayo@technexus.ng,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,invalid_domain,2026-11-24 15:42:52,christopher@veltrixhub.ng
+So-Kleen Limited | Cleaning Company Lagos Nigeria,The Managing Director,office@so-kleen.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:42:59,william@veltrixhub.ng
+Prestine Cleaning Company,The Managing Director,support@prestinee.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:43:01,kayode@veltrixhub.ng
+Ese Cleaning Services LTD,The Managing Director,brunnelpedro1@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:43:08,christopher@veltrixhub.ng
+De-Cleaners Consult Pro Nigeria Limited,The Managing Director,decleanersng@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:43:09,william@veltrixhub.ng
+JOECOLO FACILITIES SERVICES,The Managing Director,info@joecolofacilitiesservices.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-24 15:43:16,kayode@veltrixhub.ng
+Jedha Engineering and Construction Company Ltd - Construction Company,The Managing Director,info@jeccl.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:43:18,christopher@veltrixhub.ng
+EMPEROR buildings Constructions Expect.,The Managing Director,info@emperorbuildingsconstructions.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:43:26,william@veltrixhub.ng
+Ridgewell Construction Co. Ltd,The Managing Director,info@ridgewell.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:43:27,kayode@veltrixhub.ng
+Buckhead Construction Nigeria limited,The Managing Director,info@buckheadconstructionnigeria.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:43:36,christopher@veltrixhub.ng
+SAS Constructions Ltd/SATO DREDGING & ENERGY SUPPORT SYSTEMS LTD,The Managing Director,info@sasconstructionsltdsato.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:43:38,william@veltrixhub.ng
+Lakia Construction Company,The Managing Director,info@lakiaconstructioncompany.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:43:46,kayode@veltrixhub.ng
+Construction Kaiser Limited,The Managing Director,info@constructionkaiser.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:43:47,christopher@veltrixhub.ng
+Carrillion Construction,The Managing Director,info@carrillionng.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:43:55,william@veltrixhub.ng
+Craneburg Construction Company,The Managing Director,projects@craneburg.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:43:56,kayode@veltrixhub.ng
+Laralek Ultimate Limited,The Managing Director,info@brossette.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:44:03,christopher@veltrixhub.ng
+Aceafrik Construction,The Managing Director,info@aceafrikconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:44:04,william@veltrixhub.ng
+Elbuns Engineering Construction Limited,The Managing Director,info@elbunsengineeringconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,2026-11-24 15:44:10,kayode@veltrixhub.ng
+Construction company in Lagos | Construction companies in Lagos | Leigh and Lloyd Limited,The Managing Director,info@leighandlloyd.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-24 15:44:12,christopher@veltrixhub.ng
+Shel&Co Construction Limited- Construction Company Ikeja,The Managing Director,shelandco2016@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25T13:00:11.246Z,kayode@veltrixhub.ng
 ASVA Construction & Interior Design Company,The Managing Director,info@asvaconstructioninterior.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 SAMANATE CONSTRUCTION LIMITED,The Managing Director,info@samanateconstructionlimited.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-Laralek Ultimate Limited,The Managing Director,brossette.ng@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-GIUSEPPINA PROJECTS LIMITED,The Managing Director,info@giuseppinaprojects.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Debour Nigeria Limited,The Managing Director,Debournigerialtd@yahoo.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+Laralek Ultimate Limited,The Managing Director,brossette.ng@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25T13:00:21.031Z,christopher@veltrixhub.ng
+GIUSEPPINA PROJECTS LIMITED,The Managing Director,info@giuseppinaprojects.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25T13:00:30.273Z,william@veltrixhub.ng
+Debour Nigeria Limited,The Managing Director,debournigerialtd@yahoo.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25T13:00:36.549Z,kayode@veltrixhub.ng
 New Dawn Construction Company Limited,The Managing Director,info@newdawnconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 Glowsworth Engineering - Construction Company in Lagos,The Managing Director,info@glowsworthengineeringconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-TopChoice Design and Construction Nig Ltd,The Managing Director,keniri.okoruwa@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-Lego Consult Ltd.,The Managing Director,admin@legoconsult.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+TopChoice Design and Construction Nig Ltd,The Managing Director,keniri.okoruwa@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25T13:00:45.842Z,christopher@veltrixhub.ng
+Lego Consult Ltd.,The Managing Director,admin@legoconsult.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25T13:00:52.729Z,william@veltrixhub.ng
 Construction Kaiser Limited,The Managing Director,info@construtionkaiser.com,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-"Business Contracting Limited, Construction and Civil Engineering",The Managing Director,careers@bclnig.com,contractor,Lagos,invalid_domain,pending,,
-Alhsan Construction Company,The Managing Director,info@alhsanconstructions.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+Alhsan Construction Company,The Managing Director,info@alhsanconstructions.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:00:58,kayode@veltrixhub.ng
 KAB Constructions,The Managing Director,info@kabconstructions.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 United Integrated Construction Limited (UICL),The Managing Director,info@unitedintegratedconstruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 Dori Construction And Engineering Nigeria Limited,The Managing Director,info@doriconstructionand.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 CS Construction Ltd,The Managing Director,info@csconstructionltd.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 Monterosa Construction Limited,The Managing Director,info@monterosaconstructionlimited.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-ITB Nigeria Limited,The Managing Director,info@itbng.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
-"Business Contracting Limited, Construction and Civil Engineering",The Managing Director,info@bclnig.com,contractor,Lagos,invalid_domain,pending,,
+ITB Nigeria Limited,The Managing Director,info@itbng.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:00,christopher@veltrixhub.ng
 Atlantis Construction company Ltd.,The Managing Director,info@atlantisconstructioncompany.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
 Reynold Con truction Company Nig. Ltd,The Managing Director,info@reynoldcontruction.ng,contractor,Lagos,https://veltrixhub.ng/contractor,invalid_domain,,
-"NEJOLE CONSTRUCTION NIGERIA LIMITED.(scaffolding services,all metal works)",The Managing Director,hello@xfoundlinkstech.com,contractor,Abuja,invalid_domain,pending,,
 Abacus Building Services,The Managing Director,info@abacusbuildingservices.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Spitze Construction Ltd,The Managing Director,info@spitzeonline.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-U BUILD LTD,The Managing Director,info@ubuildltd.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Spitze Construction Ltd,The Managing Director,info@spitzeonline.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:03,william@veltrixhub.ng
+U BUILD LTD,The Managing Director,info@ubuildltd.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:31,kayode@veltrixhub.ng
 Eldorado construction and allied services limited,The Managing Director,webmaster@eldoradogroups.com,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Westfield Global Construction Ltd,The Managing Director,Westfield.gcl@gmail.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-Energo Ltd.,The Managing Director,office@energonigeria.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-Cavallini Construction Limited,The Managing Director,info@cavallini.com.ng,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Westfield Global Construction Ltd,The Managing Director,westfield.gcl@gmail.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:33,christopher@veltrixhub.ng
+Energo Ltd.,The Managing Director,office@energonigeria.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:35,william@veltrixhub.ng
+Cavallini Construction Limited,The Managing Director,info@cavallini.com.ng,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:42,kayode@veltrixhub.ng
 Efemson Construction & Property Ltd,The Managing Director,info@efemsonconstructionproperty.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Reynolds Construction Company Abuja,The Managing Director,info@rccnigeria.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-DANTATA & SAWOE Construction Company ( Nigeria ) Ltd.,The Managing Director,Info@dantata-sawoe.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-Java Construction,The Managing Director,info@javaconstruct.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-Energo Ltd.,The Managing Director,radoslavsreckovic@gmail.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Reynolds Construction Company Abuja,The Managing Director,info@rccnigeria.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:47,christopher@veltrixhub.ng
+DANTATA & SAWOE Construction Company ( Nigeria ) Ltd.,The Managing Director,info@dantata-sawoe.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:49,william@veltrixhub.ng
+Java Construction,The Managing Director,info@javaconstruct.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:56,kayode@veltrixhub.ng
+Energo Ltd.,The Managing Director,radoslavsreckovic@gmail.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:01:58,christopher@veltrixhub.ng
 K Salam Group,The Managing Director,info@ksalamgroup.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Horizon Construction Company Limited,The Managing Director,info@horizonconstructioncompany.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Pinnatech Engineering Nigeria Limited,The Managing Director,info@pinnatechengineeringnigeria.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Amborg Global Resources Limited,The Managing Director,info@amborgglobalresources.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Elan Construction Ltd.,The Managing Director,info@elanconstructionltd.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Listo Construction Limited,The Managing Director,info@listoconstructionlimited.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Nahman Construction,The Managing Director,eantonios@nahmanccl.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Nahman Construction,The Managing Director,eantonios@nahmanccl.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:00,william@veltrixhub.ng
 Fulus Group,The Managing Director,info@fulusgroup.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Zihabit Limited,The Managing Director,info@zihabitlimited.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Chinmark Group Abuja,The Managing Director,info@chinmarkgroupabuja.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
@@ -81,83 +123,162 @@ Jamub Group of Companies,The Managing Director,info@jamubgroupof.ng,contractor,A
 Skylum,The Managing Director,info@skylum.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Techtonic Concepts and Construction Ltd,The Managing Director,info@techtonicconceptsand.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 ROKOZI INVESTMENT LIMITED,The Managing Director,info@rokoziinvestmentlimited.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Solid Builders Nigeria Limited,The Managing Director,info@solidbuildersng.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-KYC INTERPROJECT LIMITED,The Managing Director,info@kycinterproject.org,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Solid Builders Nigeria Limited,The Managing Director,info@solidbuildersng.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:07,kayode@veltrixhub.ng
+KYC INTERPROJECT LIMITED,The Managing Director,info@kycinterproject.org,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:09,christopher@veltrixhub.ng
 ELDOV,The Managing Director,info@eldov.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Nahman Construction,The Managing Director,anahman@nahmanccl.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Nahman Construction,The Managing Director,anahman@nahmanccl.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:11,william@veltrixhub.ng
 BGrids Groups of Company,The Managing Director,info@bgridsgroupsof.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 P.W.Nigeria Limited,The Managing Director,info@pwnigerialimited.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Dekit Construction,The Managing Director,info@dekitconstruction.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
 Hajaig Construction Nigeria Ltd,The Managing Director,info@hajaigconstructionnigeria.ng,contractor,Abuja,https://veltrixhub.ng/contractor,invalid_domain,,
-Nairda Limited,The Managing Director,info@nairda.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-CANNON PROJECTS,The Managing Director,info@cannonprojects.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
-"Rosettee Construction","The Managing Director","info@rosettee-construction.net","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"Mega Labourers Services Limited","The Managing Director","hello@megalabourers.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"REBCON PROJECTS LIMITED","The Managing Director","enquiry@rebconprojectslimited.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"Nego Construction Ltd","The Managing Director","info@negoconstruction.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"ELALAN Construction Company","The Managing Director","info@elalan.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"SPG Construction Nigeria Limited","The Managing Director","sales@spgnigeria.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"Uwala Construction","The Managing Director","hello@xfoundlinkstech.com","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"Setraco","The Managing Director","info@setraco.net","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"AG Vision Construction Nig Ltd","The Managing Director","info@agvisionconstruction.com","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"DANTATA & SAWOE Construction Company ( Nigeria ) Ltd.","The Managing Director","kano@dantata-sawoe.com","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"Femak Associates Limited","The Managing Director","abuja@femakassociates.com","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"Gilmor Engineering Limited","The Managing Director","gilmor@gilmornig.com","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"ICONIC SERVICE CONSTRUCTION LTD. (I.S.C.O)","The Managing Director","iscoarchitecture@gmail.com","contractor","Port Harcourt","https://veltrixhub.ng/contractor","pending","",""
-"Corlyne Constructions & Allied Services Limited","The Managing Director","info@corlyneconglomerate.com","contractor","Port Harcourt","https://veltrixhub.ng/contractor","pending","",""
-"INTERCONTINENTAL ENGINEERING & HOMES DEVELOPMENT LIMITED","The Managing Director","hello@mobnia.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"CIBA CONSTRUCTION COMPANY LIMITED","The Managing Director","info@cibaconstruction.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"FOAB Group","The Managing Director","mails@fo-ab.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"BUILDING DEMOLITION COMPANY","The Managing Director","muduglobalservicesltd@gmail.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"ODUNJOHN PAINTING ENTERPRISE","The Managing Director","odujohnpaintingenterprise@gmail.com","painting","Abuja","https://veltrixhub.ng/painting","pending","",""
-"Morven Industrial Ltd - Marine Paint and Unitor Chemical distributor in Nigeria","The Managing Director","info@morvenindustrial.org","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"Evi Coating Nigeria Limited","The Managing Director","user@website.com","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"Merlux Painting","The Managing Director","contact@merluxpainting.com","painting","Port Harcourt","https://veltrixhub.ng/painting","pending","",""
-"Norahsprint Integrated Services","The Managing Director","norahsprint@gmail.com","painting","Port Harcourt","https://veltrixhub.ng/painting","pending","",""
-"Voda Paints Limited","The Managing Director","vodapaints@hotmail.com","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"LAGOS GLEAM SOLUTIONS LTD","The Managing Director","info@lagosgleamsolutionltd.com","cleaning","Lagos","https://veltrixhub.ng/cleaning","pending","",""
-"Total Facilities Management Ltd","The Managing Director","info@tfmlconsultant.com.com","cleaning","Abuja","https://veltrixhub.ng/cleaning","pending","",""
-"Starmate Nigeria Global Services Ltd","The Managing Director","contact@starmatenigeria.com","cleaning","Abuja","https://veltrixhub.ng/cleaning","pending","",""
-"THE DONALDSON HOME PROFESSIONAL CLEANING AND FUMIGATION SERVICE . .(DHICS)","The Managing Director","donaldsonhome23@gmail.com","cleaning","Port Harcourt","https://veltrixhub.ng/cleaning","pending","",""
-"Fastidious Kleen","The Managing Director","info@fastidiouskleen.com","cleaning","Port Harcourt","https://veltrixhub.ng/cleaning","pending","",""
-"Sparkhives Cleaners Port Harcourt","The Managing Director","contact@sparkhivescleaners.com","cleaning","Port Harcourt","https://veltrixhub.ng/cleaning","pending","",""
-"Julius Berger Nigeria Plc","The Managing Director","info@julius-berger.com","contractor","Abuja","https://veltrixhub.ng/contractor","pending","",""
-"ITB Nigeria Limited","The Managing Director","info@itbng.com","contractor","Lagos","https://veltrixhub.ng/contractor","pending","",""
-"Berger Paints Nigeria Plc","The Managing Director","customercare@bergerpaintnig.com","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"Chemical and Allied Products Plc (Dulux)","The Managing Director","carecentre@capplc.com","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"Meyer Paints Plc","The Managing Director","info@meyerpaints.com","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"Portland Paints & Products Nigeria","The Managing Director","customercare@portlandpaintsng.com","painting","Lagos","https://veltrixhub.ng/painting","pending","",""
-"Cleaneat Integrated Services","The Managing Director","info@cleaneat.com.ng","cleaning","Lagos","https://veltrixhub.ng/cleaning","pending","",""
-"Automedics Nigeria Limited","The Managing Director","info@automedicsafrica.com","auto-repair","Lagos","https://veltrixhub.ng/auto-repair","pending","",""
-"Fixit45 Automobile Care","The Managing Director","support@fixit45.com","auto-repair","Lagos","https://veltrixhub.ng/auto-repair","pending","",""
-"RT Briscoe Nigeria Motors","The Managing Director","info@rtbriscoe.com","auto-repair","Lagos","https://veltrixhub.ng/auto-repair","pending","",""
-"Coscharis Motors Certified Service","The Managing Director","info@coscharisgroup.net","auto-repair","Lagos","https://veltrixhub.ng/auto-repair","pending","",""
-"Smile360 Dental Specialists","The Managing Director","info@smile360ng.com","dental-care","Lagos","https://veltrixhub.ng/dental-care","pending","",""
-"Beaconhill Smile Clinic","The Managing Director","info@beaconhillsmile.com","dental-care","Lagos","https://veltrixhub.ng/dental-care","pending","",""
-"St. Ives Healthcare Dental","The Managing Director","info@stiveshealthcare.com","dental-care","Lagos","https://veltrixhub.ng/dental-care","pending","",""
-"Aluko & Oyebode Legal Practitioners","The Managing Director","ao@aluko-oyebode.com","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"Banwo & Ighodalo Legal Counsel","The Managing Director","banwoighodalo@banwo-ighodalo.com","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"Olaniwun Ajayi LP","The Managing Director","mail@olaniwunajayi.net","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"Templars Law Firm","The Managing Director","info@templars-law.com","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"G. Elias & Co Solicitors","The Managing Director","gelias@gelias.com","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"AELEX Legal Practitioners","The Managing Director","lagos@aelex.com","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"Detail Commercial Solicitors","The Managing Director","info@detailsolicitors.com","personal-injury","Lagos","https://veltrixhub.ng/personal-injury","pending","",""
-"Rubitec Solar Nigeria","The Managing Director","info@rubitecsolar.com","electrical","Lagos","https://veltrixhub.ng/electrical","pending","",""
-"Havenhill Synergy Energy","The Managing Director","info@havenhillsynergy.com","electrical","Abuja","https://veltrixhub.ng/electrical","pending","",""
-"Arnergy Solar Commercial","The Managing Director","hello@arnergy.com","electrical","Lagos","https://veltrixhub.ng/electrical","pending","",""
-"Daystar Power Group","The Managing Director","info@daystar-power.com","electrical","Lagos","https://veltrixhub.ng/electrical","pending","",""
-"Starsight Energy Nigeria","The Managing Director","info@starsightenergy.com","electrical","Lagos","https://veltrixhub.ng/electrical","pending","",""
-"Creeds Energy Systems","The Managing Director","info@creedsenergy.com","electrical","Abuja","https://veltrixhub.ng/electrical","pending","",""
-"Rotimax Pest Control Training & Services","The Managing Director","info@rotimax.com","pest-control","Lagos","https://veltrixhub.ng/pest-control","pending","",""
-"Rentokil Initial Nigeria","The Managing Director","info-ng@rentokil-initial.com","pest-control","Lagos","https://veltrixhub.ng/pest-control","pending","",""
-"Tiffany Amber Fashion House","The Managing Director","info@tiffanyamberng.com","fashion","Lagos","https://veltrixhub.ng/fashion","pending","",""
-"Atafo Official Bespoke","The Managing Director","info@atafo.com","fashion","Lagos","https://veltrixhub.ng/fashion","pending","",""
-"Lisa Folawiyo Studio","The Managing Director","info@lisafolawiyo.com","fashion","Lagos","https://veltrixhub.ng/fashion","pending","",""
-"Orange Culture Nigeria","The Managing Director","info@orangeculture.com.ng","fashion","Lagos","https://veltrixhub.ng/fashion","pending","",""
-"David Wej Menswear","The Managing Director","customercare@davidwej.com","fashion","Lagos","https://veltrixhub.ng/fashion","pending","",""
-"Slot Systems Limited","The Managing Director","support@slot.ng","tech-gadgets","Lagos","https://veltrixhub.ng/tech-gadgets","pending","",""
-"Pointek Online Mobile","The Managing Director","info@pointekonline.com","tech-gadgets","Lagos","https://veltrixhub.ng/tech-gadgets","pending","",""
-"Kara Nigeria Electronics","The Managing Director","sales@kara.com.ng","tech-gadgets","Lagos","https://veltrixhub.ng/tech-gadgets","pending","",""
-"Montaigne Place Fragrance","The Managing Director","customerservice@montaigneplace.com","perfumes","Lagos","https://veltrixhub.ng/perfumes","pending","",""
-"Essenza Luxury Fragrances","The Managing Director","info@essenza.ng","perfumes","Lagos","https://veltrixhub.ng/perfumes","pending","",""
-"Scents of Africa Boutique","The Managing Director","info@scentsofafrica.com","perfumes","Lagos","https://veltrixhub.ng/perfumes","pending","",""
+Nairda Limited,The Managing Director,info@nairda.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:17,kayode@veltrixhub.ng
+CANNON PROJECTS,The Managing Director,info@cannonprojects.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:18,christopher@veltrixhub.ng
+Rosettee Construction,The Managing Director,info@rosettee-construction.net,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:20,william@veltrixhub.ng
+Mega Labourers Services Limited,The Managing Director,hello@megalabourers.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:27,kayode@veltrixhub.ng
+REBCON PROJECTS LIMITED,The Managing Director,enquiry@rebconprojectslimited.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:29,christopher@veltrixhub.ng
+Nego Construction Ltd,The Managing Director,info@negoconstruction.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:32,william@veltrixhub.ng
+ELALAN Construction Company,The Managing Director,info@elalan.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:38,kayode@veltrixhub.ng
+SPG Construction Nigeria Limited,The Managing Director,sales@spgnigeria.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:40,christopher@veltrixhub.ng
+Uwala Construction,The Managing Director,hello@xfoundlinkstech.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:45,william@veltrixhub.ng
+Setraco,The Managing Director,info@setraco.net,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:52,kayode@veltrixhub.ng
+AG Vision Construction Nig Ltd,The Managing Director,info@agvisionconstruction.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:55,christopher@veltrixhub.ng
+DANTATA & SAWOE Construction Company ( Nigeria ) Ltd.,The Managing Director,kano@dantata-sawoe.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:02:56,william@veltrixhub.ng
+Femak Associates Limited,The Managing Director,abuja@femakassociates.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:03,kayode@veltrixhub.ng
+Gilmor Engineering Limited,The Managing Director,gilmor@gilmornig.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:05,christopher@veltrixhub.ng
+ICONIC SERVICE CONSTRUCTION LTD. (I.S.C.O),The Managing Director,iscoarchitecture@gmail.com,contractor,Port Harcourt,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:08,william@veltrixhub.ng
+Corlyne Constructions & Allied Services Limited,The Managing Director,info@corlyneconglomerate.com,contractor,Port Harcourt,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:15,kayode@veltrixhub.ng
+INTERCONTINENTAL ENGINEERING & HOMES DEVELOPMENT LIMITED,The Managing Director,hello@mobnia.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:17,christopher@veltrixhub.ng
+CIBA CONSTRUCTION COMPANY LIMITED,The Managing Director,info@cibaconstruction.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:20,william@veltrixhub.ng
+FOAB Group,The Managing Director,mails@fo-ab.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:27,kayode@veltrixhub.ng
+BUILDING DEMOLITION COMPANY,The Managing Director,muduglobalservicesltd@gmail.com,contractor,Lagos,https://veltrixhub.ng/contractor,sent,2026-11-25 13:03:29,christopher@veltrixhub.ng
+ODUNJOHN PAINTING ENTERPRISE,The Managing Director,odujohnpaintingenterprise@gmail.com,painting,Abuja,https://veltrixhub.ng/painting,sent,2026-11-25 13:03:30,william@veltrixhub.ng
+Morven Industrial Ltd - Marine Paint and Unitor Chemical distributor in Nigeria,The Managing Director,info@morvenindustrial.org,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:03:36,kayode@veltrixhub.ng
+Evi Coating Nigeria Limited,The Managing Director,user@website.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:03:38,christopher@veltrixhub.ng
+Merlux Painting,The Managing Director,contact@merluxpainting.com,painting,Port Harcourt,https://veltrixhub.ng/painting,sent,2026-11-25 13:03:41,william@veltrixhub.ng
+Norahsprint Integrated Services,The Managing Director,norahsprint@gmail.com,painting,Port Harcourt,https://veltrixhub.ng/painting,sent,2026-11-25 13:03:47,kayode@veltrixhub.ng
+Voda Paints Limited,The Managing Director,vodapaints@hotmail.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:03:48,christopher@veltrixhub.ng
+LAGOS GLEAM SOLUTIONS LTD,The Managing Director,info@lagosgleamsolutionltd.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:03:50,william@veltrixhub.ng
+Total Facilities Management Ltd,The Managing Director,info@tfmlconsultant.com.com,cleaning,Abuja,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:03:57,kayode@veltrixhub.ng
+Starmate Nigeria Global Services Ltd,The Managing Director,contact@starmatenigeria.com,cleaning,Abuja,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:03:59,christopher@veltrixhub.ng
+THE DONALDSON HOME PROFESSIONAL CLEANING AND FUMIGATION SERVICE . .(DHICS),The Managing Director,donaldsonhome23@gmail.com,cleaning,Port Harcourt,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:04:01,william@veltrixhub.ng
+Fastidious Kleen,The Managing Director,info@fastidiouskleen.com,cleaning,Port Harcourt,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:04:08,kayode@veltrixhub.ng
+Sparkhives Cleaners Port Harcourt,The Managing Director,contact@sparkhivescleaners.com,cleaning,Port Harcourt,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:04:10,christopher@veltrixhub.ng
+Julius Berger Nigeria Plc,The Managing Director,info@julius-berger.com,contractor,Abuja,https://veltrixhub.ng/contractor,sent,2026-11-25 13:04:12,william@veltrixhub.ng
+Berger Paints Nigeria Plc,The Managing Director,customercare@bergerpaintnig.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:04:18,kayode@veltrixhub.ng
+Chemical and Allied Products Plc (Dulux),The Managing Director,carecentre@capplc.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:04:20,christopher@veltrixhub.ng
+Meyer Paints Plc,The Managing Director,info@meyerpaints.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:04:22,william@veltrixhub.ng
+Portland Paints & Products Nigeria,The Managing Director,customercare@portlandpaintsng.com,painting,Lagos,https://veltrixhub.ng/painting,sent,2026-11-25 13:04:29,kayode@veltrixhub.ng
+Cleaneat Integrated Services,The Managing Director,info@cleaneat.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,sent,2026-11-25 13:04:32,christopher@veltrixhub.ng
+Automedics Nigeria Limited,The Managing Director,info@automedicsafrica.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,sent,2026-11-25 13:04:34,william@veltrixhub.ng
+Fixit45 Automobile Care,The Managing Director,support@fixit45.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,sent,2026-11-25 13:04:41,kayode@veltrixhub.ng
+RT Briscoe Nigeria Motors,The Managing Director,info@rtbriscoe.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,sent,2026-11-25 13:04:45,christopher@veltrixhub.ng
+Coscharis Motors Certified Service,The Managing Director,info@coscharisgroup.net,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,sent,2026-11-25 13:04:48,william@veltrixhub.ng
+Smile360 Dental Specialists,The Managing Director,info@smile360ng.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,sent,2026-11-25 13:04:53,kayode@veltrixhub.ng
+Beaconhill Smile Clinic,The Managing Director,info@beaconhillsmile.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,sent,2026-11-25 13:04:55,christopher@veltrixhub.ng
+St. Ives Healthcare Dental,The Managing Director,info@stiveshealthcare.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,sent,2026-11-25 13:04:58,william@veltrixhub.ng
+Aluko & Oyebode Legal Practitioners,The Managing Director,ao@aluko-oyebode.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:04,kayode@veltrixhub.ng
+Banwo & Ighodalo Legal Counsel,The Managing Director,banwoighodalo@banwo-ighodalo.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:06,christopher@veltrixhub.ng
+Olaniwun Ajayi LP,The Managing Director,mail@olaniwunajayi.net,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:08,william@veltrixhub.ng
+Templars Law Firm,The Managing Director,info@templars-law.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:14,kayode@veltrixhub.ng
+G. Elias & Co Solicitors,The Managing Director,gelias@gelias.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:15,christopher@veltrixhub.ng
+AELEX Legal Practitioners,The Managing Director,lagos@aelex.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:17,william@veltrixhub.ng
+Detail Commercial Solicitors,The Managing Director,info@detailsolicitors.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,sent,2026-11-25 13:05:23,kayode@veltrixhub.ng
+Rubitec Solar Nigeria,The Managing Director,info@rubitecsolar.com,electrical,Lagos,https://veltrixhub.ng/electrical,sent,2026-11-25 13:05:26,christopher@veltrixhub.ng
+Havenhill Synergy Energy,The Managing Director,info@havenhillsynergy.com,electrical,Abuja,https://veltrixhub.ng/electrical,sent,2026-11-25 13:05:28,william@veltrixhub.ng
+Arnergy Solar Commercial,The Managing Director,hello@arnergy.com,electrical,Lagos,https://veltrixhub.ng/electrical,skipped_enterprise,,
+Daystar Power Group,The Managing Director,info@daystar-power.com,electrical,Lagos,https://veltrixhub.ng/electrical,skipped_enterprise,,
+Starsight Energy Nigeria,The Managing Director,info@starsightenergy.com,electrical,Lagos,https://veltrixhub.ng/electrical,skipped_enterprise,,
+Creeds Energy Systems,The Managing Director,info@creedsenergy.com,electrical,Abuja,https://veltrixhub.ng/electrical,skipped_enterprise,,
+Rotimax Pest Control Training & Services,The Managing Director,info@rotimax.com,pest-control,Lagos,https://veltrixhub.ng/pest-control,skipped_enterprise,,
+Rentokil Initial Nigeria,The Managing Director,info-ng@rentokil-initial.com,pest-control,Lagos,https://veltrixhub.ng/pest-control,skipped_enterprise,,
+Tiffany Amber Fashion House,The Managing Director,info@tiffanyamberng.com,fashion,Lagos,https://veltrixhub.ng/fashion,skipped_enterprise,,
+Atafo Official Bespoke,The Managing Director,info@atafo.com,fashion,Lagos,https://veltrixhub.ng/fashion,skipped_enterprise,,
+Lisa Folawiyo Studio,The Managing Director,info@lisafolawiyo.com,fashion,Lagos,https://veltrixhub.ng/fashion,skipped_enterprise,,
+Orange Culture Nigeria,The Managing Director,info@orangeculture.com.ng,fashion,Lagos,https://veltrixhub.ng/fashion,skipped_enterprise,,
+David Wej Menswear,The Managing Director,customercare@davidwej.com,fashion,Lagos,https://veltrixhub.ng/fashion,skipped_enterprise,,
+Slot Systems Limited,The Managing Director,support@slot.ng,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,skipped_enterprise,,
+Pointek Online Mobile,The Managing Director,info@pointekonline.com,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,skipped_enterprise,,
+Kara Nigeria Electronics,The Managing Director,sales@kara.com.ng,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,skipped_enterprise,,
+Montaigne Place Fragrance,The Managing Director,customerservice@montaigneplace.com,perfumes,Lagos,https://veltrixhub.ng/perfumes,skipped_enterprise,,
+Essenza Luxury Fragrances,The Managing Director,info@essenza.ng,perfumes,Lagos,https://veltrixhub.ng/perfumes,skipped_enterprise,,
+Scents of Africa Boutique,The Managing Director,info@scentsofafrica.com,perfumes,Lagos,https://veltrixhub.ng/perfumes,skipped_enterprise,,
+SPG Construction Nigeria Limited,The Managing Director,info@spgnigeria.com,contractor,Lagos,https://veltrixhub.ng/contractor,skipped_duplicate,,
+Our Home Fixer Limited,The Managing Director,hello@ourhomefixer.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+A8 Construction & Finishing Ltd,The Managing Director,info@a8global.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+Arab Contractors,The Managing Director,info@arabcont.com,contractor,Lagos,https://veltrixhub.ng/contractor,skipped_enterprise,,
+Our Home Fixer Limited,The Managing Director,info@ourhomefixer.com,contractor,Lagos,https://veltrixhub.ng/contractor,skipped_duplicate,,
+"Business Contracting Limited, Construction and Civil Engineering",The Managing Director,info@bclnig.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+Times Construction Co. Ltd.,The Managing Director,info@timesconstructions.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+RETICULATED GLOBAL ENGINEERING LIMITED,The Managing Director,reticulatedglobalengineering@gmail.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Kiwi Engineering and Construction Ltd,The Managing Director,info@kecltd.com,contractor,Abuja,https://veltrixhub.ng/contractor,pending,,
+Est Master Construction Ltd.,The Managing Director,info@estmaster.com,contractor,Port Harcourt,https://veltrixhub.ng/contractor,pending,,
+Debby Ashford Contracting Ltd,The Managing Director,info@dac.com.ng,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+Pektej Projects Ltd.,The Managing Director,info@pektejprojects.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+SheltaGroup,The Managing Director,info@sheltagroup.com,contractor,Lagos,https://veltrixhub.ng/contractor,pending,,
+COLOR SENSE LIMITED,The Managing Director,colouressense@yahoo.com,painting,Lagos,https://veltrixhub.ng/painting,pending,,
+Anyworkman Services Limited,The Managing Director,contact@anyworkman.com,painting,Lagos,https://veltrixhub.ng/painting,pending,,
+"NOVACOLOR NIGERIA, Abuja",The Managing Director,info@novacolor.it,painting,Abuja,https://veltrixhub.ng/painting,pending,,
+Voda Paints Limited,The Managing Director,enquires@vodapaints.com,painting,Lagos,https://veltrixhub.ng/painting,pending,,
+Norahsprint Integrated Services,The Managing Director,norashprintintrgratedservicesa@gmail.com,painting,Port Harcourt,https://veltrixhub.ng/painting,pending,,
+MepepplinDecorHub(formally Mepepplin Colour Line),The Managing Director,meppeplindecorhub@gmail.com,painting,Port Harcourt,https://veltrixhub.ng/painting,pending,,
+FINECOAT PAINT,The Managing Director,enquiries@chemstargroup.com,painting,Lagos,https://veltrixhub.ng/painting,skipped_enterprise,,
+Ignite Paints Limited,The Managing Director,info@ignitepaints.com,painting,Lagos,https://veltrixhub.ng/painting,pending,,
+Voda Paints Limited,The Managing Director,customercare@vodapaints.com,painting,Lagos,https://veltrixhub.ng/painting,skipped_duplicate,,
+Cleanon Global Enterprises,The Managing Director,hello@cleanon.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,skipped_duplicate,,
+Kelmau Cleaning Services,The Managing Director,info@kelmau.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
+Chen Cleaning Services Ltd,The Managing Director,chencleaningservicesltd@gmail.com,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
+Nadroi facility management Ltd,The Managing Director,office@nadroi.com,cleaning,Abuja,https://veltrixhub.ng/cleaning,pending,,
+PCV Cleaning Services,The Managing Director,info@pcv.com.ng,cleaning,Lagos,https://veltrixhub.ng/cleaning,pending,,
+Mek Experts Automobile,The Managing Director,hello@mekexperts.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+Froshtech Automotive,The Managing Director,info@froshtechautomotive.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+HiQ Auto Centre Ltd,The Managing Director,info@hiqautocenter.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+JD Autos Center,The Managing Director,info@jdautoscenter.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+D’phoenix Auto care limited,The Managing Director,dphoenixautocare@gmail.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+EAZY AUTO MECHANIC IN LAGOS NIGERIA,The Managing Director,info@eazyautomobile.ng,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+Kwikfix,The Managing Director,sales@kwikfixng.com,auto-repair,Port Harcourt,https://veltrixhub.ng/auto-repair,pending,,
+RequestMechanic,The Managing Director,chukslord1@gmail.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+Worksquare Solution LTD,The Managing Director,info@worksquaresl.com,auto-repair,Lagos,https://veltrixhub.ng/auto-repair,pending,,
+CAREDENT DENTAL CLINIC LEKKI,The Managing Director,info@caredentclinic.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,pending,,
+Glaze Dental & Breath Clinic,The Managing Director,hello@glazedental.org,dental-care,Lagos,https://veltrixhub.ng/dental-care,pending,,
+"Calens Dental Clinic Lekki, Lagos - Scaling & Polishing, Teeth Whitening, Dental Implants & Orthodontics",The Managing Director,calenesducation@gmail.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,pending,,
+COLDENT DENTAL CLINIC,The Managing Director,coldentdentalclinic@gmail.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,pending,,
+Aristoothcrat Dental Center | best dental clinic in lagos | dental clinic ikeja,The Managing Director,your@email.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,invalid_format,,
+Breeze Smile Dental Clinic Ikeja,The Managing Director,breezesmiledental@gmail.com,dental-care,Lagos,https://veltrixhub.ng/dental-care,pending,,
+Falash Dental Clinic - Abuja,The Managing Director,info@falashdental.com.ng,dental-care,Abuja,https://veltrixhub.ng/dental-care,pending,,
+Smile 360 Dental Specialists,The Managing Director,info.abuja@smile360ng.com,dental-care,Abuja,https://veltrixhub.ng/dental-care,skipped_enterprise,,
+Smiletheory Dental Clinic,The Managing Director,enquiries@smiletheory.ng,dental-care,Abuja,https://veltrixhub.ng/dental-care,pending,,
+Babalakin and Co,The Managing Director,info@babalakinandco.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,skipped_enterprise,,
+"Jackson, Etti & Edu - Tier 1 Full Service Law Firm in Lagos, Nigeria",The Managing Director,jee@jee.africa,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,skipped_enterprise,,
+CHAMAN LAW FIRM,The Managing Director,info@chamanlawfirm.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,pending,,
+SILVERWRIT ATTORNEYS,The Managing Director,info@silverwritattorneys.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,pending,,
+Grays Barristers & Solicitors,The Managing Director,info@graysbarristersandsolicitors.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,pending,,
+FENCHURCH BARRISTERS AND SOLICITORS,The Managing Director,info@fenchurch-law.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,pending,,
+Punuka Attorneys and Solicitors,The Managing Director,info@punuka.com,personal-injury,Lagos,https://veltrixhub.ng/personal-injury,skipped_enterprise,,
+"ICA | Corporate Law Firm in Abuja, Nigeria",The Managing Director,info@ica.ng,personal-injury,Abuja,https://veltrixhub.ng/personal-injury,pending,,
+APEX CHAMBERS - Property/Real Estate & Business/Corporate/Commercial Lawyers,The Managing Director,info@apexchambersglobal.com,personal-injury,Port Harcourt,https://veltrixhub.ng/personal-injury,pending,,
+Felicity Solar Energy Company Near me in Ikeja Lagos Nigeria,The Managing Director,info@felicitysolarenergy.com.ng,electrical,Lagos,https://veltrixhub.ng/electrical,pending,,
+Tecnergy Power Solutions,The Managing Director,info@tecnergy.com.ng,electrical,Lagos,https://veltrixhub.ng/electrical,pending,,
+Pvpro Nigeria— Lagetronix Brand,The Managing Director,sales@pvpro.com.ng,electrical,Lagos,https://veltrixhub.ng/electrical,pending,,
+Rhemilous Multitech Engineering ltd,The Managing Director,rhemilousengineeringltd@gmail.com,electrical,Lagos,https://veltrixhub.ng/electrical,pending,,
+"Lead Renewable Energy Ltd - #1 Solar Energy Company in Nigeria, Renewable Energy Company in Nigeria, Inverter Company",The Managing Director,support@leadrenewableenergy.com,electrical,Abuja,https://veltrixhub.ng/electrical,pending,,
+JRB Solar Investment Ltd.,The Managing Director,info@jrbsolar.com,electrical,Abuja,https://veltrixhub.ng/electrical,pending,,
+HakunaSolar™,The Managing Director,sales@hakunasolar.com,electrical,Port Harcourt,https://veltrixhub.ng/electrical,pending,,
+Solynta Energy,The Managing Director,solar@solyntaenergy.com,electrical,Lagos,https://veltrixhub.ng/electrical,skipped_enterprise,,
+Elektron Energy,The Managing Director,info@elektronenergy.com,electrical,Lagos,https://veltrixhub.ng/electrical,skipped_enterprise,,
+Eastwind Integrated Services,The Managing Director,enquiries@eastwindservices.com,pest-control,Lagos,https://veltrixhub.ng/pest-control,pending,,
+The Best Pest Exterminators,The Managing Director,info@the-bestpest.com,pest-control,Lagos,https://veltrixhub.ng/pest-control,pending,,
+Vanxtech PestControl Company,The Managing Director,vanx.vanxtech@gmail.com,pest-control,Lagos,https://veltrixhub.ng/pest-control,pending,,
+C&E Fumigation and Cleaning Services,The Managing Director,cefumigation@gmail.com,pest-control,Abuja,https://veltrixhub.ng/pest-control,pending,,
+Kelmau Cleaning Services,The Managing Director,kelmaucleaningservices@gmail.com,pest-control,Abuja,https://veltrixhub.ng/pest-control,pending,,
+Rildelia Pest Control,The Managing Director,contact@rildelia.com,pest-control,Lagos,https://veltrixhub.ng/pest-control,pending,,
+LadyBeellionaire Luxury Fashion Gallery,The Managing Director,ladybeellionaire@gmail.com,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+Trish O. Couture Lagos - Luxury Female Clothing,The Managing Director,webmaster@trishocouture.com,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+Deola Sagoe,The Managing Director,info@houseofdeola.com,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+MELODIA - Fashion Design | Clothing | Ladies Wears,The Managing Director,admin@melodia.ng,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+House of Marvee,The Managing Director,info@marvee.org,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+Ejay's World - Nearest Luxury Boutique and Clothing Store in Abuja,The Managing Director,shop@ejaysworld.com.ng,fashion,Abuja,https://veltrixhub.ng/fashion,pending,,
+Dos Clothing Company,The Managing Director,info@dosclothing.co,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+Amatex Clothing Empire,The Managing Director,amatexclothingempire@yahoo.com,fashion,Lagos,https://veltrixhub.ng/fashion,pending,,
+Ikeja computervillage gadget ( The Wayne'z banner),The Managing Director,info.waynez@gmail.com,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,pending,,
+Adereal Gadgets,The Managing Director,support@adereal.com,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,pending,,
+"Casper Gadgets Store, Ikeja Branch",The Managing Director,info@caspergadgets.com,tech-gadgets,Lagos,https://veltrixhub.ng/tech-gadgets,pending,,

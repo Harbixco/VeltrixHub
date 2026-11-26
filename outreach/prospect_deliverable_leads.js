@@ -1,9 +1,17 @@
-// High-Speed Lead Harvester with 100% Pre-Flight DNS MX Verification
+// High-Speed SME Lead Harvester with Website Conversion Audit & Real-Time DNS MX Verification
 import { MongoClient } from "mongodb";
 import dns from "dns";
 import { promisify } from "util";
 import fs from "fs";
 import path from "path";
+import {
+  cleanEmail,
+  isFreeEmailDomain,
+  isSocialOrDirectoryUrl,
+  isEnterpriseOrSkipLead,
+  auditWebsiteHtml,
+  classifyLeadPitchTrack,
+} from "../api/_outreachCore.js";
 
 const resolveMx = promisify(dns.resolveMx);
 
@@ -167,42 +175,12 @@ const NICHES = [
   },
 ];
 
-function cleanEmail(raw) {
-  if (!raw) return null;
-  const e = raw.trim().replace(/^mailto:/i, "").split("?")[0].toLowerCase();
-
-  // Exclude file extensions
-  const badExts = [".png", ".jpg", ".jpeg", ".webp", ".svg", ".gif", ".css", ".js", ".map", ".ico", ".woff", ".ttf"];
-  if (badExts.some((ext) => e.endsWith(ext))) return null;
-
-  // Exclude software / code / framework artifacts
-  const badTerms = [
-    "wix", "sentry", "example", "schema", "wordpress", "domain.com", "mysite", "react", "webpack",
-    "babel", "polyfill", "segmenter", "bundle", "lodash", "rspack", "core-js", "node_modules", "npm",
-    "jsdelivr", "unpkg", "github", "cloudflare", "gravatar", "akamai"
-  ];
-  if (badTerms.some((t) => e.includes(t))) return null;
-
-  // Must have exactly one @
-  const parts = e.split("@");
-  if (parts.length !== 2) return null;
-
-  const [user, domain] = parts;
-  if (!user || user.length > 64) return null;
-  if (!domain || domain.length > 120) return null;
-
-  // Domain cannot start with digit or symbol
-  if (/^[\d._-]/.test(domain)) return null;
-
-  // Domain must contain a valid TLD (at least 2 alphabetic chars)
-  const tld = domain.split(".").pop();
-  if (!tld || !/^[a-z]{2,}$/.test(tld)) return null;
-
-  // Overall RFC-like syntax
-  const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
-  if (!regex.test(e)) return null;
-
-  return e;
+function withTimeout(promise, ms, fallback = null) {
+  let timer;
+  const timeoutPromise = new Promise((resolve) => {
+    timer = setTimeout(() => resolve(fallback), ms);
+  });
+  return Promise.race([promise, timeoutPromise]).finally(() => clearTimeout(timer));
 }
 
 const mxCache = new Map();
@@ -212,7 +190,7 @@ async function verifyMx(email) {
   if (mxCache.has(domain)) return mxCache.get(domain);
 
   try {
-    const mx = await resolveMx(domain).catch(() => null);
+    const mx = await withTimeout(resolveMx(domain).catch(() => null), 2500, null);
     const isValid = Boolean(mx && Array.isArray(mx) && mx.length > 0);
     mxCache.set(domain, isValid ? mx[0].exchange : false);
     return isValid ? mx[0].exchange : false;
@@ -222,47 +200,81 @@ async function verifyMx(email) {
   }
 }
 
-// Concurrently scrape multiple pages of a website in 2 seconds max
-async function scrapeEmails(websiteUrl) {
-  if (!websiteUrl) return [];
+function extractEmailsFromHtml(html, foundSet) {
+  if (!html) return;
+  const mailtos = html.match(/mailto:([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)/gi) || [];
+  for (const m of mailtos) {
+    const ce = cleanEmail(m);
+    if (ce) foundSet.add(ce);
+  }
+  const regexMatches = html.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g) || [];
+  for (const r of regexMatches) {
+    const ce = cleanEmail(r);
+    if (ce) foundSet.add(ce);
+  }
+}
+
+const BROWSER_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36";
+
+/** Audits the business website for conversion gaps and scrapes reachable emails if qualified. */
+async function auditAndScrapeWebsite(websiteUrl) {
+  if (!websiteUrl || isSocialOrDirectoryUrl(websiteUrl)) {
+    return { audit: { isQualified: false, reasons: [] }, emails: [] };
+  }
+
   let base = "";
   try {
     const parsed = new URL(websiteUrl);
     base = `${parsed.protocol}//${parsed.host}`;
   } catch {
-    return [];
+    return { audit: { isQualified: false, reasons: [] }, emails: [] };
   }
 
-  const pages = [websiteUrl, `${base}/contact`, `${base}/contact-us`, `${base}/about`];
   const found = new Set();
+  let homepageHtml = "";
+  let homepageErr = "";
 
-  const fetchPromises = pages.map(async (pageUrl) => {
-    try {
-      const resp = await fetch(pageUrl, {
-        headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) VeltrixProspector/2.0" },
-        signal: AbortSignal.timeout(2200),
-      });
-      if (!resp.ok) return;
-      const html = await resp.text();
-
-      const mailtos = html.match(/mailto:([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)/gi) || [];
-      for (const m of mailtos) {
-        const ce = cleanEmail(m);
-        if (ce) found.add(ce);
-      }
-
-      const regexMatches = html.match(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/g) || [];
-      for (const r of regexMatches) {
-        const ce = cleanEmail(r);
-        if (ce) found.add(ce);
-      }
-    } catch {
-      // Timeout or error ignored
+  try {
+    const homeResp = await fetch(websiteUrl, {
+      headers: { "User-Agent": BROWSER_UA },
+      signal: AbortSignal.timeout(3000),
+    });
+    if (!homeResp.ok) {
+      homepageErr = `HTTP ${homeResp.status}`;
+    } else {
+      homepageHtml = await homeResp.text();
+      extractEmailsFromHtml(homepageHtml, found);
     }
-  });
+  } catch (err) {
+    homepageErr = err.message || "Request timeout";
+  }
 
-  await Promise.allSettled(fetchPromises);
-  return Array.from(found);
+  const audit = auditWebsiteHtml(websiteUrl, homepageHtml, homepageErr);
+  if (!audit.isQualified) {
+    return { audit, emails: [] };
+  }
+
+  if (found.size === 0) {
+    const secondaryPages = [`${base}/contact`, `${base}/contact-us`, `${base}/about`];
+    await Promise.allSettled(
+      secondaryPages.map(async (pageUrl) => {
+        try {
+          const resp = await fetch(pageUrl, {
+            headers: { "User-Agent": BROWSER_UA },
+            signal: AbortSignal.timeout(2200),
+          });
+          if (!resp.ok) return;
+          const html = await resp.text();
+          extractEmailsFromHtml(html, found);
+        } catch {
+          // Ignore timeout/unreachable subpages
+        }
+      })
+    );
+  }
+
+  return { audit, emails: Array.from(found) };
 }
 
 async function main() {
@@ -272,9 +284,14 @@ async function main() {
   const db = client.db(DB_NAME);
   const leadsCol = db.collection(LEADS_COLLECTION);
 
-  // Load existing emails
+  // Load existing emails & corporate domains to avoid duplicate company outreach
   const existingDocs = await leadsCol.find({}, { projection: { email: 1 } }).toArray();
   const existingEmails = new Set(existingDocs.map((d) => (d.email || "").toLowerCase().trim()).filter(Boolean));
+  const existingDomains = new Set(
+    Array.from(existingEmails)
+      .filter((em) => em.includes("@") && !isFreeEmailDomain(em))
+      .map((em) => em.split("@")[1])
+  );
 
   // Current pending deliverable count
   const currentPending = await leadsCol.countDocuments({ status: "pending", is_deliverable: true });
@@ -285,13 +302,15 @@ async function main() {
   console.log(`Targeting to harvest at least ${NEEDED} fresh MX-verified leads (to hit ${TARGET_TOTAL} total in queue)...`);
 
   let addedCount = 0;
+  const maxPerNiche = Math.ceil(NEEDED / NICHES.length) + 2;
 
   for (const niche of NICHES) {
     if (addedCount >= NEEDED) break;
+    let nicheCount = 0;
     console.log(`\nExploring ${niche.label} (${niche.key})...`);
 
     for (const query of niche.queries) {
-      if (addedCount >= NEEDED) break;
+      if (addedCount >= NEEDED || nicheCount >= maxPerNiche) break;
 
       try {
         const placesResp = await fetch("https://places.googleapis.com/v1/places:searchText", {
@@ -303,38 +322,69 @@ async function main() {
               "places.displayName,places.formattedAddress,places.nationalPhoneNumber,places.websiteUri",
           },
           body: JSON.stringify({ textQuery: query }),
+          signal: AbortSignal.timeout(8000),
         });
 
         if (!placesResp.ok) continue;
         const placesData = await placesResp.json();
-        const places = placesData.places || [];
+        const places = (placesData.places || []).filter((p) => {
+          const name = p.displayName?.text?.trim();
+          const web = p.websiteUri || "";
+          return name && web && !isEnterpriseOrSkipLead(name, "", web, "Google Places");
+        });
 
-        // Concurrently process places
-        for (const place of places) {
-          if (addedCount >= NEEDED) break;
-          const bizName = place.displayName?.text?.trim();
-          const website = place.websiteUri || "";
+        // Audit & scrape all candidate sites for this query concurrently with strict per-site cap
+        const auditedResults = await Promise.all(
+          places.map(async (place) => {
+            const website = place.websiteUri || "";
+            const { audit, emails } = await withTimeout(
+              auditAndScrapeWebsite(website),
+              6000,
+              { audit: { isQualified: false, reasons: [] }, emails: [] }
+            );
+            return { place, website, audit, emails };
+          })
+        );
+
+        const hits = auditedResults.filter((r) => r.audit.isQualified && r.emails.length > 0).length;
+        console.log(`  Query "${query}": ${places.length} SME sites checked, ${hits} qualified w/ email`);
+
+        for (const item of auditedResults) {
+          if (addedCount >= NEEDED || nicheCount >= maxPerNiche) break;
+          const { place, website, audit, emails: scrapedEmails } = item;
+          if (!audit.isQualified || scrapedEmails.length === 0) continue;
+
+          const bizName = place.displayName.text.trim();
           const phone = place.nationalPhoneNumber || "";
           const address = place.formattedAddress || "";
-
-          if (!bizName || !website) continue;
 
           let city = "Lagos";
           if (query.toLowerCase().includes("abuja") || address.toLowerCase().includes("abuja")) city = "Abuja";
           else if (query.toLowerCase().includes("port harcourt") || address.toLowerCase().includes("port harcourt")) city = "Port Harcourt";
           else if (query.toLowerCase().includes("ibadan") || address.toLowerCase().includes("ibadan")) city = "Ibadan";
 
-          const scrapedEmails = await scrapeEmails(website);
-
           for (const rawEmail of scrapedEmails) {
             const email = rawEmail.toLowerCase().trim();
+            const emailDomain = email.split("@")[1] || "";
             if (existingEmails.has(email)) continue;
+            if (!isFreeEmailDomain(email) && existingDomains.has(emailDomain)) continue;
+            if (isEnterpriseOrSkipLead(bizName, email, website, "Google Places")) continue;
 
             const mxHost = await verifyMx(email);
             if (!mxHost) continue;
 
             existingEmails.add(email);
+            if (!isFreeEmailDomain(email)) existingDomains.add(emailDomain);
             addedCount++;
+            nicheCount++;
+
+            const hasWorkingSite = !audit.isBrokenOrDead;
+            const pitchTrack = classifyLeadPitchTrack({
+              email,
+              website_url: website,
+              hasWebsite: hasWorkingSite,
+              audit_reasons: audit.reasons,
+            });
 
             const newLead = {
               business_name: bizName,
@@ -346,11 +396,16 @@ async function main() {
               industry: niche.key,
               city: city,
               demo_url: niche.demo_url,
+              website_url: website,
+              hasWebsite: hasWorkingSite,
+              pitch_track: pitchTrack,
+              audit_reasons: audit.reasons,
+              audit_status: audit.auditSummary,
               status: "pending",
               is_deliverable: true,
               mx_verified: true,
               mx_host: mxHost,
-              source: "Google Places + Real-Time MX Verification",
+              source: "Google Places + Conversion Audit + MX Verification",
               createdAt: new Date().toISOString(),
               updatedAt: new Date().toISOString(),
             };
@@ -358,7 +413,7 @@ async function main() {
             await leadsCol.updateOne({ email: email }, { $set: newLead }, { upsert: true });
 
             console.log(
-              `  ✓ [#${addedCount}] ${bizName} | ${email} (MX: ${mxHost}) | ${niche.key}`
+              `  [QUALIFIED #${addedCount}] ${bizName} | ${email} | track=${pitchTrack} | gap=${audit.auditSummary}`
             );
 
             // Safe append to CSV

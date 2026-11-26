@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { generatePitchContent } from "../../api/_outreachCore.js";
 import {
   Mail,
   Send,
@@ -1854,15 +1855,29 @@ export default function OutreachDashboard() {
       </div>
 
       {/* Modal: Preview Pitch */}
-      {previewLead && (
+      {previewLead && (() => {
+        const preview = generatePitchContent(previewLead, { name: "Kayode | Veltrix Hub" });
+        const isUpgradeTrack = preview.pitchTrack === "outdated_website";
+        return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8">
             <div className="flex items-center justify-between pb-4 border-b border-slate-800">
               <div>
-                <span className="text-xs uppercase font-semibold text-blue-400 tracking-wider">
-                  Outreach Pitch Preview (with Tracker Embedded)
-                </span>
-                <h3 className="text-xl font-bold text-white mt-0.5">{previewLead.business_name}</h3>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs uppercase font-semibold text-blue-400 tracking-wider">
+                    Outreach Pitch Preview (with Tracker Embedded)
+                  </span>
+                  <span
+                    className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${
+                      isUpgradeTrack
+                        ? "bg-amber-950/60 text-amber-300 border-amber-700/60"
+                        : "bg-emerald-950/60 text-emerald-300 border-emerald-700/60"
+                    }`}
+                  >
+                    {isUpgradeTrack ? "Track: Website Upgrade + WhatsApp" : "Track: Launch First Website"}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white mt-1">{previewLead.business_name}</h3>
               </div>
               <button
                 onClick={() => setPreviewLead(null)}
@@ -1886,33 +1901,43 @@ export default function OutreachDashboard() {
               </div>
               <div className="flex">
                 <span className="w-20 text-slate-500">Subject:</span>
-                <span className="text-white font-semibold">
-                  Quick question regarding {previewLead.business_name}'s website
-                </span>
+                <span className="text-white font-semibold">{preview.subject}</span>
               </div>
+              {previewLead.website_url && (
+                <div className="flex">
+                  <span className="w-20 text-slate-500">Site:</span>
+                  <span className="text-slate-300 truncate">{previewLead.website_url}</span>
+                </div>
+              )}
+              {previewLead.audit_status && (
+                <div className="flex">
+                  <span className="w-20 text-slate-500">Audit:</span>
+                  <span className="text-amber-300">{previewLead.audit_status}</span>
+                </div>
+              )}
               <div className="flex">
                 <span className="w-20 text-slate-500">Tracker:</span>
                 <span className="text-blue-400 truncate">
-                  https://www.veltrixhub.ng/api/track?email={encodeURIComponent(previewLead.email)}&action=open
+                  https://veltrixhub.ng/api/track?email={encodeURIComponent(previewLead.email)}&amp;action=open
                 </span>
               </div>
             </div>
 
             {/* Email Body */}
             <div className="mt-6 p-6 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-200 text-sm leading-relaxed space-y-4">
-              <p>Hello {previewLead.contact_name},</p>
-              <p>
-                I came across <strong>{previewLead.business_name}</strong> while researching top{" "}
-                {(previewLead.niche || "services").replace("-", " ")} businesses in {previewLead.city}.
-              </p>
-              <p>
-                In today's market, most clients in {previewLead.city} search for {(previewLead.niche || "services").replace("-", " ")}{" "}
-                services on their phones before deciding who to trust. Without a fast, mobile-friendly website that
-                connects directly to your WhatsApp, potential customers often end up booking with competitors.
-              </p>
+              {preview.plainText
+                .split("\n\n")
+                .filter((p) => p.trim() && !p.trim().startsWith("Interactive Demo:") && !p.trim().startsWith("Demo:"))
+                .map((paragraph, idx) => (
+                  <p key={idx} className="whitespace-pre-line">
+                    {paragraph}
+                  </p>
+                ))}
               <div className="p-3.5 rounded-lg bg-blue-950/30 border border-blue-800/40 text-blue-200">
                 <p className="font-semibold mb-1">
-                  We have built a live demonstration website tailored specifically for your industry:
+                  {isUpgradeTrack
+                    ? "Interactive Benchmark Upgrade Demo:"
+                    : "Live Industry Demonstration Website:"}
                 </p>
                 <a
                   href={getDemoUrl(previewLead)}
@@ -1923,42 +1948,6 @@ export default function OutreachDashboard() {
                   {getDemoUrl(previewLead)}
                   <ExternalLink className="w-3 h-3" />
                 </a>
-              </div>
-              <div>
-                <p className="font-medium text-white mb-1.5">What this brings to {previewLead.business_name}:</p>
-                <ol className="list-decimal pl-5 space-y-1 text-slate-300 text-xs">
-                  <li>
-                    <strong>Direct WhatsApp Ordering:</strong> Customers click one button and chat directly with your sales
-                    team.
-                  </li>
-                  <li>
-                    <strong>Verified Credibility:</strong> Prominent CAC registration and trust badges that reassure
-                    first-time buyers.
-                  </li>
-                  <li>
-                    <strong>Mobile-Optimized Speed:</strong> Loads in under 1 second on MTN, Airtel, and Glo networks.
-                  </li>
-                  <li>
-                    <strong>Ready within 48 to 72 Hours:</strong> Zero long development cycles or complicated setups.
-                  </li>
-                </ol>
-              </div>
-              <p>
-                Would you be open to a quick 5-minute chat on WhatsApp to see how we can customize this for{" "}
-                {previewLead.business_name}?
-              </p>
-              <p>
-                You can reach our team directly at{" "}
-                <a href="https://wa.me/2348087098270" className="text-emerald-400 font-semibold underline">
-                  +234 808 709 8270
-                </a>{" "}
-                or reply directly to this email.
-              </p>
-              <div className="pt-3 border-t border-slate-800 text-xs text-slate-400">
-                <p className="font-semibold text-slate-200">Best regards,</p>
-                <p>Kayode | Client Outreach Specialist</p>
-                <p>Veltrix Hub &bull; https://veltrixhub.ng</p>
-                <p>Direct WhatsApp: +234 808 709 8270</p>
               </div>
             </div>
 
@@ -1972,7 +1961,8 @@ export default function OutreachDashboard() {
             </div>
           </div>
         </div>
-      )}
+        );
+      })()}
 
       {/* Modal: Add New Lead Manually */}
       {showAddModal && (

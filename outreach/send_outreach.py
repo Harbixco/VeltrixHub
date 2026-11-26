@@ -18,52 +18,90 @@ import config
 # Email Copy Generator tailored for Nigerian Local Businesses with Real-Time Tracking
 # ==============================================================================
 
+FREE_EMAIL_DOMAINS = {
+    "gmail.com", "googlemail.com", "yahoo.com", "yahoo.co.uk", "ymail.com",
+    "hotmail.com", "outlook.com", "live.com", "icloud.com", "aol.com",
+    "proton.me", "protonmail.com", "mail.com", "zohomail.com",
+}
+
+NICHE_LABELS = {
+    "contractor": "construction and contracting",
+    "painting": "painting and finishing",
+    "cleaning": "commercial cleaning",
+    "auto-repair": "auto repair and diagnostics",
+    "dental-care": "dental care",
+    "personal-injury": "legal and advisory",
+    "electrical": "electrical and solar engineering",
+    "pest-control": "pest control and fumigation",
+    "fashion": "fashion and retail",
+    "perfumes": "fragrance and retail",
+    "tech-gadgets": "tech and gadget retail",
+}
+
+
 def generate_email_content(lead, sender):
     business_name = lead.get("business_name", "Your Business").strip()
     contact_name = lead.get("contact_name", "").strip()
     city = lead.get("city", "Nigeria").strip()
-    niche = lead.get("niche", "business").strip()
-    
+    raw_niche = lead.get("niche", "business").strip().lower()
+    niche = NICHE_LABELS.get(raw_niche, raw_niche.replace("-", " "))
+
     # Ensure valid demonstration website URL
     demo_url = lead.get("demo_url", "").strip()
     if not (demo_url.startswith("http://") or demo_url.startswith("https://")):
-        demo_url = f"{config.VELTRIX_WEBSITE}/{niche or 'painting'}"
-    
-    recipient_email = lead.get("email", "").strip()
+        demo_url = f"{config.VELTRIX_WEBSITE}/{raw_niche or 'painting'}"
 
-    greeting = f"Hello {contact_name}," if contact_name else f"Hello {business_name} Team,"
+    recipient_email = lead.get("email", "").strip().lower()
+    domain = recipient_email.split("@")[-1] if "@" in recipient_email else ""
+    pitch_track = "outdated_website" if domain not in FREE_EMAIL_DOMAINS else lead.get("pitch_track", "no_website")
 
-    subject_templates = [
-        f"Helping customers in {city} find {business_name} on WhatsApp & Google",
-        f"Quick question regarding {business_name}'s website",
-        f"A modern customer website ready for {business_name}",
-    ]
-    subject = random.choice(subject_templates)
+    if not contact_name or contact_name.lower() in ("the managing director", "managing director"):
+        greeting = f"Hello {business_name} Team,"
+    else:
+        greeting = f"Hello {contact_name},"
 
-    # Tracking parameters
     encoded_email = urllib.parse.quote(recipient_email)
     encoded_biz = urllib.parse.quote(business_name)
     encoded_demo = urllib.parse.quote(demo_url)
 
-    # 1x1 Invisible Tracking Pixel (records email opens)
-    tracking_pixel_url = f"https://www.veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&action=open"
-    # Tracked Click Link (records demo visits and instantly redirects to live demo)
-    tracked_demo_url = f"https://www.veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&url={encoded_demo}&action=click"
+    tracking_pixel_url = f"https://veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&action=open"
+    tracked_demo_url = f"https://veltrixhub.ng/api/track?email={encoded_email}&biz={encoded_biz}&url={encoded_demo}&action=click"
 
-    # Clean plain-text version
+    if pitch_track == "outdated_website":
+        subject_templates = [
+            f"Quick idea for {business_name}'s website & WhatsApp leads",
+            f"Turning mobile visitors on {business_name}'s site into WhatsApp inquiries",
+            f"A faster, WhatsApp-ready web upgrade concept for {business_name}",
+        ]
+        subject = random.choice(subject_templates)
+        problem_text = f"Even with an existing business presence and official domain, many {niche} companies in {city} lose ready-to-buy mobile visitors when pages load slowly on mobile data or lack an instant 1-click WhatsApp inquiry flow."
+        intro_demo = f"We put together an interactive benchmark demo tailored for {niche} businesses in {city} so you can review it alongside your current site:"
+        btn_label = "View Interactive Upgrade Demo &rarr;"
+    else:
+        subject_templates = [
+            f"Helping customers in {city} find {business_name} on Google & WhatsApp",
+            f"A modern customer website ready for {business_name}",
+            f"Quick question regarding {business_name}'s online bookings",
+        ]
+        subject = random.choice(subject_templates)
+        problem_text = f"In today's market, most clients in {city} search for {niche} providers on their phones before deciding who to trust. Without a fast, mobile-friendly website that connects straight to your WhatsApp, high-intent customers often book elsewhere."
+        intro_demo = "We built a live demonstration website tailored specifically for your industry:"
+        btn_label = "View Live Demonstration &rarr;"
+
     plain_text = f"""{greeting}
 
 I came across {business_name} while researching top {niche} businesses in {city}.
 
-In today's market, most clients in {city} search for {niche} services on their phones before deciding who to trust. Without a fast, mobile-friendly website that connects directly to your WhatsApp, potential customers often end up booking with competitors.
+{problem_text}
 
-We have built a live demonstration website tailored specifically for your industry:
+{intro_demo}
 Demo: {demo_url}
 
 What this brings to {business_name}:
-1. Direct WhatsApp Ordering: Customers click one button and chat directly with your sales team.
-2. Verified Credibility: Prominent CAC registration and customer trust badges that reassure first-time buyers.
-3. Fast Turnaround: Completely custom-branded and live for your business within 3 to 5 business days.
+1. 1-Click WhatsApp Conversion: Customers click one button and chat directly with your team.
+2. Verified Credibility: Clear trust indicators and CAC registration signals that reassure first-time buyers.
+3. Sub-Second Mobile Speed: Built cleanly for MTN, Airtel, and Glo mobile networks.
+4. Fast Turnaround: Custom-tailored and live for your business within 3 to 5 business days.
 
 Would you be open to a brief 5-minute chat on WhatsApp or a quick call this week to see how this can drive more paying clients to {business_name}?
 
@@ -76,7 +114,6 @@ Website: {config.VELTRIX_WEBSITE}
 Email: {config.VELTRIX_INBOUND_EMAIL}
 """
 
-    # HTML version with 1x1 transparent tracking pixel and tracked demo click
     html_text = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -84,34 +121,26 @@ Email: {config.VELTRIX_INBOUND_EMAIL}
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; max-width: 600px; margin: 0 auto; padding: 20px;">
   <p>{greeting}</p>
-  
   <p>I came across <strong>{business_name}</strong> while researching established {niche} services in {city}.</p>
-  
-  <p>In today's market, most clients in {city} search for {niche} services on their phones before deciding who to patronize. Without a fast, mobile-friendly website that links straight to your WhatsApp, potential customers often book with competitors.</p>
-  
-  <p>We built a live demonstration website tailored specifically for your industry:</p>
-  
+  <p>{problem_text}</p>
+  <p>{intro_demo}</p>
   <p style="margin: 24px 0;">
-    <a href="{tracked_demo_url}" style="display: inline-block; background-color: #050f2c; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">View Live Demonstration &rarr;</a>
+    <a href="{tracked_demo_url}" style="display: inline-block; background-color: #050f2c; color: #ffffff; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600;">{btn_label}</a>
   </p>
-  
   <p><strong>What this brings to {business_name}:</strong></p>
   <ul>
-    <li><strong>Direct WhatsApp Conversion:</strong> Customers click one button and message your team directly.</li>
+    <li><strong>1-Click WhatsApp Conversion:</strong> Customers click one button and message your team directly.</li>
     <li><strong>Verified Credibility:</strong> Clear trust indicators and CAC registration signals that give new clients full confidence.</li>
+    <li><strong>Sub-Second Mobile Speed:</strong> Engineered to load quickly on Nigerian mobile networks.</li>
     <li><strong>Fast Delivery:</strong> Custom-tailored and live for your business within 3 to 5 business days.</li>
   </ul>
-  
   <p>Would you be open to a brief 5-minute chat on WhatsApp or a short phone call this week to see how this can bring more paying customers to {business_name}?</p>
-  
   <p style="margin-top: 32px; border-top: 1px solid #e2e8f0; padding-top: 16px;">
     <strong>{sender['name']}</strong><br>
     Growth Team | Veltrix Hub<br>
     WhatsApp / Phone: <a href="{config.VELTRIX_WHATSAPP}" style="color: #2563eb;">{config.VELTRIX_PHONE}</a><br>
     Website: <a href="{config.VELTRIX_WEBSITE}" style="color: #2563eb;">{config.VELTRIX_WEBSITE}</a>
   </p>
-  
-  <!-- Invisible 1x1 Open Tracking Pixel -->
   <img src="{tracking_pixel_url}" width="1" height="1" alt="" style="display:none;width:1px;height:1px;max-height:1px;max-width:1px;opacity:0;border:none;outline:none;" />
 </body>
 </html>
