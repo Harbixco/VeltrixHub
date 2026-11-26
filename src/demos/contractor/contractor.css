@@ -1177,3 +1177,70 @@
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ── CONTRACTOR FAQ ACCORDION ── */
+.contractor-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contractor-faq-item {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #E2E8F0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contractor-faq-item:hover {
+  border-color: var(--gold, #d4af37);
+  box-shadow: 0 8px 24px -4px rgba(212, 175, 55, 0.12);
+}
+
+.contractor-faq-item.is-open {
+  border-color: var(--gold, #d4af37);
+  box-shadow: 0 8px 24px -4px rgba(212, 175, 55, 0.15);
+}
+
+.contractor-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.contractor-faq-question {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.4;
+}
+
+.contractor-faq-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--gold, #d4af37);
+  flex-shrink: 0;
+}
+
+.contractor-faq-content {
+  padding: 0 1.5rem 1.25rem;
+  color: #475569;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  border-top: 1px solid #F1F5F9;
+  padding-top: 1rem;
+}
+
+.contractor-faq-content p {
+  margin: 0;
+}

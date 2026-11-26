@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DemoTopBar from '../DemoTopBar';
 import CountUpNumber from '../../components/CountUpNumber';
+import { FaWhatsapp } from 'react-icons/fa';
+import { ChevronDown } from 'lucide-react';
 import './contractor.css';
 
 export default function Contractor() {
@@ -39,6 +41,35 @@ export default function Contractor() {
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
+
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const contractorFaqs = [
+    {
+      q: 'What types of construction and remodeling projects do you manage?',
+      a: 'We specialize in turnkey residential and commercial projects: custom home additions, structural remodeling, architectural renovations, ground-up commercial builds, and high-end tenant fit-outs. We handle all phases from planning to final inspection.',
+    },
+    {
+      q: 'Do you manage building permits, architectural drawings, and zoning approvals?',
+      a: 'Yes. Our team manages the entire municipal permitting and zoning approval process from start to finish. We work with licensed structural engineers and municipal inspectors to ensure complete code compliance.',
+    },
+    {
+      q: 'Do you offer fixed-price contracts or cost-plus estimates?',
+      a: 'We provide upfront, transparent, fixed-price contracts with detailed scopes of work and itemized milestone schedules. Any alterations are documented through formal change orders approved by you in advance.',
+    },
+    {
+      q: 'How long does an initial consultation and feasibility walkthrough take?',
+      a: 'An initial on-site evaluation typically takes 45 to 60 minutes. Within 48 hours of our visit, you receive a preliminary project feasibility assessment, budgetary breakdown, and proposed timeline.',
+    },
+    {
+      q: 'Are all craftsmen, subcontractors, and job sites insured?',
+      a: 'Every builder, carpenter, electrician, and trade professional on our job sites is fully licensed and protected by comprehensive general liability and workers\' compensation insurance coverage.',
+    },
+    {
+      q: 'What warranties do you provide on completed construction work?',
+      a: 'We provide a comprehensive 2-year structural and workmanship warranty on all completed projects, backed by manufacturer warranties on all installed architectural materials and mechanical systems.',
+    },
+  ];
 
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -260,7 +291,7 @@ export default function Contractor() {
               <a href="#about" onClick={(e) => { setMobileMenuOpen(false); navigateTo('about', e); }}>About Us</a>
               <a href="#services" onClick={(e) => { setMobileMenuOpen(false); navigateTo('services', e); }}>Services</a>
               <a href="#projects" onClick={(e) => { setMobileMenuOpen(false); navigateTo('projects', e); }}>Projects</a>
-              <a href="#testimonials" onClick={(e) => { setMobileMenuOpen(false); navigateTo('testimonials', e); }}>Testimonials</a>
+              <a href="#faq" onClick={(e) => { setMobileMenuOpen(false); navigateTo('faq', e); }}>FAQ</a>
               <a href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>Contact</a>
             </div>
             <a className="button button-gold nav-cta" href="#contact" onClick={(e) => { setMobileMenuOpen(false); navigateTo('contact', e); }}>
@@ -341,25 +372,25 @@ export default function Contractor() {
             </div>
             <div className="stat-item">
               <strong>
-                <CountUpNumber end={15} suffix="+" duration={1.8} />
+                <CountUpNumber end={15} suffix="+" duration={1800} />
               </strong>
               <span>Years of experience</span>
             </div>
             <div className="stat-item">
               <strong>
-                <CountUpNumber end={250} suffix="+" duration={2} />
+                <CountUpNumber end={250} suffix="+" duration={2000} />
               </strong>
               <span>Projects completed</span>
             </div>
             <div className="stat-item">
               <strong>
-                <CountUpNumber end={98} suffix="%" duration={1.8} />
+                <CountUpNumber end={98} suffix="%" duration={1800} />
               </strong>
               <span>Client satisfaction</span>
             </div>
             <div className="stat-item">
               <strong>
-                <CountUpNumber end={50} suffix="+" duration={2} />
+                <CountUpNumber end={50} suffix="+" duration={2000} />
               </strong>
               <span>Skilled professionals</span>
             </div>
@@ -1048,104 +1079,94 @@ export default function Contractor() {
       {/* FAQ VIEW */}
       {currentView === 'faq' && (
         <>
-        <section className="contact-section section-pad" id="contact">
-          <div className="container contact-grid">
-            <div className="contact-copy">
-              <h2>Tell us what<br />you're <span>building.</span></h2>
-              <p>Share a little about your project and we'll be in touch to talk through what's possible.</p>
-              <div className="contact-details">
-                <div>
-                  <span className="contact-symbol">↗</span>
-                  <p>
-                    <small>PHONE & WHATSAPP</small>
-                    <span>
-                      <a
-                        href="https://wa.me/2348087098270"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ color: 'inherit', textDecoration: 'none' }}
+          <section className="faq-section section-pad" id="faq">
+            <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
+              <div className="section-heading reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+                <span className="section-eyebrow" style={{ color: 'var(--gold, #d4af37)', letterSpacing: '0.1em', textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 700 }}>
+                  Questions &amp; Guidance
+                </span>
+                <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', marginTop: '0.5rem', marginBottom: '1rem', color: '#0F172A' }}>
+                  Frequently Asked <span>Questions.</span>
+                </h2>
+                <p style={{ color: '#64748b', fontSize: '1.05rem', lineHeight: 1.6, maxWidth: '640px', margin: '0 auto' }}>
+                  Clear answers about our project scheduling, permits, fixed-price contracts, warranties, and feasibility consultations.
+                </p>
+              </div>
+
+              <div className="contractor-faq-list">
+                {contractorFaqs.map((faq, fIdx) => {
+                  const isOpen = openFaq === fIdx;
+                  return (
+                    <div
+                      key={fIdx}
+                      className={`contractor-faq-item reveal ${isOpen ? 'is-open' : ''}`}
+                    >
+                      <button
+                        type="button"
+                        className="contractor-faq-trigger"
+                        onClick={() => setOpenFaq(isOpen ? -1 : fIdx)}
+                        aria-expanded={isOpen}
                       >
-                        +234 808 709 8270
-                      </a>
-                    </span>
-                  </p>
-                </div>
-                <div>
-                  <span className="contact-symbol">@</span>
-                  <p>
-                    <small>EMAIL US</small>
-                    <span>info@veltrixhub.ng</span>
-                  </p>
-                </div>
-                <div>
-                  <span className="contact-symbol">⌖</span>
-                  <p>
-                    <small>OUR LOCATION</small>
-                    <span>500 Construction Way, Suite 400</span>
-                  </p>
+                        <span className="contractor-faq-question">{faq.q}</span>
+                        <ChevronDown
+                          className="contractor-faq-icon"
+                          style={{
+                            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.25s ease',
+                          }}
+                        />
+                      </button>
+                      {isOpen && (
+                        <div className="contractor-faq-content">
+                          <p>{faq.a}</p>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Direct WhatsApp Consultation Card */}
+              <div
+                className="contractor-faq-cta reveal"
+                style={{
+                  marginTop: '3.5rem',
+                  padding: '2.5rem 2rem',
+                  borderRadius: '16px',
+                  background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+                  color: '#ffffff',
+                  textAlign: 'center',
+                  boxShadow: '0 20px 40px -10px rgba(15, 23, 42, 0.25)',
+                }}
+              >
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, margin: '0 0 0.75rem', color: '#ffffff' }}>
+                  Have a Specific Question About Your Site?
+                </h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '0.95rem', lineHeight: 1.6, maxWidth: '600px', margin: '0 auto 1.75rem' }}>
+                  Speak directly with our senior project estimator. Message our WhatsApp construction line for instant answers and preliminary budgeting.
+                </p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <a
+                    href="https://wa.me/2348087098270?text=Hello%20Veltrix%20Hub%20Construction%2C%20I%20have%20a%20question%20about%20a%20building%20project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button button-gold"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '0.85rem 2rem' }}
+                  >
+                    <FaWhatsapp size={18} />
+                    <span>Chat on WhatsApp</span>
+                  </a>
+                  <button
+                    onClick={(e) => navigateTo('contact', e)}
+                    className="button button-outline"
+                    style={{ padding: '0.85rem 2rem', color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
+                  >
+                    Request Free Estimate &rarr;
+                  </button>
                 </div>
               </div>
             </div>
-
-            <form className="inquiry-form" onSubmit={handleFormSubmit}>
-              <div className="form-heading">
-                <h3>Start a conversation</h3>
-                <span>ALL FIELDS MARKED * ARE REQUIRED</span>
-              </div>
-              <div className="form-row">
-                <label>
-                  Full name *
-                  <input name="name" type="text" placeholder="Your name" required minLength="2" />
-                </label>
-                <label>
-                  Email address *
-                  <input name="email" type="email" placeholder="you@example.com" required />
-                </label>
-              </div>
-              <div className="form-row">
-                <label>
-                  WhatsApp / Phone number
-                  <input name="phone" type="tel" placeholder="Your WhatsApp or phone number" />
-                </label>
-                <label>
-                  Project type *
-                  <select name="projectType" required defaultValue="">
-                    <option value="" disabled>Select a service</option>
-                    <option>General contracting</option>
-                    <option>Commercial construction</option>
-                    <option>Residential construction</option>
-                    <option>Building renovation</option>
-                    <option>Project management</option>
-                    <option>Design & build</option>
-                    <option>Roofing services</option>
-                    <option>Other</option>
-                  </select>
-                </label>
-              </div>
-              <label>
-                Tell us about your project *
-                <textarea
-                  name="description"
-                  rows="4"
-                  placeholder="A few details about what you have in mind..."
-                  required
-                  minLength="5"
-                ></textarea>
-              </label>
-              <div className="form-footer">
-                <p>Demo form only. In production, this sends an instant SMS and email to your estimators.</p>
-                <button className="button button-dark" type="submit">
-                  Submit inquiry <span>↗</span>
-                </button>
-              </div>
-              {formSubmitted && (
-                <div className="form-message">
-                  ✓ Inquiry logged in demonstration preview!
-                </div>
-              )}
-            </form>
-          </div>
-        </section>
+          </section>
         </>
       )}
 
