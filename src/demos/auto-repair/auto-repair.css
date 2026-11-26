@@ -350,7 +350,7 @@
 }
 
 .auto-repair-demo .hero h1 {
-  margin: 0 0 1.25rem;
+  margin: 0 0 2rem;
   font-family: var(--display);
   font-size: clamp(42px, 5.2vw, 68px);
   font-weight: 800;
@@ -363,21 +363,12 @@
   color: var(--accent);
 }
 
-.auto-repair-demo .hero-copy {
-  max-width: 580px;
-  margin: 0 0 2.25rem;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.05rem;
-  line-height: 1.75;
-  font-weight: 450;
-}
-
 .auto-repair-demo .hero__actions { 
   display: flex; 
   align-items: center; 
   gap: 1.25rem; 
   flex-wrap: wrap;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0;
 }
 
 .auto-repair-demo .button--outline-hero {

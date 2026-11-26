@@ -422,9 +422,6 @@ export default function AutoRepair() {
               Precision Care for<br />
               <span>Every Single Mile.</span>
             </h1>
-            <p className="hero-copy">
-              Honest diagnostics, upfront transparent estimates, and certified technicians who treat your vehicle with genuine care. From routine fluid changes to complex engine rebuilds, we get you safely back on the road.
-            </p>
             <div className="hero__actions">
               <a className="button button--accent" href="#appointment" onClick={(e) => scrollToSection(e, 'appointment')}>
                 Schedule Your Visit <span aria-hidden="true">↗</span>
@@ -432,10 +429,6 @@ export default function AutoRepair() {
               <a className="button button--outline-hero" href="#services" onClick={(e) => scrollToSection(e, 'services')}>
                 Explore Services <span aria-hidden="true">↓</span>
               </a>
-            </div>
-            <div className="hero__proof">
-              <span className="proof-stars" aria-label="Five out of five stars">★★★★★</span>
-              <span>Rated 5.0 by local drivers • 12-Month / 12,000-Mile Parts & Labor Warranty</span>
             </div>
           </div>
 
@@ -459,10 +452,6 @@ export default function AutoRepair() {
               </button>
             </div>
           </div>
-          <a className="hero__scroll" href="#services" onClick={(e) => scrollToSection(e, 'services')}>
-            <span>Scroll to discover</span>
-            <span className="scroll-line"></span>
-          </a>
         </section>
 
         {/* ── TRUST STRIP ── */}
