@@ -132,6 +132,9 @@ const ENTERPRISE_PATTERNS = [
   /\bsmile\s*360\b/i,
   /\belektron\s*energy\b/i,
   /\bsolynta\b/i,
+  /\bgeneral\s*hospital\b/i,
+  /\bteaching\s*hospital\b/i,
+  /\bfederal\s*medical\b/i,
 ];
 
 const ENTERPRISE_DOMAINS = [
@@ -224,8 +227,16 @@ export function isFreeEmailDomain(email) {
 /** Returns true when URL points to social media, WhatsApp, or a third-party directory instead of an owned site. */
 export function isSocialOrDirectoryUrl(url) {
   if (!url || typeof url !== "string") return false;
-  const low = url.toLowerCase();
-  return SOCIAL_OR_DIRECTORY_HOSTS.some((host) => low.includes(host));
+  let hostname = "";
+  try {
+    hostname = new URL(url.trim()).hostname.toLowerCase().replace(/^www\./, "");
+  } catch {
+    return false;
+  }
+  if (!hostname) return false;
+  return SOCIAL_OR_DIRECTORY_HOSTS.some(
+    (host) => hostname === host || hostname.endsWith(`.${host}`)
+  );
 }
 
 /** Cleans and validates extracted email syntax, filtering framework and image artifacts. */
@@ -366,7 +377,11 @@ export function auditWebsiteHtml(websiteUrl = "", html = "", fetchError = "") {
 }
 
 function cleanBrandName(raw = "") {
-  let name = String(raw || "").replace(/[#]/g, "Number ").replace(/\s+/g, " ").trim();
+  let name = String(raw || "")
+    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, "")
+    .replace(/[#]/g, "Number ")
+    .replace(/\s+/g, " ")
+    .trim();
   if (!name) return "Your Business";
   // Strip verbose SEO taglines after -, |, or : when Google Places listings append keyword descriptions
   const splitters = [" - ", " | ", " — ", ": "];
@@ -695,3 +710,80 @@ WhatsApp: https://wa.me/2348087098270
 
   return { subject, plainText, htmlText, pitchTrack };
 }
+
+/** Maps legacy discovery industry labels into valid Veltrix Hub demo niche slugs. */
+export function normalizeNicheSlug(rawNiche = "") {
+  const s = String(rawNiche || "").toLowerCase().trim();
+  if (!s) return "fashion";
+  if (NICHE_LABELS[s]) return s;
+  if (s.includes("fashion") || s.includes("clothing") || s.includes("boutique")) return "fashion";
+  if (s.includes("perfume") || s.includes("scent") || s.includes("fragrance")) return "perfumes";
+  if (s.includes("phone") || s.includes("gadget") || s.includes("laptop") || s.includes("electronic")) return "tech-gadgets";
+  if (s.includes("clean") || s.includes("janitor")) return "cleaning";
+  if (s.includes("paint")) return "painting";
+  if (s.includes("construct") || s.includes("contract") || s.includes("build")) return "contractor";
+  if (s.includes("auto") || s.includes("mechanic") || s.includes("repair")) return "auto-repair";
+  if (s.includes("dental") || s.includes("dentist")) return "dental-care";
+  if (s.includes("law") || s.includes("legal") || s.includes("attorney")) return "personal-injury";
+  if (s.includes("solar") || s.includes("electr") || s.includes("inverter")) return "electrical";
+  if (s.includes("pest") || s.includes("fumigat")) return "pest-control";
+  return "";
+}
+
+/**
+ * Formats Nigerian phone strings into WhatsApp E.164 digits (without '+') and display format.
+ * Filters strictly for Nigerian mobile network prefixes (070, 080, 081, 090, 091), excluding landlines.
+ */
+export function formatNigerianWhatsApp(rawPhone = "") {
+  const digits = String(rawPhone || "").replace(/\D/g, "");
+  let normalized = "";
+
+  if (digits.length === 11 && digits.startsWith("0")) {
+    normalized = `234${digits.slice(1)}`;
+  } else if (digits.length === 13 && digits.startsWith("234")) {
+    normalized = digits;
+  } else if (digits.length === 14 && digits.startsWith("2340")) {
+    normalized = `234${digits.slice(4)}`;
+  } else if (digits.length === 10 && /^[789][01]\d{8}$/.test(digits)) {
+    normalized = `234${digits}`;
+  } else {
+    return null;
+  }
+
+  // Validate mobile carrier prefix after 234 (70, 80, 81, 90, 91)
+  if (!/^234(70|80|81|90|91)\d{8}$/.test(normalized)) {
+    return null;
+  }
+
+  const local = normalized.slice(3);
+  return {
+    waDigits: normalized,
+    display: `+234 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`,
+  };
+}
+
+/** Generates a concise, natural WhatsApp outreach DM tailored for businesses with no website. */
+export function generateWhatsAppPitchMessage(rawLead) {
+  const lead = normalizeLead(rawLead);
+  const nicheSlug = normalizeNicheSlug(lead.niche || lead.industry) || lead.niche || "fashion";
+  const nicheLabel = getNicheDisplayLabel(nicheSlug);
+  const demoUrl = lead.demo_url && lead.demo_url.startsWith("http")
+    ? lead.demo_url
+    : `https://veltrixhub.ng/${nicheSlug}`;
+
+  return (
+    `Hello ${lead.business_name} Team, I came across your ${nicheLabel} business in ${lead.city} on Google Maps and noticed you do not have a website linked yet.\n\n` +
+    `Most customers searching on their phones prefer viewing services/prices on a clean mobile page with a 1-click WhatsApp order button before booking. ` +
+    `We built a live mobile demo specifically for ${nicheLabel} businesses you can check out here: ${demoUrl}\n\n` +
+    `Would you like us to customize a version for ${lead.business_name} within 3 to 5 days? (Kayode | Veltrix Hub)`
+  );
+}
+
+/** Builds a direct https://wa.me clickable pitch URL with pre-filled personalized message. */
+export function buildWhatsAppPitchUrl(rawLead) {
+  const phoneInfo = formatNigerianWhatsApp(rawLead?.whatsapp_number || rawLead?.phone || "");
+  if (!phoneInfo) return "";
+  const msg = generateWhatsAppPitchMessage(rawLead);
+  return `https://wa.me/${phoneInfo.waDigits}?text=${encodeURIComponent(msg)}`;
+}
+

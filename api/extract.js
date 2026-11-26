@@ -10,6 +10,9 @@ import {
   isEnterpriseOrSkipLead,
   auditWebsiteHtml,
   classifyLeadPitchTrack,
+  formatNigerianWhatsApp,
+  buildWhatsAppPitchUrl,
+  normalizeLead,
 } from "./_outreachCore.js";
 
 const resolveMx = promisify(dns.resolveMx);
@@ -214,6 +217,50 @@ export default async function handler(req, res) {
 
   if (req.method === "OPTIONS") {
     return res.status(200).end();
+  }
+
+  // 1B. GET WHATSAPP NO-WEBSITE LEADS ENDPOINT
+  if (req.query.get_whatsapp_leads === "true" || req.query.get_whatsapp_leads === true) {
+    try {
+      const db = await getDb();
+      const waDocs = await db
+        .collection("leads")
+        .find({
+          status: { $in: ["whatsapp_ready", "whatsapp_sent"] },
+          whatsapp_digits: { $exists: true, $nin: ["", null] },
+        })
+        .sort({ updatedAt: -1 })
+        .limit(1000)
+        .toArray();
+
+      const leads = waDocs.map((doc) => {
+        const norm = normalizeLead(doc);
+        const waLink = doc.wa_link || buildWhatsAppPitchUrl(norm);
+        return {
+          id: doc._id?.toString() || doc.whatsapp_digits,
+          business_name: norm.business_name,
+          niche: norm.niche,
+          city: norm.city,
+          whatsapp_number: doc.whatsapp_number || doc.phone,
+          whatsapp_digits: doc.whatsapp_digits,
+          wa_link: waLink,
+          demo_url: norm.demo_url,
+          audit_status: doc.audit_status || "No Website Listed",
+          address: doc.address || "",
+          status: doc.status || "whatsapp_ready",
+          whatsapp_sent_at: doc.whatsapp_sent_at || "",
+        };
+      });
+
+      return res.status(200).json({
+        success: true,
+        count: leads.length,
+        leads,
+      });
+    } catch (err) {
+      console.error("Error reading WhatsApp leads:", err);
+      return res.status(500).json({ success: false, error: err.message });
+    }
   }
 
   // 1. GET ALL LEADS ENDPOINT (for frontend table)

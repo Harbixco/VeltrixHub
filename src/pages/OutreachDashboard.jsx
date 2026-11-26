@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { generatePitchContent } from "../../api/_outreachCore.js";
+import { generatePitchContent, buildWhatsAppPitchUrl } from "../../api/_outreachCore.js";
 import {
   Mail,
   Send,
@@ -219,6 +219,9 @@ export default function OutreachDashboard() {
   const [isLoadingLeads, setIsLoadingLeads] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedNiche, setSelectedNiche] = useState("all");
+  const [pipelineTab, setPipelineTab] = useState("email");
+  const [whatsappLeads, setWhatsappLeads] = useState([]);
+  const [isLoadingWhatsapp, setIsLoadingWhatsapp] = useState(false);
   const [previewLead, setPreviewLead] = useState(null);
   const [copiedCmd, setCopiedCmd] = useState("");
   const [showAddModal, setShowAddModal] = useState(false);
@@ -316,6 +319,40 @@ export default function OutreachDashboard() {
     }
   };
 
+  // 1B. Fetch WhatsApp No-Website Leads
+  const fetchWhatsappLeads = async () => {
+    setIsLoadingWhatsapp(true);
+    try {
+      const res = await fetch(getApiUrl("/api/extract?get_whatsapp_leads=true"));
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.leads)) {
+          setWhatsappLeads(data.leads);
+        }
+      }
+    } catch (err) {
+      console.warn("Notice loading WhatsApp leads:", err);
+    } finally {
+      setIsLoadingWhatsapp(false);
+    }
+  };
+
+  const handleMarkWhatsappStatus = async (lead, nextStatus) => {
+    const mode = nextStatus === "whatsapp_sent" ? "mark_whatsapp_sent" : "mark_whatsapp_ready";
+    setWhatsappLeads((prev) =>
+      prev.map((item) => (item.whatsapp_digits === lead.whatsapp_digits ? { ...item, status: nextStatus } : item))
+    );
+    try {
+      await fetch(getApiUrl("/api/dispatch"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode, whatsapp_digits: lead.whatsapp_digits }),
+      });
+    } catch (err) {
+      console.warn("Notice updating WhatsApp status:", err);
+    }
+  };
+
   // 2. Fetch email open & click tracking metrics
   const fetchTracking = async () => {
     setIsRefreshing(true);
@@ -410,6 +447,7 @@ export default function OutreachDashboard() {
   // Initial load
   useEffect(() => {
     fetchLeads();
+    fetchWhatsappLeads();
     fetchTracking();
     fetchDispatchStatus();
     fetchResponses();
@@ -671,7 +709,15 @@ export default function OutreachDashboard() {
     }
   };
 
-  const niches = ["all", ...Array.from(new Set(leads.map((l) => l.niche)))];
+  const niches = [
+    "all",
+    ...Array.from(
+      new Set([
+        ...leads.map((l) => l.niche),
+        ...whatsappLeads.map((l) => l.niche),
+      ].filter(Boolean))
+    ),
+  ];
 
   const getTrackingForLead = (email) => {
     if (!email || !trackingRecords.length) return null;
@@ -686,6 +732,15 @@ export default function OutreachDashboard() {
       (lead.contact_name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
       (lead.city || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
       (lead.email || "").toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesNiche = selectedNiche === "all" || lead.niche === selectedNiche;
+    return matchesSearch && matchesNiche;
+  });
+
+  const filteredWhatsappLeads = whatsappLeads.filter((lead) => {
+    const matchesSearch =
+      (lead.business_name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (lead.city || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (lead.whatsapp_number || "").toLowerCase().includes(searchTerm.toLowerCase());
     const matchesNiche = selectedNiche === "all" || lead.niche === selectedNiche;
     return matchesSearch && matchesNiche;
   });
@@ -719,6 +774,24 @@ export default function OutreachDashboard() {
   };
 
   const handleDownloadCSV = () => {
+    if (pipelineTab === "whatsapp") {
+      const header = "business_name,niche,city,whatsapp_number,wa_link,demo_url,audit_status,status,address\n";
+      const rows = filteredWhatsappLeads
+        .map((l) =>
+          `"${(l.business_name || "").replace(/"/g, '""')}","${l.niche || ""}","${l.city || ""}","${l.whatsapp_number || ""}","${(l.wa_link || buildWhatsAppPitchUrl(l)).replace(/"/g, '""')}","${l.demo_url || ""}","${(l.audit_status || "").replace(/"/g, '""')}","${l.status || ""}","${(l.address || "").replace(/"/g, '""')}"`
+        )
+        .join("\n");
+      const blob = new Blob([header + rows], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "whatsapp_no_website_leads.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      return;
+    }
+
     const header = "business_name,contact_name,email,niche,city,demo_url,status,sent_at,sent_by\n";
     const rows = leads
       .map(
@@ -772,6 +845,7 @@ export default function OutreachDashboard() {
             onClick={() => {
               fetchTracking();
               fetchLeads();
+              fetchWhatsappLeads();
               fetchDispatchStatus();
             }}
             disabled={isRefreshing || isLoadingLeads}
@@ -1713,27 +1787,62 @@ export default function OutreachDashboard() {
 
         {/* SECTION 5: PROSPECT DATABASE TABLE */}
         <div className="bg-slate-900/60 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+          {/* Pipeline Channel Switcher */}
+          <div className="px-5 pt-4 border-b border-slate-800 flex flex-wrap items-center gap-2 bg-slate-950/40">
+            <button
+              onClick={() => setPipelineTab("email")}
+              className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-lg border-b-2 transition flex items-center gap-2 ${
+                pipelineTab === "email"
+                  ? "border-blue-500 text-white bg-slate-900/80"
+                  : "border-transparent text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <Mail className="w-4 h-4 text-blue-400" />
+              <span>Email Pipeline ({filteredLeads.length})</span>
+            </button>
+            <button
+              onClick={() => setPipelineTab("whatsapp")}
+              className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-t-lg border-b-2 transition flex items-center gap-2 ${
+                pipelineTab === "whatsapp"
+                  ? "border-emerald-500 text-white bg-slate-900/80"
+                  : "border-transparent text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <MessageSquare className="w-4 h-4 text-emerald-400" />
+              <span>WhatsApp Direct Queue - No Website ({filteredWhatsappLeads.length})</span>
+            </button>
+          </div>
+
           {/* Controls Bar */}
           <div className="p-5 border-b border-slate-800 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-bold text-white">Prospects Pipeline ({filteredLeads.length})</h3>
-                {isLoadingLeads && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}
+                <h3 className="text-lg font-bold text-white">
+                  {pipelineTab === "whatsapp"
+                    ? `No-Website WhatsApp Contacts (${filteredWhatsappLeads.length})`
+                    : `Prospects Pipeline (${filteredLeads.length})`}
+                </h3>
+                {(isLoadingLeads || isLoadingWhatsapp) && <Loader2 className="w-4 h-4 animate-spin text-blue-400" />}
               </div>
               <p className="text-xs text-slate-400 mt-0.5">
-                Targeted Nigerian businesses matched with dedicated industry demo websites.
+                {pipelineTab === "whatsapp"
+                  ? "SMEs with no website listed — tap 'Pitch on WhatsApp' to send a personalized DM with your industry demo link."
+                  : "Targeted Nigerian businesses matched with dedicated industry demo websites."}
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
               {/* Force Refresh Button */}
               <button
-                onClick={fetchLeads}
-                disabled={isLoadingLeads}
+                onClick={() => {
+                  fetchLeads();
+                  fetchWhatsappLeads();
+                }}
+                disabled={isLoadingLeads || isLoadingWhatsapp}
                 className="p-2 bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-lg text-slate-400 hover:text-white transition"
                 title="Reload leads from database"
               >
-                <RotateCw className={`w-4 h-4 ${isLoadingLeads ? "animate-spin text-blue-400" : ""}`} />
+                <RotateCw className={`w-4 h-4 ${isLoadingLeads || isLoadingWhatsapp ? "animate-spin text-blue-400" : ""}`} />
               </button>
 
               {/* Search */}
@@ -1741,7 +1850,7 @@ export default function OutreachDashboard() {
                 <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder="Search business, contact, city..."
+                  placeholder={pipelineTab === "whatsapp" ? "Search business, phone, city..." : "Search business, contact, city..."}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-9 pr-3 py-1.5 bg-slate-950 border border-slate-800 rounded-lg text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 w-64"
@@ -1764,6 +1873,107 @@ export default function OutreachDashboard() {
           </div>
 
           {/* Table */}
+          {pipelineTab === "whatsapp" ? (
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm text-slate-300">
+                <thead className="bg-slate-950/70 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+                  <tr>
+                    <th className="py-3 px-4 font-semibold">Business &amp; WhatsApp Contact</th>
+                    <th className="py-3 px-4 font-semibold">Location</th>
+                    <th className="py-3 px-4 font-semibold">Niche</th>
+                    <th className="py-3 px-4 font-semibold">Demo Website</th>
+                    <th className="py-3 px-4 font-semibold">Status</th>
+                    <th className="py-3 px-4 font-semibold text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                  {filteredWhatsappLeads.map((lead, index) => {
+                    const isSent = lead.status === "whatsapp_sent";
+                    const waHref = lead.wa_link || buildWhatsAppPitchUrl(lead);
+
+                    return (
+                      <tr key={lead.id || lead.whatsapp_digits || index} className="hover:bg-slate-800/40 transition">
+                        <td className="py-3.5 px-4">
+                          <div className="font-medium text-white">{lead.business_name}</div>
+                          <div className="text-xs text-emerald-400 font-mono flex items-center gap-2 mt-0.5">
+                            <Phone className="w-3 h-3" />
+                            <span>{lead.whatsapp_number}</span>
+                            <button
+                              onClick={() => handleCopy(lead.whatsapp_number, `wa-${lead.whatsapp_digits}`)}
+                              className="text-slate-400 hover:text-white transition"
+                              title="Copy phone number"
+                            >
+                              {copiedCmd === `wa-${lead.whatsapp_digits}` ? (
+                                <Check className="w-3 h-3 text-emerald-400" />
+                              ) : (
+                                <Copy className="w-3 h-3" />
+                              )}
+                            </button>
+                          </div>
+                        </td>
+                        <td className="py-3.5 px-4 text-slate-300">
+                          <span className="inline-flex items-center gap-1.5 text-xs text-slate-300">
+                            <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                            {lead.city}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700 capitalize">
+                            {(lead.niche || "fashion").replace("-", " ")}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <a
+                            href={getDemoUrl(lead)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 hover:underline font-mono"
+                          >
+                            {getDemoUrl(lead).replace("https://veltrixhub.ng", "")}
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </td>
+                        <td className="py-3.5 px-4">
+                          {isSent ? (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                              <CheckCircle2 className="w-3 h-3" />
+                              WhatsApp Sent
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                              No Website Ready
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4 text-right space-x-2 whitespace-nowrap">
+                          <a
+                            href={waHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                              if (!isSent) handleMarkWhatsappStatus(lead, "whatsapp_sent");
+                            }}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition"
+                          >
+                            <MessageSquare className="w-3.5 h-3.5" />
+                            Pitch on WhatsApp
+                          </a>
+                          <button
+                            onClick={() => handleMarkWhatsappStatus(lead, isSent ? "whatsapp_ready" : "whatsapp_sent")}
+                            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 transition"
+                            title={isSent ? "Mark as Ready" : "Mark as Sent"}
+                          >
+                            {isSent ? "Reset" : "Mark Sent"}
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm text-slate-300">
               <thead className="bg-slate-950/70 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
@@ -1851,6 +2061,7 @@ export default function OutreachDashboard() {
               </tbody>
             </table>
           </div>
+          )}
         </div>
       </div>
 

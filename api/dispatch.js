@@ -157,6 +157,7 @@ async function calculateProgress(db) {
   let pending = 0;
   let failed = 0;
   let invalidDomains = 0;
+  let whatsappReady = 0;
   let followUpDue = 0;
   let lastSentLead = null;
   let sentToday = 0;
@@ -172,6 +173,10 @@ async function calculateProgress(db) {
 
       for (const lead of allLeads) {
         const st = (lead.status || "pending").toLowerCase();
+        if (st === "whatsapp_ready" || st === "whatsapp_sent") {
+          whatsappReady++;
+          continue;
+        }
         if (st === "invalid_domain" || st === "skipped_enterprise" || st === "skipped_duplicate" || lead.is_deliverable === false) {
           invalidDomains++;
           continue;
@@ -216,6 +221,7 @@ async function calculateProgress(db) {
     pending,
     failed,
     invalidDomains,
+    whatsappReady,
     followUpDue,
     percent,
     sentToday,
@@ -305,6 +311,27 @@ export default async function handler(req, res) {
       isRunning: false,
       message: "Outreach engine stopped successfully.",
     });
+  }
+
+  // 2B. MARK WHATSAPP LEAD SENT / READY
+  if (mode === "mark_whatsapp_sent" || mode === "mark_whatsapp_ready") {
+    const waDigits = String(req.body?.whatsapp_digits || req.query?.whatsapp_digits || "").trim();
+    if (!waDigits || !db) {
+      return res.status(400).json({ success: false, error: "whatsapp_digits and database connection required" });
+    }
+    const nextStatus = mode === "mark_whatsapp_sent" ? "whatsapp_sent" : "whatsapp_ready";
+    const nowIso = new Date().toISOString();
+    await db.collection(LEADS_COLLECTION).updateOne(
+      { whatsapp_digits: waDigits },
+      {
+        $set: {
+          status: nextStatus,
+          whatsapp_sent_at: nextStatus === "whatsapp_sent" ? nowIso : "",
+          updatedAt: nowIso,
+        },
+      }
+    );
+    return res.status(200).json({ success: true, whatsapp_digits: waDigits, status: nextStatus });
   }
 
   // 3. DRY RUN (SIMULATION MODE)
